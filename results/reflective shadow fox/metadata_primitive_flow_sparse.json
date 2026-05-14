@@ -1,0 +1,6802 @@
+{
+  "aggregate_every_n_steps": null,
+  "aggregation_steps": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    23
+  ],
+  "condition_names": [
+    "source",
+    "S1_marble_fox_statue",
+    "S2_green_rain_boots",
+    "S3_mirror_reflection",
+    "S4_cracked_mirror_reflection",
+    "S5_shadow",
+    "target"
+  ],
+  "condition_roles": [
+    "source",
+    "primitive",
+    "primitive",
+    "primitive",
+    "primitive",
+    "primitive",
+    "target"
+  ],
+  "condition_texts": [
+    "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+    "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+    "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+    "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+    "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+    "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+    "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+  ],
+  "condition_weights": [
+    0.7,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.2
+  ],
+  "custom_loop_audit": {
+    "aggregation_reference": "target_prompt",
+    "classifier_free_guidance": true,
+    "embedding_shapes": {
+      "conditions": [
+        {
+          "device": "cuda:0",
+          "dtype": "torch.float16",
+          "negative_pooled_prompt_embeds": [
+            1,
+            2048
+          ],
+          "negative_prompt_embeds": [
+            1,
+            333,
+            4096
+          ],
+          "pooled_prompt_embeds": [
+            1,
+            2048
+          ],
+          "prompt_embeds": [
+            1,
+            333,
+            4096
+          ]
+        },
+        {
+          "device": "cuda:0",
+          "dtype": "torch.float16",
+          "negative_pooled_prompt_embeds": [
+            1,
+            2048
+          ],
+          "negative_prompt_embeds": [
+            1,
+            333,
+            4096
+          ],
+          "pooled_prompt_embeds": [
+            1,
+            2048
+          ],
+          "prompt_embeds": [
+            1,
+            333,
+            4096
+          ]
+        },
+        {
+          "device": "cuda:0",
+          "dtype": "torch.float16",
+          "negative_pooled_prompt_embeds": [
+            1,
+            2048
+          ],
+          "negative_prompt_embeds": [
+            1,
+            333,
+            4096
+          ],
+          "pooled_prompt_embeds": [
+            1,
+            2048
+          ],
+          "prompt_embeds": [
+            1,
+            333,
+            4096
+          ]
+        },
+        {
+          "device": "cuda:0",
+          "dtype": "torch.float16",
+          "negative_pooled_prompt_embeds": [
+            1,
+            2048
+          ],
+          "negative_prompt_embeds": [
+            1,
+            333,
+            4096
+          ],
+          "pooled_prompt_embeds": [
+            1,
+            2048
+          ],
+          "prompt_embeds": [
+            1,
+            333,
+            4096
+          ]
+        },
+        {
+          "device": "cuda:0",
+          "dtype": "torch.float16",
+          "negative_pooled_prompt_embeds": [
+            1,
+            2048
+          ],
+          "negative_prompt_embeds": [
+            1,
+            333,
+            4096
+          ],
+          "pooled_prompt_embeds": [
+            1,
+            2048
+          ],
+          "prompt_embeds": [
+            1,
+            333,
+            4096
+          ]
+        },
+        {
+          "device": "cuda:0",
+          "dtype": "torch.float16",
+          "negative_pooled_prompt_embeds": [
+            1,
+            2048
+          ],
+          "negative_prompt_embeds": [
+            1,
+            333,
+            4096
+          ],
+          "pooled_prompt_embeds": [
+            1,
+            2048
+          ],
+          "prompt_embeds": [
+            1,
+            333,
+            4096
+          ]
+        },
+        {
+          "device": "cuda:0",
+          "dtype": "torch.float16",
+          "negative_pooled_prompt_embeds": [
+            1,
+            2048
+          ],
+          "negative_prompt_embeds": [
+            1,
+            333,
+            4096
+          ],
+          "pooled_prompt_embeds": [
+            1,
+            2048
+          ],
+          "prompt_embeds": [
+            1,
+            333,
+            4096
+          ]
+        }
+      ],
+      "target": {
+        "device": "cuda:0",
+        "dtype": "torch.float16",
+        "negative_pooled_prompt_embeds": [
+          1,
+          2048
+        ],
+        "negative_prompt_embeds": [
+          1,
+          333,
+          4096
+        ],
+        "pooled_prompt_embeds": [
+          1,
+          2048
+        ],
+        "prompt_embeds": [
+          1,
+          333,
+          4096
+        ]
+      }
+    },
+    "guidance_scale": 4.5,
+    "latents_device": "cuda:0",
+    "latents_dtype": "torch.float16",
+    "normal_steps_use": "target_prompt_only",
+    "sequential_cfg_forward": true,
+    "sequential_condition_forward": true
+  },
+  "debug_steps": [
+    {
+      "do_aggregate": false,
+      "selected_condition": "target",
+      "selected_condition_text": "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus",
+      "step_index": 0,
+      "timestep": 1000.0
+    },
+    {
+      "clipped_correction_norm": 147.52151489257812,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.9228515625,
+        0.86328125,
+        0.7880859375,
+        0.90625,
+        0.89794921875,
+        0.86181640625,
+        0.89794921875
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 2.3317461013793945,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 2.3317461013793945,
+        "radius_ratio": 0.35,
+        "target_step_norm": 9.524138450622559
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.89501953125,
+          0.85546875,
+          0.97900390625,
+          0.98193359375,
+          0.8955078125,
+          0.93017578125
+        ],
+        [
+          0.89501953125,
+          1.0,
+          0.69140625,
+          0.8740234375,
+          0.8486328125,
+          0.9541015625,
+          0.91796875
+        ],
+        [
+          0.85546875,
+          0.69140625,
+          1.0,
+          0.85546875,
+          0.83935546875,
+          0.68115234375,
+          0.8056640625
+        ],
+        [
+          0.97900390625,
+          0.8740234375,
+          0.85546875,
+          1.0,
+          0.95458984375,
+          0.85595703125,
+          0.9169921875
+        ],
+        [
+          0.98193359375,
+          0.8486328125,
+          0.83935546875,
+          0.95458984375,
+          1.0,
+          0.86572265625,
+          0.8984375
+        ],
+        [
+          0.8955078125,
+          0.9541015625,
+          0.68115234375,
+          0.85595703125,
+          0.86572265625,
+          1.0,
+          0.91796875
+        ],
+        [
+          0.93017578125,
+          0.91796875,
+          0.8056640625,
+          0.9169921875,
+          0.8984375,
+          0.91796875,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 147.52151489257812,
+      "raw_scores": [
+        0.6008302779227961,
+        0.7925127549096942,
+        0.6350651244283654,
+        0.8308332208544016,
+        0.8069499246776104,
+        0.791185766865965,
+        1.0775390624999999
+      ],
+      "softmax_weights": [
+        0.10655433684587479,
+        0.1401183158159256,
+        0.1118951290845871,
+        0.1480027139186859,
+        0.14303821325302124,
+        0.13985295593738556,
+        0.2105383276939392
+      ],
+      "step_index": 1,
+      "target_consistency_gates": [
+        0.9300834536552429,
+        0.9180238246917725,
+        0.8058323264122009,
+        0.916781485080719,
+        0.8986587524414062,
+        0.9180444478988647,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 603.0549926757812,
+      "timestep": 985.1206665039062,
+      "vfa": {
+        "clipped_correction_norm": 147.52151489257812,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.9228515625,
+          0.86328125,
+          0.7880859375,
+          0.90625,
+          0.89794921875,
+          0.86181640625,
+          0.89794921875
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.89501953125,
+            0.85546875,
+            0.97900390625,
+            0.98193359375,
+            0.8955078125,
+            0.93017578125
+          ],
+          [
+            0.89501953125,
+            1.0,
+            0.69140625,
+            0.8740234375,
+            0.8486328125,
+            0.9541015625,
+            0.91796875
+          ],
+          [
+            0.85546875,
+            0.69140625,
+            1.0,
+            0.85546875,
+            0.83935546875,
+            0.68115234375,
+            0.8056640625
+          ],
+          [
+            0.97900390625,
+            0.8740234375,
+            0.85546875,
+            1.0,
+            0.95458984375,
+            0.85595703125,
+            0.9169921875
+          ],
+          [
+            0.98193359375,
+            0.8486328125,
+            0.83935546875,
+            0.95458984375,
+            1.0,
+            0.86572265625,
+            0.8984375
+          ],
+          [
+            0.8955078125,
+            0.9541015625,
+            0.68115234375,
+            0.85595703125,
+            0.86572265625,
+            1.0,
+            0.91796875
+          ],
+          [
+            0.93017578125,
+            0.91796875,
+            0.8056640625,
+            0.9169921875,
+            0.8984375,
+            0.91796875,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 147.52151489257812,
+        "raw_scores": [
+          0.6008302779227961,
+          0.7925127549096942,
+          0.6350651244283654,
+          0.8308332208544016,
+          0.8069499246776104,
+          0.791185766865965,
+          1.0775390624999999
+        ],
+        "softmax_weights": [
+          0.10655433684587479,
+          0.1401183158159256,
+          0.1118951290845871,
+          0.1480027139186859,
+          0.14303821325302124,
+          0.13985295593738556,
+          0.2105383276939392
+        ],
+        "target_consistency_cosines": [
+          0.9300834536552429,
+          0.9180238246917725,
+          0.8058323264122009,
+          0.916781485080719,
+          0.8986587524414062,
+          0.9180444478988647,
+          1.0
+        ],
+        "target_consistency_gates": [
+          0.9300834536552429,
+          0.9180238246917725,
+          0.8058323264122009,
+          0.916781485080719,
+          0.8986587524414062,
+          0.9180444478988647,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 603.0549926757812
+      }
+    },
+    {
+      "clipped_correction_norm": 158.1019744873047,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.92578125,
+        0.90869140625,
+        0.79345703125,
+        0.908203125,
+        0.90966796875,
+        0.8916015625,
+        0.8876953125
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 2.6555261611938477,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 2.6555261611938477,
+        "radius_ratio": 0.35,
+        "target_step_norm": 9.200627326965332
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.95751953125,
+          0.830078125,
+          0.96142578125,
+          0.96240234375,
+          0.93212890625,
+          0.91259765625
+        ],
+        [
+          0.95751953125,
+          1.0,
+          0.7939453125,
+          0.91845703125,
+          0.91748046875,
+          0.92626953125,
+          0.93798828125
+        ],
+        [
+          0.830078125,
+          0.7939453125,
+          1.0,
+          0.79248046875,
+          0.80322265625,
+          0.7392578125,
+          0.80078125
+        ],
+        [
+          0.96142578125,
+          0.91845703125,
+          0.79248046875,
+          1.0,
+          0.96044921875,
+          0.92724609375,
+          0.8876953125
+        ],
+        [
+          0.96240234375,
+          0.91748046875,
+          0.80322265625,
+          0.96044921875,
+          1.0,
+          0.92724609375,
+          0.8876953125
+        ],
+        [
+          0.93212890625,
+          0.92626953125,
+          0.7392578125,
+          0.92724609375,
+          0.92724609375,
+          1.0,
+          0.89892578125
+        ],
+        [
+          0.91259765625,
+          0.93798828125,
+          0.80078125,
+          0.8876953125,
+          0.8876953125,
+          0.89892578125,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 158.1019744873047,
+      "raw_scores": [
+        0.5914179948857053,
+        0.8522985063900705,
+        0.6355126388370991,
+        0.80638321058359,
+        0.8074558317312039,
+        0.801630201167427,
+        1.065234375
+      ],
+      "softmax_weights": [
+        0.10464994609355927,
+        0.15191292762756348,
+        0.11145416647195816,
+        0.14226822555065155,
+        0.14248640835285187,
+        0.14130550622940063,
+        0.20592284202575684
+      ],
+      "step_index": 2,
+      "target_consistency_gates": [
+        0.9126160740852356,
+        0.9379405379295349,
+        0.8009414672851562,
+        0.8878886103630066,
+        0.8876379728317261,
+        0.8990901708602905,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 548.1395874023438,
+      "timestep": 969.3285522460938,
+      "vfa": {
+        "clipped_correction_norm": 158.1019744873047,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.92578125,
+          0.90869140625,
+          0.79345703125,
+          0.908203125,
+          0.90966796875,
+          0.8916015625,
+          0.8876953125
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.95751953125,
+            0.830078125,
+            0.96142578125,
+            0.96240234375,
+            0.93212890625,
+            0.91259765625
+          ],
+          [
+            0.95751953125,
+            1.0,
+            0.7939453125,
+            0.91845703125,
+            0.91748046875,
+            0.92626953125,
+            0.93798828125
+          ],
+          [
+            0.830078125,
+            0.7939453125,
+            1.0,
+            0.79248046875,
+            0.80322265625,
+            0.7392578125,
+            0.80078125
+          ],
+          [
+            0.96142578125,
+            0.91845703125,
+            0.79248046875,
+            1.0,
+            0.96044921875,
+            0.92724609375,
+            0.8876953125
+          ],
+          [
+            0.96240234375,
+            0.91748046875,
+            0.80322265625,
+            0.96044921875,
+            1.0,
+            0.92724609375,
+            0.8876953125
+          ],
+          [
+            0.93212890625,
+            0.92626953125,
+            0.7392578125,
+            0.92724609375,
+            0.92724609375,
+            1.0,
+            0.89892578125
+          ],
+          [
+            0.91259765625,
+            0.93798828125,
+            0.80078125,
+            0.8876953125,
+            0.8876953125,
+            0.89892578125,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 158.1019744873047,
+        "raw_scores": [
+          0.5914179948857053,
+          0.8522985063900705,
+          0.6355126388370991,
+          0.80638321058359,
+          0.8074558317312039,
+          0.801630201167427,
+          1.065234375
+        ],
+        "softmax_weights": [
+          0.10464994609355927,
+          0.15191292762756348,
+          0.11145416647195816,
+          0.14226822555065155,
+          0.14248640835285187,
+          0.14130550622940063,
+          0.20592284202575684
+        ],
+        "target_consistency_cosines": [
+          0.9126160740852356,
+          0.9379405379295349,
+          0.8009414672851562,
+          0.8878886103630066,
+          0.8876379728317261,
+          0.8990901708602905,
+          1.0000001192092896
+        ],
+        "target_consistency_gates": [
+          0.9126160740852356,
+          0.9379405379295349,
+          0.8009414672851562,
+          0.8878886103630066,
+          0.8876379728317261,
+          0.8990901708602905,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 548.1395874023438
+      }
+    },
+    {
+      "clipped_correction_norm": 166.76698303222656,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.90966796875,
+        0.8974609375,
+        0.798828125,
+        0.896484375,
+        0.9052734375,
+        0.888671875,
+        0.880859375
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 2.9843664169311523,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 2.9843664169311523,
+        "radius_ratio": 0.35,
+        "target_step_norm": 10.047340393066406
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.94091796875,
+          0.8125,
+          0.95849609375,
+          0.93603515625,
+          0.91552734375,
+          0.89453125
+        ],
+        [
+          0.94091796875,
+          1.0,
+          0.8095703125,
+          0.8974609375,
+          0.90380859375,
+          0.908203125,
+          0.923828125
+        ],
+        [
+          0.8125,
+          0.8095703125,
+          1.0,
+          0.771484375,
+          0.8271484375,
+          0.7509765625,
+          0.82275390625
+        ],
+        [
+          0.95849609375,
+          0.8974609375,
+          0.771484375,
+          1.0,
+          0.9501953125,
+          0.9287109375,
+          0.87158203125
+        ],
+        [
+          0.93603515625,
+          0.90380859375,
+          0.8271484375,
+          0.9501953125,
+          1.0,
+          0.935546875,
+          0.8779296875
+        ],
+        [
+          0.91552734375,
+          0.908203125,
+          0.7509765625,
+          0.9287109375,
+          0.935546875,
+          1.0,
+          0.8935546875
+        ],
+        [
+          0.89453125,
+          0.923828125,
+          0.82275390625,
+          0.87158203125,
+          0.8779296875,
+          0.8935546875,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 166.76698303222656,
+      "raw_scores": [
+        0.56957304829848,
+        0.8290273328311741,
+        0.6571791096357629,
+        0.7815196024021134,
+        0.7948797928984277,
+        0.7940857653738931,
+        1.0570312499999999
+      ],
+      "softmax_weights": [
+        0.10309380292892456,
+        0.1493493765592575,
+        0.11683828383684158,
+        0.1395496129989624,
+        0.14223863184452057,
+        0.14207735657691956,
+        0.2068529576063156
+      ],
+      "step_index": 3,
+      "target_consistency_gates": [
+        0.8944755792617798,
+        0.9237475395202637,
+        0.8226789832115173,
+        0.8717604279518127,
+        0.8780549168586731,
+        0.8935646414756775,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 561.8065185546875,
+      "timestep": 952.5370483398438,
+      "vfa": {
+        "clipped_correction_norm": 166.76698303222656,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.90966796875,
+          0.8974609375,
+          0.798828125,
+          0.896484375,
+          0.9052734375,
+          0.888671875,
+          0.880859375
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.94091796875,
+            0.8125,
+            0.95849609375,
+            0.93603515625,
+            0.91552734375,
+            0.89453125
+          ],
+          [
+            0.94091796875,
+            1.0,
+            0.8095703125,
+            0.8974609375,
+            0.90380859375,
+            0.908203125,
+            0.923828125
+          ],
+          [
+            0.8125,
+            0.8095703125,
+            1.0,
+            0.771484375,
+            0.8271484375,
+            0.7509765625,
+            0.82275390625
+          ],
+          [
+            0.95849609375,
+            0.8974609375,
+            0.771484375,
+            1.0,
+            0.9501953125,
+            0.9287109375,
+            0.87158203125
+          ],
+          [
+            0.93603515625,
+            0.90380859375,
+            0.8271484375,
+            0.9501953125,
+            1.0,
+            0.935546875,
+            0.8779296875
+          ],
+          [
+            0.91552734375,
+            0.908203125,
+            0.7509765625,
+            0.9287109375,
+            0.935546875,
+            1.0,
+            0.8935546875
+          ],
+          [
+            0.89453125,
+            0.923828125,
+            0.82275390625,
+            0.87158203125,
+            0.8779296875,
+            0.8935546875,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 166.76698303222656,
+        "raw_scores": [
+          0.56957304829848,
+          0.8290273328311741,
+          0.6571791096357629,
+          0.7815196024021134,
+          0.7948797928984277,
+          0.7940857653738931,
+          1.0570312499999999
+        ],
+        "softmax_weights": [
+          0.10309380292892456,
+          0.1493493765592575,
+          0.11683828383684158,
+          0.1395496129989624,
+          0.14223863184452057,
+          0.14207735657691956,
+          0.2068529576063156
+        ],
+        "target_consistency_cosines": [
+          0.8944755792617798,
+          0.9237475395202637,
+          0.8226789832115173,
+          0.8717604279518127,
+          0.8780549168586731,
+          0.8935646414756775,
+          1.0000001192092896
+        ],
+        "target_consistency_gates": [
+          0.8944755792617798,
+          0.9237475395202637,
+          0.8226789832115173,
+          0.8717604279518127,
+          0.8780549168586731,
+          0.8935646414756775,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 561.8065185546875
+      }
+    },
+    {
+      "clipped_correction_norm": 153.0735626220703,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.9248046875,
+        0.90966796875,
+        0.8173828125,
+        0.921875,
+        0.92529296875,
+        0.90283203125,
+        0.89892578125
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 2.9257876873016357,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 2.9257876873016357,
+        "radius_ratio": 0.35,
+        "target_step_norm": 10.651320457458496
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.95361328125,
+          0.83349609375,
+          0.9658203125,
+          0.96435546875,
+          0.9248046875,
+          0.90576171875
+        ],
+        [
+          0.95361328125,
+          1.0,
+          0.81396484375,
+          0.92578125,
+          0.92529296875,
+          0.91943359375,
+          0.92041015625
+        ],
+        [
+          0.83349609375,
+          0.81396484375,
+          1.0,
+          0.81298828125,
+          0.82861328125,
+          0.767578125,
+          0.8466796875
+        ],
+        [
+          0.9658203125,
+          0.92578125,
+          0.81298828125,
+          1.0,
+          0.98095703125,
+          0.943359375,
+          0.90234375
+        ],
+        [
+          0.96435546875,
+          0.92529296875,
+          0.82861328125,
+          0.98095703125,
+          1.0,
+          0.94873046875,
+          0.904296875
+        ],
+        [
+          0.9248046875,
+          0.91943359375,
+          0.767578125,
+          0.943359375,
+          0.94873046875,
+          1.0,
+          0.9130859375
+        ],
+        [
+          0.90576171875,
+          0.92041015625,
+          0.8466796875,
+          0.90234375,
+          0.904296875,
+          0.9130859375,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 153.0735626220703,
+      "raw_scores": [
+        0.5864970221184194,
+        0.8372107057948597,
+        0.6918812096701004,
+        0.8316858280450106,
+        0.8367785323935095,
+        0.8242467803647742,
+        1.0787108089076354
+      ],
+      "softmax_weights": [
+        0.10134781152009964,
+        0.14499810338020325,
+        0.11781400442123413,
+        0.1438581794500351,
+        0.144908607006073,
+        0.14233745634555817,
+        0.2047359049320221
+      ],
+      "step_index": 4,
+      "target_consistency_gates": [
+        0.9059782028198242,
+        0.9203475713729858,
+        0.8464592099189758,
+        0.9021676778793335,
+        0.9043390154838562,
+        0.912956953048706,
+        0.9999998807907104
+      ],
+      "target_index": 6,
+      "target_norm": 557.5256958007812,
+      "timestep": 934.648193359375,
+      "vfa": {
+        "clipped_correction_norm": 153.0735626220703,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.9248046875,
+          0.90966796875,
+          0.8173828125,
+          0.921875,
+          0.92529296875,
+          0.90283203125,
+          0.89892578125
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.95361328125,
+            0.83349609375,
+            0.9658203125,
+            0.96435546875,
+            0.9248046875,
+            0.90576171875
+          ],
+          [
+            0.95361328125,
+            1.0,
+            0.81396484375,
+            0.92578125,
+            0.92529296875,
+            0.91943359375,
+            0.92041015625
+          ],
+          [
+            0.83349609375,
+            0.81396484375,
+            1.0,
+            0.81298828125,
+            0.82861328125,
+            0.767578125,
+            0.8466796875
+          ],
+          [
+            0.9658203125,
+            0.92578125,
+            0.81298828125,
+            1.0,
+            0.98095703125,
+            0.943359375,
+            0.90234375
+          ],
+          [
+            0.96435546875,
+            0.92529296875,
+            0.82861328125,
+            0.98095703125,
+            1.0,
+            0.94873046875,
+            0.904296875
+          ],
+          [
+            0.9248046875,
+            0.91943359375,
+            0.767578125,
+            0.943359375,
+            0.94873046875,
+            1.0,
+            0.9130859375
+          ],
+          [
+            0.90576171875,
+            0.92041015625,
+            0.8466796875,
+            0.90234375,
+            0.904296875,
+            0.9130859375,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 153.0735626220703,
+        "raw_scores": [
+          0.5864970221184194,
+          0.8372107057948597,
+          0.6918812096701004,
+          0.8316858280450106,
+          0.8367785323935095,
+          0.8242467803647742,
+          1.0787108089076354
+        ],
+        "softmax_weights": [
+          0.10134781152009964,
+          0.14499810338020325,
+          0.11781400442123413,
+          0.1438581794500351,
+          0.144908607006073,
+          0.14233745634555817,
+          0.2047359049320221
+        ],
+        "target_consistency_cosines": [
+          0.9059782028198242,
+          0.9203475713729858,
+          0.8464592099189758,
+          0.9021676778793335,
+          0.9043390154838562,
+          0.912956953048706,
+          0.9999998807907104
+        ],
+        "target_consistency_gates": [
+          0.9059782028198242,
+          0.9203475713729858,
+          0.8464592099189758,
+          0.9021676778793335,
+          0.9043390154838562,
+          0.912956953048706,
+          0.9999998807907104
+        ],
+        "target_index": 6,
+        "target_norm": 557.5256958007812
+      }
+    },
+    {
+      "clipped_correction_norm": 158.54571533203125,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.9365234375,
+        0.9287109375,
+        0.86572265625,
+        0.94189453125,
+        0.94287109375,
+        0.92236328125,
+        0.90625
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 3.2409160137176514,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 3.2409160137176514,
+        "radius_ratio": 0.35,
+        "target_step_norm": 11.514419555664062
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.9638671875,
+          0.86865234375,
+          0.97509765625,
+          0.9716796875,
+          0.93701171875,
+          0.904296875
+        ],
+        [
+          0.9638671875,
+          1.0,
+          0.86328125,
+          0.95263671875,
+          0.94970703125,
+          0.9306640625,
+          0.9111328125
+        ],
+        [
+          0.86865234375,
+          0.86328125,
+          1.0,
+          0.87158203125,
+          0.8759765625,
+          0.83349609375,
+          0.88232421875
+        ],
+        [
+          0.97509765625,
+          0.95263671875,
+          0.87158203125,
+          1.0,
+          0.986328125,
+          0.953125,
+          0.91259765625
+        ],
+        [
+          0.9716796875,
+          0.94970703125,
+          0.8759765625,
+          0.986328125,
+          1.0,
+          0.9619140625,
+          0.91162109375
+        ],
+        [
+          0.93701171875,
+          0.9306640625,
+          0.83349609375,
+          0.953125,
+          0.9619140625,
+          1.0,
+          0.9169921875
+        ],
+        [
+          0.904296875,
+          0.9111328125,
+          0.88232421875,
+          0.91259765625,
+          0.91162109375,
+          0.9169921875,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 158.54571533203125,
+      "raw_scores": [
+        0.5927181808743626,
+        0.8460273344535381,
+        0.7639887825062033,
+        0.8596932980872225,
+        0.8596667836245615,
+        0.8459638647618704,
+        1.0875
+      ],
+      "softmax_weights": [
+        0.09895851463079453,
+        0.14210566878318787,
+        0.12639008462429047,
+        0.14490722119808197,
+        0.14490173757076263,
+        0.1420927792787552,
+        0.20064392685890198
+      ],
+      "step_index": 5,
+      "target_consistency_gates": [
+        0.9041314125061035,
+        0.9109694957733154,
+        0.8824867606163025,
+        0.9127277731895447,
+        0.911754310131073,
+        0.9171699285507202,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 563.5452880859375,
+      "timestep": 915.5508422851562,
+      "vfa": {
+        "clipped_correction_norm": 158.54571533203125,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.9365234375,
+          0.9287109375,
+          0.86572265625,
+          0.94189453125,
+          0.94287109375,
+          0.92236328125,
+          0.90625
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.9638671875,
+            0.86865234375,
+            0.97509765625,
+            0.9716796875,
+            0.93701171875,
+            0.904296875
+          ],
+          [
+            0.9638671875,
+            1.0,
+            0.86328125,
+            0.95263671875,
+            0.94970703125,
+            0.9306640625,
+            0.9111328125
+          ],
+          [
+            0.86865234375,
+            0.86328125,
+            1.0,
+            0.87158203125,
+            0.8759765625,
+            0.83349609375,
+            0.88232421875
+          ],
+          [
+            0.97509765625,
+            0.95263671875,
+            0.87158203125,
+            1.0,
+            0.986328125,
+            0.953125,
+            0.91259765625
+          ],
+          [
+            0.9716796875,
+            0.94970703125,
+            0.8759765625,
+            0.986328125,
+            1.0,
+            0.9619140625,
+            0.91162109375
+          ],
+          [
+            0.93701171875,
+            0.9306640625,
+            0.83349609375,
+            0.953125,
+            0.9619140625,
+            1.0,
+            0.9169921875
+          ],
+          [
+            0.904296875,
+            0.9111328125,
+            0.88232421875,
+            0.91259765625,
+            0.91162109375,
+            0.9169921875,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 158.54571533203125,
+        "raw_scores": [
+          0.5927181808743626,
+          0.8460273344535381,
+          0.7639887825062033,
+          0.8596932980872225,
+          0.8596667836245615,
+          0.8459638647618704,
+          1.0875
+        ],
+        "softmax_weights": [
+          0.09895851463079453,
+          0.14210566878318787,
+          0.12639008462429047,
+          0.14490722119808197,
+          0.14490173757076263,
+          0.1420927792787552,
+          0.20064392685890198
+        ],
+        "target_consistency_cosines": [
+          0.9041314125061035,
+          0.9109694957733154,
+          0.8824867606163025,
+          0.9127277731895447,
+          0.911754310131073,
+          0.9171699285507202,
+          1.0000001192092896
+        ],
+        "target_consistency_gates": [
+          0.9041314125061035,
+          0.9109694957733154,
+          0.8824867606163025,
+          0.9127277731895447,
+          0.911754310131073,
+          0.9171699285507202,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 563.5452880859375
+      }
+    },
+    {
+      "clipped_correction_norm": 163.81192016601562,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.94482421875,
+        0.9365234375,
+        0.89501953125,
+        0.94970703125,
+        0.951171875,
+        0.9267578125,
+        0.91015625
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 3.590709924697876,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 3.590709924697876,
+        "radius_ratio": 0.35,
+        "target_step_norm": 12.633062362670898
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.97021484375,
+          0.896484375,
+          0.98193359375,
+          0.97900390625,
+          0.93701171875,
+          0.90478515625
+        ],
+        [
+          0.97021484375,
+          1.0,
+          0.8916015625,
+          0.96435546875,
+          0.96044921875,
+          0.9296875,
+          0.904296875
+        ],
+        [
+          0.896484375,
+          0.8916015625,
+          1.0,
+          0.9013671875,
+          0.90283203125,
+          0.8671875,
+          0.90966796875
+        ],
+        [
+          0.98193359375,
+          0.96435546875,
+          0.9013671875,
+          1.0,
+          0.98974609375,
+          0.9482421875,
+          0.912109375
+        ],
+        [
+          0.97900390625,
+          0.96044921875,
+          0.90283203125,
+          0.98974609375,
+          1.0,
+          0.96142578125,
+          0.91455078125
+        ],
+        [
+          0.93701171875,
+          0.9296875,
+          0.8671875,
+          0.9482421875,
+          0.96142578125,
+          1.0,
+          0.916015625
+        ],
+        [
+          0.90478515625,
+          0.904296875,
+          0.90966796875,
+          0.912109375,
+          0.91455078125,
+          0.916015625,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 163.81192016601562,
+      "raw_scores": [
+        0.5982459711085539,
+        0.8468810951453634,
+        0.8139840434014332,
+        0.866280387272127,
+        0.869781366083771,
+        0.8488257036660798,
+        1.092187369801104
+      ],
+      "softmax_weights": [
+        0.09819895774126053,
+        0.14007647335529327,
+        0.13364578783512115,
+        0.14401274919509888,
+        0.14473484456539154,
+        0.14046616852283478,
+        0.19886501133441925
+      ],
+      "step_index": 6,
+      "target_consistency_gates": [
+        0.9045461416244507,
+        0.9042817950248718,
+        0.9094595313072205,
+        0.9121553897857666,
+        0.9144313335418701,
+        0.9159088730812073,
+        0.9999998807907104
+      ],
+      "target_index": 6,
+      "target_norm": 576.5376586914062,
+      "timestep": 895.1181030273438,
+      "vfa": {
+        "clipped_correction_norm": 163.81192016601562,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.94482421875,
+          0.9365234375,
+          0.89501953125,
+          0.94970703125,
+          0.951171875,
+          0.9267578125,
+          0.91015625
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.97021484375,
+            0.896484375,
+            0.98193359375,
+            0.97900390625,
+            0.93701171875,
+            0.90478515625
+          ],
+          [
+            0.97021484375,
+            1.0,
+            0.8916015625,
+            0.96435546875,
+            0.96044921875,
+            0.9296875,
+            0.904296875
+          ],
+          [
+            0.896484375,
+            0.8916015625,
+            1.0,
+            0.9013671875,
+            0.90283203125,
+            0.8671875,
+            0.90966796875
+          ],
+          [
+            0.98193359375,
+            0.96435546875,
+            0.9013671875,
+            1.0,
+            0.98974609375,
+            0.9482421875,
+            0.912109375
+          ],
+          [
+            0.97900390625,
+            0.96044921875,
+            0.90283203125,
+            0.98974609375,
+            1.0,
+            0.96142578125,
+            0.91455078125
+          ],
+          [
+            0.93701171875,
+            0.9296875,
+            0.8671875,
+            0.9482421875,
+            0.96142578125,
+            1.0,
+            0.916015625
+          ],
+          [
+            0.90478515625,
+            0.904296875,
+            0.90966796875,
+            0.912109375,
+            0.91455078125,
+            0.916015625,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 163.81192016601562,
+        "raw_scores": [
+          0.5982459711085539,
+          0.8468810951453634,
+          0.8139840434014332,
+          0.866280387272127,
+          0.869781366083771,
+          0.8488257036660798,
+          1.092187369801104
+        ],
+        "softmax_weights": [
+          0.09819895774126053,
+          0.14007647335529327,
+          0.13364578783512115,
+          0.14401274919509888,
+          0.14473484456539154,
+          0.14046616852283478,
+          0.19886501133441925
+        ],
+        "target_consistency_cosines": [
+          0.9045461416244507,
+          0.9042817950248718,
+          0.9094595313072205,
+          0.9121553897857666,
+          0.9144313335418701,
+          0.9159088730812073,
+          0.9999998807907104
+        ],
+        "target_consistency_gates": [
+          0.9045461416244507,
+          0.9042817950248718,
+          0.9094595313072205,
+          0.9121553897857666,
+          0.9144313335418701,
+          0.9159088730812073,
+          0.9999998807907104
+        ],
+        "target_index": 6,
+        "target_norm": 576.5376586914062
+      }
+    },
+    {
+      "clipped_correction_norm": 139.85427856445312,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.96240234375,
+        0.95263671875,
+        0.92138671875,
+        0.962890625,
+        0.96337890625,
+        0.955078125,
+        0.9345703125
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 3.2961556911468506,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 3.2961556911468506,
+        "radius_ratio": 0.35,
+        "target_step_norm": 13.473688125610352
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.97705078125,
+          0.921875,
+          0.986328125,
+          0.98583984375,
+          0.970703125,
+          0.93359375
+        ],
+        [
+          0.97705078125,
+          1.0,
+          0.9140625,
+          0.97119140625,
+          0.96923828125,
+          0.9599609375,
+          0.9248046875
+        ],
+        [
+          0.921875,
+          0.9140625,
+          1.0,
+          0.92138671875,
+          0.9228515625,
+          0.90966796875,
+          0.9384765625
+        ],
+        [
+          0.986328125,
+          0.97119140625,
+          0.92138671875,
+          1.0,
+          0.98974609375,
+          0.9716796875,
+          0.935546875
+        ],
+        [
+          0.98583984375,
+          0.96923828125,
+          0.9228515625,
+          0.98974609375,
+          1.0,
+          0.9765625,
+          0.93505859375
+        ],
+        [
+          0.970703125,
+          0.9599609375,
+          0.90966796875,
+          0.9716796875,
+          0.9765625,
+          1.0,
+          0.9404296875
+        ],
+        [
+          0.93359375,
+          0.9248046875,
+          0.9384765625,
+          0.935546875,
+          0.93505859375,
+          0.9404296875,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 139.85427856445312,
+      "raw_scores": [
+        0.6289053767861332,
+        0.8809875719598494,
+        0.8646906690846663,
+        0.9008062432985753,
+        0.900920003419742,
+        0.8982828188454732,
+        1.1214843749999999
+      ],
+      "softmax_weights": [
+        0.09733196347951889,
+        0.1395251601934433,
+        0.13631434738636017,
+        0.1435319036245346,
+        0.14355522394180298,
+        0.14301541447639465,
+        0.196725994348526
+      ],
+      "step_index": 7,
+      "target_consistency_gates": [
+        0.9335349798202515,
+        0.9247885942459106,
+        0.9384666085243225,
+        0.9355229139328003,
+        0.9351668357849121,
+        0.9405333399772644,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 571.8969116210938,
+      "timestep": 873.2049560546875,
+      "vfa": {
+        "clipped_correction_norm": 139.85427856445312,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.96240234375,
+          0.95263671875,
+          0.92138671875,
+          0.962890625,
+          0.96337890625,
+          0.955078125,
+          0.9345703125
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.97705078125,
+            0.921875,
+            0.986328125,
+            0.98583984375,
+            0.970703125,
+            0.93359375
+          ],
+          [
+            0.97705078125,
+            1.0,
+            0.9140625,
+            0.97119140625,
+            0.96923828125,
+            0.9599609375,
+            0.9248046875
+          ],
+          [
+            0.921875,
+            0.9140625,
+            1.0,
+            0.92138671875,
+            0.9228515625,
+            0.90966796875,
+            0.9384765625
+          ],
+          [
+            0.986328125,
+            0.97119140625,
+            0.92138671875,
+            1.0,
+            0.98974609375,
+            0.9716796875,
+            0.935546875
+          ],
+          [
+            0.98583984375,
+            0.96923828125,
+            0.9228515625,
+            0.98974609375,
+            1.0,
+            0.9765625,
+            0.93505859375
+          ],
+          [
+            0.970703125,
+            0.9599609375,
+            0.90966796875,
+            0.9716796875,
+            0.9765625,
+            1.0,
+            0.9404296875
+          ],
+          [
+            0.93359375,
+            0.9248046875,
+            0.9384765625,
+            0.935546875,
+            0.93505859375,
+            0.9404296875,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 139.85427856445312,
+        "raw_scores": [
+          0.6289053767861332,
+          0.8809875719598494,
+          0.8646906690846663,
+          0.9008062432985753,
+          0.900920003419742,
+          0.8982828188454732,
+          1.1214843749999999
+        ],
+        "softmax_weights": [
+          0.09733196347951889,
+          0.1395251601934433,
+          0.13631434738636017,
+          0.1435319036245346,
+          0.14355522394180298,
+          0.14301541447639465,
+          0.196725994348526
+        ],
+        "target_consistency_cosines": [
+          0.9335349798202515,
+          0.9247885942459106,
+          0.9384666085243225,
+          0.9355229139328003,
+          0.9351668357849121,
+          0.9405333399772644,
+          1.0
+        ],
+        "target_consistency_gates": [
+          0.9335349798202515,
+          0.9247885942459106,
+          0.9384666085243225,
+          0.9355229139328003,
+          0.9351668357849121,
+          0.9405333399772644,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 571.8969116210938
+      }
+    },
+    {
+      "clipped_correction_norm": 124.79474639892578,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.970703125,
+        0.9609375,
+        0.93212890625,
+        0.96923828125,
+        0.97021484375,
+        0.96875,
+        0.94677734375
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 3.171525239944458,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 3.171525239944458,
+        "radius_ratio": 0.35,
+        "target_step_norm": 14.339885711669922
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.9833984375,
+          0.9287109375,
+          0.98828125,
+          0.98974609375,
+          0.98681640625,
+          0.94677734375
+        ],
+        [
+          0.9833984375,
+          1.0,
+          0.919921875,
+          0.9736328125,
+          0.97412109375,
+          0.97802734375,
+          0.935546875
+        ],
+        [
+          0.9287109375,
+          0.919921875,
+          1.0,
+          0.9326171875,
+          0.93115234375,
+          0.92578125,
+          0.95361328125
+        ],
+        [
+          0.98828125,
+          0.9736328125,
+          0.9326171875,
+          1.0,
+          0.9921875,
+          0.9833984375,
+          0.94580078125
+        ],
+        [
+          0.98974609375,
+          0.97412109375,
+          0.93115234375,
+          0.9921875,
+          1.0,
+          0.9873046875,
+          0.94775390625
+        ],
+        [
+          0.98681640625,
+          0.97802734375,
+          0.92578125,
+          0.9833984375,
+          0.9873046875,
+          1.0,
+          0.9521484375
+        ],
+        [
+          0.94677734375,
+          0.935546875,
+          0.95361328125,
+          0.94580078125,
+          0.94775390625,
+          0.9521484375,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 124.79474639892578,
+      "raw_scores": [
+        0.6432032681419514,
+        0.8991269376128912,
+        0.888898449804401,
+        0.9167081145278644,
+        0.9193249343079515,
+        0.9223930481821299,
+        1.1361328124999999
+      ],
+      "softmax_weights": [
+        0.09675120562314987,
+        0.13945583999156952,
+        0.13743290305137634,
+        0.14300277829170227,
+        0.14353835582733154,
+        0.14416886866092682,
+        0.195650115609169
+      ],
+      "step_index": 8,
+      "target_consistency_gates": [
+        0.9465940594673157,
+        0.9356768131256104,
+        0.9536218047142029,
+        0.945802628993988,
+        0.9475477933883667,
+        0.9521476626396179,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 564.423583984375,
+      "timestep": 849.6444091796875,
+      "vfa": {
+        "clipped_correction_norm": 124.79474639892578,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.970703125,
+          0.9609375,
+          0.93212890625,
+          0.96923828125,
+          0.97021484375,
+          0.96875,
+          0.94677734375
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.9833984375,
+            0.9287109375,
+            0.98828125,
+            0.98974609375,
+            0.98681640625,
+            0.94677734375
+          ],
+          [
+            0.9833984375,
+            1.0,
+            0.919921875,
+            0.9736328125,
+            0.97412109375,
+            0.97802734375,
+            0.935546875
+          ],
+          [
+            0.9287109375,
+            0.919921875,
+            1.0,
+            0.9326171875,
+            0.93115234375,
+            0.92578125,
+            0.95361328125
+          ],
+          [
+            0.98828125,
+            0.9736328125,
+            0.9326171875,
+            1.0,
+            0.9921875,
+            0.9833984375,
+            0.94580078125
+          ],
+          [
+            0.98974609375,
+            0.97412109375,
+            0.93115234375,
+            0.9921875,
+            1.0,
+            0.9873046875,
+            0.94775390625
+          ],
+          [
+            0.98681640625,
+            0.97802734375,
+            0.92578125,
+            0.9833984375,
+            0.9873046875,
+            1.0,
+            0.9521484375
+          ],
+          [
+            0.94677734375,
+            0.935546875,
+            0.95361328125,
+            0.94580078125,
+            0.94775390625,
+            0.9521484375,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 124.79474639892578,
+        "raw_scores": [
+          0.6432032681419514,
+          0.8991269376128912,
+          0.888898449804401,
+          0.9167081145278644,
+          0.9193249343079515,
+          0.9223930481821299,
+          1.1361328124999999
+        ],
+        "softmax_weights": [
+          0.09675120562314987,
+          0.13945583999156952,
+          0.13743290305137634,
+          0.14300277829170227,
+          0.14353835582733154,
+          0.14416886866092682,
+          0.195650115609169
+        ],
+        "target_consistency_cosines": [
+          0.9465940594673157,
+          0.9356768131256104,
+          0.9536218047142029,
+          0.945802628993988,
+          0.9475477933883667,
+          0.9521476626396179,
+          1.0000001192092896
+        ],
+        "target_consistency_gates": [
+          0.9465940594673157,
+          0.9356768131256104,
+          0.9536218047142029,
+          0.945802628993988,
+          0.9475477933883667,
+          0.9521476626396179,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 564.423583984375
+      }
+    },
+    {
+      "clipped_correction_norm": 112.29131317138672,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.9775390625,
+        0.9716796875,
+        0.94580078125,
+        0.97509765625,
+        0.9755859375,
+        0.97509765625,
+        0.95703125
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 3.0853054523468018,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 3.0853054523468018,
+        "radius_ratio": 0.35,
+        "target_step_norm": 15.331693649291992
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.98681640625,
+          0.9453125,
+          0.9912109375,
+          0.99169921875,
+          0.990234375,
+          0.96044921875
+        ],
+        [
+          0.98681640625,
+          1.0,
+          0.94140625,
+          0.98095703125,
+          0.9814453125,
+          0.98486328125,
+          0.95361328125
+        ],
+        [
+          0.9453125,
+          0.94140625,
+          1.0,
+          0.94287109375,
+          0.9423828125,
+          0.939453125,
+          0.962890625
+        ],
+        [
+          0.9912109375,
+          0.98095703125,
+          0.94287109375,
+          1.0,
+          0.99365234375,
+          0.9873046875,
+          0.95361328125
+        ],
+        [
+          0.99169921875,
+          0.9814453125,
+          0.9423828125,
+          0.99365234375,
+          1.0,
+          0.990234375,
+          0.95458984375
+        ],
+        [
+          0.990234375,
+          0.98486328125,
+          0.939453125,
+          0.9873046875,
+          0.990234375,
+          1.0,
+          0.95751953125
+        ],
+        [
+          0.96044921875,
+          0.95361328125,
+          0.962890625,
+          0.95361328125,
+          0.95458984375,
+          0.95751953125,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 112.29131317138672,
+      "raw_scores": [
+        0.6570505773532204,
+        0.926523371017538,
+        0.9107228309439961,
+        0.9299772016238421,
+        0.9314035758725367,
+        0.9335088846564759,
+        1.1484375
+      ],
+      "softmax_weights": [
+        0.09647832810878754,
+        0.14178043603897095,
+        0.13861599564552307,
+        0.1424817144870758,
+        0.14277233183383942,
+        0.14320239424705505,
+        0.19466881453990936
+      ],
+      "step_index": 9,
+      "target_consistency_gates": [
+        0.960210919380188,
+        0.953527569770813,
+        0.9629119038581848,
+        0.9537272453308105,
+        0.9547119736671448,
+        0.9573491215705872,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 558.2117919921875,
+      "timestep": 824.2434692382812,
+      "vfa": {
+        "clipped_correction_norm": 112.29131317138672,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.9775390625,
+          0.9716796875,
+          0.94580078125,
+          0.97509765625,
+          0.9755859375,
+          0.97509765625,
+          0.95703125
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.98681640625,
+            0.9453125,
+            0.9912109375,
+            0.99169921875,
+            0.990234375,
+            0.96044921875
+          ],
+          [
+            0.98681640625,
+            1.0,
+            0.94140625,
+            0.98095703125,
+            0.9814453125,
+            0.98486328125,
+            0.95361328125
+          ],
+          [
+            0.9453125,
+            0.94140625,
+            1.0,
+            0.94287109375,
+            0.9423828125,
+            0.939453125,
+            0.962890625
+          ],
+          [
+            0.9912109375,
+            0.98095703125,
+            0.94287109375,
+            1.0,
+            0.99365234375,
+            0.9873046875,
+            0.95361328125
+          ],
+          [
+            0.99169921875,
+            0.9814453125,
+            0.9423828125,
+            0.99365234375,
+            1.0,
+            0.990234375,
+            0.95458984375
+          ],
+          [
+            0.990234375,
+            0.98486328125,
+            0.939453125,
+            0.9873046875,
+            0.990234375,
+            1.0,
+            0.95751953125
+          ],
+          [
+            0.96044921875,
+            0.95361328125,
+            0.962890625,
+            0.95361328125,
+            0.95458984375,
+            0.95751953125,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 112.29131317138672,
+        "raw_scores": [
+          0.6570505773532204,
+          0.926523371017538,
+          0.9107228309439961,
+          0.9299772016238421,
+          0.9314035758725367,
+          0.9335088846564759,
+          1.1484375
+        ],
+        "softmax_weights": [
+          0.09647832810878754,
+          0.14178043603897095,
+          0.13861599564552307,
+          0.1424817144870758,
+          0.14277233183383942,
+          0.14320239424705505,
+          0.19466881453990936
+        ],
+        "target_consistency_cosines": [
+          0.960210919380188,
+          0.953527569770813,
+          0.9629119038581848,
+          0.9537272453308105,
+          0.9547119736671448,
+          0.9573491215705872,
+          1.0000001192092896
+        ],
+        "target_consistency_gates": [
+          0.960210919380188,
+          0.953527569770813,
+          0.9629119038581848,
+          0.9537272453308105,
+          0.9547119736671448,
+          0.9573491215705872,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 558.2117919921875
+      }
+    },
+    {
+      "clipped_correction_norm": 104.45484924316406,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.9814453125,
+        0.97705078125,
+        0.95703125,
+        0.978515625,
+        0.97900390625,
+        0.9794921875,
+        0.96337890625
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 3.1141436100006104,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 3.1141436100006104,
+        "radius_ratio": 0.35,
+        "target_step_norm": 16.6116943359375
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.98828125,
+          0.9580078125,
+          0.9921875,
+          0.9931640625,
+          0.9921875,
+          0.96533203125
+        ],
+        [
+          0.98828125,
+          1.0,
+          0.9560546875,
+          0.98388671875,
+          0.9833984375,
+          0.9873046875,
+          0.96337890625
+        ],
+        [
+          0.9580078125,
+          0.9560546875,
+          1.0,
+          0.9521484375,
+          0.9521484375,
+          0.953125,
+          0.9716796875
+        ],
+        [
+          0.9921875,
+          0.98388671875,
+          0.9521484375,
+          1.0,
+          0.99462890625,
+          0.98974609375,
+          0.9580078125
+        ],
+        [
+          0.9931640625,
+          0.9833984375,
+          0.9521484375,
+          0.99462890625,
+          1.0,
+          0.9912109375,
+          0.958984375
+        ],
+        [
+          0.9921875,
+          0.9873046875,
+          0.953125,
+          0.98974609375,
+          0.9912109375,
+          1.0,
+          0.962890625
+        ],
+        [
+          0.96533203125,
+          0.96337890625,
+          0.9716796875,
+          0.9580078125,
+          0.958984375,
+          0.962890625,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 104.45484924316406,
+      "raw_scores": [
+        0.6631727968342602,
+        0.9413630588678643,
+        0.9300160151906312,
+        0.9373819869942963,
+        0.9386317334428895,
+        0.9432557050604373,
+        1.156054549687542
+      ],
+      "softmax_weights": [
+        0.09589756280183792,
+        0.14269298315048218,
+        0.1403985619544983,
+        0.1418837457895279,
+        0.14213727414608002,
+        0.14307931065559387,
+        0.193910613656044
+      ],
+      "step_index": 10,
+      "target_consistency_gates": [
+        0.9653005599975586,
+        0.9634740352630615,
+        0.9717718362808228,
+        0.957963228225708,
+        0.958761990070343,
+        0.9630048274993896,
+        0.9999998807907104
+      ],
+      "target_index": 6,
+      "target_norm": 557.4339599609375,
+      "timestep": 796.7777099609375,
+      "vfa": {
+        "clipped_correction_norm": 104.45484924316406,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.9814453125,
+          0.97705078125,
+          0.95703125,
+          0.978515625,
+          0.97900390625,
+          0.9794921875,
+          0.96337890625
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.98828125,
+            0.9580078125,
+            0.9921875,
+            0.9931640625,
+            0.9921875,
+            0.96533203125
+          ],
+          [
+            0.98828125,
+            1.0,
+            0.9560546875,
+            0.98388671875,
+            0.9833984375,
+            0.9873046875,
+            0.96337890625
+          ],
+          [
+            0.9580078125,
+            0.9560546875,
+            1.0,
+            0.9521484375,
+            0.9521484375,
+            0.953125,
+            0.9716796875
+          ],
+          [
+            0.9921875,
+            0.98388671875,
+            0.9521484375,
+            1.0,
+            0.99462890625,
+            0.98974609375,
+            0.9580078125
+          ],
+          [
+            0.9931640625,
+            0.9833984375,
+            0.9521484375,
+            0.99462890625,
+            1.0,
+            0.9912109375,
+            0.958984375
+          ],
+          [
+            0.9921875,
+            0.9873046875,
+            0.953125,
+            0.98974609375,
+            0.9912109375,
+            1.0,
+            0.962890625
+          ],
+          [
+            0.96533203125,
+            0.96337890625,
+            0.9716796875,
+            0.9580078125,
+            0.958984375,
+            0.962890625,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 104.45484924316406,
+        "raw_scores": [
+          0.6631727968342602,
+          0.9413630588678643,
+          0.9300160151906312,
+          0.9373819869942963,
+          0.9386317334428895,
+          0.9432557050604373,
+          1.156054549687542
+        ],
+        "softmax_weights": [
+          0.09589756280183792,
+          0.14269298315048218,
+          0.1403985619544983,
+          0.1418837457895279,
+          0.14213727414608002,
+          0.14307931065559387,
+          0.193910613656044
+        ],
+        "target_consistency_cosines": [
+          0.9653005599975586,
+          0.9634740352630615,
+          0.9717718362808228,
+          0.957963228225708,
+          0.958761990070343,
+          0.9630048274993896,
+          0.9999998807907104
+        ],
+        "target_consistency_gates": [
+          0.9653005599975586,
+          0.9634740352630615,
+          0.9717718362808228,
+          0.957963228225708,
+          0.958761990070343,
+          0.9630048274993896,
+          0.9999998807907104
+        ],
+        "target_index": 6,
+        "target_norm": 557.4339599609375
+      }
+    },
+    {
+      "clipped_correction_norm": 94.20636749267578,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.984375,
+        0.9794921875,
+        0.96435546875,
+        0.9814453125,
+        0.9814453125,
+        0.982421875,
+        0.9697265625
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 3.0569965839385986,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 3.0569965839385986,
+        "radius_ratio": 0.35,
+        "target_step_norm": 17.966373443603516
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.9892578125,
+          0.9658203125,
+          0.9931640625,
+          0.994140625,
+          0.9931640625,
+          0.97216796875
+        ],
+        [
+          0.9892578125,
+          1.0,
+          0.96142578125,
+          0.9853515625,
+          0.98388671875,
+          0.98876953125,
+          0.96923828125
+        ],
+        [
+          0.9658203125,
+          0.96142578125,
+          1.0,
+          0.96044921875,
+          0.9599609375,
+          0.96142578125,
+          0.9775390625
+        ],
+        [
+          0.9931640625,
+          0.9853515625,
+          0.96044921875,
+          1.0,
+          0.9951171875,
+          0.99072265625,
+          0.96533203125
+        ],
+        [
+          0.994140625,
+          0.98388671875,
+          0.9599609375,
+          0.9951171875,
+          1.0,
+          0.99169921875,
+          0.96484375
+        ],
+        [
+          0.9931640625,
+          0.98876953125,
+          0.96142578125,
+          0.99072265625,
+          0.99169921875,
+          1.0,
+          0.96875
+        ],
+        [
+          0.97216796875,
+          0.96923828125,
+          0.9775390625,
+          0.96533203125,
+          0.96484375,
+          0.96875,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 94.20636749267578,
+      "raw_scores": [
+        0.6697926144115626,
+        0.9492003643536009,
+        0.9424529198440723,
+        0.9474904445232823,
+        0.9468361365725286,
+        0.9518412330653518,
+        1.163671875
+      ],
+      "softmax_weights": [
+        0.09559834748506546,
+        0.14249536395072937,
+        0.14112840592861176,
+        0.1421477049589157,
+        0.14201490581035614,
+        0.1430339813232422,
+        0.1935812532901764
+      ],
+      "step_index": 11,
+      "target_consistency_gates": [
+        0.9720346331596375,
+        0.9690739512443542,
+        0.9772878885269165,
+        0.9654031991958618,
+        0.9647365212440491,
+        0.9688721895217896,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 553.8319091796875,
+      "timestep": 766.9847412109375,
+      "vfa": {
+        "clipped_correction_norm": 94.20636749267578,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.984375,
+          0.9794921875,
+          0.96435546875,
+          0.9814453125,
+          0.9814453125,
+          0.982421875,
+          0.9697265625
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.9892578125,
+            0.9658203125,
+            0.9931640625,
+            0.994140625,
+            0.9931640625,
+            0.97216796875
+          ],
+          [
+            0.9892578125,
+            1.0,
+            0.96142578125,
+            0.9853515625,
+            0.98388671875,
+            0.98876953125,
+            0.96923828125
+          ],
+          [
+            0.9658203125,
+            0.96142578125,
+            1.0,
+            0.96044921875,
+            0.9599609375,
+            0.96142578125,
+            0.9775390625
+          ],
+          [
+            0.9931640625,
+            0.9853515625,
+            0.96044921875,
+            1.0,
+            0.9951171875,
+            0.99072265625,
+            0.96533203125
+          ],
+          [
+            0.994140625,
+            0.98388671875,
+            0.9599609375,
+            0.9951171875,
+            1.0,
+            0.99169921875,
+            0.96484375
+          ],
+          [
+            0.9931640625,
+            0.98876953125,
+            0.96142578125,
+            0.99072265625,
+            0.99169921875,
+            1.0,
+            0.96875
+          ],
+          [
+            0.97216796875,
+            0.96923828125,
+            0.9775390625,
+            0.96533203125,
+            0.96484375,
+            0.96875,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 94.20636749267578,
+        "raw_scores": [
+          0.6697926144115626,
+          0.9492003643536009,
+          0.9424529198440723,
+          0.9474904445232823,
+          0.9468361365725286,
+          0.9518412330653518,
+          1.163671875
+        ],
+        "softmax_weights": [
+          0.09559834748506546,
+          0.14249536395072937,
+          0.14112840592861176,
+          0.1421477049589157,
+          0.14201490581035614,
+          0.1430339813232422,
+          0.1935812532901764
+        ],
+        "target_consistency_cosines": [
+          0.9720346331596375,
+          0.9690739512443542,
+          0.9772878885269165,
+          0.9654031991958618,
+          0.9647365212440491,
+          0.9688721895217896,
+          1.0000001192092896
+        ],
+        "target_consistency_gates": [
+          0.9720346331596375,
+          0.9690739512443542,
+          0.9772878885269165,
+          0.9654031991958618,
+          0.9647365212440491,
+          0.9688721895217896,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 553.8319091796875
+      }
+    },
+    {
+      "clipped_correction_norm": 84.1069107055664,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.98681640625,
+        0.9833984375,
+        0.96875,
+        0.98388671875,
+        0.984375,
+        0.9853515625,
+        0.974609375
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 2.9813599586486816,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 2.9813599586486816,
+        "radius_ratio": 0.35,
+        "target_step_norm": 19.4845027923584
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.9912109375,
+          0.96826171875,
+          0.994140625,
+          0.99560546875,
+          0.99462890625,
+          0.97607421875
+        ],
+        [
+          0.9912109375,
+          1.0,
+          0.966796875,
+          0.98876953125,
+          0.9873046875,
+          0.9912109375,
+          0.974609375
+        ],
+        [
+          0.96826171875,
+          0.966796875,
+          1.0,
+          0.96337890625,
+          0.96435546875,
+          0.966796875,
+          0.98291015625
+        ],
+        [
+          0.994140625,
+          0.98876953125,
+          0.96337890625,
+          1.0,
+          0.99560546875,
+          0.99169921875,
+          0.97021484375
+        ],
+        [
+          0.99560546875,
+          0.9873046875,
+          0.96435546875,
+          0.99560546875,
+          1.0,
+          0.9931640625,
+          0.97119140625
+        ],
+        [
+          0.99462890625,
+          0.9912109375,
+          0.966796875,
+          0.99169921875,
+          0.9931640625,
+          1.0,
+          0.97412109375
+        ],
+        [
+          0.97607421875,
+          0.974609375,
+          0.98291015625,
+          0.97021484375,
+          0.97119140625,
+          0.97412109375,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 84.1069107055664,
+      "raw_scores": [
+        0.6742671704123494,
+        0.9582158016855828,
+        0.9523137398064137,
+        0.9547068804386072,
+        0.9560437062755227,
+        0.9600379794719629,
+        1.16953125
+      ],
+      "softmax_weights": [
+        0.09515257924795151,
+        0.1427539587020874,
+        0.14155538380146027,
+        0.1420401632785797,
+        0.1423116773366928,
+        0.14312604069709778,
+        0.19306014478206635
+      ],
+      "step_index": 12,
+      "target_consistency_gates": [
+        0.9761074185371399,
+        0.9743922352790833,
+        0.9830335378646851,
+        0.9703422784805298,
+        0.971219003200531,
+        0.9743101000785828,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 549.9308471679688,
+      "timestep": 734.5556030273438,
+      "vfa": {
+        "clipped_correction_norm": 84.1069107055664,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.98681640625,
+          0.9833984375,
+          0.96875,
+          0.98388671875,
+          0.984375,
+          0.9853515625,
+          0.974609375
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.9912109375,
+            0.96826171875,
+            0.994140625,
+            0.99560546875,
+            0.99462890625,
+            0.97607421875
+          ],
+          [
+            0.9912109375,
+            1.0,
+            0.966796875,
+            0.98876953125,
+            0.9873046875,
+            0.9912109375,
+            0.974609375
+          ],
+          [
+            0.96826171875,
+            0.966796875,
+            1.0,
+            0.96337890625,
+            0.96435546875,
+            0.966796875,
+            0.98291015625
+          ],
+          [
+            0.994140625,
+            0.98876953125,
+            0.96337890625,
+            1.0,
+            0.99560546875,
+            0.99169921875,
+            0.97021484375
+          ],
+          [
+            0.99560546875,
+            0.9873046875,
+            0.96435546875,
+            0.99560546875,
+            1.0,
+            0.9931640625,
+            0.97119140625
+          ],
+          [
+            0.99462890625,
+            0.9912109375,
+            0.966796875,
+            0.99169921875,
+            0.9931640625,
+            1.0,
+            0.97412109375
+          ],
+          [
+            0.97607421875,
+            0.974609375,
+            0.98291015625,
+            0.97021484375,
+            0.97119140625,
+            0.97412109375,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 84.1069107055664,
+        "raw_scores": [
+          0.6742671704123494,
+          0.9582158016855828,
+          0.9523137398064137,
+          0.9547068804386072,
+          0.9560437062755227,
+          0.9600379794719629,
+          1.16953125
+        ],
+        "softmax_weights": [
+          0.09515257924795151,
+          0.1427539587020874,
+          0.14155538380146027,
+          0.1420401632785797,
+          0.1423116773366928,
+          0.14312604069709778,
+          0.19306014478206635
+        ],
+        "target_consistency_cosines": [
+          0.9761074185371399,
+          0.9743922352790833,
+          0.9830335378646851,
+          0.9703422784805298,
+          0.971219003200531,
+          0.9743101000785828,
+          1.0000001192092896
+        ],
+        "target_consistency_gates": [
+          0.9761074185371399,
+          0.9743922352790833,
+          0.9830335378646851,
+          0.9703422784805298,
+          0.971219003200531,
+          0.9743101000785828,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 549.9308471679688
+      }
+    },
+    {
+      "clipped_correction_norm": 76.82952117919922,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.98779296875,
+        0.98486328125,
+        0.9716796875,
+        0.9853515625,
+        0.98583984375,
+        0.98681640625,
+        0.978515625
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 2.9880824089050293,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 2.9880824089050293,
+        "radius_ratio": 0.35,
+        "target_step_norm": 21.20518684387207
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.99169921875,
+          0.97021484375,
+          0.99365234375,
+          0.99560546875,
+          0.9951171875,
+          0.9794921875
+        ],
+        [
+          0.99169921875,
+          1.0,
+          0.9697265625,
+          0.99072265625,
+          0.98828125,
+          0.99169921875,
+          0.9765625
+        ],
+        [
+          0.97021484375,
+          0.9697265625,
+          1.0,
+          0.96630859375,
+          0.9677734375,
+          0.97021484375,
+          0.9853515625
+        ],
+        [
+          0.99365234375,
+          0.99072265625,
+          0.96630859375,
+          1.0,
+          0.99462890625,
+          0.99169921875,
+          0.97412109375
+        ],
+        [
+          0.99560546875,
+          0.98828125,
+          0.9677734375,
+          0.99462890625,
+          1.0,
+          0.9931640625,
+          0.97607421875
+        ],
+        [
+          0.9951171875,
+          0.99169921875,
+          0.97021484375,
+          0.99169921875,
+          0.9931640625,
+          1.0,
+          0.97802734375
+        ],
+        [
+          0.9794921875,
+          0.9765625,
+          0.9853515625,
+          0.97412109375,
+          0.97607421875,
+          0.97802734375,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 76.82952117919922,
+      "raw_scores": [
+        0.677140118679381,
+        0.9617204368114471,
+        0.9575753103126772,
+        0.9599548156256787,
+        0.962048485816922,
+        0.9650448473985307,
+        1.1742187499999999
+      ],
+      "softmax_weights": [
+        0.09489903599023819,
+        0.14250214397907257,
+        0.14166077971458435,
+        0.1421431303024292,
+        0.142568901181221,
+        0.1431805044412613,
+        0.193045511841774
+      ],
+      "step_index": 13,
+      "target_consistency_gates": [
+        0.9792973399162292,
+        0.97650146484375,
+        0.9854845404624939,
+        0.9742256999015808,
+        0.9758669137954712,
+        0.9779375791549683,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 545.4088134765625,
+      "timestep": 699.124267578125,
+      "vfa": {
+        "clipped_correction_norm": 76.82952117919922,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.98779296875,
+          0.98486328125,
+          0.9716796875,
+          0.9853515625,
+          0.98583984375,
+          0.98681640625,
+          0.978515625
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.99169921875,
+            0.97021484375,
+            0.99365234375,
+            0.99560546875,
+            0.9951171875,
+            0.9794921875
+          ],
+          [
+            0.99169921875,
+            1.0,
+            0.9697265625,
+            0.99072265625,
+            0.98828125,
+            0.99169921875,
+            0.9765625
+          ],
+          [
+            0.97021484375,
+            0.9697265625,
+            1.0,
+            0.96630859375,
+            0.9677734375,
+            0.97021484375,
+            0.9853515625
+          ],
+          [
+            0.99365234375,
+            0.99072265625,
+            0.96630859375,
+            1.0,
+            0.99462890625,
+            0.99169921875,
+            0.97412109375
+          ],
+          [
+            0.99560546875,
+            0.98828125,
+            0.9677734375,
+            0.99462890625,
+            1.0,
+            0.9931640625,
+            0.97607421875
+          ],
+          [
+            0.9951171875,
+            0.99169921875,
+            0.97021484375,
+            0.99169921875,
+            0.9931640625,
+            1.0,
+            0.97802734375
+          ],
+          [
+            0.9794921875,
+            0.9765625,
+            0.9853515625,
+            0.97412109375,
+            0.97607421875,
+            0.97802734375,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 76.82952117919922,
+        "raw_scores": [
+          0.677140118679381,
+          0.9617204368114471,
+          0.9575753103126772,
+          0.9599548156256787,
+          0.962048485816922,
+          0.9650448473985307,
+          1.1742187499999999
+        ],
+        "softmax_weights": [
+          0.09489903599023819,
+          0.14250214397907257,
+          0.14166077971458435,
+          0.1421431303024292,
+          0.142568901181221,
+          0.1431805044412613,
+          0.193045511841774
+        ],
+        "target_consistency_cosines": [
+          0.9792973399162292,
+          0.97650146484375,
+          0.9854845404624939,
+          0.9742256999015808,
+          0.9758669137954712,
+          0.9779375791549683,
+          1.0
+        ],
+        "target_consistency_gates": [
+          0.9792973399162292,
+          0.97650146484375,
+          0.9854845404624939,
+          0.9742256999015808,
+          0.9758669137954712,
+          0.9779375791549683,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 545.4088134765625
+      }
+    },
+    {
+      "clipped_correction_norm": 71.36239624023438,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.98828125,
+        0.986328125,
+        0.974609375,
+        0.986328125,
+        0.9873046875,
+        0.98828125,
+        0.98046875
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 3.05842924118042,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 3.05842924118042,
+        "radius_ratio": 0.35,
+        "target_step_norm": 23.28225326538086
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.99169921875,
+          0.9716796875,
+          0.99267578125,
+          0.9970703125,
+          0.99560546875,
+          0.9814453125
+        ],
+        [
+          0.99169921875,
+          1.0,
+          0.974609375,
+          0.9921875,
+          0.9892578125,
+          0.9921875,
+          0.978515625
+        ],
+        [
+          0.9716796875,
+          0.974609375,
+          1.0,
+          0.97021484375,
+          0.96875,
+          0.9736328125,
+          0.9873046875
+        ],
+        [
+          0.99267578125,
+          0.9921875,
+          0.97021484375,
+          1.0,
+          0.994140625,
+          0.99169921875,
+          0.9765625
+        ],
+        [
+          0.9970703125,
+          0.9892578125,
+          0.96875,
+          0.994140625,
+          1.0,
+          0.99462890625,
+          0.978515625
+        ],
+        [
+          0.99560546875,
+          0.9921875,
+          0.9736328125,
+          0.99169921875,
+          0.99462890625,
+          1.0,
+          0.9814453125
+        ],
+        [
+          0.9814453125,
+          0.978515625,
+          0.9873046875,
+          0.9765625,
+          0.978515625,
+          0.9814453125,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 71.36239624023438,
+      "raw_scores": [
+        0.6788566423114389,
+        0.965325667639263,
+        0.9623729769373313,
+        0.9632226411486045,
+        0.9662756685283966,
+        0.9701464017853141,
+        1.1765625
+      ],
+      "softmax_weights": [
+        0.09464306384325027,
+        0.14250171184539795,
+        0.141901895403862,
+        0.14207424223423004,
+        0.14269524812698364,
+        0.14348648488521576,
+        0.19269737601280212
+      ],
+      "step_index": 14,
+      "target_consistency_gates": [
+        0.9812947511672974,
+        0.978706419467926,
+        0.9874448180198669,
+        0.9765742421150208,
+        0.978700578212738,
+        0.9816501140594482,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 543.3856811523438,
+      "timestep": 660.2536010742188,
+      "vfa": {
+        "clipped_correction_norm": 71.36239624023438,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.98828125,
+          0.986328125,
+          0.974609375,
+          0.986328125,
+          0.9873046875,
+          0.98828125,
+          0.98046875
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.99169921875,
+            0.9716796875,
+            0.99267578125,
+            0.9970703125,
+            0.99560546875,
+            0.9814453125
+          ],
+          [
+            0.99169921875,
+            1.0,
+            0.974609375,
+            0.9921875,
+            0.9892578125,
+            0.9921875,
+            0.978515625
+          ],
+          [
+            0.9716796875,
+            0.974609375,
+            1.0,
+            0.97021484375,
+            0.96875,
+            0.9736328125,
+            0.9873046875
+          ],
+          [
+            0.99267578125,
+            0.9921875,
+            0.97021484375,
+            1.0,
+            0.994140625,
+            0.99169921875,
+            0.9765625
+          ],
+          [
+            0.9970703125,
+            0.9892578125,
+            0.96875,
+            0.994140625,
+            1.0,
+            0.99462890625,
+            0.978515625
+          ],
+          [
+            0.99560546875,
+            0.9921875,
+            0.9736328125,
+            0.99169921875,
+            0.99462890625,
+            1.0,
+            0.9814453125
+          ],
+          [
+            0.9814453125,
+            0.978515625,
+            0.9873046875,
+            0.9765625,
+            0.978515625,
+            0.9814453125,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 71.36239624023438,
+        "raw_scores": [
+          0.6788566423114389,
+          0.965325667639263,
+          0.9623729769373313,
+          0.9632226411486045,
+          0.9662756685283966,
+          0.9701464017853141,
+          1.1765625
+        ],
+        "softmax_weights": [
+          0.09464306384325027,
+          0.14250171184539795,
+          0.141901895403862,
+          0.14207424223423004,
+          0.14269524812698364,
+          0.14348648488521576,
+          0.19269737601280212
+        ],
+        "target_consistency_cosines": [
+          0.9812947511672974,
+          0.978706419467926,
+          0.9874448180198669,
+          0.9765742421150208,
+          0.978700578212738,
+          0.9816501140594482,
+          1.0
+        ],
+        "target_consistency_gates": [
+          0.9812947511672974,
+          0.978706419467926,
+          0.9874448180198669,
+          0.9765742421150208,
+          0.978700578212738,
+          0.9816501140594482,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 543.3856811523438
+      }
+    },
+    {
+      "clipped_correction_norm": 69.7054443359375,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.9892578125,
+        0.98779296875,
+        0.9775390625,
+        0.98779296875,
+        0.98828125,
+        0.9892578125,
+        0.98193359375
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 3.3086931705474854,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 3.3086931705474854,
+        "radius_ratio": 0.35,
+        "target_step_norm": 25.665464401245117
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.99267578125,
+          0.97412109375,
+          0.9931640625,
+          0.9970703125,
+          0.99560546875,
+          0.98291015625
+        ],
+        [
+          0.99267578125,
+          1.0,
+          0.978515625,
+          0.99365234375,
+          0.99072265625,
+          0.99267578125,
+          0.97900390625
+        ],
+        [
+          0.97412109375,
+          0.978515625,
+          1.0,
+          0.97509765625,
+          0.97265625,
+          0.9765625,
+          0.98779296875
+        ],
+        [
+          0.9931640625,
+          0.99365234375,
+          0.97509765625,
+          1.0,
+          0.994140625,
+          0.9921875,
+          0.97802734375
+        ],
+        [
+          0.9970703125,
+          0.99072265625,
+          0.97265625,
+          0.994140625,
+          1.0,
+          0.9951171875,
+          0.9814453125
+        ],
+        [
+          0.99560546875,
+          0.99267578125,
+          0.9765625,
+          0.9921875,
+          0.9951171875,
+          1.0,
+          0.982421875
+        ],
+        [
+          0.98291015625,
+          0.97900390625,
+          0.98779296875,
+          0.97802734375,
+          0.9814453125,
+          0.982421875,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 69.7054443359375,
+      "raw_scores": [
+        0.6805667963635641,
+        0.9672152634884696,
+        0.9658066472038627,
+        0.9660139361803886,
+        0.969856760231778,
+        0.9719813138362952,
+        1.1783203125
+      ],
+      "softmax_weights": [
+        0.09454600512981415,
+        0.14239206910133362,
+        0.142105832695961,
+        0.14214792847633362,
+        0.14293041825294495,
+        0.14336487650871277,
+        0.1925128698348999
+      ],
+      "step_index": 15,
+      "target_consistency_gates": [
+        0.9827956557273865,
+        0.9791679978370667,
+        0.9879980087280273,
+        0.9779518246650696,
+        0.9813570380210876,
+        0.9825358986854553,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 540.8391723632812,
+      "timestep": 617.4172973632812,
+      "vfa": {
+        "clipped_correction_norm": 69.7054443359375,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.9892578125,
+          0.98779296875,
+          0.9775390625,
+          0.98779296875,
+          0.98828125,
+          0.9892578125,
+          0.98193359375
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.99267578125,
+            0.97412109375,
+            0.9931640625,
+            0.9970703125,
+            0.99560546875,
+            0.98291015625
+          ],
+          [
+            0.99267578125,
+            1.0,
+            0.978515625,
+            0.99365234375,
+            0.99072265625,
+            0.99267578125,
+            0.97900390625
+          ],
+          [
+            0.97412109375,
+            0.978515625,
+            1.0,
+            0.97509765625,
+            0.97265625,
+            0.9765625,
+            0.98779296875
+          ],
+          [
+            0.9931640625,
+            0.99365234375,
+            0.97509765625,
+            1.0,
+            0.994140625,
+            0.9921875,
+            0.97802734375
+          ],
+          [
+            0.9970703125,
+            0.99072265625,
+            0.97265625,
+            0.994140625,
+            1.0,
+            0.9951171875,
+            0.9814453125
+          ],
+          [
+            0.99560546875,
+            0.99267578125,
+            0.9765625,
+            0.9921875,
+            0.9951171875,
+            1.0,
+            0.982421875
+          ],
+          [
+            0.98291015625,
+            0.97900390625,
+            0.98779296875,
+            0.97802734375,
+            0.9814453125,
+            0.982421875,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 69.7054443359375,
+        "raw_scores": [
+          0.6805667963635641,
+          0.9672152634884696,
+          0.9658066472038627,
+          0.9660139361803886,
+          0.969856760231778,
+          0.9719813138362952,
+          1.1783203125
+        ],
+        "softmax_weights": [
+          0.09454600512981415,
+          0.14239206910133362,
+          0.142105832695961,
+          0.14214792847633362,
+          0.14293041825294495,
+          0.14336487650871277,
+          0.1925128698348999
+        ],
+        "target_consistency_cosines": [
+          0.9827956557273865,
+          0.9791679978370667,
+          0.9879980087280273,
+          0.9779518246650696,
+          0.9813570380210876,
+          0.9825358986854553,
+          1.0
+        ],
+        "target_consistency_gates": [
+          0.9827956557273865,
+          0.9791679978370667,
+          0.9879980087280273,
+          0.9779518246650696,
+          0.9813570380210876,
+          0.9825358986854553,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 540.8391723632812
+      }
+    },
+    {
+      "clipped_correction_norm": 65.7751693725586,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.99072265625,
+        0.9892578125,
+        0.97998046875,
+        0.9892578125,
+        0.990234375,
+        0.990234375,
+        0.98388671875
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 3.475296974182129,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 3.475296974182129,
+        "radius_ratio": 0.35,
+        "target_step_norm": 28.464433670043945
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.994140625,
+          0.9765625,
+          0.99462890625,
+          0.99755859375,
+          0.99609375,
+          0.98486328125
+        ],
+        [
+          0.994140625,
+          1.0,
+          0.98095703125,
+          0.994140625,
+          0.99267578125,
+          0.99365234375,
+          0.9814453125
+        ],
+        [
+          0.9765625,
+          0.98095703125,
+          1.0,
+          0.97802734375,
+          0.97607421875,
+          0.97900390625,
+          0.9892578125
+        ],
+        [
+          0.99462890625,
+          0.994140625,
+          0.97802734375,
+          1.0,
+          0.99560546875,
+          0.99365234375,
+          0.98095703125
+        ],
+        [
+          0.99755859375,
+          0.99267578125,
+          0.97607421875,
+          0.99560546875,
+          1.0,
+          0.99560546875,
+          0.98388671875
+        ],
+        [
+          0.99609375,
+          0.99365234375,
+          0.97900390625,
+          0.99365234375,
+          0.99560546875,
+          1.0,
+          0.98388671875
+        ],
+        [
+          0.98486328125,
+          0.9814453125,
+          0.9892578125,
+          0.98095703125,
+          0.98388671875,
+          0.98388671875,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 65.7751693725586,
+      "raw_scores": [
+        0.6830393343494506,
+        0.9706848054775037,
+        0.969316476926906,
+        0.9703689333982766,
+        0.9742233819561079,
+        0.9744231143267825,
+        1.1806640625
+      ],
+      "softmax_weights": [
+        0.09443815052509308,
+        0.14243236184120178,
+        0.14215421676635742,
+        0.14236809313297272,
+        0.14315420389175415,
+        0.14319506287574768,
+        0.19225789606571198
+      ],
+      "step_index": 16,
+      "target_consistency_gates": [
+        0.9849078059196472,
+        0.981225311756134,
+        0.9891181588172913,
+        0.9809060096740723,
+        0.9838311076164246,
+        0.9840328097343445,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 538.8365478515625,
+      "timestep": 569.9757690429688,
+      "vfa": {
+        "clipped_correction_norm": 65.7751693725586,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.99072265625,
+          0.9892578125,
+          0.97998046875,
+          0.9892578125,
+          0.990234375,
+          0.990234375,
+          0.98388671875
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.994140625,
+            0.9765625,
+            0.99462890625,
+            0.99755859375,
+            0.99609375,
+            0.98486328125
+          ],
+          [
+            0.994140625,
+            1.0,
+            0.98095703125,
+            0.994140625,
+            0.99267578125,
+            0.99365234375,
+            0.9814453125
+          ],
+          [
+            0.9765625,
+            0.98095703125,
+            1.0,
+            0.97802734375,
+            0.97607421875,
+            0.97900390625,
+            0.9892578125
+          ],
+          [
+            0.99462890625,
+            0.994140625,
+            0.97802734375,
+            1.0,
+            0.99560546875,
+            0.99365234375,
+            0.98095703125
+          ],
+          [
+            0.99755859375,
+            0.99267578125,
+            0.97607421875,
+            0.99560546875,
+            1.0,
+            0.99560546875,
+            0.98388671875
+          ],
+          [
+            0.99609375,
+            0.99365234375,
+            0.97900390625,
+            0.99365234375,
+            0.99560546875,
+            1.0,
+            0.98388671875
+          ],
+          [
+            0.98486328125,
+            0.9814453125,
+            0.9892578125,
+            0.98095703125,
+            0.98388671875,
+            0.98388671875,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 65.7751693725586,
+        "raw_scores": [
+          0.6830393343494506,
+          0.9706848054775037,
+          0.969316476926906,
+          0.9703689333982766,
+          0.9742233819561079,
+          0.9744231143267825,
+          1.1806640625
+        ],
+        "softmax_weights": [
+          0.09443815052509308,
+          0.14243236184120178,
+          0.14215421676635742,
+          0.14236809313297272,
+          0.14315420389175415,
+          0.14319506287574768,
+          0.19225789606571198
+        ],
+        "target_consistency_cosines": [
+          0.9849078059196472,
+          0.981225311756134,
+          0.9891181588172913,
+          0.9809060096740723,
+          0.9838311076164246,
+          0.9840328097343445,
+          1.0000001192092896
+        ],
+        "target_consistency_gates": [
+          0.9849078059196472,
+          0.981225311756134,
+          0.9891181588172913,
+          0.9809060096740723,
+          0.9838311076164246,
+          0.9840328097343445,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 538.8365478515625
+      }
+    },
+    {
+      "clipped_correction_norm": 62.01988983154297,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.9921875,
+        0.9912109375,
+        0.98388671875,
+        0.99169921875,
+        0.99169921875,
+        0.99169921875,
+        0.98583984375
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 3.673041820526123,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 3.673041820526123,
+        "radius_ratio": 0.35,
+        "target_step_norm": 31.606996536254883
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.99609375,
+          0.9814453125,
+          0.99609375,
+          0.99755859375,
+          0.99658203125,
+          0.98583984375
+        ],
+        [
+          0.99609375,
+          1.0,
+          0.9833984375,
+          0.99560546875,
+          0.99462890625,
+          0.99462890625,
+          0.9833984375
+        ],
+        [
+          0.9814453125,
+          0.9833984375,
+          1.0,
+          0.98193359375,
+          0.9814453125,
+          0.9833984375,
+          0.9921875
+        ],
+        [
+          0.99609375,
+          0.99560546875,
+          0.98193359375,
+          1.0,
+          0.9970703125,
+          0.9951171875,
+          0.9833984375
+        ],
+        [
+          0.99755859375,
+          0.99462890625,
+          0.9814453125,
+          0.9970703125,
+          1.0,
+          0.99560546875,
+          0.98486328125
+        ],
+        [
+          0.99658203125,
+          0.99462890625,
+          0.9833984375,
+          0.9951171875,
+          0.99560546875,
+          1.0,
+          0.98583984375
+        ],
+        [
+          0.98583984375,
+          0.9833984375,
+          0.9921875,
+          0.9833984375,
+          0.98486328125,
+          0.98583984375,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 62.01988983154297,
+      "raw_scores": [
+        0.6847347472794353,
+        0.9748987943748944,
+        0.9761254496697802,
+        0.9752064983476885,
+        0.9769155422982294,
+        0.9774398469307926,
+        1.1830078124999999
+      ],
+      "softmax_weights": [
+        0.09416987746953964,
+        0.14253968000411987,
+        0.14278969168663025,
+        0.14260233938694,
+        0.14295093715190887,
+        0.14305803179740906,
+        0.19188939034938812
+      ],
+      "step_index": 17,
+      "target_consistency_gates": [
+        0.9858947992324829,
+        0.9835432171821594,
+        0.9921116232872009,
+        0.9833692312240601,
+        0.9850925803184509,
+        0.9856212735176086,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 533.8613891601562,
+      "timestep": 517.1443481445312,
+      "vfa": {
+        "clipped_correction_norm": 62.01988983154297,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.9921875,
+          0.9912109375,
+          0.98388671875,
+          0.99169921875,
+          0.99169921875,
+          0.99169921875,
+          0.98583984375
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.99609375,
+            0.9814453125,
+            0.99609375,
+            0.99755859375,
+            0.99658203125,
+            0.98583984375
+          ],
+          [
+            0.99609375,
+            1.0,
+            0.9833984375,
+            0.99560546875,
+            0.99462890625,
+            0.99462890625,
+            0.9833984375
+          ],
+          [
+            0.9814453125,
+            0.9833984375,
+            1.0,
+            0.98193359375,
+            0.9814453125,
+            0.9833984375,
+            0.9921875
+          ],
+          [
+            0.99609375,
+            0.99560546875,
+            0.98193359375,
+            1.0,
+            0.9970703125,
+            0.9951171875,
+            0.9833984375
+          ],
+          [
+            0.99755859375,
+            0.99462890625,
+            0.9814453125,
+            0.9970703125,
+            1.0,
+            0.99560546875,
+            0.98486328125
+          ],
+          [
+            0.99658203125,
+            0.99462890625,
+            0.9833984375,
+            0.9951171875,
+            0.99560546875,
+            1.0,
+            0.98583984375
+          ],
+          [
+            0.98583984375,
+            0.9833984375,
+            0.9921875,
+            0.9833984375,
+            0.98486328125,
+            0.98583984375,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 62.01988983154297,
+        "raw_scores": [
+          0.6847347472794353,
+          0.9748987943748944,
+          0.9761254496697802,
+          0.9752064983476885,
+          0.9769155422982294,
+          0.9774398469307926,
+          1.1830078124999999
+        ],
+        "softmax_weights": [
+          0.09416987746953964,
+          0.14253968000411987,
+          0.14278969168663025,
+          0.14260233938694,
+          0.14295093715190887,
+          0.14305803179740906,
+          0.19188939034938812
+        ],
+        "target_consistency_cosines": [
+          0.9858947992324829,
+          0.9835432171821594,
+          0.9921116232872009,
+          0.9833692312240601,
+          0.9850925803184509,
+          0.9856212735176086,
+          1.0000001192092896
+        ],
+        "target_consistency_gates": [
+          0.9858947992324829,
+          0.9835432171821594,
+          0.9921116232872009,
+          0.9833692312240601,
+          0.9850925803184509,
+          0.9856212735176086,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 533.8613891601562
+      }
+    },
+    {
+      "clipped_correction_norm": 49.30583190917969,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.994140625,
+        0.99365234375,
+        0.98876953125,
+        0.99365234375,
+        0.994140625,
+        0.99365234375,
+        0.990234375
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 3.2932167053222656,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 3.2932167053222656,
+        "radius_ratio": 0.35,
+        "target_step_norm": 35.32051086425781
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.99658203125,
+          0.98681640625,
+          0.99658203125,
+          0.99755859375,
+          0.9970703125,
+          0.990234375
+        ],
+        [
+          0.99658203125,
+          1.0,
+          0.98828125,
+          0.99658203125,
+          0.99560546875,
+          0.9951171875,
+          0.98876953125
+        ],
+        [
+          0.98681640625,
+          0.98828125,
+          1.0,
+          0.9873046875,
+          0.98681640625,
+          0.98876953125,
+          0.994140625
+        ],
+        [
+          0.99658203125,
+          0.99658203125,
+          0.9873046875,
+          1.0,
+          0.99755859375,
+          0.9951171875,
+          0.98876953125
+        ],
+        [
+          0.99755859375,
+          0.99560546875,
+          0.98681640625,
+          0.99755859375,
+          1.0,
+          0.99609375,
+          0.990234375
+        ],
+        [
+          0.9970703125,
+          0.9951171875,
+          0.98876953125,
+          0.9951171875,
+          0.99609375,
+          1.0,
+          0.99072265625
+        ],
+        [
+          0.990234375,
+          0.98876953125,
+          0.994140625,
+          0.98876953125,
+          0.990234375,
+          0.99072265625,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 49.30583190917969,
+      "raw_scores": [
+        0.6892457805457524,
+        0.9825995918072294,
+        0.9828897374973167,
+        0.9825859105330892,
+        0.9842369739199057,
+        0.9846139965520706,
+        1.18828125
+      ],
+      "softmax_weights": [
+        0.09388574212789536,
+        0.14275866746902466,
+        0.14281782507896423,
+        0.14275585114955902,
+        0.14309296011924744,
+        0.1431700736284256,
+        0.1915188729763031
+      ],
+      "step_index": 18,
+      "target_consistency_gates": [
+        0.9904401898384094,
+        0.9888766407966614,
+        0.9940534234046936,
+        0.9888628721237183,
+        0.9900379776954651,
+        0.990903913974762,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 528.969970703125,
+      "timestep": 457.948974609375,
+      "vfa": {
+        "clipped_correction_norm": 49.30583190917969,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.994140625,
+          0.99365234375,
+          0.98876953125,
+          0.99365234375,
+          0.994140625,
+          0.99365234375,
+          0.990234375
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.99658203125,
+            0.98681640625,
+            0.99658203125,
+            0.99755859375,
+            0.9970703125,
+            0.990234375
+          ],
+          [
+            0.99658203125,
+            1.0,
+            0.98828125,
+            0.99658203125,
+            0.99560546875,
+            0.9951171875,
+            0.98876953125
+          ],
+          [
+            0.98681640625,
+            0.98828125,
+            1.0,
+            0.9873046875,
+            0.98681640625,
+            0.98876953125,
+            0.994140625
+          ],
+          [
+            0.99658203125,
+            0.99658203125,
+            0.9873046875,
+            1.0,
+            0.99755859375,
+            0.9951171875,
+            0.98876953125
+          ],
+          [
+            0.99755859375,
+            0.99560546875,
+            0.98681640625,
+            0.99755859375,
+            1.0,
+            0.99609375,
+            0.990234375
+          ],
+          [
+            0.9970703125,
+            0.9951171875,
+            0.98876953125,
+            0.9951171875,
+            0.99609375,
+            1.0,
+            0.99072265625
+          ],
+          [
+            0.990234375,
+            0.98876953125,
+            0.994140625,
+            0.98876953125,
+            0.990234375,
+            0.99072265625,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 49.30583190917969,
+        "raw_scores": [
+          0.6892457805457524,
+          0.9825995918072294,
+          0.9828897374973167,
+          0.9825859105330892,
+          0.9842369739199057,
+          0.9846139965520706,
+          1.18828125
+        ],
+        "softmax_weights": [
+          0.09388574212789536,
+          0.14275866746902466,
+          0.14281782507896423,
+          0.14275585114955902,
+          0.14309296011924744,
+          0.1431700736284256,
+          0.1915188729763031
+        ],
+        "target_consistency_cosines": [
+          0.9904401898384094,
+          0.9888766407966614,
+          0.9940534234046936,
+          0.9888628721237183,
+          0.9900379776954651,
+          0.990903913974762,
+          1.0000001192092896
+        ],
+        "target_consistency_gates": [
+          0.9904401898384094,
+          0.9888766407966614,
+          0.9940534234046936,
+          0.9888628721237183,
+          0.9900379776954651,
+          0.990903913974762,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 528.969970703125
+      }
+    },
+    {
+      "clipped_correction_norm": 39.02165985107422,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.99609375,
+        0.99560546875,
+        0.9921875,
+        0.99560546875,
+        0.99560546875,
+        0.9951171875,
+        0.99365234375
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 2.9640703201293945,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 2.9640703201293945,
+        "radius_ratio": 0.35,
+        "target_step_norm": 39.68398666381836
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.99755859375,
+          0.99072265625,
+          0.99755859375,
+          0.998046875,
+          0.9970703125,
+          0.994140625
+        ],
+        [
+          0.99755859375,
+          1.0,
+          0.9921875,
+          0.99755859375,
+          0.99658203125,
+          0.99560546875,
+          0.9931640625
+        ],
+        [
+          0.99072265625,
+          0.9921875,
+          1.0,
+          0.99169921875,
+          0.99072265625,
+          0.9921875,
+          0.9951171875
+        ],
+        [
+          0.99755859375,
+          0.99755859375,
+          0.99169921875,
+          1.0,
+          0.998046875,
+          0.99609375,
+          0.9931640625
+        ],
+        [
+          0.998046875,
+          0.99658203125,
+          0.99072265625,
+          0.998046875,
+          1.0,
+          0.9970703125,
+          0.99365234375
+        ],
+        [
+          0.9970703125,
+          0.99560546875,
+          0.9921875,
+          0.99609375,
+          0.9970703125,
+          1.0,
+          0.99365234375
+        ],
+        [
+          0.994140625,
+          0.9931640625,
+          0.9951171875,
+          0.9931640625,
+          0.99365234375,
+          0.99365234375,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 39.02165985107422,
+      "raw_scores": [
+        0.6931613405467942,
+        0.9886248077091295,
+        0.9874935797415674,
+        0.9887360752909444,
+        0.9890647152205929,
+        0.9886184328934178,
+        1.1923828125
+      ],
+      "softmax_weights": [
+        0.09376540035009384,
+        0.14300599694252014,
+        0.14277507364749908,
+        0.14302873611450195,
+        0.14309588074684143,
+        0.14300468564033508,
+        0.19132421910762787
+      ],
+      "step_index": 19,
+      "target_consistency_gates": [
+        0.9941137433052063,
+        0.9929885268211365,
+        0.9952691197395325,
+        0.9931002855300903,
+        0.9934303760528564,
+        0.9934693574905396,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 522.6555786132812,
+      "timestep": 391.166259765625,
+      "vfa": {
+        "clipped_correction_norm": 39.02165985107422,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.99609375,
+          0.99560546875,
+          0.9921875,
+          0.99560546875,
+          0.99560546875,
+          0.9951171875,
+          0.99365234375
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.99755859375,
+            0.99072265625,
+            0.99755859375,
+            0.998046875,
+            0.9970703125,
+            0.994140625
+          ],
+          [
+            0.99755859375,
+            1.0,
+            0.9921875,
+            0.99755859375,
+            0.99658203125,
+            0.99560546875,
+            0.9931640625
+          ],
+          [
+            0.99072265625,
+            0.9921875,
+            1.0,
+            0.99169921875,
+            0.99072265625,
+            0.9921875,
+            0.9951171875
+          ],
+          [
+            0.99755859375,
+            0.99755859375,
+            0.99169921875,
+            1.0,
+            0.998046875,
+            0.99609375,
+            0.9931640625
+          ],
+          [
+            0.998046875,
+            0.99658203125,
+            0.99072265625,
+            0.998046875,
+            1.0,
+            0.9970703125,
+            0.99365234375
+          ],
+          [
+            0.9970703125,
+            0.99560546875,
+            0.9921875,
+            0.99609375,
+            0.9970703125,
+            1.0,
+            0.99365234375
+          ],
+          [
+            0.994140625,
+            0.9931640625,
+            0.9951171875,
+            0.9931640625,
+            0.99365234375,
+            0.99365234375,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 39.02165985107422,
+        "raw_scores": [
+          0.6931613405467942,
+          0.9886248077091295,
+          0.9874935797415674,
+          0.9887360752909444,
+          0.9890647152205929,
+          0.9886184328934178,
+          1.1923828125
+        ],
+        "softmax_weights": [
+          0.09376540035009384,
+          0.14300599694252014,
+          0.14277507364749908,
+          0.14302873611450195,
+          0.14309588074684143,
+          0.14300468564033508,
+          0.19132421910762787
+        ],
+        "target_consistency_cosines": [
+          0.9941137433052063,
+          0.9929885268211365,
+          0.9952691197395325,
+          0.9931002855300903,
+          0.9934303760528564,
+          0.9934693574905396,
+          1.0000001192092896
+        ],
+        "target_consistency_gates": [
+          0.9941137433052063,
+          0.9929885268211365,
+          0.9952691197395325,
+          0.9931002855300903,
+          0.9934303760528564,
+          0.9934693574905396,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 522.6555786132812
+      }
+    },
+    {
+      "clipped_correction_norm": 32.95950698852539,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.9970703125,
+        0.99658203125,
+        0.994140625,
+        0.99658203125,
+        0.99658203125,
+        0.99609375,
+        0.9951171875
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 2.8725714683532715,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 2.8725714683532715,
+        "radius_ratio": 0.35,
+        "target_step_norm": 44.795875549316406
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.998046875,
+          0.99365234375,
+          0.998046875,
+          0.998046875,
+          0.99755859375,
+          0.99560546875
+        ],
+        [
+          0.998046875,
+          1.0,
+          0.99462890625,
+          0.998046875,
+          0.9970703125,
+          0.99658203125,
+          0.9951171875
+        ],
+        [
+          0.99365234375,
+          0.99462890625,
+          1.0,
+          0.994140625,
+          0.9931640625,
+          0.99462890625,
+          0.99609375
+        ],
+        [
+          0.998046875,
+          0.998046875,
+          0.994140625,
+          1.0,
+          0.998046875,
+          0.99658203125,
+          0.99462890625
+        ],
+        [
+          0.998046875,
+          0.9970703125,
+          0.9931640625,
+          0.998046875,
+          1.0,
+          0.9970703125,
+          0.9951171875
+        ],
+        [
+          0.99755859375,
+          0.99658203125,
+          0.99462890625,
+          0.99658203125,
+          0.9970703125,
+          1.0,
+          0.9951171875
+        ],
+        [
+          0.99560546875,
+          0.9951171875,
+          0.99609375,
+          0.99462890625,
+          0.9951171875,
+          0.9951171875,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 32.95950698852539,
+      "raw_scores": [
+        0.6949722916993778,
+        0.99156045584823,
+        0.9904852779582143,
+        0.9913256440195255,
+        0.9915895028971136,
+        0.9912726993206888,
+        1.194140625
+      ],
+      "softmax_weights": [
+        0.09367790073156357,
+        0.14310228824615479,
+        0.14288264513015747,
+        0.1430542916059494,
+        0.14310823380947113,
+        0.14304345846176147,
+        0.19113118946552277
+      ],
+      "step_index": 20,
+      "target_consistency_gates": [
+        0.9957347512245178,
+        0.9949612021446228,
+        0.9963231086730957,
+        0.9947255849838257,
+        0.994990348815918,
+        0.9951600432395935,
+        1.0
+      ],
+      "target_index": 6,
+      "target_norm": 514.3199462890625,
+      "timestep": 315.2375183105469,
+      "vfa": {
+        "clipped_correction_norm": 32.95950698852539,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.9970703125,
+          0.99658203125,
+          0.994140625,
+          0.99658203125,
+          0.99658203125,
+          0.99609375,
+          0.9951171875
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.998046875,
+            0.99365234375,
+            0.998046875,
+            0.998046875,
+            0.99755859375,
+            0.99560546875
+          ],
+          [
+            0.998046875,
+            1.0,
+            0.99462890625,
+            0.998046875,
+            0.9970703125,
+            0.99658203125,
+            0.9951171875
+          ],
+          [
+            0.99365234375,
+            0.99462890625,
+            1.0,
+            0.994140625,
+            0.9931640625,
+            0.99462890625,
+            0.99609375
+          ],
+          [
+            0.998046875,
+            0.998046875,
+            0.994140625,
+            1.0,
+            0.998046875,
+            0.99658203125,
+            0.99462890625
+          ],
+          [
+            0.998046875,
+            0.9970703125,
+            0.9931640625,
+            0.998046875,
+            1.0,
+            0.9970703125,
+            0.9951171875
+          ],
+          [
+            0.99755859375,
+            0.99658203125,
+            0.99462890625,
+            0.99658203125,
+            0.9970703125,
+            1.0,
+            0.9951171875
+          ],
+          [
+            0.99560546875,
+            0.9951171875,
+            0.99609375,
+            0.99462890625,
+            0.9951171875,
+            0.9951171875,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 32.95950698852539,
+        "raw_scores": [
+          0.6949722916993778,
+          0.99156045584823,
+          0.9904852779582143,
+          0.9913256440195255,
+          0.9915895028971136,
+          0.9912726993206888,
+          1.194140625
+        ],
+        "softmax_weights": [
+          0.09367790073156357,
+          0.14310228824615479,
+          0.14288264513015747,
+          0.1430542916059494,
+          0.14310823380947113,
+          0.14304345846176147,
+          0.19113118946552277
+        ],
+        "target_consistency_cosines": [
+          0.9957347512245178,
+          0.9949612021446228,
+          0.9963231086730957,
+          0.9947255849838257,
+          0.994990348815918,
+          0.9951600432395935,
+          1.0
+        ],
+        "target_consistency_gates": [
+          0.9957347512245178,
+          0.9949612021446228,
+          0.9963231086730957,
+          0.9947255849838257,
+          0.994990348815918,
+          0.9951600432395935,
+          1.0
+        ],
+        "target_index": 6,
+        "target_norm": 514.3199462890625
+      }
+    },
+    {
+      "do_aggregate": false,
+      "selected_condition": "target",
+      "selected_condition_text": "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus",
+      "step_index": 21,
+      "timestep": 228.14569091796875
+    },
+    {
+      "do_aggregate": false,
+      "selected_condition": "target",
+      "selected_condition_text": "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus",
+      "step_index": 22,
+      "timestep": 127.2337417602539
+    },
+    {
+      "clipped_correction_norm": 7.313157558441162,
+      "condition_names": [
+        "source",
+        "S1_marble_fox_statue",
+        "S2_green_rain_boots",
+        "S3_mirror_reflection",
+        "S4_cracked_mirror_reflection",
+        "S5_shadow",
+        "target"
+      ],
+      "condition_roles": [
+        "source",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "primitive",
+        "target"
+      ],
+      "condition_texts": [
+        "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+      ],
+      "condition_weights": [
+        0.7,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.2
+      ],
+      "consensus_gates": [
+        0.99951171875,
+        0.9990234375,
+        0.99951171875,
+        0.99951171875,
+        0.99951171875,
+        0.99951171875,
+        0.99951171875
+      ],
+      "do_aggregate": true,
+      "ltp_debug": {
+        "candidate_offset_norm": 0.11476482450962067,
+        "ltp_active": true,
+        "ltp_fallback": false,
+        "ltp_mode": "latent",
+        "projected_offset_norm": 0.11476482450962067,
+        "radius_ratio": 0.35,
+        "target_step_norm": 3.742816925048828
+      },
+      "ltp_fallback": false,
+      "ltp_fallback_reason": null,
+      "pairwise_cosine_matrix": [
+        [
+          1.0,
+          0.9990234375,
+          0.99951171875,
+          0.99951171875,
+          0.99951171875,
+          0.99951171875,
+          0.99951171875
+        ],
+        [
+          0.9990234375,
+          1.0,
+          0.9990234375,
+          0.9990234375,
+          0.99853515625,
+          0.99853515625,
+          0.9990234375
+        ],
+        [
+          0.99951171875,
+          0.9990234375,
+          1.0,
+          0.99951171875,
+          0.99951171875,
+          0.99951171875,
+          0.99951171875
+        ],
+        [
+          0.99951171875,
+          0.9990234375,
+          0.99951171875,
+          1.0,
+          0.99951171875,
+          0.99951171875,
+          0.99951171875
+        ],
+        [
+          0.99951171875,
+          0.99853515625,
+          0.99951171875,
+          0.99951171875,
+          1.0,
+          0.99951171875,
+          0.99951171875
+        ],
+        [
+          0.99951171875,
+          0.99853515625,
+          0.99951171875,
+          0.99951171875,
+          0.99951171875,
+          1.0,
+          0.99951171875
+        ],
+        [
+          0.99951171875,
+          0.9990234375,
+          0.99951171875,
+          0.99951171875,
+          0.99951171875,
+          0.99951171875,
+          1.0
+        ]
+      ],
+      "raw_correction_norm": 7.313157558441162,
+      "raw_scores": [
+        0.6993905123468721,
+        0.9981244649388827,
+        0.9991550995619036,
+        0.9991268011799548,
+        0.9989948413567618,
+        0.9989713090180885,
+        1.1994139910093509
+      ],
+      "softmax_weights": [
+        0.09334927052259445,
+        0.1430380791425705,
+        0.14324882626533508,
+        0.14324304461479187,
+        0.14321602880954742,
+        0.1432112157344818,
+        0.19069348275661469
+      ],
+      "step_index": 23,
+      "target_consistency_gates": [
+        0.9996173977851868,
+        0.9991001486778259,
+        0.9996432065963745,
+        0.9996148943901062,
+        0.9994828701019287,
+        0.9994593262672424,
+        0.9999999403953552
+      ],
+      "target_index": 6,
+      "target_norm": 419.12115478515625,
+      "timestep": 8.928571701049805,
+      "vfa": {
+        "clipped_correction_norm": 7.313157558441162,
+        "condition_base_weights": [
+          0.7,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.2
+        ],
+        "condition_names": [
+          "source",
+          "S1_marble_fox_statue",
+          "S2_green_rain_boots",
+          "S3_mirror_reflection",
+          "S4_cracked_mirror_reflection",
+          "S5_shadow",
+          "target"
+        ],
+        "condition_roles": [
+          "source",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "primitive",
+          "target"
+        ],
+        "consensus_gates": [
+          0.99951171875,
+          0.9990234375,
+          0.99951171875,
+          0.99951171875,
+          0.99951171875,
+          0.99951171875,
+          0.99951171875
+        ],
+        "pairwise_cosine_matrix": [
+          [
+            1.0,
+            0.9990234375,
+            0.99951171875,
+            0.99951171875,
+            0.99951171875,
+            0.99951171875,
+            0.99951171875
+          ],
+          [
+            0.9990234375,
+            1.0,
+            0.9990234375,
+            0.9990234375,
+            0.99853515625,
+            0.99853515625,
+            0.9990234375
+          ],
+          [
+            0.99951171875,
+            0.9990234375,
+            1.0,
+            0.99951171875,
+            0.99951171875,
+            0.99951171875,
+            0.99951171875
+          ],
+          [
+            0.99951171875,
+            0.9990234375,
+            0.99951171875,
+            1.0,
+            0.99951171875,
+            0.99951171875,
+            0.99951171875
+          ],
+          [
+            0.99951171875,
+            0.99853515625,
+            0.99951171875,
+            0.99951171875,
+            1.0,
+            0.99951171875,
+            0.99951171875
+          ],
+          [
+            0.99951171875,
+            0.99853515625,
+            0.99951171875,
+            0.99951171875,
+            0.99951171875,
+            1.0,
+            0.99951171875
+          ],
+          [
+            0.99951171875,
+            0.9990234375,
+            0.99951171875,
+            0.99951171875,
+            0.99951171875,
+            0.99951171875,
+            1.0
+          ]
+        ],
+        "raw_correction_norm": 7.313157558441162,
+        "raw_scores": [
+          0.6993905123468721,
+          0.9981244649388827,
+          0.9991550995619036,
+          0.9991268011799548,
+          0.9989948413567618,
+          0.9989713090180885,
+          1.1994139910093509
+        ],
+        "softmax_weights": [
+          0.09334927052259445,
+          0.1430380791425705,
+          0.14324882626533508,
+          0.14324304461479187,
+          0.14321602880954742,
+          0.1432112157344818,
+          0.19069348275661469
+        ],
+        "target_consistency_cosines": [
+          0.9996173977851868,
+          0.9991001486778259,
+          0.9996432065963745,
+          0.9996148943901062,
+          0.9994828701019287,
+          0.9994593262672424,
+          0.9999999403953552
+        ],
+        "target_consistency_gates": [
+          0.9996173977851868,
+          0.9991001486778259,
+          0.9996432065963745,
+          0.9996148943901062,
+          0.9994828701019287,
+          0.9994593262672424,
+          0.9999999403953552
+        ],
+        "target_index": 6,
+        "target_norm": 419.12115478515625
+      }
+    }
+  ],
+  "final_only": false,
+  "guidance_scale": 4.5,
+  "height": 512,
+  "latent_ltp_available": true,
+  "latent_ltp_disabled_reason": null,
+  "latent_ltp_probe": {
+    "checked": true,
+    "outputs_match": true,
+    "post_step_states_match": true,
+    "scheduler_class": "FlowMatchEulerDiscreteScheduler"
+  },
+  "ltp_enabled": true,
+  "ltp_fallback_to_velocity": true,
+  "ltp_mode": "latent",
+  "ltp_radius_ratio": 0.35,
+  "method": "sparse_primitive_flow",
+  "mode": "primitive_flow_sparse",
+  "model_id": "stabilityai/stable-diffusion-3-medium-diffusers",
+  "negative_prompt": "blurry, low quality, distorted, deformed fox, extra limbs, wrong reflection, wrong shadow, text, watermark",
+  "note": "Sparse Primitive Flow Composition directly aggregates complete prompt-conditioned velocity fields at selected timesteps. It uses no VQA, reward model, external judge, training, fine-tuning, image feedback, anchor residuals, or primitive schedules.",
+  "num_inference_steps": 24,
+  "primitive_prompts": [
+    {
+      "enabled": true,
+      "name": "S1_marble_fox_statue",
+      "role": "primitive",
+      "text": "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+      "weight": 1.0
+    },
+    {
+      "enabled": true,
+      "name": "S2_green_rain_boots",
+      "role": "primitive",
+      "text": "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+      "weight": 1.0
+    },
+    {
+      "enabled": true,
+      "name": "S3_mirror_reflection",
+      "role": "primitive",
+      "text": "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+      "weight": 1.0
+    },
+    {
+      "enabled": true,
+      "name": "S4_cracked_mirror_reflection",
+      "role": "primitive",
+      "text": "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+      "weight": 1.0
+    },
+    {
+      "enabled": true,
+      "name": "S5_shadow",
+      "role": "primitive",
+      "text": "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+      "weight": 1.0
+    },
+    {
+      "enabled": true,
+      "name": "S6_base_dragon",
+      "role": "primitive",
+      "text": "The shadow of a dragon on the wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+      "weight": 1.0
+    },
+    {
+      "enabled": true,
+      "name": "S7_dragon_shadow",
+      "role": "primitive",
+      "text": "The shadow of a fox statue forms the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus",
+      "weight": 1.0
+    },
+    {
+      "enabled": true,
+      "name": "S8_fullish",
+      "role": "primitive",
+      "text": "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror with a dragon-shaped shadow on the wall, cinematic lighting, realistic photo, sharp focus",
+      "weight": 1.1
+    }
+  ],
+  "runtime_config": {
+    "aim_flow": {
+      "lambda_global": 0.75,
+      "lambda_schedule": "middle_late",
+      "ltp": {
+        "early_radius_ratio": 0.2,
+        "enabled": true,
+        "fallback_to_velocity_ltp": true,
+        "late_radius_ratio": 0.25,
+        "middle_radius_ratio": 0.35,
+        "mode": "latent",
+        "radius_ratio": 0.3
+      },
+      "max_primitives": 5,
+      "mode": "aim_v2",
+      "sequential_primitive_forward": true,
+      "vfa": {
+        "conflict_threshold": -0.1,
+        "enabled": true,
+        "max_gate": 1.0,
+        "min_gate": 0.0,
+        "use_anchor_augmented_primitives": true,
+        "use_delta_full_gate": true,
+        "use_full_prompt_consistency": true,
+        "velocity_clip_ratio": 0.35
+      }
+    },
+    "ladder_flow": {
+      "active_policy": "all",
+      "aggregate_every_n_steps": null,
+      "aggregation_step_fractions": null,
+      "aggregation_steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        23,
+        24
+      ],
+      "enabled": true,
+      "fallback_to_velocity_ltp": true,
+      "ltp_early_radius_ratio": 0.25,
+      "ltp_enabled": true,
+      "ltp_late_radius_ratio": 0.3,
+      "ltp_middle_radius_ratio": 0.45,
+      "ltp_mode": "latent",
+      "ltp_radius_ratio": 0.35,
+      "max_conditions": 6,
+      "max_gate": 1.0,
+      "min_gate": 0.0,
+      "mode": "ladder_v3",
+      "non_aggregation_policy": "reference",
+      "reference_policy": "progressive",
+      "sequential_condition_forward": true,
+      "use_consensus_gating": true,
+      "use_final_consistency_gating": true,
+      "velocity_clip_ratio": 0.5,
+      "vfa_temperature": 0.7
+    },
+    "model": {
+      "dtype": "float16",
+      "enable_attention_slicing": false,
+      "enable_model_cpu_offload": true,
+      "enable_vae_slicing": true,
+      "load_t5_text_encoder": false,
+      "model_id": "stabilityai/stable-diffusion-3-medium-diffusers"
+    },
+    "primitive_flow": {
+      "aggregate_every_n_steps": null,
+      "aggregation_step_fractions": null,
+      "aggregation_steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        23,
+        24
+      ],
+      "enabled": true,
+      "fallback_to_velocity_ltp": true,
+      "final_only": false,
+      "include_source_flow": true,
+      "include_target_flow": true,
+      "ltp_enabled": true,
+      "ltp_mode": "latent",
+      "ltp_radius_ratio": 0.35,
+      "max_gate": 1.0,
+      "max_primitives": 5,
+      "min_gate": 0.0,
+      "mode": "sparse_primitive_flow",
+      "sequential_condition_forward": true,
+      "source_weight": 0.7,
+      "target_reference": true,
+      "target_weight": 1.2,
+      "use_consensus_gating": true,
+      "use_target_consistency_gating": true,
+      "velocity_clip_ratio": 0.5,
+      "vfa_temperature": 0.7
+    },
+    "sampler": {
+      "guidance_scale": 4.5,
+      "height": 512,
+      "num_inference_steps": 24,
+      "seed": 42,
+      "width": 1024
+    }
+  },
+  "seed": 42,
+  "source_prompt": "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+  "source_weight": 0.7,
+  "target_index": 6,
+  "target_prompt": "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus",
+  "target_weight": 1.2,
+  "velocity_clip_ratio": 0.5,
+  "vfa_temperature": 0.7,
+  "width": 1024
+}

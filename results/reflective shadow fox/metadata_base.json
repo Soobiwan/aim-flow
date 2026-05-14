@@ -1,0 +1,208 @@
+{
+  "method": "base",
+  "primitive_flow_set": {
+    "name": "Marble Fox Reflection Dragon Shadow",
+    "negative_prompt": "blurry, low quality, distorted, deformed fox, extra limbs, wrong reflection, wrong shadow, text, watermark",
+    "primitive_prompts": [
+      {
+        "enabled": true,
+        "name": "S1_marble_fox_statue",
+        "role": "primitive",
+        "text": "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus",
+        "weight": 1.0
+      },
+      {
+        "enabled": true,
+        "name": "S2_green_rain_boots",
+        "role": "primitive",
+        "text": "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus",
+        "weight": 1.0
+      },
+      {
+        "enabled": true,
+        "name": "S3_mirror_reflection",
+        "role": "primitive",
+        "text": "A marble fox statue reflected in a mirror perfectly, cinematic lighting, realistic photo, sharp focus",
+        "weight": 1.0
+      },
+      {
+        "enabled": true,
+        "name": "S4_cracked_mirror_reflection",
+        "role": "primitive",
+        "text": "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus",
+        "weight": 1.0
+      },
+      {
+        "enabled": true,
+        "name": "S5_shadow",
+        "role": "primitive",
+        "text": "The shadow of a fox statue forms on a wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "weight": 1.0
+      },
+      {
+        "enabled": true,
+        "name": "S6_base_dragon",
+        "role": "primitive",
+        "text": "The shadow of a dragon on the wall opposite the cracked mirror, cinematic lighting, realistic photo, sharp focus",
+        "weight": 1.0
+      },
+      {
+        "enabled": true,
+        "name": "S7_dragon_shadow",
+        "role": "primitive",
+        "text": "The shadow of a fox statue forms the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus",
+        "weight": 1.0
+      },
+      {
+        "enabled": true,
+        "name": "S8_fullish",
+        "role": "primitive",
+        "text": "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror with a dragon-shaped shadow on the wall, cinematic lighting, realistic photo, sharp focus",
+        "weight": 1.1
+      }
+    ],
+    "source_prompt": "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+    "target_prompt": "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+  },
+  "runtime_config": {
+    "aim_flow": {
+      "lambda_global": 0.75,
+      "lambda_schedule": "middle_late",
+      "ltp": {
+        "early_radius_ratio": 0.2,
+        "enabled": true,
+        "fallback_to_velocity_ltp": true,
+        "late_radius_ratio": 0.25,
+        "middle_radius_ratio": 0.35,
+        "mode": "latent",
+        "radius_ratio": 0.3
+      },
+      "max_primitives": 5,
+      "mode": "aim_v2",
+      "sequential_primitive_forward": true,
+      "vfa": {
+        "conflict_threshold": -0.1,
+        "enabled": true,
+        "max_gate": 1.0,
+        "min_gate": 0.0,
+        "use_anchor_augmented_primitives": true,
+        "use_delta_full_gate": true,
+        "use_full_prompt_consistency": true,
+        "velocity_clip_ratio": 0.35
+      }
+    },
+    "ladder_flow": {
+      "active_policy": "all",
+      "aggregate_every_n_steps": null,
+      "aggregation_step_fractions": null,
+      "aggregation_steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        23,
+        24
+      ],
+      "enabled": true,
+      "fallback_to_velocity_ltp": true,
+      "ltp_early_radius_ratio": 0.25,
+      "ltp_enabled": true,
+      "ltp_late_radius_ratio": 0.3,
+      "ltp_middle_radius_ratio": 0.45,
+      "ltp_mode": "latent",
+      "ltp_radius_ratio": 0.35,
+      "max_conditions": 6,
+      "max_gate": 1.0,
+      "min_gate": 0.0,
+      "mode": "ladder_v3",
+      "non_aggregation_policy": "reference",
+      "reference_policy": "progressive",
+      "sequential_condition_forward": true,
+      "use_consensus_gating": true,
+      "use_final_consistency_gating": true,
+      "velocity_clip_ratio": 0.5,
+      "vfa_temperature": 0.7
+    },
+    "model": {
+      "dtype": "float16",
+      "enable_attention_slicing": false,
+      "enable_model_cpu_offload": true,
+      "enable_vae_slicing": true,
+      "load_t5_text_encoder": false,
+      "model_id": "stabilityai/stable-diffusion-3-medium-diffusers"
+    },
+    "primitive_flow": {
+      "aggregate_every_n_steps": null,
+      "aggregation_step_fractions": null,
+      "aggregation_steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        23,
+        24
+      ],
+      "enabled": true,
+      "fallback_to_velocity_ltp": true,
+      "final_only": false,
+      "include_source_flow": true,
+      "include_target_flow": true,
+      "ltp_enabled": true,
+      "ltp_mode": "latent",
+      "ltp_radius_ratio": 0.35,
+      "max_gate": 1.0,
+      "max_primitives": 5,
+      "min_gate": 0.0,
+      "mode": "sparse_primitive_flow",
+      "sequential_condition_forward": true,
+      "source_weight": 0.7,
+      "target_reference": true,
+      "target_weight": 1.2,
+      "use_consensus_gating": true,
+      "use_target_consistency_gating": true,
+      "velocity_clip_ratio": 0.5,
+      "vfa_temperature": 0.7
+    },
+    "sampler": {
+      "guidance_scale": 4.5,
+      "height": 512,
+      "num_inference_steps": 24,
+      "seed": 42,
+      "width": 1024
+    }
+  },
+  "source_prompt": "A marble statue of a fox standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus",
+  "target_prompt": "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+}
