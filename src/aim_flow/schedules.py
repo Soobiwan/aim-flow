@@ -48,3 +48,34 @@ def get_schedule_weight(schedule_name: str, step_index: int, num_steps: int) -> 
 
     return max(0.0, min(1.0, float(value)))
 
+
+def get_lambda_schedule_weight(schedule_name: str, step_index: int, num_steps: int) -> float:
+    """Return the smooth schedule multiplier for global AIM-Flow strength."""
+
+    return get_schedule_weight(schedule_name, step_index, num_steps)
+
+
+def get_ltp_radius_ratio(
+    step_index: int,
+    num_steps: int,
+    early_radius_ratio: float,
+    middle_radius_ratio: float,
+    late_radius_ratio: float,
+) -> float:
+    """Smooth LTP radius: strict early, looser middle, slightly stricter late."""
+
+    x = _progress(step_index, num_steps)
+    early_w = 1.0 - _sigmoid(12.0 * (x - 0.30))
+    late_w = _sigmoid(12.0 * (x - 0.70))
+    middle_w = math.exp(-0.5 * ((x - 0.5) / 0.24) ** 2)
+    total = early_w + middle_w + late_w
+    if total <= 0.0:
+        return float(middle_radius_ratio)
+    value = (
+        early_radius_ratio * early_w
+        + middle_radius_ratio * middle_w
+        + late_radius_ratio * late_w
+    ) / total
+    lo = min(early_radius_ratio, middle_radius_ratio, late_radius_ratio)
+    hi = max(early_radius_ratio, middle_radius_ratio, late_radius_ratio)
+    return max(lo, min(hi, float(value)))

@@ -2,34 +2,84 @@
 
 **AIM-Flow** (**Anchor-Informed Modular Flow Guidance**) is an early research prototype for training-free, inference-time steering of rectified-flow-style text-to-image models such as Stable Diffusion 3 Medium.
 
-The central idea is simple: instead of asking the model to satisfy one dense prompt all at once, AIM-Flow decomposes a prompt into a global anchor and several semantic primitives, then aggregates primitive flow residuals during sampling.
+The current method is **AIM-Flow v2: Anchor-Preserved Primitive Steering**. It decomposes a dense prompt into a global anchor scene and semantic primitives, then steers the model using only its own conditional velocity fields.
 
 ## Method Overview
 
-Given a full prompt `P`, provide:
+The first version computed primitive flows from standalone primitive prompts such as `"four cyborg dogs"` or `"two purple cats"`:
+
+```text
+primitive flow = f_theta(x_t, t, p_i)
+```
+
+That was brittle. A standalone primitive prompt does not live in the same conditional distribution as the anchor scene, so its residual can pull the denoising trajectory into a different scene.
+
+AIM-Flow v2 fixes this by preserving the anchor in every primitive condition:
 
 - `A`: an anchor prompt describing the global scene destination
-- `p_i`: primitive prompts describing counts, objects, attributes, relations, and actions
+- `P`: the full prompt
+- `p_i`: a primitive prompt describing a count, object, attribute, relation, or action
+- `q_i = A \oplus p_i`: the anchor-augmented primitive prompt, implemented as `A + ", " + p_i`
 
 At each sampling step, AIM-Flow computes:
 
 ```text
-delta_i = v_i - v_anchor
-v_agg = v_anchor + lambda_global * sum_i w_i(t) * stabilized(delta_i)
+q_i = A \oplus p_i
+
+v_A = f_theta(x_t, t, A)
+v_F = f_theta(x_t, t, P)
+v_i = f_theta(x_t, t, q_i)
+
+Delta_i = v_i - v_A
+Delta_F = v_F - v_A
+
+g_i(t) = clamp((cos(Delta_i, Delta_F) - tau) / (1 - tau), 0, 1)
+
+v_candidate = v_A + lambda(t) * ClipNorm(sum_i alpha_i s_i(t) g_i(t) Delta_i)
 ```
 
-where `v_anchor` is the SD3 rectified-flow prediction under the anchor prompt and `v_i` is the prediction under primitive prompt `p_i`. The aggregate prediction `v_agg` is passed to the scheduler instead of the standard full-prompt prediction.
+`Delta_F` is an internal self-consistency direction: the model's own full-prompt residual relative to the anchor. It is not a reward model, VQA score, CLIP objective, or image-level judge.
+
+### VFA: Velocity Field Aggregation
+
+VFA aggregates anchor-preserved primitive residuals. Each primitive receives:
+
+- a base primitive weight `alpha_i`
+- a schedule weight `s_i(t)`
+- a smooth compatibility gate `g_i(t)` based on agreement with `Delta_F`
+
+The aggregate correction is clipped relative to `||v_A||` before it is added to the anchor velocity.
+
+### LTP: Latent Trajectory Projection
+
+LTP keeps the steered update close to the anchor trajectory. The sampler computes both:
+
+```text
+x_next_anchor = scheduler.step(v_A, t, x_t)
+x_next_candidate = scheduler.step(v_candidate, t, x_t)
+```
+
+Then it limits the candidate offset around the anchor step:
+
+```text
+candidate_offset = x_next_candidate - x_next_anchor
+max_offset_norm = radius(t) * ||x_next_anchor - x_t||
+x_next = x_next_anchor + ClipNorm(candidate_offset, max_offset_norm)
+```
+
+If a scheduler cannot safely compute both updates without mutating state, AIM-Flow can fall back to velocity-level LTP and records that in metadata.
 
 This repository supports:
 
 - `base`: normal SD3 full-prompt generation
 - `anchor`: SD3 anchor-only generation
-- `naive`: anchor plus weighted primitive residuals
-- `full`: scheduled residuals with cosine conflict gating and norm clipping
+- `naive_v1`: the old standalone primitive method, kept for failure comparison
+- `aim_v2`: anchor-augmented primitives with VFA and LTP
+- `full`: alias for `aim_v2`
 
 ## What This Prototype Does Not Use
 
-AIM-Flow v1 is deliberately narrow:
+AIM-Flow v2 is deliberately narrow:
 
 - no VQA models
 - no CLIP reward optimization
@@ -117,7 +167,7 @@ python scripts/run_compare.py \
   --prompts configs/sample_prompts.yaml \
   --prompt-key cyborg_dogs \
   --output-dir outputs/cyborg_dogs \
-  --modes base anchor naive full
+  --modes base anchor naive_v1 aim_v2
 ```
 
 Run only the base SD3 full-prompt baseline:
@@ -137,22 +187,39 @@ python scripts/run_aim_flow.py \
   --config configs/sd3_medium_kaggle.yaml \
   --prompts configs/sample_prompts.yaml \
   --prompt-key cyborg_dogs \
-  --mode full \
-  --output-dir outputs/full
+  --mode aim_v2 \
+  --output-dir outputs/aim_v2
+```
+
+Useful comparison overrides:
+
+```bash
+python scripts/run_compare.py \
+  --config configs/sd3_medium_kaggle.yaml \
+  --prompts configs/sample_prompts.yaml \
+  --prompt-key cyborg_dogs \
+  --output-dir outputs/cyborg_dogs \
+  --modes base anchor naive_v1 aim_v2 \
+  --ltp-mode velocity \
+  --num-inference-steps 16 \
+  --height 384 --width 384
 ```
 
 ## Expected Outputs
 
 The comparison run creates:
 
-- `base.png`
-- `anchor.png`
-- `naive.png`
-- `full.png`
+- `base_full_prompt.png`
+- `anchor_only.png`
+- `naive_v1_standalone_primitives.png`
+- `aim_v2_anchor_augmented_vfa_ltp.png`
 - `comparison_grid.png`
-- one JSON metadata file per generated mode
+- `metadata_base.json`
+- `metadata_anchor.json`
+- `metadata_naive_v1.json`
+- `metadata_aim_v2.json`
 
-AIM-Flow metadata includes per-step effective weights, cosine similarities, gates, correction norms, and the prompt decomposition.
+AIM-Flow metadata includes per-step effective weights, cosine similarities, gates, correction norms, LTP diagnostics, primitive original text, and primitive anchor-augmented text.
 
 ## Sample Prompt Decomposition
 
@@ -163,15 +230,16 @@ primitive_prompts:
   - text: "four cyborg dogs"
     type: "count_entity"
     weight: 0.85
-    schedule: "early"
+    schedule: "early_middle"
   - text: "cyborg dogs wearing bright orange hats"
     type: "attribute_binding"
     weight: 0.75
-    schedule: "late"
+    schedule: "middle_late"
+    anchor_augmented_text: "cyborg dogs being chased by cats on grass, each cyborg dog wearing a bright orange hat, cinematic lighting, detailed digital art"
   - text: "two purple cats"
     type: "count_entity"
     weight: 0.80
-    schedule: "early"
+    schedule: "early_middle"
   - text: "purple cats chasing cyborg dogs"
     type: "relation_action"
     weight: 0.70
@@ -188,17 +256,18 @@ The unit tests cover the scheduler, prompt schema, manual decomposition loading,
 
 ```bash
 pip install -e ".[dev]"
-pytest
+pytest -q
 ```
 
 ## Limitations
 
-- The custom SD3 loop uses conditional predictions for AIM-Flow v1. The base pipeline still uses standard Diffusers classifier-free guidance.
+- The custom AIM-Flow loop uses conditional predictions for v2. The base pipeline still uses the standard Diffusers pipeline path.
 - Exact CFG-compatible multi-condition aggregation is a planned extension.
 - The Kaggle config disables SD3's T5 encoder for memory. Set `model.load_t5_text_encoder: true` in the YAML on larger GPUs for the full three-encoder SD3 prompt stack.
 - Manual decompositions are required; the rule-based fallback is only for smoke tests.
 - Qualitative comparison is provided, but no VQA, reward model, or image judge is used.
 - Primitive residuals can increase runtime roughly linearly with the number of primitives.
+- Latent LTP depends on scheduler calls being safely repeatable. If that is not true for a scheduler version, use `--ltp-mode velocity`.
 
 ## Citation
 

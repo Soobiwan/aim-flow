@@ -30,8 +30,10 @@ def test_conflict_gating_downweights_opposite_vectors() -> None:
 def test_full_aggregation_gates_conflicting_primitive() -> None:
     anchor = torch.ones(1, 4)
     primitive = torch.zeros(1, 4)
+    full = anchor + torch.ones(1, 4)
     output, debug = aggregate_predictions(
         anchor_pred=anchor,
+        full_pred=full,
         primitive_preds=[primitive],
         primitive_weights=[1.0],
         primitive_schedule_weights=[1.0],
@@ -56,4 +58,3 @@ def test_cosine_similarity_identity() -> None:
     tensor = torch.randn(2, 3, 4)
     cos = cosine_similarity(tensor, tensor)
     assert torch.allclose(cos, torch.ones_like(cos), atol=1e-5)
-

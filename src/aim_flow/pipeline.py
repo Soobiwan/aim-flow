@@ -21,7 +21,7 @@ def run_aim_flow_comparison(
 ) -> dict[str, Path]:
     """Generate selected baseline/AIM-Flow modes and save outputs."""
 
-    selected_modes = modes or ["base", "anchor", "naive", "full"]
+    selected_modes = modes or ["base", "anchor", "naive_v1", "aim_v2"]
     output = ensure_dir(output_dir)
     backend = SD3Backend(config).load()
     sampler = AIMFlowSampler(backend, config)
@@ -29,41 +29,29 @@ def run_aim_flow_comparison(
     grid_image_paths: list[Path] = []
     grid_labels: list[str] = []
 
-    for mode in selected_modes:
-        if mode == "base":
-            image = backend.generate_base(
-                prompt=prompt_decomposition.full_prompt,
-                negative_prompt=prompt_decomposition.negative_prompt,
-                seed=config.sampler.seed,
-                num_inference_steps=config.sampler.num_inference_steps,
-                guidance_scale=config.sampler.guidance_scale,
-                height=config.sampler.height,
-                width=config.sampler.width,
-            )
-            metadata: dict[str, Any] = {
-                "prompt_decomposition": prompt_decomposition.to_dict(),
-                "mode": "base",
-                "model_id": config.model.model_id,
-                "runtime_config": config.to_dict(),
-                "seed": config.sampler.seed,
-                "num_inference_steps": config.sampler.num_inference_steps,
-                "height": config.sampler.height,
-                "width": config.sampler.width,
-                "guidance_scale": config.sampler.guidance_scale,
-            }
-        elif mode in {"anchor", "naive", "full"}:
-            image, metadata = sampler.generate(prompt_decomposition, mode=mode)
-        else:
-            raise ValueError(f"Unknown mode: {mode}")
+    names = {
+        "base": ("base_full_prompt.png", "metadata_base.json", "Base SD3: full prompt"),
+        "anchor": ("anchor_only.png", "metadata_anchor.json", "Anchor only"),
+        "naive_v1": ("naive_v1_standalone_primitives.png", "metadata_naive_v1.json", "Naive v1: standalone primitives"),
+        "aim_v2": ("aim_v2_anchor_augmented_vfa_ltp.png", "metadata_aim_v2.json", "AIM-Flow v2: anchor + primitive VFA/LTP"),
+        "full": ("aim_v2_anchor_augmented_vfa_ltp.png", "metadata_aim_v2.json", "AIM-Flow v2: anchor + primitive VFA/LTP"),
+    }
 
-        image_path = output / f"{mode}.png"
-        metadata_path = output / f"{mode}_metadata.json"
+    for mode in selected_modes:
+        normalized_mode = "aim_v2" if mode == "full" else mode
+        if normalized_mode not in {"base", "anchor", "naive_v1", "aim_v2"}:
+            raise ValueError(f"Unknown mode: {mode}")
+        image, metadata = sampler.generate(prompt_decomposition, mode=normalized_mode)
+
+        image_name, metadata_name, label = names[normalized_mode]
+        image_path = output / image_name
+        metadata_path = output / metadata_name
         backend.save_image(image, image_path)
         save_metadata_json(metadata, metadata_path)
-        paths[f"{mode}_image"] = image_path
-        paths[f"{mode}_metadata"] = metadata_path
+        paths[f"{normalized_mode}_image"] = image_path
+        paths[f"{normalized_mode}_metadata"] = metadata_path
         grid_image_paths.append(image_path)
-        grid_labels.append(mode)
+        grid_labels.append(label)
 
     if grid_image_paths:
         grid_path = output / "comparison_grid.png"

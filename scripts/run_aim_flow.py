@@ -22,7 +22,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--config", required=True)
     parser.add_argument("--prompts", required=True)
     parser.add_argument("--prompt-key", required=True)
-    parser.add_argument("--mode", default="full", choices=["anchor", "naive", "full"])
+    parser.add_argument(
+        "--mode",
+        default="aim_v2",
+        choices=["anchor", "naive_v1", "aim_v2", "full"],
+        help="'full' is accepted as an alias for aim_v2.",
+    )
     parser.add_argument("--output-dir", required=True)
     return parser.parse_args()
 
@@ -45,4 +50,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

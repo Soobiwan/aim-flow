@@ -23,6 +23,8 @@ class PrimitivePrompt:
     type: str
     weight: float = 1.0
     schedule: str = "constant"
+    enabled: bool = True
+    anchor_augmented_text: str | None = None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "PrimitivePrompt":
@@ -31,7 +33,11 @@ class PrimitivePrompt:
             type=str(data.get("type", "primitive")).strip(),
             weight=float(data.get("weight", 1.0)),
             schedule=str(data.get("schedule", "constant")).strip(),
+            enabled=bool(data.get("enabled", True)),
+            anchor_augmented_text=data.get("anchor_augmented_text"),
         )
+        if primitive.anchor_augmented_text is not None:
+            primitive.anchor_augmented_text = str(primitive.anchor_augmented_text)
         primitive.validate()
         return primitive
 
@@ -47,6 +53,16 @@ class PrimitivePrompt:
             raise ValueError(f"PrimitivePrompt.weight must be in [0, 2], got {self.weight}.")
         if self.schedule not in VALID_SCHEDULES:
             raise ValueError(f"Unknown schedule '{self.schedule}'. Expected one of {sorted(VALID_SCHEDULES)}.")
+
+    def build_anchor_augmented_text(self, anchor_prompt: str) -> str:
+        """Return q_i = anchor + primitive, unless an explicit q_i is supplied."""
+
+        if self.anchor_augmented_text is not None and self.anchor_augmented_text.strip():
+            return self.anchor_augmented_text.strip()
+        anchor = anchor_prompt.strip()
+        if not anchor:
+            raise ValueError("anchor_prompt must be non-empty when building anchor-augmented text.")
+        return f"{anchor}, {self.text.strip()}"
 
 
 @dataclass
@@ -88,8 +104,20 @@ class PromptDecomposition:
         for primitive in self.primitive_prompts:
             primitive.validate()
 
+    def get_enabled_primitives(self) -> list[PrimitivePrompt]:
+        """Return primitives that are enabled for sampling."""
+
+        return [primitive for primitive in self.primitive_prompts if primitive.enabled]
+
+    def build_anchor_augmented_primitive_prompts(self) -> list[str]:
+        """Build all enabled q_i = A + p_i primitive prompts."""
+
+        return [
+            primitive.build_anchor_augmented_text(self.anchor_prompt)
+            for primitive in self.get_enabled_primitives()
+        ]
+
     def pretty(self) -> str:
         """Return a readable representation for logging."""
 
         return pformat(self.to_dict(), sort_dicts=False)
-

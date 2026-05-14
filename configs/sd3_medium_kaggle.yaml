@@ -14,9 +14,27 @@ sampler:
   seed: 42
 
 aim_flow:
-  max_primitives: 5
+  mode: "aim_v2"
   lambda_global: 0.75
-  conflict_threshold: -0.15
-  norm_clip_ratio: 0.35
+  lambda_schedule: "middle_late"
+  max_primitives: 5
   sequential_primitive_forward: true
-  mode: "full"
+
+  vfa:
+    enabled: true
+    use_anchor_augmented_primitives: true
+    use_full_prompt_consistency: true
+    use_delta_full_gate: true
+    conflict_threshold: -0.10
+    velocity_clip_ratio: 0.35
+    min_gate: 0.0
+    max_gate: 1.0
+
+  ltp:
+    enabled: true
+    mode: "latent"
+    radius_ratio: 0.30
+    early_radius_ratio: 0.20
+    middle_radius_ratio: 0.35
+    late_radius_ratio: 0.25
+    fallback_to_velocity_ltp: true

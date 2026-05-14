@@ -1,19 +1,21 @@
 cyborg_dogs:
   full_prompt: "four cyborg dogs jumping over grass, each wearing bright orange hats, while two purple cats chase them, cinematic lighting, detailed digital art"
   anchor_prompt: "cyborg dogs being chased by cats on grass, cinematic lighting, detailed digital art"
+  negative_prompt: "blurry, low quality, distorted, extra limbs, deformed animals, text, watermark"
   primitive_prompts:
     - text: "four cyborg dogs"
       type: "count_entity"
       weight: 0.85
-      schedule: "early"
+      schedule: "early_middle"
     - text: "cyborg dogs wearing bright orange hats"
       type: "attribute_binding"
       weight: 0.75
-      schedule: "late"
+      schedule: "middle_late"
+      anchor_augmented_text: "cyborg dogs being chased by cats on grass, each cyborg dog wearing a bright orange hat, cinematic lighting, detailed digital art"
     - text: "two purple cats"
       type: "count_entity"
       weight: 0.80
-      schedule: "early"
+      schedule: "early_middle"
     - text: "purple cats chasing cyborg dogs"
       type: "relation_action"
       weight: 0.70
@@ -122,4 +124,3 @@ library_robots:
       type: "spatial_relation"
       weight: 0.65
       schedule: "middle"
-

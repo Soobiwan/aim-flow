@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import inspect
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -12,6 +13,68 @@ from PIL import Image
 from aim_flow.config import RunConfig
 from aim_flow.prompt_schema import PromptDecomposition
 from aim_flow.utils import get_device, get_hf_token, get_torch_dtype
+
+
+@dataclass
+class TextCondition:
+    """Prompt embedding bundle for a single SD3 condition."""
+
+    prompt: str
+    prompt_embeds: torch.Tensor
+    pooled_prompt_embeds: torch.Tensor
+    negative_prompt_embeds: torch.Tensor | None = None
+    negative_pooled_prompt_embeds: torch.Tensor | None = None
+
+    def to(self, device: torch.device, dtype: torch.dtype) -> "TextCondition":
+        """Move embeddings to the execution device/dtype used by latents."""
+
+        return TextCondition(
+            prompt=self.prompt,
+            prompt_embeds=self.prompt_embeds.to(device=device, dtype=dtype),
+            pooled_prompt_embeds=self.pooled_prompt_embeds.to(device=device, dtype=dtype),
+            negative_prompt_embeds=(
+                self.negative_prompt_embeds.to(device=device, dtype=dtype)
+                if self.negative_prompt_embeds is not None
+                else None
+            ),
+            negative_pooled_prompt_embeds=(
+                self.negative_pooled_prompt_embeds.to(device=device, dtype=dtype)
+                if self.negative_pooled_prompt_embeds is not None
+                else None
+            ),
+        )
+
+    def validate(self) -> None:
+        """Validate SD3 prompt and pooled embedding ranks/shapes."""
+
+        if self.prompt_embeds.ndim != 3:
+            raise ValueError(
+                f"SD3 prompt_embeds for {self.prompt!r} must be rank 3 "
+                f"[batch, sequence, channels], got shape {tuple(self.prompt_embeds.shape)}."
+            )
+        if self.pooled_prompt_embeds.ndim != 2:
+            raise ValueError(
+                f"SD3 pooled_prompt_embeds for {self.prompt!r} must be rank 2 "
+                f"[batch, channels], got shape {tuple(self.pooled_prompt_embeds.shape)}."
+            )
+        if self.prompt_embeds.shape[0] != self.pooled_prompt_embeds.shape[0]:
+            raise ValueError(
+                "Prompt and pooled prompt batch sizes differ for "
+                f"{self.prompt!r}: {self.prompt_embeds.shape[0]} vs {self.pooled_prompt_embeds.shape[0]}."
+            )
+        if self.negative_prompt_embeds is not None:
+            if self.negative_prompt_embeds.shape != self.prompt_embeds.shape:
+                raise ValueError(
+                    "Negative prompt embeds must match positive prompt embeds for CFG: "
+                    f"{tuple(self.negative_prompt_embeds.shape)} vs {tuple(self.prompt_embeds.shape)}."
+                )
+            if self.negative_pooled_prompt_embeds is None:
+                raise ValueError("negative_pooled_prompt_embeds is required when negative_prompt_embeds is set.")
+            if self.negative_pooled_prompt_embeds.shape != self.pooled_prompt_embeds.shape:
+                raise ValueError(
+                    "Negative pooled prompt embeds must match positive pooled prompt embeds for CFG: "
+                    f"{tuple(self.negative_pooled_prompt_embeds.shape)} vs {tuple(self.pooled_prompt_embeds.shape)}."
+                )
 
 
 def _first_tensor(output: Any) -> torch.Tensor:
@@ -51,49 +114,92 @@ def get_sd3_transformer_prediction(
     version no longer matches the expected public pipeline pattern.
     """
 
+    attempted: list[str] = []
     try:
         timestep_in = timestep
         if timestep_in.ndim == 0:
             timestep_in = timestep_in.expand(latents.shape[0])
+        if prompt_embeds.shape[0] != latents.shape[0]:
+            raise ValueError(
+                f"Prompt batch size must match latent batch size: {prompt_embeds.shape[0]} vs {latents.shape[0]}."
+            )
+        if pooled_prompt_embeds.shape[0] != latents.shape[0]:
+            raise ValueError(
+                f"Pooled prompt batch size must match latent batch size: "
+                f"{pooled_prompt_embeds.shape[0]} vs {latents.shape[0]}."
+            )
+
+        common_kwargs = {
+            "timestep": timestep_in,
+            "return_dict": False,
+        }
+        forward = getattr(pipe.transformer, "forward", pipe.transformer)
+        signature = inspect.signature(forward)
+        if "joint_attention_kwargs" in signature.parameters:
+            common_kwargs["joint_attention_kwargs"] = None
+        if "guidance" in signature.parameters:
+            guidance_value = 1.0 if guidance_scale is None else float(guidance_scale)
+            common_kwargs["guidance"] = torch.full(
+                (latents.shape[0],),
+                guidance_value,
+                device=latents.device,
+                dtype=torch.float32,
+            )
+
+        def call_transformer(
+            latent_model_input: torch.Tensor,
+            embeds: torch.Tensor,
+            pooled_embeds: torch.Tensor,
+        ) -> torch.Tensor:
+            call_errors: list[str] = []
+            output = None
+            for latent_arg_name in ("hidden_states", "sample"):
+                kwargs = dict(common_kwargs)
+                kwargs[latent_arg_name] = latent_model_input
+                kwargs["encoder_hidden_states"] = embeds
+                kwargs["pooled_projections"] = pooled_embeds
+                attempted.append(
+                    f"{latent_arg_name}=latents, timestep=timestep, "
+                    "encoder_hidden_states=prompt_embeds, pooled_projections=pooled_prompt_embeds"
+                )
+                try:
+                    output = pipe.transformer(**kwargs)
+                    break
+                except TypeError as exc:
+                    call_errors.append(f"{latent_arg_name}: {exc}")
+            if output is None:
+                raise TypeError("; ".join(call_errors))
+            prediction = _first_tensor(output)
+            if prediction.shape != latents.shape:
+                raise ValueError(
+                    f"SD3 transformer prediction shape must match latents: "
+                    f"{tuple(prediction.shape)} vs {tuple(latents.shape)}."
+                )
+            return prediction
 
         if guidance_scale and guidance_scale > 1.0 and negative_prompt_embeds is not None:
             if negative_pooled_prompt_embeds is None:
                 raise ValueError("negative_pooled_prompt_embeds is required for CFG prediction.")
-            latent_model_input = torch.cat([latents, latents], dim=0)
-            timestep_in = torch.cat([timestep_in, timestep_in], dim=0)
-            prompt_embeds = torch.cat([negative_prompt_embeds, prompt_embeds], dim=0)
-            pooled_prompt_embeds = torch.cat([negative_pooled_prompt_embeds, pooled_prompt_embeds], dim=0)
-        else:
-            latent_model_input = latents
+            if negative_prompt_embeds.shape != prompt_embeds.shape:
+                raise ValueError(
+                    f"Negative prompt embeds shape mismatch: "
+                    f"{tuple(negative_prompt_embeds.shape)} vs {tuple(prompt_embeds.shape)}."
+                )
+            if negative_pooled_prompt_embeds.shape != pooled_prompt_embeds.shape:
+                raise ValueError(
+                    f"Negative pooled prompt embeds shape mismatch: "
+                    f"{tuple(negative_pooled_prompt_embeds.shape)} vs {tuple(pooled_prompt_embeds.shape)}."
+                )
+            # Sequential CFG avoids doubling transformer batch memory on 16 GB Kaggle GPUs.
+            noise_uncond = call_transformer(latents, negative_prompt_embeds, negative_pooled_prompt_embeds)
+            noise_text = call_transformer(latents, prompt_embeds, pooled_prompt_embeds)
+            return noise_uncond + float(guidance_scale) * (noise_text - noise_uncond)
 
-        kwargs = {
-            "hidden_states": latent_model_input,
-            "timestep": timestep_in,
-            "encoder_hidden_states": prompt_embeds,
-            "pooled_projections": pooled_prompt_embeds,
-            "return_dict": False,
-        }
-
-        forward = getattr(pipe.transformer, "forward", pipe.transformer)
-        signature = inspect.signature(forward)
-        required = {"hidden_states", "timestep", "encoder_hidden_states", "pooled_projections"}
-        missing = sorted(required.difference(signature.parameters))
-        if missing:
-            raise TypeError(f"SD3 transformer.forward is missing required parameters: {missing}")
-        if "joint_attention_kwargs" in signature.parameters:
-            kwargs["joint_attention_kwargs"] = None
-
-        noise_pred = _first_tensor(pipe.transformer(**kwargs))
-        if guidance_scale and guidance_scale > 1.0 and negative_prompt_embeds is not None:
-            noise_uncond, noise_text = noise_pred.chunk(2)
-            noise_pred = noise_uncond + guidance_scale * (noise_text - noise_uncond)
-        return noise_pred
+        return call_transformer(latents, prompt_embeds, pooled_prompt_embeds)
     except Exception as exc:
         raise RuntimeError(
-            "Failed to call the SD3 transformer with the expected Diffusers signature. "
-            "AIM-Flow expects a StableDiffusion3Pipeline whose transformer accepts "
-            "hidden_states, timestep, encoder_hidden_states, and pooled_projections. "
-            f"Original error: {exc}"
+            "Failed to call the SD3 transformer with any supported Diffusers signature. "
+            f"Attempted signatures: {attempted}. Original error: {exc}"
         ) from exc
 
 
@@ -215,12 +321,13 @@ class SD3Backend:
 
         forward = getattr(pipe.transformer, "forward", pipe.transformer)
         transformer_params = inspect.signature(forward).parameters
-        required_transformer = {"hidden_states", "timestep", "encoder_hidden_states", "pooled_projections"}
-        missing_transformer = sorted(required_transformer.difference(transformer_params))
-        if missing_transformer:
+        required_common = {"timestep", "encoder_hidden_states", "pooled_projections"}
+        has_latent_arg = "hidden_states" in transformer_params or "sample" in transformer_params
+        missing_transformer = sorted(required_common.difference(transformer_params))
+        if missing_transformer or not has_latent_arg:
             raise RuntimeError(
                 "Installed SD3 transformer has an incompatible forward signature for AIM-Flow. "
-                f"Missing parameters: {missing_transformer}."
+                f"Missing parameters: {missing_transformer}; requires either `hidden_states` or `sample`."
             )
 
     def validate_image_size(self, height: int, width: int) -> None:
@@ -233,12 +340,13 @@ class SD3Backend:
                 f"but got height={height}, width={width}."
             )
 
-    def encode_single_prompt(
+    def encode_text_condition(
         self,
         prompt: str,
         negative_prompt: str | None = None,
         device: torch.device | None = None,
-    ) -> dict[str, torch.Tensor]:
+        do_classifier_free_guidance: bool = False,
+    ) -> TextCondition:
         """Encode one prompt using the pipeline's public encode_prompt method."""
 
         pipe = self.require_pipe()
@@ -252,7 +360,7 @@ class SD3Backend:
                 "negative_prompt": negative_prompt,
                 "negative_prompt_2": None,
                 "negative_prompt_3": None,
-                "do_classifier_free_guidance": False,
+                "do_classifier_free_guidance": do_classifier_free_guidance,
                 "device": target_device,
                 "num_images_per_prompt": 1,
             }
@@ -270,13 +378,33 @@ class SD3Backend:
         if isinstance(encoded, dict):
             prompt_embeds = encoded["prompt_embeds"]
             pooled_prompt_embeds = encoded["pooled_prompt_embeds"]
+            negative_prompt_embeds = encoded.get("negative_prompt_embeds")
+            negative_pooled_prompt_embeds = encoded.get("negative_pooled_prompt_embeds")
         else:
             prompt_embeds, negative_prompt_embeds, pooled_prompt_embeds, negative_pooled_prompt_embeds = encoded[:4]
-            del negative_prompt_embeds, negative_pooled_prompt_embeds
 
+        condition = TextCondition(
+            prompt=prompt,
+            prompt_embeds=prompt_embeds,
+            pooled_prompt_embeds=pooled_prompt_embeds,
+            negative_prompt_embeds=negative_prompt_embeds,
+            negative_pooled_prompt_embeds=negative_pooled_prompt_embeds,
+        )
+        condition.validate()
+        return condition
+
+    def encode_single_prompt(
+        self,
+        prompt: str,
+        negative_prompt: str | None = None,
+        device: torch.device | None = None,
+    ) -> dict[str, torch.Tensor]:
+        """Backward-compatible dict wrapper around encode_text_condition."""
+
+        condition = self.encode_text_condition(prompt, negative_prompt, device)
         return {
-            "prompt_embeds": prompt_embeds,
-            "pooled_prompt_embeds": pooled_prompt_embeds,
+            "prompt_embeds": condition.prompt_embeds,
+            "pooled_prompt_embeds": condition.pooled_prompt_embeds,
         }
 
     def encode_prompts(self, prompt_decomposition: PromptDecomposition) -> dict[str, Any]:
@@ -290,6 +418,47 @@ class SD3Backend:
                 for primitive in prompt_decomposition.primitive_prompts
             ],
         }
+
+    def encode_aim_flow_conditions(self, prompt_decomposition: PromptDecomposition) -> dict[str, Any]:
+        """Encode full, anchor, and anchor-augmented primitive conditions for AIM-Flow v2."""
+
+        negative = prompt_decomposition.negative_prompt
+        use_cfg = self.config.sampler.guidance_scale > 1.0
+        enabled_primitives = prompt_decomposition.get_enabled_primitives()
+        anchor_augmented_texts = prompt_decomposition.build_anchor_augmented_primitive_prompts()
+        return {
+            "full": self.encode_text_condition(prompt_decomposition.full_prompt, negative, do_classifier_free_guidance=use_cfg),
+            "anchor": self.encode_text_condition(prompt_decomposition.anchor_prompt, negative, do_classifier_free_guidance=use_cfg),
+            "primitives": [
+                self.encode_text_condition(text, negative, do_classifier_free_guidance=use_cfg)
+                for text in anchor_augmented_texts
+            ],
+            "primitive_texts": anchor_augmented_texts,
+            "primitive_original_texts": [primitive.text for primitive in enabled_primitives],
+        }
+
+    def predict_with_condition(
+        self,
+        latents: torch.Tensor,
+        timestep: torch.Tensor,
+        condition: TextCondition,
+        guidance_scale: float | None = None,
+    ) -> torch.Tensor:
+        """Predict SD3 velocity/noise for a latent under one text condition."""
+
+        pipe = self.require_pipe()
+        condition = condition.to(device=latents.device, dtype=latents.dtype)
+        condition.validate()
+        return get_sd3_transformer_prediction(
+            pipe=pipe,
+            latents=latents,
+            timestep=timestep,
+            prompt_embeds=condition.prompt_embeds,
+            pooled_prompt_embeds=condition.pooled_prompt_embeds,
+            guidance_scale=guidance_scale,
+            negative_prompt_embeds=condition.negative_prompt_embeds,
+            negative_pooled_prompt_embeds=condition.negative_pooled_prompt_embeds,
+        )
 
     def generate_base(
         self,
