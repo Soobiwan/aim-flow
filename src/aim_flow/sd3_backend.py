@@ -97,6 +97,27 @@ def get_sd3_transformer_prediction(
         ) from exc
 
 
+def validate_torch_cuda_build_for_current_gpu() -> None:
+    """Fail before model download if the installed Torch wheel cannot run on the GPU."""
+
+    if not torch.cuda.is_available():
+        return
+    capability = torch.cuda.get_device_capability(0)
+    required_arch = f"sm_{capability[0]}{capability[1]}"
+    supported_arches = set(torch.cuda.get_arch_list())
+    if supported_arches and required_arch not in supported_arches:
+        device_name = torch.cuda.get_device_name(0)
+        raise RuntimeError(
+            f"Installed PyTorch cannot execute CUDA kernels on {device_name} ({required_arch}). "
+            f"This PyTorch build supports {sorted(supported_arches)}. On Kaggle P100, install a "
+            "Pascal-compatible wheel before loading SD3, for example:\n"
+            "  pip uninstall -y torch torchvision torchaudio\n"
+            "  pip install --no-cache-dir --force-reinstall torch==2.4.1+cu118 "
+            "--index-url https://download.pytorch.org/whl/cu118\n"
+            "Then restart the Kaggle runtime/kernel and rerun the GPU check cell."
+        )
+
+
 class SD3Backend:
     """Thin wrapper around Diffusers StableDiffusion3Pipeline."""
 
@@ -109,6 +130,7 @@ class SD3Backend:
     def load(self) -> "SD3Backend":
         """Load Stable Diffusion 3 Medium through Diffusers."""
 
+        validate_torch_cuda_build_for_current_gpu()
         try:
             from diffusers import StableDiffusion3Pipeline
         except Exception as exc:

@@ -78,6 +78,17 @@ This project is designed to run on Kaggle with a 16 GB VRAM GPU by defaulting to
 - VAE slicing
 - sequential primitive forward passes
 
+Kaggle P100 sessions may ship with a PyTorch wheel that no longer supports
+Pascal GPUs (`sm_60`). The demo notebook force-reinstalls:
+
+```bash
+pip uninstall -y torch torchvision torchaudio
+pip install --no-cache-dir --force-reinstall torch==2.4.1+cu118 --index-url https://download.pytorch.org/whl/cu118
+```
+
+If the GPU check still reports that `sm_60` is unsupported, restart the Kaggle
+runtime/kernel and rerun the install and GPU check cells before loading SD3.
+
 Open [notebooks/kaggle_aim_flow_demo.ipynb](notebooks/kaggle_aim_flow_demo.ipynb), set:
 
 ```python
