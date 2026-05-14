@@ -23,31 +23,31 @@ primitive_flow_prompts:
 
   cyborg_dogs:
     name: "Cyborg Dogs Purple Cats Orange Hats"
-    target_prompt: "three cyborg dogs wearing bright orange hats jumping over grass while a purple cat chases them, cinematic lighting, detailed digital art"
-    source_prompt: "three dogs jumping over grass while a purple cat chases them, cinematic lighting, detailed digital art"
+    target_prompt: "four cyborg dogs wearing bright orange hats jumping over grass while two purple cats chase them, cinematic lighting, detailed digital art"
+    source_prompt: "four dogs jumping over grass while two cats chase them, cinematic lighting, detailed digital art"
     negative_prompt: "blurry, low quality, distorted, deformed animals, extra limbs, text, watermark"
     primitive_prompts:
       - name: "S1_cyborg_dogs"
-        text: "three cyborg dogs jumping over grass while a purple cat chases them, cinematic lighting, detailed digital art"
+        text: "four cyborg dogs jumping over grass while two cats chase them, cinematic lighting, detailed digital art"
         role: "primitive"
         weight: 1.0
         enabled: true
       - name: "S2_purple_cats"
-        text: "three dogs jumping over grass while a purple cat chases them, cinematic lighting, detailed digital art"
+        text: "four dogs jumping over grass while two purple cats chase them, cinematic lighting, detailed digital art"
         role: "primitive"
         weight: 1.0
         enabled: true
       - name: "S3_orange_hats"
-        text: "three dogs wearing bright orange hats jumping over grass while a purple cat chases them, cinematic lighting, detailed digital art"
+        text: "four dogs wearing bright orange hats jumping over grass while two cats chase them, cinematic lighting, detailed digital art"
         role: "primitive"
         weight: 1.0
         enabled: true
       - name: "S4_fullish"
-        text: "three cyborg dogs wearing bright orange hats jumping over grass while a purple cat chases them, cinematic lighting, detailed digital art"
+        text: "four cyborg dogs wearing bright orange hats jumping over grass while two purple cats chase them, cinematic lighting, detailed digital art"
         role: "primitive"
         weight: 1.1
         enabled: true
-
+        
   geneval2_bicycles_cows:
     name: "GenEval2 Bicycles Cows Count Attribute Position"
     target_prompt: "four white bicycles in front of three plastic cows"
