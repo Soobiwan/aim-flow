@@ -48,6 +48,201 @@ primitive_flow_prompts:
         weight: 1.1
         enabled: true
 
+  geneval2_bicycles_cows:
+    name: "GenEval2 Bicycles Cows Count Attribute Position"
+    target_prompt: "four white bicycles in front of three plastic cows"
+    source_prompt: "bicycles in front of cows"
+    negative_prompt: "blurry, low quality, distorted objects, missing objects, wrong count, wrong color, text, watermark"
+    primitive_prompts:
+      - name: "S1_four_bicycles"
+        text: "four bicycles in front of cows"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S2_white_bicycles"
+        text: "white bicycles in front of cows"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S3_three_cows"
+        text: "bicycles in front of three cows"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S4_plastic_cows"
+        text: "bicycles in front of plastic cows"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S5_front_relation"
+        text: "bicycles in front of cows"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+
+  t2i_blue_bench_green_car:
+    name: "T2I-CompBench Blue Bench Left Green Car"
+    target_prompt: "a blue bench on the left of a green car"
+    source_prompt: "a bench next to a car"
+    negative_prompt: "blurry, low quality, distorted, missing object, wrong color, wrong spatial relation, text, watermark"
+    primitive_prompts:
+      - name: "S1_blue_bench"
+        text: "a blue bench next to a car"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S2_green_car"
+        text: "a bench next to a green car"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S3_left_relation"
+        text: "a bench on the left of a car"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S4_full_binding"
+        text: "a blue bench on the left of a green car"
+        role: "primitive"
+        weight: 1.1
+        enabled: true
+
+  t2i_green_bench_red_car:
+    name: "T2I-CompBench Green Bench Red Car"
+    target_prompt: "a green bench and a red car"
+    source_prompt: "a bench and a car"
+    negative_prompt: "blurry, low quality, distorted, missing object, wrong color binding, text, watermark"
+    primitive_prompts:
+      - name: "S1_green_bench"
+        text: "a green bench"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S2_red_car"
+        text: "a red car"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S3_two_objects"
+        text: "a bench and a car"
+        role: "primitive"
+        weight: 0.8
+        enabled: true
+      - name: "S4_full_binding"
+        text: "a green bench and a red car"
+        role: "primitive"
+        weight: 1.1
+        enabled: true
+
+  t2i_room_curtains_chair:
+    name: "T2I-CompBench Room Blue Curtains Yellow Chair"
+    target_prompt: "a room with blue curtains and a yellow chair"
+    source_prompt: "a room with curtains and a chair"
+    negative_prompt: "blurry, low quality, distorted room, missing furniture, wrong color binding, text, watermark"
+    primitive_prompts:
+      - name: "S1_blue_curtains"
+        text: "a room with blue curtains"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S2_yellow_chair"
+        text: "a room with a yellow chair"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S3_room_layout"
+        text: "a room with curtains and a chair"
+        role: "primitive"
+        weight: 0.8
+        enabled: true
+      - name: "S4_full_binding"
+        text: "a room with blue curtains and a yellow chair"
+        role: "primitive"
+        weight: 1.1
+        enabled: true
+
+  spatial_cat_left_dog:
+    name: "Spatial Relation Cat Left Dog"
+    target_prompt: "a cat to the left of a dog"
+    source_prompt: "a cat and a dog"
+    negative_prompt: "blurry, low quality, distorted animals, missing animal, wrong spatial relation, text, watermark"
+    primitive_prompts:
+      - name: "S1_cat"
+        text: "a cat"
+        role: "primitive"
+        weight: 0.8
+        enabled: true
+      - name: "S2_dog"
+        text: "a dog"
+        role: "primitive"
+        weight: 0.8
+        enabled: true
+      - name: "S3_left_relation"
+        text: "a cat to the left of a dog"
+        role: "primitive"
+        weight: 1.1
+        enabled: true
+
+  numeracy_three_plates_three_pens:
+    name: "T2I-CompBench Numeracy Plates Pens"
+    target_prompt: "three plates and three pens were on the table"
+    source_prompt: "plates and pens on a table"
+    negative_prompt: "blurry, low quality, distorted objects, wrong count, missing objects, text, watermark"
+    primitive_prompts:
+      - name: "S1_three_plates"
+        text: "three plates on a table"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S2_three_pens"
+        text: "three pens on a table"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S3_table_context"
+        text: "plates and pens on a table"
+        role: "primitive"
+        weight: 0.8
+        enabled: true
+      - name: "S4_full_numeracy"
+        text: "three plates and three pens were on the table"
+        role: "primitive"
+        weight: 1.1
+        enabled: true
+
+  complex_room_chair_table_curtains:
+    name: "T2I-CompBench Complex Room Attributes"
+    target_prompt: "a room with a blue chair, a black table, and yellow curtains"
+    source_prompt: "a room with a chair, a table, and curtains"
+    negative_prompt: "blurry, low quality, distorted room, missing object, wrong color binding, text, watermark"
+    primitive_prompts:
+      - name: "S1_blue_chair"
+        text: "a room with a blue chair"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S2_black_table"
+        text: "a room with a black table"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S3_yellow_curtains"
+        text: "a room with yellow curtains"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S4_room_all_objects"
+        text: "a room with a chair, a table, and curtains"
+        role: "primitive"
+        weight: 0.8
+        enabled: true
+      - name: "S5_full_complex"
+        text: "a room with a blue chair, a black table, and yellow curtains"
+        role: "primitive"
+        weight: 1.1
+        enabled: true
+
+
 cyborg_dogs:
   full_prompt: "four cyborg dogs jumping over grass, each wearing bright orange hats, while two purple cats chase them, cinematic lighting, detailed digital art"
   anchor_prompt: "cyborg dogs being chased by cats on grass, cinematic lighting, detailed digital art"
