@@ -138,6 +138,9 @@ class SD3Backend:
 
         token = get_hf_token()
         kwargs: dict[str, Any] = {"torch_dtype": self.dtype}
+        if not self.config.model.load_t5_text_encoder:
+            kwargs["text_encoder_3"] = None
+            kwargs["tokenizer_3"] = None
         if token:
             kwargs["token"] = token
 

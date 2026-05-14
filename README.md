@@ -77,6 +77,7 @@ This project is designed to run on Kaggle with a 16 GB VRAM GPU by defaulting to
 - model CPU offload
 - VAE slicing
 - sequential primitive forward passes
+- SD3's T5 text encoder disabled by default (`text_encoder_3=None`) to reduce memory pressure
 
 Kaggle P100 sessions may ship with a PyTorch wheel that no longer supports
 Pascal GPUs (`sm_60`). The demo notebook force-reinstalls:
@@ -93,16 +94,16 @@ Open [notebooks/kaggle_aim_flow_demo.ipynb](notebooks/kaggle_aim_flow_demo.ipynb
 
 ```python
 GITHUB_REPO_URL = "https://github.com/YOUR_USERNAME/aim-flow.git"
-HF_TOKEN = ""
+HF_TOKEN = secret_value_0
 ```
 
-Then run the notebook. If `HF_TOKEN` is empty, the notebook tries to read a Kaggle secret named `HF_TOKEN`.
+Then run the notebook. The demo reads a Kaggle secret named `Huggingface`.
 
 ## GitHub-to-Kaggle Workflow
 
 1. Push this repository to GitHub.
 2. Create a Kaggle notebook with GPU enabled.
-3. Add your Hugging Face token as a Kaggle secret named `HF_TOKEN`.
+3. Add your Hugging Face token as a Kaggle secret named `Huggingface`.
 4. Paste your GitHub repository URL into the notebook.
 5. Run the cells. The notebook clones the repo into `/kaggle/working/aim-flow`.
 
@@ -194,6 +195,7 @@ pytest
 
 - The custom SD3 loop uses conditional predictions for AIM-Flow v1. The base pipeline still uses standard Diffusers classifier-free guidance.
 - Exact CFG-compatible multi-condition aggregation is a planned extension.
+- The Kaggle config disables SD3's T5 encoder for memory. Set `model.load_t5_text_encoder: true` in the YAML on larger GPUs for the full three-encoder SD3 prompt stack.
 - Manual decompositions are required; the rule-based fallback is only for smoke tests.
 - Qualitative comparison is provided, but no VQA, reward model, or image judge is used.
 - Primitive residuals can increase runtime roughly linearly with the number of primitives.

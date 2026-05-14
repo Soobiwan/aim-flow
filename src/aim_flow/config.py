@@ -16,6 +16,7 @@ class ModelConfig:
     enable_model_cpu_offload: bool = True
     enable_attention_slicing: bool = False
     enable_vae_slicing: bool = True
+    load_t5_text_encoder: bool = False
 
 
 @dataclass
@@ -80,4 +81,3 @@ def save_config(config: RunConfig, path: str | Path) -> None:
     """Convenience wrapper for RunConfig.save_yaml."""
 
     config.save_yaml(path)
-

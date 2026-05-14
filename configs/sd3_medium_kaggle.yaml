@@ -4,6 +4,7 @@ model:
   enable_model_cpu_offload: true
   enable_attention_slicing: false
   enable_vae_slicing: true
+  load_t5_text_encoder: false
 
 sampler:
   height: 512
@@ -19,4 +20,3 @@ aim_flow:
   norm_clip_ratio: 0.35
   sequential_primitive_forward: true
   mode: "full"
-
