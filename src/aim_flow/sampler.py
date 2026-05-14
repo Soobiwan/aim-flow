@@ -77,7 +77,7 @@ class AIMFlowSampler:
         autocast_device = self.backend.execution_device.type
         use_autocast = autocast_device == "cuda" and self.backend.dtype in {torch.float16, torch.bfloat16}
 
-        with torch.no_grad():
+        with torch.inference_mode():
             for step_index, timestep in enumerate(tqdm(timesteps, desc=f"AIM-Flow {mode}")):
                 with torch.autocast(device_type=autocast_device, dtype=self.backend.dtype, enabled=use_autocast):
                     anchor_pred = get_sd3_transformer_prediction(

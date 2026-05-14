@@ -434,7 +434,9 @@ class SD3Backend:
         scaling_factor = float(_config_get(vae_config, "scaling_factor", 1.0))
         shift_factor = float(_config_get(vae_config, "shift_factor", 0.0))
         latents = (latents / scaling_factor) + shift_factor
-        image = pipe.vae.decode(latents, return_dict=False)[0]
+        with torch.no_grad():
+            image = pipe.vae.decode(latents, return_dict=False)[0]
+        image = image.detach()
         image = pipe.image_processor.postprocess(image, output_type="pil")
         if hasattr(pipe, "maybe_free_model_hooks"):
             pipe.maybe_free_model_hooks()
