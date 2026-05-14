@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aim-flow"
+version = "0.1.0"
+description = "Anchor-Informed Modular Flow Guidance for rectified-flow-style image generation."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "AIM-Flow contributors" }
+]
+keywords = ["stable-diffusion-3", "rectified-flow", "text-to-image", "inference-time-steering"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "torch>=2.1",
+  "diffusers>=0.30.0",
+  "transformers>=4.41",
+  "accelerate>=0.30",
+  "safetensors>=0.4",
+  "sentencepiece>=0.2",
+  "protobuf>=4.25",
+  "numpy>=1.24",
+  "pillow>=10.0",
+  "matplotlib>=3.7",
+  "tqdm>=4.66",
+  "pyyaml>=6.0",
+  "rich>=13.0",
+  "einops>=0.7",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

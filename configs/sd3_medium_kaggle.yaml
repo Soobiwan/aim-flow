@@ -1,0 +1,22 @@
+model:
+  model_id: "stabilityai/stable-diffusion-3-medium-diffusers"
+  dtype: "float16"
+  enable_model_cpu_offload: true
+  enable_attention_slicing: false
+  enable_vae_slicing: true
+
+sampler:
+  height: 512
+  width: 512
+  num_inference_steps: 24
+  guidance_scale: 4.5
+  seed: 42
+
+aim_flow:
+  max_primitives: 5
+  lambda_global: 0.75
+  conflict_threshold: -0.15
+  norm_clip_ratio: 0.35
+  sequential_primitive_forward: true
+  mode: "full"
+

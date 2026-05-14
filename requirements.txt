@@ -1,0 +1,16 @@
+torch>=2.1
+diffusers>=0.30.0
+transformers>=4.41
+accelerate>=0.30
+safetensors>=0.4
+sentencepiece>=0.2
+protobuf>=4.25
+peft>=0.10
+numpy>=1.24
+pillow>=10.0
+matplotlib>=3.7
+tqdm>=4.66
+pyyaml>=6.0
+rich>=13.0
+einops>=0.7
+

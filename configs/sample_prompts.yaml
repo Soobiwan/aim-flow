@@ -1,0 +1,125 @@
+cyborg_dogs:
+  full_prompt: "four cyborg dogs jumping over grass, each wearing bright orange hats, while two purple cats chase them, cinematic lighting, detailed digital art"
+  anchor_prompt: "cyborg dogs being chased by cats on grass, cinematic lighting, detailed digital art"
+  primitive_prompts:
+    - text: "four cyborg dogs"
+      type: "count_entity"
+      weight: 0.85
+      schedule: "early"
+    - text: "cyborg dogs wearing bright orange hats"
+      type: "attribute_binding"
+      weight: 0.75
+      schedule: "late"
+    - text: "two purple cats"
+      type: "count_entity"
+      weight: 0.80
+      schedule: "early"
+    - text: "purple cats chasing cyborg dogs"
+      type: "relation_action"
+      weight: 0.70
+      schedule: "middle"
+    - text: "cyborg dogs jumping over grass"
+      type: "relation_action"
+      weight: 0.65
+      schedule: "middle"
+
+astronaut_market:
+  full_prompt: "three astronauts buying red apples from a robot vendor in a floating night market"
+  anchor_prompt: "astronauts shopping at a robot vendor in a floating night market, cinematic digital art"
+  primitive_prompts:
+    - text: "three astronauts"
+      type: "count_entity"
+      weight: 0.85
+      schedule: "early"
+    - text: "red apples"
+      type: "attribute_binding"
+      weight: 0.70
+      schedule: "late"
+    - text: "robot vendor"
+      type: "entity"
+      weight: 0.75
+      schedule: "middle"
+    - text: "astronauts buying apples from robot vendor"
+      type: "relation_action"
+      weight: 0.75
+      schedule: "middle"
+    - text: "floating night market"
+      type: "scene"
+      weight: 0.65
+      schedule: "early_middle"
+
+glass_castle:
+  full_prompt: "two white dragons circling a glass castle above a frozen lake under green auroras"
+  anchor_prompt: "dragons circling a glass castle above a frozen lake under auroras, fantasy digital art"
+  primitive_prompts:
+    - text: "two white dragons"
+      type: "count_entity"
+      weight: 0.85
+      schedule: "early"
+    - text: "glass castle"
+      type: "object"
+      weight: 0.75
+      schedule: "middle"
+    - text: "frozen lake"
+      type: "scene"
+      weight: 0.65
+      schedule: "early_middle"
+    - text: "green auroras"
+      type: "attribute_scene"
+      weight: 0.70
+      schedule: "late"
+    - text: "dragons circling castle"
+      type: "relation_action"
+      weight: 0.75
+      schedule: "middle"
+
+kitchen_animals:
+  full_prompt: "five tiny raccoons cooking pancakes in a blue kitchen while a yellow parrot watches"
+  anchor_prompt: "tiny animals cooking pancakes in a colorful kitchen while a bird watches, whimsical digital art"
+  primitive_prompts:
+    - text: "five tiny raccoons"
+      type: "count_entity"
+      weight: 0.85
+      schedule: "early"
+    - text: "raccoons cooking pancakes"
+      type: "relation_action"
+      weight: 0.80
+      schedule: "middle"
+    - text: "blue kitchen"
+      type: "attribute_scene"
+      weight: 0.65
+      schedule: "late"
+    - text: "yellow parrot"
+      type: "attribute_entity"
+      weight: 0.70
+      schedule: "middle_late"
+    - text: "parrot watching raccoons"
+      type: "relation_action"
+      weight: 0.65
+      schedule: "middle"
+
+library_robots:
+  full_prompt: "four brass robots reading books beside a glowing tree inside an ancient library"
+  anchor_prompt: "robots reading books beside a glowing tree inside an ancient library, detailed digital art"
+  primitive_prompts:
+    - text: "four brass robots"
+      type: "count_attribute_entity"
+      weight: 0.85
+      schedule: "early"
+    - text: "robots reading books"
+      type: "relation_action"
+      weight: 0.75
+      schedule: "middle"
+    - text: "glowing tree"
+      type: "object_attribute"
+      weight: 0.75
+      schedule: "middle_late"
+    - text: "ancient library"
+      type: "scene"
+      weight: 0.70
+      schedule: "early_middle"
+    - text: "robots beside glowing tree"
+      type: "spatial_relation"
+      weight: 0.65
+      schedule: "middle"
+
