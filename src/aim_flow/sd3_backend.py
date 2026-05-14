@@ -10,8 +10,9 @@ from typing import Any
 import torch
 from PIL import Image
 
-from aim_flow.config import RunConfig
-from aim_flow.prompt_schema import PromptDecomposition
+from aim_flow.config import PrimitiveFlowConfig, RunConfig
+from aim_flow.primitive_flow import build_condition_list
+from aim_flow.prompt_schema import ConditionLadder, PrimitiveFlowSet, PromptDecomposition
 from aim_flow.utils import get_device, get_hf_token, get_torch_dtype
 
 
@@ -435,6 +436,68 @@ class SD3Backend:
             ],
             "primitive_texts": anchor_augmented_texts,
             "primitive_original_texts": [primitive.text for primitive in enabled_primitives],
+        }
+
+    def encode_ladder_conditions(self, condition_ladder: ConditionLadder) -> dict[str, Any]:
+        """Encode complete scene prompts for LadderFlow v3."""
+
+        negative = condition_ladder.negative_prompt
+        use_cfg = self.config.sampler.guidance_scale > 1.0
+        conditions = condition_ladder.get_enabled_conditions()[: self.config.ladder_flow.max_conditions]
+        return {
+            "conditions": [
+                self.encode_text_condition(
+                    condition.text,
+                    negative,
+                    do_classifier_free_guidance=use_cfg,
+                )
+                for condition in conditions
+            ],
+            "condition_texts": [condition.text for condition in conditions],
+            "condition_names": [condition.name for condition in conditions],
+            "condition_types": [condition.type for condition in conditions],
+        }
+
+    def encode_primitive_flow_conditions(
+        self,
+        flow_set: PrimitiveFlowSet,
+        config: PrimitiveFlowConfig,
+    ) -> dict[str, Any]:
+        """Encode source, primitive, and target prompts for sparse primitive flow."""
+
+        negative = flow_set.negative_prompt
+        use_cfg = self.config.sampler.guidance_scale > 1.0
+        condition_dicts = build_condition_list(
+            flow_set,
+            include_source=config.include_source_flow,
+            include_target=config.include_target_flow,
+            source_weight=config.source_weight,
+            target_weight=config.target_weight,
+            max_primitives=config.max_primitives,
+        )
+        target_indices = [index for index, item in enumerate(condition_dicts) if item["role"] == "target"]
+        target_index = target_indices[0] if target_indices else None
+        target_condition = self.encode_text_condition(
+            flow_set.target_prompt,
+            negative,
+            do_classifier_free_guidance=use_cfg,
+        )
+        conditions = [
+            self.encode_text_condition(
+                item["text"],
+                negative,
+                do_classifier_free_guidance=use_cfg,
+            )
+            for item in condition_dicts
+        ]
+        return {
+            "conditions": conditions,
+            "condition_texts": [item["text"] for item in condition_dicts],
+            "condition_names": [item["name"] for item in condition_dicts],
+            "condition_roles": [item["role"] for item in condition_dicts],
+            "condition_weights": [float(item["weight"]) for item in condition_dicts],
+            "target_index": target_index,
+            "target_condition": target_condition if target_index is None else conditions[target_index],
         }
 
     def predict_with_condition(

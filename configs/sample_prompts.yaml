@@ -1,3 +1,53 @@
+primitive_flow_prompts:
+  german_shepherd:
+    name: "German Shepherd Sunglasses Open Mouth"
+    target_prompt: "A german shepherd dog with black sunglasses jumping on the grass with mouth opened, realistic photo, sharp focus"
+    source_prompt: "A german shepherd dog stands on the grass, realistic photo, sharp focus"
+    negative_prompt: "blurry, low quality, distorted, deformed dog, extra limbs, text, watermark"
+    primitive_prompts:
+      - name: "S1_sunglasses_jump"
+        text: "A black sunglasses dog jumps on grass, realistic photo, sharp focus"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S2_open_mouth_jump"
+        text: "A dog with open mouth jumps on grass, realistic photo, sharp focus"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S3_breed_sunglasses"
+        text: "A german shepherd dog with black sunglasses, realistic photo, sharp focus"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+
+  cyborg_dogs:
+    name: "Cyborg Dogs Purple Cats Orange Hats"
+    target_prompt: "four cyborg dogs wearing bright orange hats jumping over grass while two purple cats chase them, cinematic lighting, detailed digital art"
+    source_prompt: "four dogs jumping over grass while two cats chase them, cinematic lighting, detailed digital art"
+    negative_prompt: "blurry, low quality, distorted, deformed animals, extra limbs, text, watermark"
+    primitive_prompts:
+      - name: "S1_cyborg_dogs"
+        text: "four cyborg dogs jumping over grass while two cats chase them, cinematic lighting, detailed digital art"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S2_purple_cats"
+        text: "four dogs jumping over grass while two purple cats chase them, cinematic lighting, detailed digital art"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S3_orange_hats"
+        text: "four dogs wearing bright orange hats jumping over grass while two cats chase them, cinematic lighting, detailed digital art"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+      - name: "S4_fullish"
+        text: "four cyborg dogs wearing bright orange hats jumping over grass while two purple cats chase them, cinematic lighting, detailed digital art"
+        role: "primitive"
+        weight: 1.1
+        enabled: true
+
 cyborg_dogs:
   full_prompt: "four cyborg dogs jumping over grass, each wearing bright orange hats, while two purple cats chase them, cinematic lighting, detailed digital art"
   anchor_prompt: "cyborg dogs being chased by cats on grass, cinematic lighting, detailed digital art"
@@ -124,3 +174,70 @@ library_robots:
       type: "spatial_relation"
       weight: 0.65
       schedule: "middle"
+
+ladder_prompts:
+  german_shepherd:
+    name: "German Shepherd Sunglasses"
+    full_prompt: "A german shepherd dog with black sunglasses jumping on the grass with mouth opened, realistic photo, sharp focus"
+    negative_prompt: "blurry, low quality, distorted, extra limbs, deformed dog, text, watermark"
+    conditions:
+      - name: "C0_base_object_action"
+        text: "A german shepherd dog jumping on the grass, realistic photo, sharp focus"
+        type: "base_layout"
+        weight: 1.0
+        schedule: "early"
+        priority: 0
+      - name: "C1_open_mouth"
+        text: "A german shepherd dog jumping on the grass with mouth opened, realistic photo, sharp focus"
+        type: "action_detail"
+        weight: 1.0
+        schedule: "early_middle"
+        priority: 1
+      - name: "C2_sunglasses"
+        text: "A german shepherd dog with black sunglasses jumping on the grass, realistic photo, sharp focus"
+        type: "attribute_binding"
+        weight: 1.0
+        schedule: "middle_late"
+        priority: 2
+      - name: "C3_full"
+        text: "A german shepherd dog with black sunglasses jumping on the grass with mouth opened, realistic photo, sharp focus"
+        type: "full_prompt"
+        weight: 1.2
+        schedule: "full_late"
+        priority: 3
+
+  cyborg_dogs:
+    name: "Cyborg Dogs Purple Cats"
+    full_prompt: "four cyborg dogs wearing bright orange hats jumping over grass while two purple cats chase them, cinematic lighting, detailed digital art"
+    negative_prompt: "blurry, low quality, distorted, extra limbs, deformed animals, text, watermark"
+    conditions:
+      - name: "C0_base_count_layout"
+        text: "four dogs jumping over grass while two cats chase them, cinematic lighting, detailed digital art"
+        type: "base_count_layout"
+        weight: 1.0
+        schedule: "early"
+        priority: 0
+      - name: "C1_cyborg_dogs"
+        text: "four cyborg dogs jumping over grass while two cats chase them, cinematic lighting, detailed digital art"
+        type: "entity_attribute"
+        weight: 1.0
+        schedule: "early_middle"
+        priority: 1
+      - name: "C2_purple_cats"
+        text: "four dogs jumping over grass while two purple cats chase them, cinematic lighting, detailed digital art"
+        type: "entity_attribute"
+        weight: 1.0
+        schedule: "middle"
+        priority: 2
+      - name: "C3_orange_hats"
+        text: "four dogs wearing bright orange hats jumping over grass while two cats chase them, cinematic lighting, detailed digital art"
+        type: "attribute_binding"
+        weight: 1.0
+        schedule: "middle_late"
+        priority: 3
+      - name: "C4_full"
+        text: "four cyborg dogs wearing bright orange hats jumping over grass while two purple cats chase them, cinematic lighting, detailed digital art"
+        type: "full_prompt"
+        weight: 1.2
+        schedule: "full_late"
+        priority: 4

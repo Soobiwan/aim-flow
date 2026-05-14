@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Any
 
 import torch
+import torch.nn.functional as F
 
 
 def flatten_for_similarity(x: torch.Tensor) -> torch.Tensor:
@@ -141,6 +142,243 @@ def aggregate_vfa(
         "primitive_effective_weights": primitive_effective_weights,
     }
     return aggregated_pred, debug
+
+
+def compute_pairwise_cosine_matrix(predictions: list[torch.Tensor]) -> torch.Tensor:
+    """Return a K x K cosine matrix between complete condition velocity predictions."""
+
+    if not predictions:
+        raise ValueError("predictions must be non-empty.")
+    base_shape = predictions[0].shape
+    for prediction in predictions:
+        if prediction.shape != base_shape:
+            raise ValueError("All ladder predictions must have the same shape.")
+    flattened = [flatten_for_similarity(prediction).mean(dim=0) for prediction in predictions]
+    matrix = torch.stack(flattened, dim=0)
+    matrix = F.normalize(matrix, dim=-1, eps=1e-8)
+    return matrix @ matrix.T
+
+
+def compute_consensus_gates(
+    predictions: list[torch.Tensor],
+    min_gate: float = 0.0,
+    max_gate: float = 1.0,
+) -> tuple[list[float], dict[str, Any]]:
+    """Gate conditions by mean positive agreement with other condition velocities."""
+
+    pairwise = compute_pairwise_cosine_matrix(predictions)
+    gates: list[float] = []
+    for idx in range(pairwise.shape[0]):
+        others = [j for j in range(pairwise.shape[0]) if j != idx]
+        if not others:
+            gate = 1.0
+        else:
+            gate = float(pairwise[idx, others].clamp_min(0.0).mean().cpu().item())
+        gates.append(max(min_gate, min(max_gate, gate)))
+    return gates, {"pairwise_cosine_matrix": pairwise.detach().cpu().tolist(), "consensus_gates": gates}
+
+
+def compute_final_consistency_gates(
+    predictions: list[torch.Tensor],
+    final_prediction: torch.Tensor,
+    min_gate: float = 0.0,
+    max_gate: float = 1.0,
+) -> tuple[list[float], dict[str, Any]]:
+    """Gate conditions by positive agreement with the final condition velocity."""
+
+    gates: list[float] = []
+    cosines: list[float] = []
+    for prediction in predictions:
+        cosine = _mean_float(cosine_similarity_tensor(prediction, final_prediction))
+        cosines.append(cosine)
+        gates.append(max(min_gate, min(max_gate, max(0.0, cosine))))
+    return gates, {"final_consistency_cosines": cosines, "final_consistency_gates": gates}
+
+
+def compute_target_consistency_gates(
+    predictions: list[torch.Tensor],
+    target_prediction: torch.Tensor,
+    min_gate: float = 0.0,
+    max_gate: float = 1.0,
+) -> tuple[list[float], dict[str, Any]]:
+    """Gate condition velocities by positive agreement with the target prompt velocity."""
+
+    gates: list[float] = []
+    cosines: list[float] = []
+    for prediction in predictions:
+        cosine = _mean_float(cosine_similarity_tensor(prediction, target_prediction))
+        cosines.append(cosine)
+        gates.append(max(min_gate, min(max_gate, max(0.0, cosine))))
+    return gates, {"target_consistency_cosines": cosines, "target_consistency_gates": gates}
+
+
+def aggregate_primitive_vfa(
+    predictions: list[torch.Tensor],
+    condition_names: list[str],
+    condition_roles: list[str],
+    condition_base_weights: list[float],
+    target_index: int,
+    vfa_temperature: float = 0.7,
+    use_consensus_gating: bool = True,
+    use_target_consistency_gating: bool = True,
+    velocity_clip_ratio: float = 0.50,
+    min_gate: float = 0.0,
+    max_gate: float = 1.0,
+) -> tuple[torch.Tensor, dict[str, Any]]:
+    """Aggregate source, primitive, and target prompt velocities directly.
+
+    This is intentionally not an anchor/source residual method. The source flow
+    is one condition among the VFA inputs, while the target flow is retained as
+    the stabilization reference for clipping.
+    """
+
+    if not predictions:
+        raise ValueError("predictions must be non-empty.")
+    count = len(predictions)
+    if not (len(condition_names) == len(condition_roles) == len(condition_base_weights) == count):
+        raise ValueError("prediction, condition name, role, and weight counts must match.")
+    if not 0 <= target_index < count:
+        raise ValueError(f"target_index out of range: {target_index}")
+    if vfa_temperature <= 0.0:
+        raise ValueError("vfa_temperature must be positive.")
+    base_shape = predictions[0].shape
+    for prediction in predictions:
+        if prediction.shape != base_shape:
+            raise ValueError("All primitive-flow predictions must have equal shape.")
+
+    pairwise = compute_pairwise_cosine_matrix(predictions).detach().cpu().tolist()
+    consensus_gates = [1.0] * count
+    if use_consensus_gating:
+        consensus_gates, _ = compute_consensus_gates(predictions, min_gate, max_gate)
+
+    target_gates = [1.0] * count
+    target_debug: dict[str, Any] = {"target_consistency_gates": target_gates, "target_consistency_cosines": None}
+    if use_target_consistency_gating:
+        target_gates, target_debug = compute_target_consistency_gates(
+            predictions,
+            predictions[target_index],
+            min_gate,
+            max_gate,
+        )
+
+    raw_scores: list[float] = []
+    for base_weight, consensus_gate, target_gate in zip(condition_base_weights, consensus_gates, target_gates):
+        raw_scores.append(float(base_weight) * float(consensus_gate) * float(target_gate))
+    raw_scores[target_index] = max(raw_scores[target_index], 1e-4)
+
+    score_tensor = torch.tensor(raw_scores, device=predictions[0].device, dtype=torch.float32)
+    softmax_weights = torch.softmax(score_tensor / float(vfa_temperature), dim=0)
+    v_raw = torch.zeros_like(predictions[0])
+    for weight, prediction in zip(softmax_weights, predictions):
+        v_raw = v_raw + prediction * weight.to(device=prediction.device, dtype=prediction.dtype)
+
+    target_pred = predictions[target_index]
+    correction = v_raw - target_pred
+    max_norm = _norm_per_sample(target_pred) * float(velocity_clip_ratio)
+    correction_clipped = clip_tensor_norm(correction, max_norm)
+    v_agg = target_pred + correction_clipped
+
+    debug = {
+        "condition_names": list(condition_names),
+        "condition_roles": list(condition_roles),
+        "condition_base_weights": [float(w) for w in condition_base_weights],
+        "target_index": int(target_index),
+        "pairwise_cosine_matrix": pairwise,
+        "consensus_gates": consensus_gates,
+        "target_consistency_gates": target_gates,
+        "target_consistency_cosines": target_debug.get("target_consistency_cosines"),
+        "raw_scores": raw_scores,
+        "softmax_weights": [float(w.detach().cpu().item()) for w in softmax_weights],
+        "target_norm": _mean_float(_norm_per_sample(target_pred)),
+        "raw_correction_norm": _mean_float(_norm_per_sample(correction)),
+        "clipped_correction_norm": _mean_float(_norm_per_sample(correction_clipped)),
+    }
+    return v_agg, debug
+
+
+def aggregate_ladder_vfa(
+    predictions: list[torch.Tensor],
+    condition_base_weights: list[float],
+    condition_schedule_weights: list[float],
+    reference_index: int,
+    final_index: int,
+    vfa_temperature: float = 0.7,
+    use_consensus_gating: bool = True,
+    use_final_consistency_gating: bool = True,
+    velocity_clip_ratio: float = 0.50,
+    min_gate: float = 0.0,
+    max_gate: float = 1.0,
+) -> tuple[torch.Tensor, dict[str, Any]]:
+    """Aggregate complete ladder condition velocities with VFA and reference clipping."""
+
+    if not predictions:
+        raise ValueError("predictions must be non-empty.")
+    count = len(predictions)
+    if not (len(condition_base_weights) == len(condition_schedule_weights) == count):
+        raise ValueError("prediction, base weight, and schedule weight counts must match.")
+    if not 0 <= reference_index < count:
+        raise ValueError(f"reference_index out of range: {reference_index}")
+    if not 0 <= final_index < count:
+        raise ValueError(f"final_index out of range: {final_index}")
+    for prediction in predictions:
+        if prediction.shape != predictions[0].shape:
+            raise ValueError("All ladder predictions must have equal shape.")
+    if vfa_temperature <= 0.0:
+        raise ValueError("vfa_temperature must be positive.")
+
+    consensus_gates = [1.0] * count
+    consensus_debug: dict[str, Any] = {"pairwise_cosine_matrix": compute_pairwise_cosine_matrix(predictions).detach().cpu().tolist()}
+    if use_consensus_gating:
+        consensus_gates, consensus_debug = compute_consensus_gates(predictions, min_gate, max_gate)
+
+    final_gates = [1.0] * count
+    final_debug: dict[str, Any] = {"final_consistency_gates": final_gates}
+    if use_final_consistency_gating:
+        final_gates, final_debug = compute_final_consistency_gates(
+            predictions,
+            predictions[final_index],
+            min_gate,
+            max_gate,
+        )
+
+    raw_scores = []
+    for base_weight, schedule_weight, consensus_gate, final_gate in zip(
+        condition_base_weights,
+        condition_schedule_weights,
+        consensus_gates,
+        final_gates,
+    ):
+        raw_scores.append(float(base_weight) * float(schedule_weight) * float(consensus_gate) * float(final_gate))
+    raw_scores[final_index] = max(raw_scores[final_index], 0.15 * max(max(raw_scores), 1.0))
+
+    score_tensor = torch.tensor(raw_scores, device=predictions[0].device, dtype=torch.float32)
+    softmax_weights = torch.softmax(score_tensor / float(vfa_temperature), dim=0)
+    v_raw = torch.zeros_like(predictions[0])
+    for weight, prediction in zip(softmax_weights, predictions):
+        v_raw = v_raw + prediction * weight.to(device=prediction.device, dtype=prediction.dtype)
+
+    ref_pred = predictions[reference_index]
+    correction = v_raw - ref_pred
+    max_norm = _norm_per_sample(ref_pred) * float(velocity_clip_ratio)
+    correction_clipped = clip_tensor_norm(correction, max_norm)
+    v_agg = ref_pred + correction_clipped
+
+    debug = {
+        "pairwise_cosine_matrix": consensus_debug.get("pairwise_cosine_matrix"),
+        "consensus_gates": consensus_gates,
+        "final_consistency_gates": final_gates,
+        "final_consistency_cosines": final_debug.get("final_consistency_cosines"),
+        "condition_base_weights": [float(w) for w in condition_base_weights],
+        "condition_schedule_weights": [float(w) for w in condition_schedule_weights],
+        "raw_scores": raw_scores,
+        "softmax_weights": [float(w.detach().cpu().item()) for w in softmax_weights],
+        "reference_index": int(reference_index),
+        "final_index": int(final_index),
+        "raw_correction_norm": _mean_float(_norm_per_sample(correction)),
+        "clipped_correction_norm": _mean_float(_norm_per_sample(correction_clipped)),
+        "reference_norm": _mean_float(_norm_per_sample(ref_pred)),
+    }
+    return v_agg, debug
 
 
 def _aggregate_naive_v1(

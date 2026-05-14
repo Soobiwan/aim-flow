@@ -13,6 +13,31 @@ sampler:
   guidance_scale: 4.5
   seed: 42
 
+primitive_flow:
+  enabled: true
+  mode: "sparse_primitive_flow"
+  final_only: false
+  aggregation_steps: [12, 16, 20, 23]
+  aggregation_step_fractions: null
+  aggregate_every_n_steps: null
+  include_source_flow: true
+  include_target_flow: true
+  target_reference: true
+  vfa_temperature: 0.7
+  use_consensus_gating: true
+  use_target_consistency_gating: true
+  min_gate: 0.0
+  max_gate: 1.0
+  source_weight: 0.7
+  target_weight: 1.2
+  velocity_clip_ratio: 0.50
+  ltp_enabled: true
+  ltp_mode: "latent"
+  ltp_radius_ratio: 0.35
+  fallback_to_velocity_ltp: true
+  max_primitives: 5
+  sequential_condition_forward: true
+
 aim_flow:
   mode: "aim_v2"
   lambda_global: 0.75
@@ -38,3 +63,28 @@ aim_flow:
     middle_radius_ratio: 0.35
     late_radius_ratio: 0.25
     fallback_to_velocity_ltp: true
+
+ladder_flow:
+  enabled: true
+  mode: "ladder_v3"
+  reference_policy: "progressive"
+  active_policy: "all"
+  aggregation_steps: [3, 8, 14, 20]
+  aggregation_step_fractions: null
+  aggregate_every_n_steps: null
+  non_aggregation_policy: "reference"
+  vfa_temperature: 0.7
+  use_consensus_gating: true
+  use_final_consistency_gating: true
+  min_gate: 0.0
+  max_gate: 1.0
+  velocity_clip_ratio: 0.50
+  ltp_enabled: true
+  ltp_mode: "latent"
+  ltp_radius_ratio: 0.35
+  ltp_early_radius_ratio: 0.25
+  ltp_middle_radius_ratio: 0.45
+  ltp_late_radius_ratio: 0.30
+  fallback_to_velocity_ltp: true
+  max_conditions: 6
+  sequential_condition_forward: true

@@ -9,11 +9,26 @@ import torch
 from PIL import Image
 from tqdm.auto import tqdm
 
-from aim_flow.aggregation import aggregate_predictions, aggregate_vfa
+from aim_flow.aggregation import aggregate_ladder_vfa, aggregate_predictions, aggregate_primitive_vfa, aggregate_vfa
 from aim_flow.config import RunConfig
-from aim_flow.ltp import apply_latent_ltp, apply_velocity_ltp
-from aim_flow.prompt_schema import PrimitivePrompt, PromptDecomposition
-from aim_flow.schedules import get_lambda_schedule_weight, get_ltp_radius_ratio, get_schedule_weight
+from aim_flow.ladder import get_active_condition_indices, parse_aggregation_steps, select_reference_condition_index
+from aim_flow.ltp import (
+    apply_ladder_latent_ltp,
+    apply_ladder_velocity_ltp,
+    apply_latent_ltp,
+    apply_primitive_latent_ltp,
+    apply_primitive_velocity_ltp,
+    apply_velocity_ltp,
+)
+from aim_flow.primitive_flow import parse_aggregation_steps as parse_primitive_aggregation_steps
+from aim_flow.prompt_schema import ConditionLadder, PrimitiveFlowSet, PrimitivePrompt, PromptDecomposition
+from aim_flow.schedules import (
+    get_condition_schedule_weight,
+    get_lambda_schedule_weight,
+    get_ltp_radius_ratio,
+    get_ltp_radius_ratio_for_step,
+    get_schedule_weight,
+)
 from aim_flow.sd3_backend import SD3Backend, TextCondition
 
 
@@ -295,6 +310,520 @@ class AIMFlowSampler:
         )
         return image, metadata
 
+    def generate_ladder_v3(
+        self,
+        condition_ladder: ConditionLadder,
+        mode: str = "ladder_v3_sparse",
+    ) -> tuple[Image.Image, dict[str, Any]]:
+        """Generate one image with LadderFlow v3 condition-ladder aggregation."""
+
+        condition_ladder.validate()
+        pipe = self.backend.require_pipe()
+        sampler_cfg = self.config.sampler
+        ladder_cfg = self.config.ladder_flow
+        conditions = condition_ladder.get_enabled_conditions()[: ladder_cfg.max_conditions]
+        if len(conditions) < 2:
+            raise ValueError("LadderFlow v3 requires at least two enabled conditions.")
+        use_cfg = sampler_cfg.guidance_scale > 1.0
+
+        self.backend.validate_custom_sampling_compatibility()
+        self.backend.validate_image_size(sampler_cfg.height, sampler_cfg.width)
+        encoded = self.backend.encode_ladder_conditions(condition_ladder)
+        condition_embeddings: list[TextCondition] = encoded["conditions"][: len(conditions)]
+        condition_texts: list[str] = encoded["condition_texts"][: len(conditions)]
+        if hasattr(pipe, "maybe_free_model_hooks"):
+            pipe.maybe_free_model_hooks()
+
+        latents = self.backend.prepare_latents(sampler_cfg.seed, sampler_cfg.height, sampler_cfg.width)
+        timesteps = self.backend.set_timesteps(sampler_cfg.num_inference_steps)
+        num_steps = len(timesteps)
+        num_conditions = len(conditions)
+        final_index = num_conditions - 1
+        aggregation_steps = parse_aggregation_steps(
+            ladder_cfg.aggregation_steps,
+            ladder_cfg.aggregation_step_fractions,
+            num_steps,
+        )
+        if ladder_cfg.aggregate_every_n_steps is not None:
+            every = max(1, int(ladder_cfg.aggregate_every_n_steps))
+            aggregation_steps.update(range(0, num_steps, every))
+        if mode == "ladder_progressive_noagg":
+            aggregation_steps = set()
+        elif mode == "ladder_v3_dense":
+            aggregation_steps = set(range(num_steps))
+
+        latent_ltp_available = True
+        latent_ltp_probe: dict[str, Any] | None = None
+        latent_ltp_disabled_reason: str | None = None
+        if ladder_cfg.ltp_enabled and ladder_cfg.ltp_mode == "latent" and aggregation_steps:
+            latent_ltp_available, latent_ltp_probe = self._probe_latent_ltp_scheduler(pipe.scheduler, timesteps[0], latents)
+            if not latent_ltp_available:
+                latent_ltp_disabled_reason = "scheduler step not safely repeatable"
+                if not ladder_cfg.fallback_to_velocity_ltp:
+                    raise RuntimeError(
+                        "Latent LTP is not safe with this scheduler and fallback_to_velocity_ltp is disabled."
+                    )
+
+        debug_steps: list[dict[str, Any]] = []
+        autocast_device = self.backend.execution_device.type
+        use_autocast = autocast_device == "cuda" and self.backend.dtype in {torch.float16, torch.bfloat16}
+
+        with torch.inference_mode():
+            for step_index, timestep in enumerate(tqdm(timesteps, desc=f"LadderFlow {mode}")):
+                reference_index = select_reference_condition_index(step_index, num_steps, num_conditions, ladder_cfg.reference_policy)
+                do_aggregate = step_index in aggregation_steps
+                radius_ratio_t = get_ltp_radius_ratio_for_step(
+                    step_index,
+                    num_steps,
+                    ladder_cfg.ltp_early_radius_ratio,
+                    ladder_cfg.ltp_middle_radius_ratio,
+                    ladder_cfg.ltp_late_radius_ratio,
+                )
+                step_debug: dict[str, Any] = {
+                    "step_index": step_index,
+                    "timestep": float(timestep.detach().float().cpu().item()),
+                    "do_aggregate": bool(do_aggregate),
+                    "reference_index": reference_index,
+                    "reference_text": condition_texts[reference_index],
+                    "radius_ratio": float(radius_ratio_t),
+                }
+
+                with torch.autocast(device_type=autocast_device, dtype=self.backend.dtype, enabled=use_autocast):
+                    if do_aggregate:
+                        active_indices = get_active_condition_indices(
+                            step_index,
+                            num_steps,
+                            num_conditions,
+                            ladder_cfg.active_policy,
+                            reference_index,
+                        )
+                        active_indices = sorted(set(active_indices + [reference_index, final_index]))
+                        predictions = [
+                            self._compatible_prediction(
+                                self.backend.predict_with_condition(
+                                    latents,
+                                    timestep,
+                                    condition_embeddings[index],
+                                    guidance_scale=sampler_cfg.guidance_scale,
+                                ),
+                                latents,
+                                f"ladder_condition_{index}",
+                            ).detach()
+                            for index in active_indices
+                        ]
+                        if ladder_cfg.sequential_condition_forward and latents.is_cuda:
+                            torch.cuda.empty_cache()
+                        local_reference_index = active_indices.index(reference_index)
+                        local_final_index = active_indices.index(final_index)
+                        schedule_weights = [
+                            get_condition_schedule_weight(conditions[index].schedule, step_index, num_steps)
+                            for index in active_indices
+                        ]
+                        candidate_pred, vfa_debug = aggregate_ladder_vfa(
+                            predictions=predictions,
+                            condition_base_weights=[conditions[index].weight for index in active_indices],
+                            condition_schedule_weights=schedule_weights,
+                            reference_index=local_reference_index,
+                            final_index=local_final_index,
+                            vfa_temperature=ladder_cfg.vfa_temperature,
+                            use_consensus_gating=ladder_cfg.use_consensus_gating,
+                            use_final_consistency_gating=ladder_cfg.use_final_consistency_gating,
+                            velocity_clip_ratio=ladder_cfg.velocity_clip_ratio,
+                            min_gate=ladder_cfg.min_gate,
+                            max_gate=ladder_cfg.max_gate,
+                        )
+                        candidate_pred = self._compatible_prediction(candidate_pred, latents, "ladder_candidate")
+                        reference_pred = predictions[local_reference_index]
+                    else:
+                        selected_index = self._select_non_aggregation_index(ladder_cfg.non_aggregation_policy, reference_index, final_index)
+                        selected_pred = self._compatible_prediction(
+                            self.backend.predict_with_condition(
+                                latents,
+                                timestep,
+                                condition_embeddings[selected_index],
+                                guidance_scale=sampler_cfg.guidance_scale,
+                            ),
+                            latents,
+                            f"ladder_selected_{selected_index}",
+                        )
+
+                latents_dtype = latents.dtype
+                if do_aggregate:
+                    ltp_mode = "off" if not ladder_cfg.ltp_enabled else ladder_cfg.ltp_mode
+                    if ltp_mode == "latent" and not latent_ltp_available:
+                        ltp_mode = "velocity"
+                    fallback_to_velocity = False
+                    if ltp_mode == "velocity":
+                        candidate_pred, ltp_debug = apply_ladder_velocity_ltp(reference_pred, candidate_pred, radius_ratio_t)
+                        candidate_pred = self._compatible_prediction(candidate_pred, latents, "ladder_candidate_velocity_ltp")
+                        latents = self.safe_scheduler_step(pipe.scheduler, candidate_pred, timestep, latents)
+                    elif ltp_mode == "latent":
+                        try:
+                            x_next_reference, x_next_candidate = self._compute_anchor_and_candidate_steps(
+                                pipe.scheduler,
+                                reference_pred,
+                                candidate_pred,
+                                timestep,
+                                latents,
+                            )
+                            latents, ltp_debug = apply_ladder_latent_ltp(latents, x_next_reference, x_next_candidate, radius_ratio_t)
+                        except Exception as exc:
+                            if not ladder_cfg.fallback_to_velocity_ltp:
+                                raise
+                            fallback_to_velocity = True
+                            latent_ltp_available = False
+                            latent_ltp_disabled_reason = "scheduler step not safely repeatable"
+                            candidate_pred, ltp_debug = apply_ladder_velocity_ltp(reference_pred, candidate_pred, radius_ratio_t)
+                            ltp_debug["fallback_reason"] = str(exc)
+                            candidate_pred = self._compatible_prediction(candidate_pred, latents, "ladder_candidate_velocity_ltp")
+                            latents = self.safe_scheduler_step(pipe.scheduler, candidate_pred, timestep, latents)
+                    elif ltp_mode == "off":
+                        ltp_debug = {"ltp_active": False, "ltp_mode": "off", "radius_ratio": float(radius_ratio_t)}
+                        latents = self.safe_scheduler_step(pipe.scheduler, candidate_pred, timestep, latents)
+                    else:
+                        raise ValueError(f"Unknown LadderFlow LTP mode: {ltp_mode}")
+                    ltp_debug["fallback_to_velocity_ltp"] = bool(fallback_to_velocity or (ladder_cfg.ltp_mode == "latent" and not latent_ltp_available))
+                    step_debug.update(
+                        {
+                            "active_indices": active_indices,
+                            "active_texts": [condition_texts[index] for index in active_indices],
+                            "vfa": vfa_debug,
+                            "ltp": ltp_debug,
+                            "vfa_weights": vfa_debug.get("softmax_weights"),
+                            "consensus_gates": vfa_debug.get("consensus_gates"),
+                            "final_consistency_gates": vfa_debug.get("final_consistency_gates"),
+                            "pairwise_cosine_matrix": vfa_debug.get("pairwise_cosine_matrix"),
+                        }
+                    )
+                    del predictions, candidate_pred, reference_pred
+                else:
+                    latents = self.safe_scheduler_step(pipe.scheduler, selected_pred, timestep, latents)
+                    step_debug.update(
+                        {
+                            "selected_condition_index": selected_index,
+                            "selected_condition_text": condition_texts[selected_index],
+                        }
+                    )
+                    del selected_pred
+                if latents.dtype != latents_dtype:
+                    latents = latents.to(latents_dtype)
+                debug_steps.append(step_debug)
+
+        image = self.backend.decode_latents(latents)
+        metadata = {
+            "method": mode,
+            "full_prompt": condition_ladder.full_prompt,
+            "negative_prompt": condition_ladder.negative_prompt,
+            "condition_ladder": condition_ladder.to_dict(),
+            "condition_texts": condition_texts,
+            "aggregation_steps": sorted(aggregation_steps),
+            "reference_policy": ladder_cfg.reference_policy,
+            "active_policy": ladder_cfg.active_policy,
+            "non_aggregation_policy": ladder_cfg.non_aggregation_policy,
+            "ltp_mode": ladder_cfg.ltp_mode,
+            "latent_ltp_available": latent_ltp_available,
+            "latent_ltp_probe": latent_ltp_probe,
+            "latent_ltp_disabled_reason": latent_ltp_disabled_reason,
+            "vfa_temperature": ladder_cfg.vfa_temperature,
+            "seed": sampler_cfg.seed,
+            "num_inference_steps": sampler_cfg.num_inference_steps,
+            "height": sampler_cfg.height,
+            "width": sampler_cfg.width,
+            "guidance_scale": sampler_cfg.guidance_scale,
+            "runtime_config": self.config.to_dict(),
+            "debug_steps": debug_steps,
+            "note": (
+                "LadderFlow v3 aggregates complete condition velocity fields. "
+                "No VQA, reward model, external judge, training, fine-tuning, or image feedback is used."
+            ),
+        }
+        return image, metadata
+
+    def generate_sparse_primitive_flow(
+        self,
+        flow_set: PrimitiveFlowSet,
+        mode: str = "primitive_flow_sparse",
+    ) -> tuple[Image.Image, dict[str, Any]]:
+        """Generate one image with Sparse Primitive Flow Composition."""
+
+        flow_set.validate()
+        pipe = self.backend.require_pipe()
+        sampler_cfg = self.config.sampler
+        primitive_cfg = self.config.primitive_flow
+        use_cfg = sampler_cfg.guidance_scale > 1.0
+
+        self.backend.validate_custom_sampling_compatibility()
+        self.backend.validate_image_size(sampler_cfg.height, sampler_cfg.width)
+        encoded = self.backend.encode_primitive_flow_conditions(flow_set, primitive_cfg)
+        condition_embeddings: list[TextCondition] = encoded["conditions"]
+        condition_texts: list[str] = encoded["condition_texts"]
+        condition_names: list[str] = encoded["condition_names"]
+        condition_roles: list[str] = encoded["condition_roles"]
+        condition_weights: list[float] = encoded["condition_weights"]
+        target_index: int | None = encoded["target_index"]
+        target_condition: TextCondition = encoded["target_condition"]
+
+        if target_index is None:
+            condition_embeddings = condition_embeddings + [target_condition]
+            condition_texts = condition_texts + [flow_set.target_prompt]
+            condition_names = condition_names + ["target"]
+            condition_roles = condition_roles + ["target"]
+            condition_weights = condition_weights + [float(primitive_cfg.target_weight)]
+            target_index = len(condition_embeddings) - 1
+        if not condition_embeddings:
+            raise ValueError("Sparse primitive flow requires at least one encoded condition.")
+        if condition_roles[target_index] != "target":
+            raise ValueError("target_index must point to the target prompt condition.")
+        if hasattr(pipe, "maybe_free_model_hooks"):
+            pipe.maybe_free_model_hooks()
+
+        latents = self.backend.prepare_latents(sampler_cfg.seed, sampler_cfg.height, sampler_cfg.width)
+        timesteps = self.backend.set_timesteps(sampler_cfg.num_inference_steps)
+        num_steps = len(timesteps)
+        aggregation_steps = parse_primitive_aggregation_steps(
+            num_steps=num_steps,
+            aggregation_steps=primitive_cfg.aggregation_steps,
+            aggregation_step_fractions=primitive_cfg.aggregation_step_fractions,
+            final_only=primitive_cfg.final_only,
+            aggregate_every_n_steps=primitive_cfg.aggregate_every_n_steps,
+        )
+        if mode == "primitive_flow_final_only":
+            aggregation_steps = {num_steps - 1}
+        elif mode in {"primitive_flow_dense", "primitive_flow_dense_optional"}:
+            aggregation_steps = set(range(num_steps))
+
+        latent_ltp_available = True
+        latent_ltp_probe: dict[str, Any] | None = None
+        latent_ltp_disabled_reason: str | None = None
+        if primitive_cfg.ltp_enabled and primitive_cfg.ltp_mode == "latent" and aggregation_steps:
+            latent_ltp_available, latent_ltp_probe = self._probe_latent_ltp_scheduler(
+                pipe.scheduler,
+                timesteps[0],
+                latents,
+            )
+            if not latent_ltp_available:
+                latent_ltp_disabled_reason = "scheduler step not safely repeatable"
+                if not primitive_cfg.fallback_to_velocity_ltp:
+                    raise RuntimeError(
+                        "Latent LTP is not safe with this scheduler and fallback_to_velocity_ltp is disabled."
+                    )
+
+        debug_steps: list[dict[str, Any]] = []
+        autocast_device = self.backend.execution_device.type
+        use_autocast = autocast_device == "cuda" and self.backend.dtype in {torch.float16, torch.bfloat16}
+
+        with torch.inference_mode():
+            for step_index, timestep in enumerate(tqdm(timesteps, desc=f"PrimitiveFlow {mode}")):
+                do_aggregate = step_index in aggregation_steps
+                step_debug: dict[str, Any] = {
+                    "step_index": step_index,
+                    "timestep": float(timestep.detach().float().cpu().item()),
+                    "do_aggregate": bool(do_aggregate),
+                }
+
+                with torch.autocast(device_type=autocast_device, dtype=self.backend.dtype, enabled=use_autocast):
+                    if do_aggregate:
+                        predictions = [
+                            self._compatible_prediction(
+                                self.backend.predict_with_condition(
+                                    latents,
+                                    timestep,
+                                    condition,
+                                    guidance_scale=sampler_cfg.guidance_scale,
+                                ),
+                                latents,
+                                f"primitive_flow_{index}_{condition_roles[index]}",
+                            ).detach()
+                            for index, condition in enumerate(condition_embeddings)
+                        ]
+                        if primitive_cfg.sequential_condition_forward and latents.is_cuda:
+                            torch.cuda.empty_cache()
+                        target_pred = predictions[target_index]
+                        candidate_pred, vfa_debug = aggregate_primitive_vfa(
+                            predictions=predictions,
+                            condition_names=condition_names,
+                            condition_roles=condition_roles,
+                            condition_base_weights=condition_weights,
+                            target_index=target_index,
+                            vfa_temperature=primitive_cfg.vfa_temperature,
+                            use_consensus_gating=primitive_cfg.use_consensus_gating,
+                            use_target_consistency_gating=primitive_cfg.use_target_consistency_gating,
+                            velocity_clip_ratio=primitive_cfg.velocity_clip_ratio,
+                            min_gate=primitive_cfg.min_gate,
+                            max_gate=primitive_cfg.max_gate,
+                        )
+                        candidate_pred = self._compatible_prediction(candidate_pred, latents, "primitive_flow_candidate")
+                    else:
+                        target_pred = self._compatible_prediction(
+                            self.backend.predict_with_condition(
+                                latents,
+                                timestep,
+                                target_condition,
+                                guidance_scale=sampler_cfg.guidance_scale,
+                            ),
+                            latents,
+                            "primitive_flow_target",
+                        )
+
+                latents_dtype = latents.dtype
+                if do_aggregate:
+                    ltp_mode = "off" if not primitive_cfg.ltp_enabled else primitive_cfg.ltp_mode
+                    if ltp_mode == "latent" and not latent_ltp_available:
+                        ltp_mode = "velocity"
+                    ltp_fallback = False
+                    ltp_fallback_reason: str | None = None
+                    if ltp_mode == "latent":
+                        try:
+                            x_next_target, x_next_candidate = self._compute_anchor_and_candidate_steps(
+                                pipe.scheduler,
+                                target_pred,
+                                candidate_pred,
+                                timestep,
+                                latents,
+                            )
+                            latents, ltp_debug = apply_primitive_latent_ltp(
+                                latents,
+                                x_next_target,
+                                x_next_candidate,
+                                primitive_cfg.ltp_radius_ratio,
+                            )
+                        except Exception as exc:
+                            if not primitive_cfg.fallback_to_velocity_ltp:
+                                raise
+                            latent_ltp_available = False
+                            latent_ltp_disabled_reason = "scheduler step not safely repeatable"
+                            ltp_fallback = True
+                            ltp_fallback_reason = str(exc)
+                            candidate_pred, ltp_debug = apply_primitive_velocity_ltp(
+                                target_pred,
+                                candidate_pred,
+                                primitive_cfg.ltp_radius_ratio,
+                            )
+                            candidate_pred = self._compatible_prediction(
+                                candidate_pred,
+                                latents,
+                                "primitive_flow_candidate_velocity_ltp",
+                            )
+                            latents = self.safe_scheduler_step(pipe.scheduler, candidate_pred, timestep, latents)
+                    elif ltp_mode == "velocity":
+                        ltp_fallback = primitive_cfg.ltp_mode == "latent" and not latent_ltp_available
+                        if ltp_fallback and latent_ltp_disabled_reason:
+                            ltp_fallback_reason = latent_ltp_disabled_reason
+                        candidate_pred, ltp_debug = apply_primitive_velocity_ltp(
+                            target_pred,
+                            candidate_pred,
+                            primitive_cfg.ltp_radius_ratio,
+                        )
+                        candidate_pred = self._compatible_prediction(
+                            candidate_pred,
+                            latents,
+                            "primitive_flow_candidate_velocity_ltp",
+                        )
+                        latents = self.safe_scheduler_step(pipe.scheduler, candidate_pred, timestep, latents)
+                    elif ltp_mode == "off":
+                        ltp_debug = {
+                            "ltp_active": False,
+                            "ltp_mode": "off",
+                            "radius_ratio": float(primitive_cfg.ltp_radius_ratio),
+                        }
+                        latents = self.safe_scheduler_step(pipe.scheduler, candidate_pred, timestep, latents)
+                    else:
+                        raise ValueError(f"Unknown primitive-flow LTP mode: {ltp_mode}")
+                    ltp_debug["ltp_fallback"] = bool(ltp_fallback)
+                    if ltp_fallback_reason:
+                        ltp_debug["ltp_fallback_reason"] = ltp_fallback_reason
+                    step_debug.update(
+                        {
+                            "condition_names": condition_names,
+                            "condition_roles": condition_roles,
+                            "condition_texts": condition_texts,
+                            "condition_weights": condition_weights,
+                            "target_index": target_index,
+                            "vfa": vfa_debug,
+                            "pairwise_cosine_matrix": vfa_debug.get("pairwise_cosine_matrix"),
+                            "consensus_gates": vfa_debug.get("consensus_gates"),
+                            "target_consistency_gates": vfa_debug.get("target_consistency_gates"),
+                            "raw_scores": vfa_debug.get("raw_scores"),
+                            "softmax_weights": vfa_debug.get("softmax_weights"),
+                            "target_norm": vfa_debug.get("target_norm"),
+                            "raw_correction_norm": vfa_debug.get("raw_correction_norm"),
+                            "clipped_correction_norm": vfa_debug.get("clipped_correction_norm"),
+                            "ltp_debug": ltp_debug,
+                            "ltp_fallback": bool(ltp_fallback),
+                            "ltp_fallback_reason": ltp_fallback_reason,
+                        }
+                    )
+                    del predictions, candidate_pred
+                else:
+                    latents = self.safe_scheduler_step(pipe.scheduler, target_pred, timestep, latents)
+                    step_debug.update(
+                        {
+                            "selected_condition": "target",
+                            "selected_condition_text": flow_set.target_prompt,
+                        }
+                    )
+                if latents.dtype != latents_dtype:
+                    latents = latents.to(latents_dtype)
+                debug_steps.append(step_debug)
+                del target_pred
+
+        image = self.backend.decode_latents(latents)
+        metadata = {
+            "method": "sparse_primitive_flow",
+            "mode": mode,
+            "target_prompt": flow_set.target_prompt,
+            "source_prompt": flow_set.source_prompt,
+            "primitive_prompts": [primitive.to_dict() for primitive in flow_set.get_enabled_primitives()],
+            "negative_prompt": flow_set.negative_prompt,
+            "aggregation_steps": sorted(aggregation_steps),
+            "final_only": primitive_cfg.final_only or mode == "primitive_flow_final_only",
+            "aggregate_every_n_steps": primitive_cfg.aggregate_every_n_steps,
+            "model_id": self.config.model.model_id,
+            "seed": sampler_cfg.seed,
+            "num_inference_steps": sampler_cfg.num_inference_steps,
+            "height": sampler_cfg.height,
+            "width": sampler_cfg.width,
+            "guidance_scale": sampler_cfg.guidance_scale,
+            "ltp_mode": primitive_cfg.ltp_mode,
+            "ltp_radius_ratio": primitive_cfg.ltp_radius_ratio,
+            "ltp_enabled": primitive_cfg.ltp_enabled,
+            "ltp_fallback_to_velocity": primitive_cfg.fallback_to_velocity_ltp,
+            "latent_ltp_available": latent_ltp_available,
+            "latent_ltp_probe": latent_ltp_probe,
+            "latent_ltp_disabled_reason": latent_ltp_disabled_reason,
+            "vfa_temperature": primitive_cfg.vfa_temperature,
+            "source_weight": primitive_cfg.source_weight,
+            "target_weight": primitive_cfg.target_weight,
+            "velocity_clip_ratio": primitive_cfg.velocity_clip_ratio,
+            "condition_names": condition_names,
+            "condition_roles": condition_roles,
+            "condition_texts": condition_texts,
+            "condition_weights": condition_weights,
+            "target_index": target_index,
+            "runtime_config": self.config.to_dict(),
+            "custom_loop_audit": {
+                "classifier_free_guidance": use_cfg,
+                "guidance_scale": sampler_cfg.guidance_scale,
+                "sequential_cfg_forward": True,
+                "sequential_condition_forward": primitive_cfg.sequential_condition_forward,
+                "normal_steps_use": "target_prompt_only",
+                "aggregation_reference": "target_prompt",
+                "latents_dtype": str(latents.dtype),
+                "latents_device": str(latents.device),
+                "embedding_shapes": {
+                    "conditions": [self._condition_shapes(condition) for condition in condition_embeddings],
+                    "target": self._condition_shapes(target_condition),
+                },
+            },
+            "debug_steps": debug_steps,
+            "note": (
+                "Sparse Primitive Flow Composition directly aggregates complete prompt-conditioned "
+                "velocity fields at selected timesteps. It uses no VQA, reward model, external judge, "
+                "training, fine-tuning, image feedback, anchor residuals, or primitive schedules."
+            ),
+        }
+        return image, metadata
+
     def _encode_primitive_conditions(
         self,
         prompt_decomposition: PromptDecomposition,
@@ -333,6 +862,22 @@ class AIMFlowSampler:
 
     def _scheduler_step(self, scheduler: Any, prediction: torch.Tensor, timestep: torch.Tensor, latents: torch.Tensor) -> torch.Tensor:
         return self._scheduler_output_to_latents(scheduler.step(prediction, timestep, latents, return_dict=True))
+
+    def safe_scheduler_step(self, scheduler: Any, model_output: torch.Tensor, timestep: torch.Tensor, sample: torch.Tensor) -> torch.Tensor:
+        """Return scheduler prev_sample through a single non-branching step call."""
+
+        return self._scheduler_step(scheduler, model_output, timestep, sample)
+
+    @staticmethod
+    def _select_non_aggregation_index(policy: str, reference_index: int, final_index: int) -> int:
+        name = policy.lower()
+        if name == "reference":
+            return reference_index
+        if name == "full":
+            return final_index
+        if name == "base":
+            return 0
+        raise ValueError(f"Unknown non-aggregation policy: {policy}")
 
     @staticmethod
     def _condition_shapes(condition: TextCondition) -> dict[str, Any]:

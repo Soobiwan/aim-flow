@@ -52,6 +52,60 @@ class LTPConfig:
 
 
 @dataclass
+class LadderFlowConfig:
+    enabled: bool = True
+    mode: str = "ladder_v3"
+    reference_policy: str = "progressive"
+    active_policy: str = "all"
+    aggregation_steps: list[int] | None = None
+    aggregation_step_fractions: list[float] | None = None
+    aggregate_every_n_steps: int | None = None
+    non_aggregation_policy: str = "reference"
+    vfa_temperature: float = 0.7
+    use_consensus_gating: bool = True
+    use_final_consistency_gating: bool = True
+    min_gate: float = 0.0
+    max_gate: float = 1.0
+    velocity_clip_ratio: float = 0.50
+    ltp_enabled: bool = True
+    ltp_mode: str = "latent"
+    ltp_radius_ratio: float = 0.35
+    ltp_early_radius_ratio: float = 0.25
+    ltp_middle_radius_ratio: float = 0.45
+    ltp_late_radius_ratio: float = 0.30
+    fallback_to_velocity_ltp: bool = True
+    max_conditions: int = 6
+    sequential_condition_forward: bool = True
+
+
+@dataclass
+class PrimitiveFlowConfig:
+    enabled: bool = True
+    mode: str = "sparse_primitive_flow"
+    final_only: bool = False
+    aggregation_steps: list[int] | None = None
+    aggregation_step_fractions: list[float] | None = None
+    aggregate_every_n_steps: int | None = None
+    include_source_flow: bool = True
+    include_target_flow: bool = True
+    target_reference: bool = True
+    vfa_temperature: float = 0.7
+    use_consensus_gating: bool = True
+    use_target_consistency_gating: bool = True
+    min_gate: float = 0.0
+    max_gate: float = 1.0
+    source_weight: float = 0.7
+    target_weight: float = 1.2
+    velocity_clip_ratio: float = 0.50
+    ltp_enabled: bool = True
+    ltp_mode: str = "latent"
+    ltp_radius_ratio: float = 0.35
+    fallback_to_velocity_ltp: bool = True
+    max_primitives: int = 5
+    sequential_condition_forward: bool = True
+
+
+@dataclass
 class AimFlowConfig:
     lambda_global: float = 0.75
     lambda_schedule: str = "middle_late"
@@ -87,6 +141,8 @@ class RunConfig:
     model: ModelConfig = field(default_factory=ModelConfig)
     sampler: SamplerConfig = field(default_factory=SamplerConfig)
     aim_flow: AimFlowConfig = field(default_factory=AimFlowConfig)
+    ladder_flow: LadderFlowConfig = field(default_factory=LadderFlowConfig)
+    primitive_flow: PrimitiveFlowConfig = field(default_factory=PrimitiveFlowConfig)
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "RunConfig":
@@ -106,6 +162,8 @@ class RunConfig:
             model=ModelConfig(**(data.get("model") or {})),
             sampler=SamplerConfig(**(data.get("sampler") or {})),
             aim_flow=aim_config,
+            ladder_flow=LadderFlowConfig(**(data.get("ladder_flow") or {})),
+            primitive_flow=PrimitiveFlowConfig(**(data.get("primitive_flow") or {})),
         )
 
     @classmethod
