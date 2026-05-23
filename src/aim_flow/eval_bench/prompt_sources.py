@@ -103,7 +103,7 @@ def build_t2i_compbench_manifest(
 
 
 def _caption_from_record(record: dict[str, Any]) -> str | None:
-    for key in ("caption", "sentences", "text", "prompt"):
+    for key in ("caption", "caption1", "caption2", "sentences", "text", "prompt", "answer"):
         value = record.get(key)
         if isinstance(value, str) and value.strip():
             return value.strip()
@@ -139,7 +139,7 @@ def _load_coco_captions_json(path: Path) -> list[dict[str, Any]]:
     return list(by_image.values())
 
 
-def _load_coco_from_datasets() -> list[dict[str, Any]]:
+def _load_coco_from_datasets(max_rows: int = 5000) -> list[dict[str, Any]]:
     try:
         from datasets import load_dataset
     except Exception as exc:  # pragma: no cover - exercised only in full benchmark environments
@@ -148,19 +148,33 @@ def _load_coco_from_datasets() -> list[dict[str, Any]]:
         ) from exc
 
     candidates = [
+        ("sentence-transformers/coco-captions", "train"),
         ("lmms-lab/COCO-Caption2017", "val"),
-        ("HuggingFaceM4/COCO", "validation"),
-        ("nlphuji/mscoco_2014_5k_test_image_text_retrieval", "test"),
     ]
     last_error: Exception | None = None
     for dataset_name, split in candidates:
         try:
-            dataset = load_dataset(dataset_name, split=split)
+            dataset = load_dataset(dataset_name, split=split, streaming=True)
+            try:
+                from datasets import Image as DatasetImage
+
+                dataset = dataset.cast_column("image", DatasetImage(decode=False))
+            except Exception:
+                pass
             rows = []
             for index, record in enumerate(dataset):
                 caption = _caption_from_record(dict(record))
                 if caption:
-                    rows.append({"image_id": record.get("image_id", index), "caption": caption, "dataset": dataset_name})
+                    rows.append(
+                        {
+                            "image_id": record.get("image_id", record.get("id", record.get("question_id", index))),
+                            "caption": caption,
+                            "dataset": dataset_name,
+                            "file_name": record.get("file_name"),
+                        }
+                    )
+                if len(rows) >= max_rows:
+                    break
             if rows:
                 return rows
         except Exception as exc:  # pragma: no cover - network/data availability dependent
@@ -186,7 +200,7 @@ def build_coco_manifest(
         rows = _load_coco_captions_json(Path(captions_json))
         source = str(captions_json)
     else:
-        rows = _load_coco_from_datasets()
+        rows = _load_coco_from_datasets(max_rows=max(250, int(subset_size) * 10))
         source = "COCO caption dataset"
 
     rng = random.Random(seed)

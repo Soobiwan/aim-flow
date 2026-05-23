@@ -1,6 +1,6 @@
 import json
 
-from aim_flow.eval_bench.prompt_sources import build_coco_manifest, build_t2i_compbench_manifest
+from aim_flow.eval_bench.prompt_sources import _caption_from_record, build_coco_manifest, build_t2i_compbench_manifest
 
 
 def test_t2i_compbench_manifest_selects_balanced_seeded_subset(tmp_path):
@@ -41,3 +41,15 @@ def test_coco_manifest_selects_one_caption_per_image_id(tmp_path):
 
     assert len(manifest.samples) == 2
     assert {sample.metadata["image_id"] for sample in manifest.samples} == {10, 11}
+
+
+def test_coco_caption_extractor_accepts_hf_answer_lists():
+    assert _caption_from_record({"answer": ["A black motorcycle parked outside.", "Another caption."]}) == (
+        "A black motorcycle parked outside."
+    )
+
+
+def test_coco_caption_extractor_accepts_sentence_transformer_caption_pairs():
+    assert _caption_from_record({"caption1": "A clock hangs in a bathroom.", "caption2": "A clean bathroom."}) == (
+        "A clock hangs in a bathroom."
+    )
