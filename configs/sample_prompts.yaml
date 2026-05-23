@@ -266,7 +266,25 @@ primitive_flow_prompts:
         weight: 1.0
         enabled: true
 
-      - name: "S4_fullish"
+      - name: "S4_mirror"
+        text: "A marble fox statue standing in front of a mirror, cinematic lighting, realistic photo, sharp focus"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+
+      - name: "S5_cracked_mirror"
+        text: "A statue standing in front of a cracked mirror with visible fracture lines, cinematic lighting, realistic photo, sharp focus"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+              
+      - name: "S6_cracked_mirror_fox"
+        text: "A fox statue standing in front of a cracked mirror with visible fracture lines, cinematic lighting, realistic photo, sharp focus"
+        role: "primitive"
+        weight: 1.0
+        enabled: true
+
+      - name: "S7_fullish"
         text: "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, cinematic lighting, realistic photo, sharp focus"
         role: "primitive"
         weight: 1.1
