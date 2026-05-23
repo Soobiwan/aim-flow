@@ -4,12 +4,14 @@ from __future__ import annotations
 
 import json
 import random
+import subprocess
 from collections import OrderedDict
 from pathlib import Path
 from typing import Any
 
-from aim_flow.eval_bench.constants import DEFAULT_SEED, T2I_CATEGORY_FILES
+from aim_flow.eval_bench.constants import DEFAULT_SEED, T2I_CATEGORY_FILES, T2I_COMPBENCH_COMMIT, T2I_COMPBENCH_REPO_URL
 from aim_flow.eval_bench.schemas import PromptManifest, PromptSample
+from aim_flow.utils import ensure_dir
 
 
 def repo_root() -> Path:
@@ -29,6 +31,35 @@ def _balanced_counts(total: int, categories: list[str]) -> dict[str, int]:
     return {category: base + (1 if index < remainder else 0) for index, category in enumerate(categories)}
 
 
+def _infer_t2i_repo_dir(dataset_root: Path) -> Path:
+    """Infer the T2I-CompBench repo directory from an examples/dataset path."""
+
+    normalized = dataset_root
+    if normalized.name == "dataset" and normalized.parent.name == "examples":
+        return normalized.parent.parent
+    return repo_root() / "external" / "T2I-CompBench"
+
+
+def ensure_t2i_compbench_dataset(dataset_root: str | Path | None = None) -> Path:
+    """Return a local T2I-CompBench dataset path, cloning the repo if needed."""
+
+    root = Path(dataset_root) if dataset_root else repo_root() / "external" / "T2I-CompBench" / "examples" / "dataset"
+    if root.exists():
+        return root
+
+    repo_dir = _infer_t2i_repo_dir(root)
+    ensure_dir(repo_dir.parent)
+    if not repo_dir.exists():
+        subprocess.run(["git", "clone", T2I_COMPBENCH_REPO_URL, str(repo_dir)], check=True)
+    current = subprocess.check_output(["git", "-C", str(repo_dir), "rev-parse", "HEAD"], text=True).strip()
+    if current != T2I_COMPBENCH_COMMIT:
+        subprocess.run(["git", "-C", str(repo_dir), "fetch", "origin", T2I_COMPBENCH_COMMIT], check=True)
+        subprocess.run(["git", "-C", str(repo_dir), "checkout", T2I_COMPBENCH_COMMIT], check=True)
+    if not root.exists():
+        raise FileNotFoundError(f"T2I-CompBench dataset directory was not found after clone: {root}")
+    return root
+
+
 def build_t2i_compbench_manifest(
     subset_size: int | str = 100,
     seed: int = DEFAULT_SEED,
@@ -36,7 +67,7 @@ def build_t2i_compbench_manifest(
 ) -> PromptManifest:
     """Build a deterministic T2I-CompBench prompt manifest."""
 
-    root = Path(dataset_root) if dataset_root else repo_root() / "external" / "T2I-CompBench" / "examples" / "dataset"
+    root = ensure_t2i_compbench_dataset(dataset_root)
     categories = list(T2I_CATEGORY_FILES)
     rng = random.Random(seed)
     samples: list[PromptSample] = []
