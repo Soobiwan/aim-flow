@@ -16,6 +16,19 @@ from aim_flow.prompt_schema import ConditionLadder, PrimitiveFlowSet, PromptDeco
 from aim_flow.utils import get_device, get_hf_token, get_torch_dtype
 
 
+def _model_load_error_message(model_id: str, token: str | None) -> str:
+    message = (
+        f"Failed to load {model_id!r} from Hugging Face. "
+        "This benchmark uses the gated SD3 Medium Diffusers model, so the runtime "
+        "needs a Hugging Face token whose account has accepted the model license."
+    )
+    if not token:
+        message += " No HF_TOKEN/HUGGINGFACE_TOKEN environment variable is set."
+    else:
+        message += " HF_TOKEN is set, but the token may be invalid or missing access to the gated model."
+    return message
+
+
 @dataclass
 class TextCondition:
     """Prompt embedding bundle for a single SD3 condition."""
@@ -252,12 +265,15 @@ class SD3Backend:
             kwargs["token"] = token
 
         try:
-            self.pipe = StableDiffusion3Pipeline.from_pretrained(self.config.model.model_id, **kwargs)
-        except TypeError:
-            if token:
-                kwargs.pop("token", None)
-                kwargs["use_auth_token"] = token
-            self.pipe = StableDiffusion3Pipeline.from_pretrained(self.config.model.model_id, **kwargs)
+            try:
+                self.pipe = StableDiffusion3Pipeline.from_pretrained(self.config.model.model_id, **kwargs)
+            except TypeError:
+                if token:
+                    kwargs.pop("token", None)
+                    kwargs["use_auth_token"] = token
+                self.pipe = StableDiffusion3Pipeline.from_pretrained(self.config.model.model_id, **kwargs)
+        except Exception as exc:
+            raise RuntimeError(_model_load_error_message(self.config.model.model_id, token)) from exc
 
         if self.config.model.enable_model_cpu_offload:
             if hasattr(self.pipe, "enable_model_cpu_offload"):

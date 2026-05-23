@@ -29,7 +29,7 @@ from aim_flow.eval_bench.schemas import DecompositionManifest, PromptManifest
 from aim_flow.eval_bench.schedules import one_indexed_to_zero_indexed
 from aim_flow.prompt_schema import PrimitiveFlowSet
 from aim_flow.sampler import AIMFlowSampler
-from aim_flow.sd3_backend import SD3Backend
+from aim_flow.sd3_backend import SD3Backend, _model_load_error_message
 from aim_flow.utils import ensure_dir, get_device, get_hf_token, get_torch_dtype, write_json
 from aim_flow.visualize import save_metadata_json
 
@@ -156,12 +156,15 @@ class RectifiedCFGPPBackend:
         if token:
             kwargs["token"] = token
         try:
-            self.pipe = StableDiffusion3Pipeline.from_pretrained(self.config.model.model_id, **kwargs)
-        except TypeError:
-            if token:
-                kwargs.pop("token", None)
-                kwargs["use_auth_token"] = token
-            self.pipe = StableDiffusion3Pipeline.from_pretrained(self.config.model.model_id, **kwargs)
+            try:
+                self.pipe = StableDiffusion3Pipeline.from_pretrained(self.config.model.model_id, **kwargs)
+            except TypeError:
+                if token:
+                    kwargs.pop("token", None)
+                    kwargs["use_auth_token"] = token
+                self.pipe = StableDiffusion3Pipeline.from_pretrained(self.config.model.model_id, **kwargs)
+        except Exception as exc:
+            raise RuntimeError(_model_load_error_message(self.config.model.model_id, token)) from exc
 
         if self.config.model.enable_model_cpu_offload and hasattr(self.pipe, "enable_model_cpu_offload"):
             self.pipe.enable_model_cpu_offload()

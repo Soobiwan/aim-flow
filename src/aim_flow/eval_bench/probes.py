@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+import gc
 from pathlib import Path
 from typing import Any
 
@@ -26,31 +27,44 @@ def run_fox_timestep_probe(
     output_dir: str | Path,
     config: RunConfig | None = None,
     schedule_1_indexed: list[int] | None = None,
-) -> dict[str, str]:
+    probe_mode: str = "both",
+    max_probe_steps: int | None = None,
+) -> dict[str, Any]:
     """Create cutoff-final and step-rollout grids for one SPFC prompt."""
 
     base_config = config or load_bench_config()
+    if probe_mode not in {"cutoff", "rollout", "both"}:
+        raise ValueError("probe_mode must be one of: cutoff, rollout, both")
     schedule = schedule_1_indexed or DEFAULT_SPFC_SCHEDULE_1_INDEXED
     zero_schedule = one_indexed_to_zero_indexed(schedule, num_steps=base_config.sampler.num_inference_steps, required_count=16)
+    if max_probe_steps is not None:
+        if max_probe_steps <= 0:
+            raise ValueError("max_probe_steps must be positive when provided.")
+        zero_schedule = zero_schedule[:max_probe_steps]
     out = ensure_dir(output_dir)
-    cutoff_paths = _generate_cutoff_finals(flow_set, out / "cutoff_finals", base_config, zero_schedule)
-    rollout_paths = _generate_step_rollouts(flow_set, out / "step_rollouts", base_config, zero_schedule)
-    cutoff_grid = make_image_grid(
-        [path for _, path in cutoff_paths],
-        [f"stop@{step + 1}" for step, _ in cutoff_paths],
-        out / "fox_cutoff_final_grid.png",
-    )
-    rollout_grid = make_image_grid(
-        [path for _, path in rollout_paths],
-        [f"rollout@{step + 1}" for step, _ in rollout_paths],
-        out / "fox_step_rollout_grid.png",
-    )
+
     index = {
-        "cutoff_grid": str(cutoff_grid),
-        "rollout_grid": str(rollout_grid),
+        "probe_mode": probe_mode,
         "schedule_1_indexed": schedule,
         "schedule_zero_indexed": zero_schedule,
+        "selected_schedule_1_indexed": [step + 1 for step in zero_schedule],
     }
+    if probe_mode in {"cutoff", "both"}:
+        cutoff_paths = _generate_cutoff_finals(flow_set, out / "cutoff_finals", base_config, zero_schedule)
+        cutoff_grid = make_image_grid(
+            [path for _, path in cutoff_paths],
+            [f"stop@{step + 1}" for step, _ in cutoff_paths],
+            out / "fox_cutoff_final_grid.png",
+        )
+        index["cutoff_grid"] = str(cutoff_grid)
+    if probe_mode in {"rollout", "both"}:
+        rollout_paths = _generate_step_rollouts(flow_set, out / "step_rollouts", base_config, zero_schedule)
+        rollout_grid = make_image_grid(
+            [path for _, path in rollout_paths],
+            [f"rollout@{step + 1}" for step, _ in rollout_paths],
+            out / "fox_step_rollout_grid.png",
+        )
+        index["rollout_grid"] = str(rollout_grid)
     write_json(index, out / "probe_index.json")
     return index
 
@@ -61,12 +75,14 @@ def _generate_cutoff_finals(
     base_config: RunConfig,
     zero_schedule: list[int],
 ) -> list[tuple[int, Path]]:
+    output_dir = ensure_dir(output_dir)
     config = copy.deepcopy(base_config)
     backend = SD3Backend(config).load()
     sampler = AIMFlowSampler(backend, config)
     paths: list[tuple[int, Path]] = []
     try:
-        for cutoff in zero_schedule:
+        for index, cutoff in enumerate(zero_schedule, start=1):
+            print(f"[fox_probe] cutoff final {index}/{len(zero_schedule)}: stop@{cutoff + 1}", flush=True)
             config.primitive_flow.aggregation_steps = [step for step in zero_schedule if step <= cutoff]
             image, metadata = sampler.generate_sparse_primitive_flow(flow_set, mode="primitive_flow_sparse")
             image_path = output_dir / f"stop_at_step_{cutoff + 1:02d}.png"
@@ -76,6 +92,8 @@ def _generate_cutoff_finals(
             metadata["cutoff_step_1_indexed"] = cutoff + 1
             save_metadata_json(metadata, metadata_path)
             paths.append((cutoff, image_path))
+            del image
+            _clear_memory()
     finally:
         unload_model(backend)
     return paths
@@ -90,6 +108,7 @@ def _finish_target_only(
 ) -> Any:
     scheduler = sampler.backend.require_pipe().scheduler
     state = sampler._snapshot_scheduler_state(scheduler)
+    final_latents: torch.Tensor | None = None
     try:
         rollout_latents = latents.clone()
         sampler_cfg = sampler.config.sampler
@@ -110,9 +129,13 @@ def _finish_target_only(
                         "probe_rollout_target",
                     )
                 rollout_latents = sampler.safe_scheduler_step(scheduler, target_pred, timestep, rollout_latents)
-        return sampler.backend.decode_latents(rollout_latents)
+                del target_pred
+        final_latents = rollout_latents.detach()
     finally:
         sampler._restore_scheduler_state(scheduler, state)
+    if final_latents is None:
+        raise RuntimeError("Target-only rollout did not produce final latents.")
+    return sampler.backend.decode_latents(final_latents)
 
 
 def _generate_step_rollouts(
@@ -121,6 +144,7 @@ def _generate_step_rollouts(
     config: RunConfig,
     zero_schedule: list[int],
 ) -> list[tuple[int, Path]]:
+    output_dir = ensure_dir(output_dir)
     backend = SD3Backend(config).load()
     sampler = AIMFlowSampler(backend, config)
     paths: list[tuple[int, Path]] = []
@@ -202,6 +226,10 @@ def _generate_step_rollouts(
                         )
 
                 if do_aggregate:
+                    print(
+                        f"[fox_probe] step rollout {len(paths) + 1}/{len(zero_schedule)}: rollout@{step_index + 1}",
+                        flush=True,
+                    )
                     ltp_mode = "off" if not primitive_cfg.ltp_enabled else primitive_cfg.ltp_mode
                     if ltp_mode == "latent" and not latent_ltp_available:
                         ltp_mode = "velocity"
@@ -252,8 +280,17 @@ def _generate_step_rollouts(
                         metadata_path,
                     )
                     paths.append((step_index, image_path))
+                    del image, predictions, candidate_pred
+                    _clear_memory()
                 else:
                     latents = sampler.safe_scheduler_step(pipe.scheduler, target_pred, timestep, latents)
+                del target_pred
     finally:
         unload_model(backend)
     return paths
+
+
+def _clear_memory() -> None:
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
