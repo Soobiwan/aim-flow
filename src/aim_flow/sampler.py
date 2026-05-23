@@ -649,6 +649,7 @@ class AIMFlowSampler:
                             use_consensus_gating=primitive_cfg.use_consensus_gating,
                             use_target_consistency_gating=primitive_cfg.use_target_consistency_gating,
                             velocity_clip_ratio=primitive_cfg.velocity_clip_ratio,
+                            steering_strength=primitive_cfg.steering_strength,
                             min_gate=primitive_cfg.min_gate,
                             max_gate=primitive_cfg.max_gate,
                         )
@@ -795,6 +796,7 @@ class AIMFlowSampler:
             "source_weight": primitive_cfg.source_weight,
             "target_weight": primitive_cfg.target_weight,
             "velocity_clip_ratio": primitive_cfg.velocity_clip_ratio,
+            "steering_strength": primitive_cfg.steering_strength,
             "condition_names": condition_names,
             "condition_roles": condition_roles,
             "condition_texts": condition_texts,

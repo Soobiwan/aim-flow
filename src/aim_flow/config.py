@@ -97,6 +97,7 @@ class PrimitiveFlowConfig:
     source_weight: float = 0.7
     target_weight: float = 1.2
     velocity_clip_ratio: float = 0.50
+    steering_strength: float = 1.0
     ltp_enabled: bool = True
     ltp_mode: str = "latent"
     ltp_radius_ratio: float = 0.35

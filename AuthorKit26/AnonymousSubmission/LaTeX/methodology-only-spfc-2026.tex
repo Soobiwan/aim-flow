@@ -1,0 +1,415 @@
+%File: methodology-only-spfc-2026.tex
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage[submission]{aaai2026}  % DO NOT CHANGE THIS
+\usepackage{times}  % DO NOT CHANGE THIS
+\usepackage{helvet}  % DO NOT CHANGE THIS
+\usepackage{courier}  % DO NOT CHANGE THIS
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{amsmath}
+\frenchspacing  % DO NOT CHANGE THIS
+\setlength{\pdfpagewidth}{8.5in} % DO NOT CHANGE THIS
+\setlength{\pdfpageheight}{11in} % DO NOT CHANGE THIS
+
+\pdfinfo{
+/TemplateVersion (2026.1)
+}
+
+\setcounter{secnumdepth}{0}
+
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\vect}[1]{\operatorname{vec}(#1)}
+\newcommand{\clip}{\operatorname{clip}}
+\newcommand{\clamp}{\operatorname{clamp}}
+\newcommand{\Step}{\operatorname{Step}}
+\newcommand{\TextEncode}{\operatorname{TextEncode}}
+\newcommand{\Decode}{\operatorname{Decode}}
+\newcommand{\VAE}{\operatorname{VAE}}
+\newcommand{\softmax}{\operatorname{softmax}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert_2}
+\newcommand{\eps}{\varepsilon}
+
+\title{Draft Writeup: SPFC}
+\author{
+    aaaaaaa
+}
+\affiliations{
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Methodology}
+
+% Sparse Primitive Flow Composition (SPFC) is a training-free
+% inference procedure for rectified-flow text-to-image models. The key
+% idea is to ask the same frozen model several simpler, complete
+% questions about a complex prompt, compare the induced velocity fields
+% at the current latent, and use only the target-consistent part of their
+% agreement as a bounded correction to the target trajectory. Unlike
+% anchor-residual variants, SPFC aggregates complete prompt-conditioned
+% velocity fields; the target prompt remains the reference for all
+% clipping, projection, and non-aggregation steps.
+Comparison to be done against recent steering and compositional text-to-image generation methods:
+
+\begin{itemize}
+    \item \textbf{Rectified CFG++} (NeurIPS 2025): a recent extension of classifier-free guidance for rectified flow models, focused on improving sampling fidelity and reducing guidance-related artifacts.
+    \item \textbf{VSC} (ICCV 2025): a compositional generation method that decomposes a prompt into subprompts, generates intermediate visual representations, converts them into image tokens, and recombines them to improve final image generation.
+\end{itemize}
+
+Rectified CFG++ is the closest baseline for flow-based guidance, since it directly modifies the guidance behavior of rectified flow sampling. VSC is a strong compositional baseline, since it explicitly targets prompt decomposition and multi-concept generation.
+
+For evaluation, we will use \textbf{T2I-CompBench} as the main benchmark because it directly tests compositional text-to-image alignment. 
+
+\subsection{Rectified-Flow Sampling (base that is alr used)}
+
+Let a frozen text-to-image rectified flow predict velocities
+\[
+v_\theta(x_t,t,c),
+\]
+where $x_t$ is the latent at noise time $t$ and $c$ is the text-conditioning embedding.  
+The scheduler updates the latent by
+\[
+x_{t_{n+1}}=\Step(x_{t_n},u_n,t_n),
+\]
+where $u_n$ is the velocity passed to the scheduler. For standard sampling,
+\[
+u_n=v_\theta(x_{t_n},t_n,c_P), 
+\qquad c_P=\TextEncode(P).
+\]
+
+All SPFC velocities use classifier-free guidance. With guidance scale $s$ and null condition $c_\emptyset$,
+\[
+\tilde v_\theta(x,t,c)
+=
+v_\theta(x,t,c_\emptyset)
++
+s\bigl(v_\theta(x,t,c)-v_\theta(x,t,c_\emptyset)\bigr).
+\]
+To make explaining easy, we write 
+\[
+v(x,t,c)=\tilde v_\theta(x,t,c).
+\]
+
+\emph{(also we don't modify how CFG works either, so for us we can also assume we are working on non CFG methods).}
+
+SPFC does not change anything. It only changes the velocity $u_n$ supplied to the existing scheduler at selected timesteps (we select them currently manually).
+
+\subsection{Primitive Decomposition}
+
+Given a target prompt $P$, SPFC uses a source prompt $S_0$ and $K$
+primitive prompts $S_1,\ldots,S_K$:
+\begin{equation}
+P \mapsto (S_0,S_1,\ldots,S_K,P).
+\end{equation}
+The source prompt preserves the main scene, medium, and style while
+removing difficult bindings. Each primitive is itself a complete prompt
+that isolates one semantic requirement of $P$, such as a count, color
+binding, material, spatial relation, reflection, or shadow. Complete
+primitive prompts are important: they make every condition propose a
+valid scene-level velocity rather than an ill-posed text fragment and MORE IMPORTANTLY, try to tie all of them to be close to the same distribution.
+
+This step converts a hard compositional prompt into several simpler
+model queries. A target prompt may entangle object identity, attributes,
+counts, relations, and style in one conditioning vector. The primitives
+separate these requirements so the model can expose, through its own
+velocity field, which semantic components it currently knows how to
+move toward. The major assumption we make is that the model knows independently what each individual prompt semantically means, it just struggles to combine them, which we aim to fix.
+
+Example:
+\begin{itemize}
+    \item $P$: "A marble statue of a fox wearing green rain boots standing in front of a cracked mirror, with its shadow forming the shape of a dragon on the wall, cinematic lighting, realistic photo, sharp focus"
+    \item $S_0$: "A marble statue of a fox standing in front of a mirror, cinematic lighting, realistic photo, sharp focus"
+    \item $S_1$: "A marble statue of a fox standing in front of a wall, cinematic lighting, realistic photo, sharp focus"
+    \item $S_2$: "A fox statue wearing green rain boots, cinematic lighting, realistic photo, sharp focus"
+    \item $S_3$: "A marble fox statue reflected in a cracked mirror with multiple veins of cracks, cinematic lighting, realistic photo, sharp focus"
+\end{itemize}
+
+SPFC builds the ordered condition list
+\begin{equation}
+\mathcal{C}=(c_0,\ldots,c_{K+1}),\quad
+c_i=\TextEncode(Q_i),
+\end{equation}
+where $Q_0=S_0$, $Q_i=S_i$ for $1\leq i\leq K$, and
+$Q_{K+1}=P$. Let
+\begin{equation}
+N=K+2,\qquad p=K+1
+\end{equation}
+denote the number of conditions and the target index. Base priorities
+encode the intended roles:
+\begin{equation}
+w_i=
+\begin{cases}
+w_{\rm src}, & i=0,\\
+w_{\rm prim,i}, & 1\leq i\leq K,\\
+w_{\rm tgt}, & i=p,
+\end{cases}
+\end{equation}
+with defaults $w_{\rm src}=0.7$, $w_{\rm prim,i}=1.0$, and
+$w_{\rm tgt}=1.2$ (currently chosen arbitrarily, might change later after some more testing). The larger target base weight complements the target-centered correction and projection described below.
+
+\subsection{Sparse Intervention Schedule}
+
+Let $T$ be the number of denoising steps and let
+\[
+\mathcal{A}\subseteq\{0,\ldots,T-1\}
+\]
+denote the aggregation timesteps. $\mathcal{A}$ can be choosen how ever we want to choose them (preference to earlier timesteps).
+
+For non-aggregation steps, SPFC matches target-only sampling:
+\[
+n\notin\mathcal{A}:\quad
+u_n=v(x_{t_n},t_n,c_P).
+\]
+
+For aggregation steps, all condition velocities are evaluated at the same latent:
+\[
+n\in\mathcal{A}:\quad
+v_i^{(n)}=v(x_{t_n},t_n,c_i),
+\qquad i=0,\ldots,N-1.
+\]
+The target velocity is denoted $v_P^{(n)}$.
+
+
+\subsection{Velocity Agreement Gates}
+
+All gating signals are computed from the model's own velocities at the
+current latent. For clarity, equations are written for one batch item;
+the implementation applies the same operations per sample. Define
+\begin{equation}
+\phi_i^{(n)}=\vect{v_i^{(n)}}.
+\end{equation}
+The pairwise cosine agreement matrix is
+\begin{equation}
+M_{ij}^{(n)}
+=
+\frac{\langle \phi_i^{(n)},\phi_j^{(n)}\rangle}
+{\norm{\phi_i^{(n)}}\,\norm{\phi_j^{(n)}}+\eps}.
+\end{equation}
+
+The consensus gate measures whether condition $i$ agrees with the
+other condition velocities:
+\begin{equation}
+g_{i,{\rm con}}^{(n)}
+=
+\clamp\!\left(
+\frac{1}{N-1}\sum_{j\neq i}\max(0,M_{ij}^{(n)}),
+g_{\min},g_{\max}
+\right).
+\end{equation}
+The target-consistency gate measures whether condition $i$ points in a
+direction compatible with the full prompt:
+\begin{equation}
+g_{i,{\rm tgt}}^{(n)}
+=
+\clamp\!\left(\max(0,M_{ip}^{(n)}),g_{\min},g_{\max}\right).
+\end{equation}
+Negative cosine components are discarded before clamping. Thus a
+primitive that is useful in isolation but points away from either the
+condition consensus or the target prompt receives little influence at
+that timestep.
+
+$g_{\min}$ and $g_{\max}$ are the minimum and maximum gate values. They are currently set to $g_{\min}=0$ and $g_{\max}=1$ (arbitrary for now, might change after some more testing).
+
+These gates are the method's internal reliability test. Consensus
+discourages a single primitive from dominating when its velocity is an
+outlier relative to the rest of the scene. Target consistency prevents a
+primitive from improving its isolated concept by moving against the full
+prompt. The use of cosine agreement makes the test scale-invariant: a
+large primitive velocity is not trusted merely because its norm is
+large.
+
+\subsection{Target-Centered Velocity Composition}
+
+The raw score for each condition combines its role prior and the two
+data-dependent gates:
+\begin{equation}
+r_i^{(n)}
+=w_i\,g_{i,{\rm con}}^{(n)}\,g_{i,{\rm tgt}}^{(n)} .
+\end{equation}
+The target score receives a numerical floor,
+\begin{equation}
+r_p^{(n)}\leftarrow\max(r_p^{(n)},\eps_r),\qquad
+\eps_r=10^{-4}.
+\end{equation}
+A temperature-scaled softmax gives a convex combination:
+\begin{equation}
+\alpha_i^{(n)}
+=
+\frac{\exp(r_i^{(n)}/\tau)}
+{\sum_{\ell=0}^{N-1}\exp(r_\ell^{(n)}/\tau)}.
+\end{equation}
+Therefore $\alpha_i^{(n)}\geq0$ and $\sum_i\alpha_i^{(n)}=1$. The
+unclipped composed velocity is
+\begin{equation}
+v_{\rm raw}^{(n)}
+=
+\sum_{i=0}^{N-1}\alpha_i^{(n)}v_i^{(n)}.
+\end{equation}
+
+SPFC does not step directly with $v_{\rm raw}^{(n)}$. Instead, it treats
+the composition as a correction to the target velocity:
+\begin{equation}
+\delta_v^{(n)}=v_{\rm raw}^{(n)}-v_P^{(n)}.
+\end{equation}
+For a reference vector $a$ and ratio $\eta$, define norm clipping
+\begin{equation}
+\clip_\eta(z;a)
+=
+z\min\!\left(1,\frac{\eta\norm{a}}{\norm{z}+\eps}\right).
+\end{equation}
+With velocity clip ratio $\rho$, the Velocity Field Aggregation (VFA)
+output is
+\begin{equation}
+v_{\rm VFA}^{(n)}
+=v_P^{(n)}+\clip_\rho(\delta_v^{(n)};v_P^{(n)}).
+\end{equation}
+This yields the explicit stability bound
+\begin{equation}
+\norm{v_{\rm VFA}^{(n)}-v_P^{(n)}}
+\leq \rho\norm{v_P^{(n)}}.
+\end{equation}
+The primitives can therefore change the target direction only within a
+fixed relative radius.
+
+The softmax stage turns gate scores into a differentiable, convex
+selection over condition fields. The temperature $\tau$ controls how
+selective the method is: smaller values concentrate mass on the most
+trusted conditions, while larger values average more broadly. The
+subsequent target-centered clipping is crucial because a convex average
+of plausible prompt velocities can still be too far from the target
+trajectory. Clipping makes semantic steering subordinate to bounded
+deviation from $P$.
+
+\subsection{Latent Trajectory Projection}
+
+Velocity clipping bounds the proposed derivative. SPFC additionally
+bounds the scheduler-realized latent move. First compute the target and
+candidate next latents:
+\begin{align}
+x_{P}^{+(n)}
+&=\Step(x_{t_n},v_P^{(n)},t_n),\\
+x_{\rm VFA}^{+(n)}
+&=\Step(x_{t_n},v_{\rm VFA}^{(n)},t_n).
+\end{align}
+The candidate offset from the target trajectory and the target step
+length are
+\begin{equation}
+\Delta_x^{(n)}=x_{\rm VFA}^{+(n)}-x_P^{+(n)},
+\qquad
+d_P^{(n)}=\norm{x_P^{+(n)}-x_{t_n}}.
+\end{equation}
+Using trust-region ratio $r$, define
+\begin{equation}
+\Pi_r(\Delta;d)
+=
+\Delta\min\!\left(1,\frac{rd}{\norm{\Delta}+\eps}\right).
+\end{equation}
+The aggregation-step update is
+\begin{equation}
+x_{t_{n+1}}
+=
+x_P^{+(n)}+\Pi_r(\Delta_x^{(n)};d_P^{(n)}).
+\end{equation}
+Consequently,
+\begin{equation}
+\norm{x_{t_{n+1}}-x_P^{+(n)}}
+\leq
+r\norm{x_P^{+(n)}-x_{t_n}}.
+\end{equation}
+The latent remains in a ball centered on the target-prompt scheduler
+step, with radius proportional to the target step size at that noise
+level.
+
+% LTP is needed because scheduler geometry is not identical to raw
+% velocity geometry. Even a clipped velocity correction can induce a
+% larger-than-intended latent displacement after the solver update,
+% especially with scheduler-dependent scaling. By constraining the
+% realized next latent, SPFC bounds the actual state transition rather
+% than only the proposed derivative.
+
+% Some schedulers mutate internal state when $\Step$ is called. SPFC
+% therefore probes whether two same-timestep step calls are replayable. If
+% latent projection is unsafe, it applies the trust region in velocity
+% space and performs one scheduler step:
+% \begin{align}
+% v_{\rm final}^{(n)}
+% &=v_P^{(n)}
+% +\clip_r(v_{\rm VFA}^{(n)}-v_P^{(n)};v_P^{(n)}),\\
+% x_{t_{n+1}}
+% &=\Step(x_{t_n},v_{\rm final}^{(n)},t_n).
+% \end{align}
+
+% \subsection{Complete Sampling Rule}
+
+% Initialization and decoding follow the underlying model:
+% \begin{equation}
+% x_{t_0}\sim\mathcal{N}(0,I),\qquad
+% \hat I=\VAE.\Decode(x_{t_T}).
+% \end{equation}
+% The recursive update is
+% \begin{equation}
+% x_{t_{n+1}}=
+% \begin{cases}
+% \Step(x_{t_n},v_P^{(n)},t_n),
+% & n\notin\mathcal{A},\\[3pt]
+% x_P^{+(n)}+\Pi_r(\Delta_x^{(n)};d_P^{(n)}),
+% & n\in\mathcal{A}.
+% \end{cases}
+% \end{equation}
+
+% Equivalently, SPFC can be summarized as the following constrained
+% optimization performed implicitly at each aggregation step:
+% \begin{align}
+% \min_{u}\quad
+% &\left\|u-\sum_i\alpha_i^{(n)}v_i^{(n)}\right\|_2^2\\
+% \text{s.t.}\quad
+% &\norm{u-v_P^{(n)}}\leq \rho\norm{v_P^{(n)}}, \nonumber\\
+% &\norm{\Step(x_{t_n},u,t_n)-x_P^{+(n)}}\nonumber\\
+% &\qquad\leq r\norm{x_P^{+(n)}-x_{t_n}}. \nonumber
+% \end{align}
+% The implemented two-stage clipping/projection is the closed-form radial
+% projection used for these target-centered balls.
+
+% This complete rule clarifies what changes and what does not. Outside
+% $\mathcal{A}$, SPFC exactly matches the base sampler. Inside
+% $\mathcal{A}$, it first asks all conditions for candidate directions,
+% then accepts only the part that passes self-consistency and trust-region
+% constraints. The method is therefore an inference-time controller around
+% the frozen model, not a new generative model.
+
+
+% \subsection{Invariants and Interpretation}
+
+% SPFC is training-free:
+% \begin{equation}
+% \theta_{n+1}=\theta_n=\theta.
+% \end{equation}
+% It uses no external reward, VQA model, CLIP reranker, image feedback, or
+% gradient update. Each scalar aggregation weight is a deterministic
+% function of model-internal velocities:
+% \begin{equation}
+% \alpha_i^{(n)}
+% =
+% f_i\!\left(
+% \{v_j^{(n)}\}_{j=0}^{N-1},
+% \{w_j\}_{j=0}^{N-1},
+% \tau,g_{\min},g_{\max}
+% \right).
+% \end{equation}
+% Target primacy is enforced in four independent places: non-aggregation
+% steps follow $P$ only; VFA is expressed as a clipped correction around
+% $v_P^{(n)}$; LTP is centered on the target next latent $x_P^{+(n)}$;
+% and the fallback mode clips around the target velocity. Thus primitives
+% act as sparse, self-gated semantic advisers rather than as replacement
+% prompts.
+
+
+\subsection{Discussion}
+SPFC follows a very simple structure then. Run multiple flows, aggregate them on certain time steps, and repeat. The core idea remains: a diffusion model knows what you are talking about, you just need to explain it piece by piece and ask the model to tell you which pieces it understands and how to combine them. 
+\end{document}

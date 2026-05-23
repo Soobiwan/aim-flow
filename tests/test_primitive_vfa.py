@@ -55,3 +55,21 @@ def test_velocity_clipping_reduces_large_deviation_around_target():
     )
     assert output.shape == target.shape
     assert debug["clipped_correction_norm"] < debug["raw_correction_norm"]
+
+
+def test_steering_strength_zero_returns_target_prediction():
+    target = torch.ones(1, 4)
+    primitive = torch.ones(1, 4) * 3.0
+    output, debug = aggregate_primitive_vfa(
+        predictions=[primitive, target],
+        condition_names=["primitive", "target"],
+        condition_roles=["primitive", "target"],
+        condition_base_weights=[1.0, 1.0],
+        target_index=1,
+        use_consensus_gating=False,
+        use_target_consistency_gating=False,
+        steering_strength=0.0,
+    )
+    assert torch.allclose(output, target)
+    assert debug["steering_strength"] == 0.0
+    assert debug["steered_correction_norm"] == pytest.approx(0.0, abs=1e-7)

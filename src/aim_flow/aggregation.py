@@ -222,6 +222,7 @@ def aggregate_primitive_vfa(
     use_consensus_gating: bool = True,
     use_target_consistency_gating: bool = True,
     velocity_clip_ratio: float = 0.50,
+    steering_strength: float = 1.0,
     min_gate: float = 0.0,
     max_gate: float = 1.0,
 ) -> tuple[torch.Tensor, dict[str, Any]]:
@@ -241,6 +242,8 @@ def aggregate_primitive_vfa(
         raise ValueError(f"target_index out of range: {target_index}")
     if vfa_temperature <= 0.0:
         raise ValueError("vfa_temperature must be positive.")
+    if steering_strength < 0.0:
+        raise ValueError("steering_strength must be non-negative.")
     base_shape = predictions[0].shape
     for prediction in predictions:
         if prediction.shape != base_shape:
@@ -276,7 +279,8 @@ def aggregate_primitive_vfa(
     correction = v_raw - target_pred
     max_norm = _norm_per_sample(target_pred) * float(velocity_clip_ratio)
     correction_clipped = clip_tensor_norm(correction, max_norm)
-    v_agg = target_pred + correction_clipped
+    correction_steered = correction_clipped * float(steering_strength)
+    v_agg = target_pred + correction_steered
 
     debug = {
         "condition_names": list(condition_names),
@@ -292,6 +296,9 @@ def aggregate_primitive_vfa(
         "target_norm": _mean_float(_norm_per_sample(target_pred)),
         "raw_correction_norm": _mean_float(_norm_per_sample(correction)),
         "clipped_correction_norm": _mean_float(_norm_per_sample(correction_clipped)),
+        "steered_correction_norm": _mean_float(_norm_per_sample(correction_steered)),
+        "velocity_clip_ratio": float(velocity_clip_ratio),
+        "steering_strength": float(steering_strength),
     }
     return v_agg, debug
 

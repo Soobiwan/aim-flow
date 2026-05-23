@@ -54,6 +54,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--lambda-global", type=float, help="Override AIM-Flow global lambda.")
     parser.add_argument("--vfa-temperature", type=float, help="Override LadderFlow VFA softmax temperature.")
     parser.add_argument("--velocity-clip-ratio", type=float, help="Override VFA velocity clip ratio.")
+    parser.add_argument("--steering-strength", type=float, help="Override PrimitiveFlow correction strength.")
     parser.add_argument("--ltp-radius-ratio", type=float, help="Override PrimitiveFlow LTP radius ratio.")
     parser.add_argument("--conflict-threshold", type=float, help="Override VFA conflict threshold.")
     parser.add_argument("--disable-consensus-gating", action="store_true", help="Disable LadderFlow consensus gating.")
@@ -117,6 +118,8 @@ def apply_overrides(config, args: argparse.Namespace) -> None:
         config.aim_flow.vfa.velocity_clip_ratio = args.velocity_clip_ratio
         config.ladder_flow.velocity_clip_ratio = args.velocity_clip_ratio
         config.primitive_flow.velocity_clip_ratio = args.velocity_clip_ratio
+    if args.steering_strength is not None:
+        config.primitive_flow.steering_strength = args.steering_strength
     if args.ltp_radius_ratio is not None:
         config.primitive_flow.ltp_radius_ratio = args.ltp_radius_ratio
     if args.conflict_threshold is not None:

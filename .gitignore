@@ -13,4 +13,8 @@ dist/
 .ipynb_checkpoints/
 outputs/*
 !outputs/.gitkeep
-
+external/
+benchmarks/runs/
+benchmarks/reports/
+benchmarks/probes/
+benchmarks/evaluator_cache/
