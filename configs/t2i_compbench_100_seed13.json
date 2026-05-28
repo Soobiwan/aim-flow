@@ -1,0 +1,1008 @@
+{
+  "benchmark": "t2i_compbench",
+  "manifest_version": "1.0",
+  "samples": [
+    {
+      "category": "color",
+      "id": "t2i_color_000000",
+      "metadata": {
+        "original_index": 7
+      },
+      "prompt": "a brown backpack and a blue cow",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000001",
+      "metadata": {
+        "original_index": 15
+      },
+      "prompt": "a brown banana and a green dog",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000002",
+      "metadata": {
+        "original_index": 36
+      },
+      "prompt": "a blue backpack and a red chair",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000003",
+      "metadata": {
+        "original_index": 43
+      },
+      "prompt": "a gold cat and a brown clock",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000004",
+      "metadata": {
+        "original_index": 64
+      },
+      "prompt": "a blue cup and a brown sheep",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000005",
+      "metadata": {
+        "original_index": 66
+      },
+      "prompt": "a brown bear and a red train",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000006",
+      "metadata": {
+        "original_index": 71
+      },
+      "prompt": "a blue bowl and a red train",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000007",
+      "metadata": {
+        "original_index": 75
+      },
+      "prompt": "a brown cat and a red orange",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000008",
+      "metadata": {
+        "original_index": 95
+      },
+      "prompt": "a blue boat and a brown cat",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000009",
+      "metadata": {
+        "original_index": 109
+      },
+      "prompt": "a green banana and a brown cow",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000010",
+      "metadata": {
+        "original_index": 115
+      },
+      "prompt": "a green apple and a blue cup",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000011",
+      "metadata": {
+        "original_index": 118
+      },
+      "prompt": "a brown book and a red sheep",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000012",
+      "metadata": {
+        "original_index": 119
+      },
+      "prompt": "a green banana and a brown giraffe",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000013",
+      "metadata": {
+        "original_index": 131
+      },
+      "prompt": "a green apple and a black backpack",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000014",
+      "metadata": {
+        "original_index": 132
+      },
+      "prompt": "a green cup and a blue cell phone",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000015",
+      "metadata": {
+        "original_index": 134
+      },
+      "prompt": "a white car and a red sheep",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000016",
+      "metadata": {
+        "original_index": 141
+      },
+      "prompt": "a black hat and a red scarf",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000017",
+      "metadata": {
+        "original_index": 148
+      },
+      "prompt": "a white dove and a black feather",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000018",
+      "metadata": {
+        "original_index": 150
+      },
+      "prompt": "a brown acorn and a green leaf",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000019",
+      "metadata": {
+        "original_index": 182
+      },
+      "prompt": "a red pencil and a yellow eraser",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000020",
+      "metadata": {
+        "original_index": 220
+      },
+      "prompt": "a green log and a brown moss",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000021",
+      "metadata": {
+        "original_index": 223
+      },
+      "prompt": "a white envelope and a blue stamp",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000022",
+      "metadata": {
+        "original_index": 230
+      },
+      "prompt": "a blue rose and a green tulip",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000023",
+      "metadata": {
+        "original_index": 249
+      },
+      "prompt": "Kitchen scene, black counter top on one side, whitish on the other and grey sink with long neck faucet.",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "color",
+      "id": "t2i_color_000024",
+      "metadata": {
+        "original_index": 272
+      },
+      "prompt": "A woman in a white shirt and jeans holds a pink umbrella in the rain.",
+      "source": "T2I-CompBench",
+      "split": "color_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000000",
+      "metadata": {
+        "original_index": 60
+      },
+      "prompt": "a cubic box and a pyramidal paperweight",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000001",
+      "metadata": {
+        "original_index": 69
+      },
+      "prompt": "a diamond bracelet and a rectangular watch",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000002",
+      "metadata": {
+        "original_index": 90
+      },
+      "prompt": "a big tiger and a small kitten",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000003",
+      "metadata": {
+        "original_index": 91
+      },
+      "prompt": "a pentagonal road sign and a pyramidal bookshelf",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000004",
+      "metadata": {
+        "original_index": 103
+      },
+      "prompt": "a round bagel and a rectangular bacon strip",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000005",
+      "metadata": {
+        "original_index": 129
+      },
+      "prompt": "a cubic block and a cylindrical tube of toothpaste",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000006",
+      "metadata": {
+        "original_index": 134
+      },
+      "prompt": "a round pizza and a square pizza box",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000007",
+      "metadata": {
+        "original_index": 143
+      },
+      "prompt": "a triangular slice of pie and a rectangular pie dish",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000008",
+      "metadata": {
+        "original_index": 150
+      },
+      "prompt": "a round bagel and a square toaster.",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000009",
+      "metadata": {
+        "original_index": 160
+      },
+      "prompt": "a spherical soccer ball and a conical traffic cone",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000010",
+      "metadata": {
+        "original_index": 177
+      },
+      "prompt": "a tall tree and a short bush",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000011",
+      "metadata": {
+        "original_index": 182
+      },
+      "prompt": "a pentagonal badge and a pyramidal award statue",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000012",
+      "metadata": {
+        "original_index": 186
+      },
+      "prompt": "an oval platter and a rectangular tablecloth.",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000013",
+      "metadata": {
+        "original_index": 190
+      },
+      "prompt": "a cubic dice and a cylindrical salt shaker",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000014",
+      "metadata": {
+        "original_index": 219
+      },
+      "prompt": "a cubic Rubik's cube and a cylindrical pencil holder",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000015",
+      "metadata": {
+        "original_index": 220
+      },
+      "prompt": "a pentagonal handbag and a spherical keychain charm",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000016",
+      "metadata": {
+        "original_index": 225
+      },
+      "prompt": "a small cup and a big saucer",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000017",
+      "metadata": {
+        "original_index": 227
+      },
+      "prompt": "a cubic sugar cube and a cylindrical salt shaker",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000018",
+      "metadata": {
+        "original_index": 229
+      },
+      "prompt": "a spherical balloon and a rectangular banner",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000019",
+      "metadata": {
+        "original_index": 235
+      },
+      "prompt": "an oval pizza and a round pizza cutter.",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000020",
+      "metadata": {
+        "original_index": 267
+      },
+      "prompt": "The square room and the oblong hallway were the only spaces in the house.",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000021",
+      "metadata": {
+        "original_index": 274
+      },
+      "prompt": "The oblong table and the round chairs were arranged for the dinner party.",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000022",
+      "metadata": {
+        "original_index": 281
+      },
+      "prompt": "The pyramidal shape and the triangular lines were the inspiration for the art project.",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000023",
+      "metadata": {
+        "original_index": 283
+      },
+      "prompt": "The diamond ring and the teardrop necklace were the precious gifts from her beloved.",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "shape",
+      "id": "t2i_shape_000024",
+      "metadata": {
+        "original_index": 288
+      },
+      "prompt": "The pentagonal prism and the pyramidal tetrahedron were the shapes of the crystals in the museum exhibit.",
+      "source": "T2I-CompBench",
+      "split": "shape_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000000",
+      "metadata": {
+        "original_index": 1
+      },
+      "prompt": "rubber sole shoes and fluffy clouds",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000001",
+      "metadata": {
+        "original_index": 22
+      },
+      "prompt": "a rubber band and a wooden spoon",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000002",
+      "metadata": {
+        "original_index": 37
+      },
+      "prompt": "a metallic car and a fluffy sweater",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000003",
+      "metadata": {
+        "original_index": 66
+      },
+      "prompt": "a metallic fork and a fabric dress",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000004",
+      "metadata": {
+        "original_index": 67
+      },
+      "prompt": "a plastic cutlery and a glass mirror",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000005",
+      "metadata": {
+        "original_index": 72
+      },
+      "prompt": "a leather chair and a glass cup",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000006",
+      "metadata": {
+        "original_index": 81
+      },
+      "prompt": "a plastic container and a glass window",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000007",
+      "metadata": {
+        "original_index": 99
+      },
+      "prompt": "a rubber band and a glass jar",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000008",
+      "metadata": {
+        "original_index": 115
+      },
+      "prompt": "a metallic door knob and a glass mirror",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000009",
+      "metadata": {
+        "original_index": 120
+      },
+      "prompt": "a rubber band and a glass window",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000010",
+      "metadata": {
+        "original_index": 128
+      },
+      "prompt": "a metallic spoon and wooden chopsticks",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000011",
+      "metadata": {
+        "original_index": 129
+      },
+      "prompt": "a rubber ball and a metallic spoon",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000012",
+      "metadata": {
+        "original_index": 187
+      },
+      "prompt": "a fluffy towel and a leather belt",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000013",
+      "metadata": {
+        "original_index": 199
+      },
+      "prompt": "a fabric dress and a glass vase",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000014",
+      "metadata": {
+        "original_index": 202
+      },
+      "prompt": "rubber boots and a leather sofa",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000015",
+      "metadata": {
+        "original_index": 211
+      },
+      "prompt": "a plastic cup and a fabric sweater",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000016",
+      "metadata": {
+        "original_index": 217
+      },
+      "prompt": "wooden pencils and a leather hat",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000017",
+      "metadata": {
+        "original_index": 220
+      },
+      "prompt": "a metallic ring and a glass plate",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000018",
+      "metadata": {
+        "original_index": 227
+      },
+      "prompt": "a plastic plate and a fluffy scarf",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000019",
+      "metadata": {
+        "original_index": 237
+      },
+      "prompt": "a metallic ring and a fabric sweater",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000020",
+      "metadata": {
+        "original_index": 251
+      },
+      "prompt": "The leather journal and wooden pen rest on the fabric notebook for the metallic writer.",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000021",
+      "metadata": {
+        "original_index": 254
+      },
+      "prompt": "The leather wallet and metallic coin purse hold the plastic credit cards on the fabric counter.",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000022",
+      "metadata": {
+        "original_index": 281
+      },
+      "prompt": "The glass vase and metallic frame display the wooden flowers on the fabric mantle.",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000023",
+      "metadata": {
+        "original_index": 289
+      },
+      "prompt": "The glass bottle and metallic opener hold the wooden beer for the fluffy party.",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "texture",
+      "id": "t2i_texture_000024",
+      "metadata": {
+        "original_index": 295
+      },
+      "prompt": "The wooden salad bowl and plastic tongs mix the metallic greens for the fluffy salad.",
+      "source": "T2I-CompBench",
+      "split": "texture_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000000",
+      "metadata": {
+        "original_index": 19
+      },
+      "prompt": "a horse on side of a bicycle",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000001",
+      "metadata": {
+        "original_index": 21
+      },
+      "prompt": "a boy next to a bowl",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000002",
+      "metadata": {
+        "original_index": 35
+      },
+      "prompt": "a rabbit next to a table",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000003",
+      "metadata": {
+        "original_index": 57
+      },
+      "prompt": "a computer on the top of a rabbit",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000004",
+      "metadata": {
+        "original_index": 70
+      },
+      "prompt": "a cow on the bottom of a bag",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000005",
+      "metadata": {
+        "original_index": 84
+      },
+      "prompt": "a woman on the left of a cup",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000006",
+      "metadata": {
+        "original_index": 85
+      },
+      "prompt": "a airplane on the right of a person",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000007",
+      "metadata": {
+        "original_index": 93
+      },
+      "prompt": "a cow on side of a train",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000008",
+      "metadata": {
+        "original_index": 98
+      },
+      "prompt": "a table on the top of a pig",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000009",
+      "metadata": {
+        "original_index": 103
+      },
+      "prompt": "a painting on the bottom of a horse",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000010",
+      "metadata": {
+        "original_index": 108
+      },
+      "prompt": "a television on the right of a woman",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000011",
+      "metadata": {
+        "original_index": 115
+      },
+      "prompt": "a fish near a cup",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000012",
+      "metadata": {
+        "original_index": 121
+      },
+      "prompt": "a woman on the right of a television",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000013",
+      "metadata": {
+        "original_index": 151
+      },
+      "prompt": "a horse near a sofa",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000014",
+      "metadata": {
+        "original_index": 174
+      },
+      "prompt": "a bird on side of a balloon",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000015",
+      "metadata": {
+        "original_index": 179
+      },
+      "prompt": "a butterfly next to a train",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000016",
+      "metadata": {
+        "original_index": 183
+      },
+      "prompt": "a airplane on the top of a mouse",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000017",
+      "metadata": {
+        "original_index": 191
+      },
+      "prompt": "a fish on side of a bag",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000018",
+      "metadata": {
+        "original_index": 219
+      },
+      "prompt": "a bee on side of a airplane",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000019",
+      "metadata": {
+        "original_index": 254
+      },
+      "prompt": "a girl on the top of a cow",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000020",
+      "metadata": {
+        "original_index": 266
+      },
+      "prompt": "a fish next to a desk",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000021",
+      "metadata": {
+        "original_index": 284
+      },
+      "prompt": "a pig on the left of a desk",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000022",
+      "metadata": {
+        "original_index": 291
+      },
+      "prompt": "a sheep on the top of a table",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000023",
+      "metadata": {
+        "original_index": 297
+      },
+      "prompt": "a man on the bottom of a sofa",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    },
+    {
+      "category": "spatial",
+      "id": "t2i_spatial_000024",
+      "metadata": {
+        "original_index": 298
+      },
+      "prompt": "a painting on the right of a pig",
+      "source": "T2I-CompBench",
+      "split": "spatial_val.txt"
+    }
+  ],
+  "seed": 13,
+  "subset_size": 100
+}
