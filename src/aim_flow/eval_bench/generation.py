@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any
 
 import torch
+from tqdm.auto import tqdm
 
 from aim_flow.config import RunConfig, load_config
 from aim_flow.eval_bench.constants import (
@@ -210,6 +211,18 @@ def _write_run_index(run_root: Path, benchmark: str, method: str, paths: list[di
     return output
 
 
+def _iter_samples_with_progress(manifest: PromptManifest, method: str):
+    total = len(manifest.samples)
+    progress = tqdm(manifest.samples, total=total, unit="image", dynamic_ncols=True)
+    try:
+        for index, sample in enumerate(progress, start=1):
+            progress.set_description(f"{manifest.benchmark}/{method} image {index}/{total}")
+            progress.set_postfix_str(f"left={total - index}", refresh=True)
+            yield sample
+    finally:
+        progress.close()
+
+
 def generate_spfc(
     manifest: PromptManifest,
     decompositions: DecompositionManifest,
@@ -231,7 +244,7 @@ def generate_spfc(
     method_name = method_label or ("spfc" if not variant or variant == "full" else f"spfc_{variant}")
     paths: list[dict[str, Any]] = []
     try:
-        for sample in manifest.samples:
+        for sample in _iter_samples_with_progress(manifest, method_name):
             flow_set: PrimitiveFlowSet = items[sample.id].to_flow_set()
             start = time.perf_counter()
             image, metadata = sampler.generate_sparse_primitive_flow(flow_set, mode="primitive_flow_sparse")
@@ -258,7 +271,7 @@ def generate_base(manifest: PromptManifest, run_root: str | Path, config: RunCon
     run_dir = Path(run_root)
     paths: list[dict[str, Any]] = []
     try:
-        for sample in manifest.samples:
+        for sample in _iter_samples_with_progress(manifest, "base"):
             start = time.perf_counter()
             image = backend.generate_base(
                 prompt=sample.prompt,
@@ -298,7 +311,7 @@ def generate_rectified_cfgpp(
     run_dir = Path(run_root)
     paths: list[dict[str, Any]] = []
     try:
-        for sample in manifest.samples:
+        for sample in _iter_samples_with_progress(manifest, "rectified_cfgpp"):
             start = time.perf_counter()
             image = backend.generate(sample.prompt)
             runtime_sec = time.perf_counter() - start
