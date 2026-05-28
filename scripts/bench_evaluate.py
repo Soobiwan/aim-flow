@@ -22,6 +22,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", default="benchmarks/reports/spfc_eval_seed13/eval")
     parser.add_argument("--t2i-repo-dir", default="external/T2I-CompBench")
     parser.add_argument("--execute-official", action="store_true", help="Run official T2I scripts instead of staging commands only.")
+    parser.add_argument(
+        "--t2i-categories",
+        nargs="+",
+        choices=["color", "shape", "texture", "spatial"],
+        help="T2I-CompBench categories to evaluate. Defaults to all categories.",
+    )
     parser.add_argument("--append", action="store_true", help="Merge this method's scores into an existing score JSON.")
     return parser.parse_args()
 
@@ -59,6 +65,7 @@ def main() -> None:
             official_repo=args.t2i_repo_dir,
             output_dir=output_dir,
             execute=args.execute_official,
+            categories=args.t2i_categories,
         )
     else:
         output = evaluate_coco_clipscore(

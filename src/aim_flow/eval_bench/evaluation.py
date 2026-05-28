@@ -81,6 +81,7 @@ def run_t2i_compbench_official(
     official_repo: str | Path,
     output_dir: str | Path,
     execute: bool = True,
+    categories: list[str] | None = None,
 ) -> Path:
     """Run or stage official T2I-CompBench metrics for generated images."""
 
@@ -97,9 +98,15 @@ def run_t2i_compbench_official(
         "texture": ["python", str(official / "BLIPvqa_eval" / "BLIP_vqa.py")],
         "spatial": ["python", str(official / "UniDet_eval" / "2D_spatial_eval.py")],
     }
+    selected_categories = categories or list(category_eval)
+    unknown = sorted(set(selected_categories).difference(category_eval))
+    if unknown:
+        available = ", ".join(category_eval)
+        raise ValueError(f"Unknown T2I-CompBench categories: {unknown}. Available: {available}")
     for method in methods:
         method_scores: dict[str, float | None] = {}
-        for category, base_cmd in category_eval.items():
+        for category in selected_categories:
+            base_cmd = category_eval[category]
             stage = stage_t2i_compbench_inputs(manifest, run_root, method, category, out / "staged")
             if category == "spatial":
                 cmd = base_cmd + ["--outpath", str(stage)]
