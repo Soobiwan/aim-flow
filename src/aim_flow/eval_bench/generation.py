@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import copy
 import gc
+import importlib.util
 import json
 import os
 import subprocess
@@ -129,6 +130,55 @@ def ensure_rectified_cfgpp_repo(path: str | Path | None = None) -> Path:
     return repo_dir
 
 
+def _install_rectified_cfgpp_diffusers_compat() -> None:
+    """Install small compatibility shims needed by the pinned Rectified-CFG++ pipeline."""
+
+    import diffusers.loaders as loaders
+
+    if hasattr(loaders, "SD3IPAdapterMixin"):
+        return
+
+    class SD3IPAdapterMixin:
+        @property
+        def is_ip_adapter_active(self) -> bool:
+            return False
+
+        def load_ip_adapter(self, *args: Any, **kwargs: Any) -> None:
+            raise NotImplementedError(
+                "This Diffusers version does not provide SD3 IP-Adapter support; "
+                "Rectified-CFG++ generation does not use IP-Adapters."
+            )
+
+        def unload_ip_adapter(self) -> None:
+            return None
+
+        def set_ip_adapter_scale(self, *args: Any, **kwargs: Any) -> None:
+            raise NotImplementedError(
+                "This Diffusers version does not provide SD3 IP-Adapter support; "
+                "Rectified-CFG++ generation does not use IP-Adapters."
+            )
+
+    loaders.SD3IPAdapterMixin = SD3IPAdapterMixin
+
+
+def _validate_rectified_cfgpp_pipeline_import(repo_dir: Path) -> None:
+    """Fail early with a focused message if the external custom pipeline cannot import."""
+
+    pipeline_path = repo_dir / "rect-cfg-SD3-pipeline" / "pipeline.py"
+    if not pipeline_path.exists():
+        raise FileNotFoundError(f"Rectified-CFG++ custom pipeline not found: {pipeline_path}")
+
+    module_name = f"_aim_flow_rectified_cfgpp_pipeline_{abs(hash(str(pipeline_path)))}"
+    spec = importlib.util.spec_from_file_location(module_name, pipeline_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Could not create an import spec for Rectified-CFG++ pipeline: {pipeline_path}")
+    module = importlib.util.module_from_spec(spec)
+    try:
+        spec.loader.exec_module(module)
+    except Exception as exc:
+        raise RuntimeError(f"Failed to import Rectified-CFG++ custom pipeline at {pipeline_path}: {exc}") from exc
+
+
 class RectifiedCFGPPBackend:
     """Thin adapter around the Rectified-CFG++ SD3 custom pipeline."""
 
@@ -146,6 +196,9 @@ class RectifiedCFGPPBackend:
         self.dtype = get_torch_dtype(config.model.dtype)
 
     def load(self) -> "RectifiedCFGPPBackend":
+        _install_rectified_cfgpp_diffusers_compat()
+        _validate_rectified_cfgpp_pipeline_import(self.repo_dir)
+
         from diffusers import StableDiffusion3Pipeline
 
         token = get_hf_token()
