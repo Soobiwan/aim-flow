@@ -6,6 +6,7 @@ import json
 import math
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -92,30 +93,42 @@ def run_t2i_compbench_official(
     out = ensure_dir(output_dir)
     scores: dict[str, dict[str, float | None]] = {}
     commands: list[dict[str, Any]] = []
+    blip_script = official / "BLIPvqa_eval" / "BLIP_vqa.py"
+    spatial_script = official / "UniDet_eval" / "2D_spatial_eval.py"
     category_eval = {
-        "color": ["python", str(official / "BLIPvqa_eval" / "BLIP_vqa.py")],
-        "shape": ["python", str(official / "BLIPvqa_eval" / "BLIP_vqa.py")],
-        "texture": ["python", str(official / "BLIPvqa_eval" / "BLIP_vqa.py")],
-        "spatial": ["python", str(official / "UniDet_eval" / "2D_spatial_eval.py")],
+        "color": {"script": blip_script, "cwd": official / "BLIPvqa_eval"},
+        "shape": {"script": blip_script, "cwd": official / "BLIPvqa_eval"},
+        "texture": {"script": blip_script, "cwd": official / "BLIPvqa_eval"},
+        "spatial": {"script": spatial_script, "cwd": official / "UniDet_eval"},
     }
     selected_categories = categories or list(category_eval)
     unknown = sorted(set(selected_categories).difference(category_eval))
     if unknown:
         available = ", ".join(category_eval)
         raise ValueError(f"Unknown T2I-CompBench categories: {unknown}. Available: {available}")
+    missing_scripts = sorted(
+        {
+            category_eval[category]["script"]
+            for category in selected_categories
+            if not category_eval[category]["script"].exists()
+        }
+    )
+    if missing_scripts:
+        missing = "\n".join(f"- {path}" for path in missing_scripts)
+        raise FileNotFoundError(f"Official T2I-CompBench checkout is incomplete. Missing evaluator scripts:\n{missing}")
     for method in methods:
         method_scores: dict[str, float | None] = {}
         for category in selected_categories:
-            base_cmd = category_eval[category]
+            eval_config = category_eval[category]
+            base_cmd = [sys.executable, str(eval_config["script"])]
             stage = stage_t2i_compbench_inputs(manifest, run_root, method, category, out / "staged")
             if category == "spatial":
                 cmd = base_cmd + ["--outpath", str(stage)]
                 result_path = stage / "labels" / "annotation_obj_detection_2d" / "vqa_result.json"
-                cwd = official / "UniDet_eval"
             else:
                 cmd = base_cmd + ["--out_dir", str(stage)]
                 result_path = stage / "annotation_blip" / "vqa_result.json"
-                cwd = official
+            cwd = eval_config["cwd"]
             commands.append({"method": method, "category": category, "cmd": cmd, "cwd": str(cwd)})
             if execute:
                 subprocess.run(cmd, cwd=str(cwd), check=True)
