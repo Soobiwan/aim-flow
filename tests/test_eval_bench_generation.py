@@ -1,4 +1,10 @@
-from aim_flow.eval_bench.generation import apply_spfc_variant, load_bench_config, unload_model
+from aim_flow.eval_bench.generation import (
+    _install_rectified_cfgpp_diffusers_compat,
+    _validate_rectified_cfgpp_pipeline_import,
+    apply_spfc_variant,
+    load_bench_config,
+    unload_model,
+)
 
 
 class FakePipe:
@@ -48,3 +54,32 @@ def test_unload_model_calls_diffusers_offload_hook():
     pipe = backend.pipe
     unload_model(backend)
     assert pipe.freed
+
+
+def test_rectified_cfgpp_diffusers_compat_installs_sd3_ip_adapter_mixin(monkeypatch):
+    import diffusers.loaders as loaders
+
+    monkeypatch.delattr(loaders, "SD3IPAdapterMixin", raising=False)
+    _install_rectified_cfgpp_diffusers_compat()
+
+    from diffusers.loaders import SD3IPAdapterMixin
+
+    compat = SD3IPAdapterMixin()
+    assert compat.is_ip_adapter_active is False
+
+
+def test_rectified_cfgpp_pipeline_import_uses_compat_mixin(tmp_path, monkeypatch):
+    import diffusers.loaders as loaders
+
+    monkeypatch.delattr(loaders, "SD3IPAdapterMixin", raising=False)
+    pipeline_dir = tmp_path / "rect-cfg-SD3-pipeline"
+    pipeline_dir.mkdir()
+    (pipeline_dir / "pipeline.py").write_text(
+        "from diffusers.loaders import FromSingleFileMixin, SD3IPAdapterMixin, SD3LoraLoaderMixin\n"
+        "class DummyRectifiedPipeline(SD3IPAdapterMixin):\n"
+        "    pass\n",
+        encoding="utf-8",
+    )
+
+    _install_rectified_cfgpp_diffusers_compat()
+    _validate_rectified_cfgpp_pipeline_import(tmp_path)
