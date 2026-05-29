@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import inspect
+import os
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -27,6 +28,25 @@ def _model_load_error_message(model_id: str, token: str | None) -> str:
     else:
         message += " HF_TOKEN is set, but the token may be invalid or missing access to the gated model."
     return message
+
+
+def _load_pipeline_with_fallback(pipeline_cls: Any, model_id: str, kwargs: dict[str, Any]) -> Any:
+    """Load a Diffusers pipeline while tolerating older keyword names."""
+
+    try:
+        return pipeline_cls.from_pretrained(model_id, **kwargs)
+    except TypeError:
+        fallback = dict(kwargs)
+        changed = False
+        if "token" in fallback:
+            fallback["use_auth_token"] = fallback.pop("token")
+            changed = True
+        if "low_cpu_mem_usage" in fallback:
+            fallback.pop("low_cpu_mem_usage")
+            changed = True
+        if not changed:
+            raise
+        return pipeline_cls.from_pretrained(model_id, **fallback)
 
 
 @dataclass
@@ -257,21 +277,22 @@ class SD3Backend:
             raise RuntimeError("diffusers with StableDiffusion3Pipeline is required for SD3 inference.") from exc
 
         token = get_hf_token()
-        kwargs: dict[str, Any] = {"torch_dtype": self.dtype}
+        kwargs: dict[str, Any] = {
+            "torch_dtype": self.dtype,
+            "use_safetensors": True,
+            "low_cpu_mem_usage": True,
+        }
         if not self.config.model.load_t5_text_encoder:
             kwargs["text_encoder_3"] = None
             kwargs["tokenizer_3"] = None
+        variant = os.environ.get("SD3_MODEL_VARIANT")
+        if variant:
+            kwargs["variant"] = variant
         if token:
             kwargs["token"] = token
 
         try:
-            try:
-                self.pipe = StableDiffusion3Pipeline.from_pretrained(self.config.model.model_id, **kwargs)
-            except TypeError:
-                if token:
-                    kwargs.pop("token", None)
-                    kwargs["use_auth_token"] = token
-                self.pipe = StableDiffusion3Pipeline.from_pretrained(self.config.model.model_id, **kwargs)
+            self.pipe = _load_pipeline_with_fallback(StableDiffusion3Pipeline, self.config.model.model_id, kwargs)
         except Exception as exc:
             raise RuntimeError(_model_load_error_message(self.config.model.model_id, token)) from exc
 

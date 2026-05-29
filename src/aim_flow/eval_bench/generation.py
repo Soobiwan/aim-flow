@@ -5,6 +5,7 @@ from __future__ import annotations
 import copy
 import gc
 import json
+import os
 import subprocess
 import time
 from pathlib import Path
@@ -30,7 +31,7 @@ from aim_flow.eval_bench.schemas import DecompositionManifest, PromptManifest
 from aim_flow.eval_bench.schedules import one_indexed_to_zero_indexed
 from aim_flow.prompt_schema import PrimitiveFlowSet
 from aim_flow.sampler import AIMFlowSampler
-from aim_flow.sd3_backend import SD3Backend, _model_load_error_message
+from aim_flow.sd3_backend import SD3Backend, _load_pipeline_with_fallback, _model_load_error_message
 from aim_flow.utils import ensure_dir, get_device, get_hf_token, get_torch_dtype, write_json
 from aim_flow.visualize import save_metadata_json
 
@@ -150,20 +151,19 @@ class RectifiedCFGPPBackend:
         token = get_hf_token()
         kwargs: dict[str, Any] = {
             "torch_dtype": self.dtype,
+            "use_safetensors": True,
+            "low_cpu_mem_usage": True,
             "custom_pipeline": str(self.repo_dir / "rect-cfg-SD3-pipeline"),
             "text_encoder_3": None,
             "tokenizer_3": None,
         }
+        variant = os.environ.get("SD3_MODEL_VARIANT")
+        if variant:
+            kwargs["variant"] = variant
         if token:
             kwargs["token"] = token
         try:
-            try:
-                self.pipe = StableDiffusion3Pipeline.from_pretrained(self.config.model.model_id, **kwargs)
-            except TypeError:
-                if token:
-                    kwargs.pop("token", None)
-                    kwargs["use_auth_token"] = token
-                self.pipe = StableDiffusion3Pipeline.from_pretrained(self.config.model.model_id, **kwargs)
+            self.pipe = _load_pipeline_with_fallback(StableDiffusion3Pipeline, self.config.model.model_id, kwargs)
         except Exception as exc:
             raise RuntimeError(_model_load_error_message(self.config.model.model_id, token)) from exc
 
@@ -211,6 +211,16 @@ def _write_run_index(run_root: Path, benchmark: str, method: str, paths: list[di
     return output
 
 
+def _existing_output_index(manifest: PromptManifest, run_root: Path, method: str) -> list[dict[str, Any]]:
+    paths: list[dict[str, Any]] = []
+    for sample in manifest.samples:
+        image_path, metadata_path = _sample_output_paths(run_root, manifest.benchmark, method, sample.id)
+        if not image_path.exists() or not metadata_path.exists():
+            return []
+        paths.append({"sample_id": sample.id, "image": str(image_path), "metadata": str(metadata_path)})
+    return paths
+
+
 def _iter_samples_with_progress(manifest: PromptManifest, method: str):
     total = len(manifest.samples)
     progress = tqdm(manifest.samples, total=total, unit="image", dynamic_ncols=True)
@@ -230,6 +240,7 @@ def generate_spfc(
     config: RunConfig,
     variant: str | None = None,
     method_label: str | None = None,
+    skip_existing: bool = False,
 ) -> Path:
     """Generate all SPFC images for a manifest."""
 
@@ -238,18 +249,25 @@ def generate_spfc(
     missing = [sample.id for sample in manifest.samples if sample.id not in items]
     if missing:
         raise KeyError(f"Missing decompositions for sample ids: {missing[:5]}")
-    backend = SD3Backend(tuned).load()
-    sampler = AIMFlowSampler(backend, tuned)
     run_dir = Path(run_root)
     method_name = method_label or ("spfc" if not variant or variant == "full" else f"spfc_{variant}")
+    if skip_existing:
+        existing = _existing_output_index(manifest, run_dir, method_name)
+        if existing:
+            return _write_run_index(run_dir, manifest.benchmark, method_name, existing)
+    backend = SD3Backend(tuned).load()
+    sampler = AIMFlowSampler(backend, tuned)
     paths: list[dict[str, Any]] = []
     try:
         for sample in _iter_samples_with_progress(manifest, method_name):
+            image_path, metadata_path = _sample_output_paths(run_dir, manifest.benchmark, method_name, sample.id)
+            if skip_existing and image_path.exists() and metadata_path.exists():
+                paths.append({"sample_id": sample.id, "image": str(image_path), "metadata": str(metadata_path)})
+                continue
             flow_set: PrimitiveFlowSet = items[sample.id].to_flow_set()
             start = time.perf_counter()
             image, metadata = sampler.generate_sparse_primitive_flow(flow_set, mode="primitive_flow_sparse")
             runtime_sec = time.perf_counter() - start
-            image_path, metadata_path = _sample_output_paths(run_dir, manifest.benchmark, method_name, sample.id)
             backend.save_image(image, image_path)
             metadata.update(
                 {
@@ -271,14 +289,23 @@ def generate_sd3_baseline(
     run_root: str | Path,
     config: RunConfig,
     method_name: str,
+    skip_existing: bool = False,
 ) -> Path:
     """Generate all images for a plain SD3 prompt-only baseline."""
 
-    backend = SD3Backend(config).load()
     run_dir = Path(run_root)
+    if skip_existing:
+        existing = _existing_output_index(manifest, run_dir, method_name)
+        if existing:
+            return _write_run_index(run_dir, manifest.benchmark, method_name, existing)
+    backend = SD3Backend(config).load()
     paths: list[dict[str, Any]] = []
     try:
         for sample in _iter_samples_with_progress(manifest, method_name):
+            image_path, metadata_path = _sample_output_paths(run_dir, manifest.benchmark, method_name, sample.id)
+            if skip_existing and image_path.exists() and metadata_path.exists():
+                paths.append({"sample_id": sample.id, "image": str(image_path), "metadata": str(metadata_path)})
+                continue
             start = time.perf_counter()
             image = backend.generate_base(
                 prompt=sample.prompt,
@@ -290,7 +317,6 @@ def generate_sd3_baseline(
                 width=config.sampler.width,
             )
             runtime_sec = time.perf_counter() - start
-            image_path, metadata_path = _sample_output_paths(run_dir, manifest.benchmark, method_name, sample.id)
             backend.save_image(image, image_path)
             write_json(
                 {
@@ -307,16 +333,16 @@ def generate_sd3_baseline(
     return _write_run_index(run_dir, manifest.benchmark, method_name, paths)
 
 
-def generate_cfg(manifest: PromptManifest, run_root: str | Path, config: RunConfig) -> Path:
+def generate_cfg(manifest: PromptManifest, run_root: str | Path, config: RunConfig, skip_existing: bool = False) -> Path:
     """Generate standard SD3 images with classifier-free guidance."""
 
-    return generate_sd3_baseline(manifest, run_root, config, "cfg")
+    return generate_sd3_baseline(manifest, run_root, config, "cfg", skip_existing=skip_existing)
 
 
-def generate_base(manifest: PromptManifest, run_root: str | Path, config: RunConfig) -> Path:
+def generate_base(manifest: PromptManifest, run_root: str | Path, config: RunConfig, skip_existing: bool = False) -> Path:
     """Generate standard SD3 images under the provided config as the base label."""
 
-    return generate_sd3_baseline(manifest, run_root, config, "base")
+    return generate_sd3_baseline(manifest, run_root, config, "base", skip_existing=skip_existing)
 
 
 def generate_rectified_cfgpp(
@@ -325,16 +351,24 @@ def generate_rectified_cfgpp(
     config: RunConfig,
     repo_dir: str | Path | None = None,
     sigma_noise: float = 0.005,
+    skip_existing: bool = False,
 ) -> Path:
-    backend = RectifiedCFGPPBackend(config, repo_dir=repo_dir, sigma_noise=sigma_noise).load()
     run_dir = Path(run_root)
+    if skip_existing:
+        existing = _existing_output_index(manifest, run_dir, "rectified_cfgpp")
+        if existing:
+            return _write_run_index(run_dir, manifest.benchmark, "rectified_cfgpp", existing)
+    backend = RectifiedCFGPPBackend(config, repo_dir=repo_dir, sigma_noise=sigma_noise).load()
     paths: list[dict[str, Any]] = []
     try:
         for sample in _iter_samples_with_progress(manifest, "rectified_cfgpp"):
+            image_path, metadata_path = _sample_output_paths(run_dir, manifest.benchmark, "rectified_cfgpp", sample.id)
+            if skip_existing and image_path.exists() and metadata_path.exists():
+                paths.append({"sample_id": sample.id, "image": str(image_path), "metadata": str(metadata_path)})
+                continue
             start = time.perf_counter()
             image = backend.generate(sample.prompt)
             runtime_sec = time.perf_counter() - start
-            image_path, metadata_path = _sample_output_paths(run_dir, manifest.benchmark, "rectified_cfgpp", sample.id)
             backend.save_image(image, image_path)
             write_json(
                 {
@@ -365,6 +399,7 @@ def generate_methods(
     spfc_variant: str | None = None,
     spfc_method_label: str | None = None,
     guidance_scale: float = DEFAULT_GUIDANCE_SCALE,
+    skip_existing: bool = False,
 ) -> dict[str, str]:
     """Run benchmark methods sequentially, unloading between phases."""
 
@@ -384,14 +419,23 @@ def generate_methods(
                     config,
                     variant=spfc_variant,
                     method_label=spfc_method_label,
+                    skip_existing=skip_existing,
                 )
             )
         elif method == "rectified_cfgpp":
-            outputs[method] = str(generate_rectified_cfgpp(manifest, run_root, config, repo_dir=rectified_repo_dir))
+            outputs[method] = str(
+                generate_rectified_cfgpp(
+                    manifest,
+                    run_root,
+                    config,
+                    repo_dir=rectified_repo_dir,
+                    skip_existing=skip_existing,
+                )
+            )
         elif method == "cfg":
-            outputs[method] = str(generate_cfg(manifest, run_root, config))
+            outputs[method] = str(generate_cfg(manifest, run_root, config, skip_existing=skip_existing))
         elif method == "base":
-            outputs[method] = str(generate_base(manifest, run_root, config))
+            outputs[method] = str(generate_base(manifest, run_root, config, skip_existing=skip_existing))
         else:
             raise ValueError(f"Unknown generation method: {method}")
     write_json(outputs, Path(run_root) / manifest.benchmark / "generation_indices.json")

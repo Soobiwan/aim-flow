@@ -25,6 +25,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--rectified-repo-dir", default="external/Rectified-CFGpp")
     parser.add_argument("--spfc-variant", help="Optional SPFC variant, e.g. no_ltp or steering_0.75.")
     parser.add_argument("--spfc-method-label", help="Output method directory name for an SPFC variant.")
+    parser.add_argument("--skip-existing", action="store_true", help="Reuse existing PNG/JSON outputs when present.")
     return parser.parse_args()
 
 
@@ -41,6 +42,7 @@ def main() -> None:
         rectified_repo_dir=args.rectified_repo_dir,
         spfc_variant=args.spfc_variant,
         spfc_method_label=args.spfc_method_label,
+        skip_existing=args.skip_existing,
     )
     print("generation_indices:")
     for method, path in outputs.items():
