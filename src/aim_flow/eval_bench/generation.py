@@ -266,12 +266,19 @@ def generate_spfc(
     return _write_run_index(run_dir, manifest.benchmark, method_name, paths)
 
 
-def generate_base(manifest: PromptManifest, run_root: str | Path, config: RunConfig) -> Path:
+def generate_sd3_baseline(
+    manifest: PromptManifest,
+    run_root: str | Path,
+    config: RunConfig,
+    method_name: str,
+) -> Path:
+    """Generate all images for a plain SD3 prompt-only baseline."""
+
     backend = SD3Backend(config).load()
     run_dir = Path(run_root)
     paths: list[dict[str, Any]] = []
     try:
-        for sample in _iter_samples_with_progress(manifest, "base"):
+        for sample in _iter_samples_with_progress(manifest, method_name):
             start = time.perf_counter()
             image = backend.generate_base(
                 prompt=sample.prompt,
@@ -283,11 +290,11 @@ def generate_base(manifest: PromptManifest, run_root: str | Path, config: RunCon
                 width=config.sampler.width,
             )
             runtime_sec = time.perf_counter() - start
-            image_path, metadata_path = _sample_output_paths(run_dir, manifest.benchmark, "base", sample.id)
+            image_path, metadata_path = _sample_output_paths(run_dir, manifest.benchmark, method_name, sample.id)
             backend.save_image(image, image_path)
             write_json(
                 {
-                    "bench_method": "base",
+                    "bench_method": method_name,
                     "benchmark_sample": sample.to_dict(),
                     "runtime_sec": runtime_sec,
                     "runtime_config": config.to_dict(),
@@ -297,7 +304,19 @@ def generate_base(manifest: PromptManifest, run_root: str | Path, config: RunCon
             paths.append({"sample_id": sample.id, "image": str(image_path), "metadata": str(metadata_path)})
     finally:
         unload_model(backend)
-    return _write_run_index(run_dir, manifest.benchmark, "base", paths)
+    return _write_run_index(run_dir, manifest.benchmark, method_name, paths)
+
+
+def generate_cfg(manifest: PromptManifest, run_root: str | Path, config: RunConfig) -> Path:
+    """Generate standard SD3 images with classifier-free guidance."""
+
+    return generate_sd3_baseline(manifest, run_root, config, "cfg")
+
+
+def generate_base(manifest: PromptManifest, run_root: str | Path, config: RunConfig) -> Path:
+    """Generate standard SD3 images under the provided config as the base label."""
+
+    return generate_sd3_baseline(manifest, run_root, config, "base")
 
 
 def generate_rectified_cfgpp(
@@ -345,11 +364,12 @@ def generate_methods(
     rectified_repo_dir: str | Path | None = None,
     spfc_variant: str | None = None,
     spfc_method_label: str | None = None,
+    guidance_scale: float = DEFAULT_GUIDANCE_SCALE,
 ) -> dict[str, str]:
     """Run benchmark methods sequentially, unloading between phases."""
 
     manifest = PromptManifest.load(manifest_path)
-    config = load_bench_config(config_path=config_path, seed=seed)
+    config = load_bench_config(config_path=config_path, seed=seed, guidance_scale=guidance_scale)
     outputs: dict[str, str] = {}
     for method in methods:
         if method == "spfc":
@@ -368,6 +388,8 @@ def generate_methods(
             )
         elif method == "rectified_cfgpp":
             outputs[method] = str(generate_rectified_cfgpp(manifest, run_root, config, repo_dir=rectified_repo_dir))
+        elif method == "cfg":
+            outputs[method] = str(generate_cfg(manifest, run_root, config))
         elif method == "base":
             outputs[method] = str(generate_base(manifest, run_root, config))
         else:

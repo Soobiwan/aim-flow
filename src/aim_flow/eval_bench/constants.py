@@ -34,4 +34,4 @@ SPFC_SCHEDULE_ABLATIONS_1_INDEXED = {
 STEERING_STRENGTH_SWEEP = [0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5]
 PRIMITIVE_COUNT_SWEEP = [1, 2, 3, 4, 5]
 
-BENCH_METHODS = ["spfc", "rectified_cfgpp", "base"]
+BENCH_METHODS = ["spfc", "rectified_cfgpp", "cfg", "base"]

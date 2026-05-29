@@ -1,4 +1,4 @@
-"""Generate benchmark images for SPFC, Rectified-CFG++, and base SD3."""
+"""Generate benchmark images for SPFC, Rectified-CFG++, CFG, and base SD3."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from aim_flow.eval_bench.constants import DEFAULT_SEED
+from aim_flow.eval_bench.constants import DEFAULT_GUIDANCE_SCALE, DEFAULT_SEED
 from aim_flow.eval_bench.generation import generate_methods
 
 
@@ -21,6 +21,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--decompositions", help="Required when methods includes spfc.")
     parser.add_argument("--config", help="Optional base RunConfig YAML.")
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
+    parser.add_argument("--guidance-scale", type=float, default=DEFAULT_GUIDANCE_SCALE)
     parser.add_argument("--rectified-repo-dir", default="external/Rectified-CFGpp")
     parser.add_argument("--spfc-variant", help="Optional SPFC variant, e.g. no_ltp or steering_0.75.")
     parser.add_argument("--spfc-method-label", help="Output method directory name for an SPFC variant.")
@@ -36,6 +37,7 @@ def main() -> None:
         config_path=args.config,
         decomposition_path=args.decompositions,
         seed=args.seed,
+        guidance_scale=args.guidance_scale,
         rectified_repo_dir=args.rectified_repo_dir,
         spfc_variant=args.spfc_variant,
         spfc_method_label=args.spfc_method_label,

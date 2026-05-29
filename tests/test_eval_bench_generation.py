@@ -19,7 +19,13 @@ def test_bench_config_locks_sd3_medium_no_t5_seed_and_schedule():
     assert config.model.model_id == "stabilityai/stable-diffusion-3-medium-diffusers"
     assert config.model.load_t5_text_encoder is False
     assert config.sampler.seed == 13
+    assert config.sampler.guidance_scale == 4.5
     assert config.primitive_flow.aggregation_steps == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 13, 15, 17, 19, 23]
+
+
+def test_bench_config_accepts_explicit_guidance_scale():
+    config = load_bench_config(seed=13, guidance_scale=1.0)
+    assert config.sampler.guidance_scale == 1.0
 
 
 def test_spfc_component_variants_mutate_only_expected_knobs():
