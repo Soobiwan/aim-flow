@@ -26,6 +26,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--spfc-variant", help="Optional SPFC variant, e.g. target_only_uniform, no_ltp, or steering_0.75.")
     parser.add_argument("--spfc-method-label", help="Output method directory name for an SPFC variant.")
     parser.add_argument("--skip-existing", action="store_true", help="Reuse existing PNG/JSON outputs when present.")
+    parser.add_argument("--sample-start", type=int, help="First manifest sample index to generate, inclusive.")
+    parser.add_argument("--sample-end", type=int, help="Last manifest sample index to generate, exclusive.")
     return parser.parse_args()
 
 
@@ -43,6 +45,8 @@ def main() -> None:
         spfc_variant=args.spfc_variant,
         spfc_method_label=args.spfc_method_label,
         skip_existing=args.skip_existing,
+        sample_start=args.sample_start,
+        sample_end=args.sample_end,
     )
     print("generation_indices:")
     for method, path in outputs.items():

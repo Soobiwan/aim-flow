@@ -1,10 +1,14 @@
+import pytest
+
 from aim_flow.eval_bench.generation import (
     _install_rectified_cfgpp_diffusers_compat,
     _validate_rectified_cfgpp_pipeline_import,
     apply_spfc_variant,
     load_bench_config,
+    slice_prompt_manifest,
     unload_model,
 )
+from aim_flow.eval_bench.schemas import PromptManifest, PromptSample
 
 
 class FakePipe:
@@ -18,6 +22,24 @@ class FakePipe:
 class FakeBackend:
     def __init__(self):
         self.pipe = FakePipe()
+
+
+def make_manifest(sample_count=100):
+    return PromptManifest(
+        benchmark="t2i_compbench",
+        subset_size=sample_count,
+        seed=13,
+        samples=[
+            PromptSample(
+                id=f"sample_{index:03}",
+                category="color",
+                prompt=f"prompt {index}",
+                source="test",
+                split="test",
+            )
+            for index in range(sample_count)
+        ],
+    )
 
 
 def test_bench_config_locks_sd3_medium_no_t5_seed_and_schedule():
@@ -53,6 +75,23 @@ def test_spfc_component_variants_mutate_only_expected_knobs():
     assert steering.primitive_flow.steering_strength == 0.25
     assert max_primitives.primitive_flow.max_primitives == 2
     assert base.primitive_flow.ltp_enabled is True
+
+
+def test_slice_prompt_manifest_builds_end_exclusive_compbench_halves():
+    manifest = make_manifest()
+    first = slice_prompt_manifest(manifest, sample_start=0, sample_end=50)
+    second = slice_prompt_manifest(manifest, sample_start=50, sample_end=100)
+
+    assert first.subset_size == 50
+    assert [sample.id for sample in first.samples] == [f"sample_{index:03}" for index in range(50)]
+    assert second.subset_size == 50
+    assert [sample.id for sample in second.samples] == [f"sample_{index:03}" for index in range(50, 100)]
+
+
+@pytest.mark.parametrize("sample_start,sample_end", [(-1, 50), (0, 101), (50, 50), (70, 50)])
+def test_slice_prompt_manifest_rejects_invalid_ranges(sample_start, sample_end):
+    with pytest.raises(ValueError, match="Invalid sample slice"):
+        slice_prompt_manifest(make_manifest(), sample_start=sample_start, sample_end=sample_end)
 
 
 def test_unload_model_calls_diffusers_offload_hook():

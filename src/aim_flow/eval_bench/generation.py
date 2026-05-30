@@ -92,6 +92,29 @@ def load_bench_config(
     return config
 
 
+def slice_prompt_manifest(
+    manifest: PromptManifest,
+    sample_start: int | None = None,
+    sample_end: int | None = None,
+) -> PromptManifest:
+    """Return an end-exclusive sample slice while preserving manifest metadata."""
+
+    total = len(manifest.samples)
+    start = 0 if sample_start is None else int(sample_start)
+    end = total if sample_end is None else int(sample_end)
+    if start < 0 or end < 0 or start >= end or end > total:
+        raise ValueError(f"Invalid sample slice [{start}:{end}] for manifest with {total} samples.")
+    if start == 0 and end == total:
+        return manifest
+    return PromptManifest(
+        benchmark=manifest.benchmark,
+        subset_size=end - start,
+        seed=manifest.seed,
+        samples=manifest.samples[start:end],
+        manifest_version=manifest.manifest_version,
+    )
+
+
 def apply_spfc_variant(config: RunConfig, variant: str | None) -> RunConfig:
     """Apply one benchmark ablation/sweep variant to a config copy."""
 
@@ -459,10 +482,16 @@ def generate_methods(
     spfc_method_label: str | None = None,
     guidance_scale: float = DEFAULT_GUIDANCE_SCALE,
     skip_existing: bool = False,
+    sample_start: int | None = None,
+    sample_end: int | None = None,
 ) -> dict[str, str]:
     """Run benchmark methods sequentially, unloading between phases."""
 
-    manifest = PromptManifest.load(manifest_path)
+    manifest = slice_prompt_manifest(
+        PromptManifest.load(manifest_path),
+        sample_start=sample_start,
+        sample_end=sample_end,
+    )
     config = load_bench_config(config_path=config_path, seed=seed, guidance_scale=guidance_scale)
     outputs: dict[str, str] = {}
     for method in methods:
