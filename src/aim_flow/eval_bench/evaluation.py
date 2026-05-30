@@ -4,10 +4,13 @@ from __future__ import annotations
 
 import json
 import math
+import os
 import shutil
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
+from queue import Queue
 from typing import Any
 
 import torch
@@ -83,9 +86,15 @@ def run_t2i_compbench_official(
     output_dir: str | Path,
     execute: bool = True,
     categories: list[str] | None = None,
+    gpu_ids: list[str] | None = None,
+    parallel_workers: int = 1,
 ) -> Path:
     """Run or stage official T2I-CompBench metrics for generated images."""
 
+    if parallel_workers < 1:
+        raise ValueError("parallel_workers must be greater than or equal to 1.")
+    if parallel_workers > 1 and not gpu_ids:
+        raise ValueError("gpu_ids are required when parallel_workers is greater than 1.")
     manifest = PromptManifest.load(manifest_path)
     official = Path(official_repo)
     if not official.exists():
@@ -116,8 +125,9 @@ def run_t2i_compbench_official(
     if missing_scripts:
         missing = "\n".join(f"- {path}" for path in missing_scripts)
         raise FileNotFoundError(f"Official T2I-CompBench checkout is incomplete. Missing evaluator scripts:\n{missing}")
+    scores = {method: {} for method in methods}
+    tasks: list[dict[str, Any]] = []
     for method in methods:
-        method_scores: dict[str, float | None] = {}
         for category in selected_categories:
             eval_config = category_eval[category]
             base_cmd = [sys.executable, str(eval_config["script"])]
@@ -129,19 +139,56 @@ def run_t2i_compbench_official(
                 cmd = base_cmd + ["--out_dir", str(stage)]
                 result_path = stage / "annotation_blip" / "vqa_result.json"
             cwd = eval_config["cwd"]
-            commands.append({"method": method, "category": category, "cmd": cmd, "cwd": str(cwd)})
+            command = {"method": method, "category": category, "cmd": cmd, "cwd": str(cwd)}
+            commands.append(command)
             if execute:
-                subprocess.run(cmd, cwd=str(cwd), check=True)
-                method_scores[category] = average_vqa_result(result_path)
+                tasks.append({"command": command, "result_path": result_path})
             else:
-                method_scores[category] = None
+                scores[method][category] = None
+
+    if execute:
+        available_gpus: Queue[str] | None = None
+        if gpu_ids:
+            available_gpus = Queue()
+            for gpu_id in gpu_ids:
+                available_gpus.put(str(gpu_id))
+        max_workers = min(parallel_workers, len(tasks))
+        if available_gpus is not None:
+            max_workers = min(max_workers, len(gpu_ids))
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_task = {
+                executor.submit(_run_t2i_compbench_task, task, available_gpus): task
+                for task in tasks
+            }
+            for future in as_completed(future_to_task):
+                task = future_to_task[future]
+                score, gpu_id = future.result()
+                command = task["command"]
+                command["gpu"] = gpu_id
+                scores[command["method"]][command["category"]] = score
+
+    for method in methods:
+        method_scores = scores[method]
         numeric = [value for value in method_scores.values() if isinstance(value, float) and not math.isnan(value)]
         method_scores["mean"] = float(sum(numeric) / len(numeric)) if numeric else None
-        scores[method] = method_scores
     result = {"benchmark": "t2i_compbench", "official_repo": str(official), "scores": scores, "commands": commands}
     output_path = out / "t2i_compbench_scores.json"
     write_json(result, output_path)
     return output_path
+
+
+def _run_t2i_compbench_task(task: dict[str, Any], available_gpus: Queue[str] | None) -> tuple[float, str | None]:
+    gpu_id = available_gpus.get() if available_gpus is not None else None
+    try:
+        env = os.environ.copy()
+        if gpu_id is not None:
+            env["CUDA_VISIBLE_DEVICES"] = gpu_id
+        command = task["command"]
+        subprocess.run(command["cmd"], cwd=command["cwd"], env=env, check=True)
+        return average_vqa_result(task["result_path"]), gpu_id
+    finally:
+        if available_gpus is not None:
+            available_gpus.put(gpu_id)
 
 
 def evaluate_coco_clipscore(
