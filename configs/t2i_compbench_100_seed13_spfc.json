@@ -9,39 +9,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_backpack_identity",
+          "name": "S1_backpack_and_cow_base",
+          "text": "A backpack and a cow",
           "role": "primitive",
-          "text": "A backpack",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_brown_backpack",
+          "name": "S2_brown_backpack_contextual",
+          "text": "A brown backpack and a cow",
           "role": "primitive",
-          "text": "A brown backpack",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_blue_cow",
+          "name": "S3_blue_cow_contextual",
+          "text": "A backpack and a blue cow",
           "role": "primitive",
-          "text": "A blue cow",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_cow_identity",
-          "role": "primitive",
-          "text": "A cow",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A brown backpack and a blue cow",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a backpack and a cow",
@@ -56,39 +49,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal, wrong color, bad hands, distorted face",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_banana_identity",
+          "name": "S1_banana_and_dog_base",
+          "text": "A banana and a dog",
           "role": "primitive",
-          "text": "A banana",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_brown_banana",
+          "name": "S2_brown_banana_contextual",
+          "text": "A brown banana and a dog",
           "role": "primitive",
-          "text": "A brown banana",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_green_dog",
+          "name": "S3_green_dog_contextual",
+          "text": "A banana and a green dog",
           "role": "primitive",
-          "text": "A green dog",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_dog_identity",
-          "role": "primitive",
-          "text": "A dog",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A brown banana and a green dog",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a banana and a dog",
@@ -103,39 +89,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_blue_backpack",
+          "name": "S1_backpack_and_chair_base",
+          "text": "A backpack and a chair",
           "role": "primitive",
-          "text": "A blue backpack",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_backpack_identity",
+          "name": "S2_blue_backpack_contextual",
+          "text": "A blue backpack and a chair",
           "role": "primitive",
-          "text": "A backpack",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_red_chair",
+          "name": "S3_red_chair_contextual",
+          "text": "A backpack and a red chair",
           "role": "primitive",
-          "text": "A red chair",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_chair_identity",
-          "role": "primitive",
-          "text": "A chair",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A blue backpack and a red chair",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a backpack and a chair",
@@ -150,39 +129,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_cat_identity",
+          "name": "S1_cat_and_clock_base",
+          "text": "A cat and a clock",
           "role": "primitive",
-          "text": "A cat",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_gold_cat",
+          "name": "S2_gold_cat_contextual",
+          "text": "A gold cat and a clock",
           "role": "primitive",
-          "text": "A gold cat",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_brown_clock",
+          "name": "S3_brown_clock_contextual",
+          "text": "A cat and a brown clock",
           "role": "primitive",
-          "text": "A brown clock",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_clock_identity",
-          "role": "primitive",
-          "text": "A clock",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A gold cat and a brown clock",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a cat and a clock",
@@ -197,39 +169,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_blue_cup",
+          "name": "S1_cup_and_sheep_base",
+          "text": "A cup and a sheep",
           "role": "primitive",
-          "text": "A blue cup",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_cup_identity",
+          "name": "S2_blue_cup_contextual",
+          "text": "A blue cup and a sheep",
           "role": "primitive",
-          "text": "A cup",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_brown_sheep",
+          "name": "S3_brown_sheep_contextual",
+          "text": "A cup and a brown sheep",
           "role": "primitive",
-          "text": "A brown sheep",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_sheep_identity",
-          "role": "primitive",
-          "text": "A sheep",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A blue cup and a brown sheep",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a cup and a sheep",
@@ -244,39 +209,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_brown_bear",
+          "name": "S1_bear_and_train_base",
+          "text": "A bear and a train",
           "role": "primitive",
-          "text": "A brown bear",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_bear_identity",
+          "name": "S2_brown_bear_contextual",
+          "text": "A brown bear and a train",
           "role": "primitive",
-          "text": "A bear",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_red_train",
+          "name": "S3_red_train_contextual",
+          "text": "A bear and a red train",
           "role": "primitive",
-          "text": "A red train",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_train_identity",
-          "role": "primitive",
-          "text": "A train",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A brown bear and a red train",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a bear and a train",
@@ -291,39 +249,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_blue_bowl",
+          "name": "S1_bowl_and_train_base",
+          "text": "A bowl and a train",
           "role": "primitive",
-          "text": "A blue bowl",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_bowl_identity",
+          "name": "S2_blue_bowl_contextual",
+          "text": "A blue bowl and a train",
           "role": "primitive",
-          "text": "A bowl",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_red_train",
+          "name": "S3_red_train_contextual",
+          "text": "A bowl and a red train",
           "role": "primitive",
-          "text": "A red train",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_train_identity",
-          "role": "primitive",
-          "text": "A train",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A blue bowl and a red train",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a bowl and a train",
@@ -338,39 +289,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_brown_cat",
+          "name": "S1_cat_and_orange_base",
+          "text": "A cat and an orange",
           "role": "primitive",
-          "text": "A brown cat",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_cat_identity",
+          "name": "S2_brown_cat_contextual",
+          "text": "A brown cat and an orange",
           "role": "primitive",
-          "text": "A cat",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_red_orange",
+          "name": "S3_red_orange_contextual",
+          "text": "A cat and a red orange",
           "role": "primitive",
-          "text": "A red orange",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_orange_identity",
-          "role": "primitive",
-          "text": "An orange",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A brown cat and a red orange",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a cat and an orange",
@@ -385,39 +329,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_blue_boat",
+          "name": "S1_boat_and_cat_base",
+          "text": "A boat and a cat",
           "role": "primitive",
-          "text": "A blue boat",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_boat_identity",
+          "name": "S2_blue_boat_contextual",
+          "text": "A blue boat and a cat",
           "role": "primitive",
-          "text": "A boat",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_brown_cat",
+          "name": "S3_brown_cat_contextual",
+          "text": "A boat and a brown cat",
           "role": "primitive",
-          "text": "A brown cat",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_cat_identity",
-          "role": "primitive",
-          "text": "A cat",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A blue boat and a brown cat",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a boat and a cat",
@@ -432,39 +369,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_green_banana",
+          "name": "S1_banana_and_cow_base",
+          "text": "A banana and a cow",
           "role": "primitive",
-          "text": "A green banana",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_banana_identity",
+          "name": "S2_green_banana_contextual",
+          "text": "A green banana and a cow",
           "role": "primitive",
-          "text": "A banana",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_brown_cow",
+          "name": "S3_brown_cow_contextual",
+          "text": "A banana and a brown cow",
           "role": "primitive",
-          "text": "A brown cow",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_cow_identity",
-          "role": "primitive",
-          "text": "A cow",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A green banana and a brown cow",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a banana and a cow",
@@ -479,39 +409,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_green_apple",
+          "name": "S1_apple_and_cup_base",
+          "text": "An apple and a cup",
           "role": "primitive",
-          "text": "A green apple",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_apple_identity",
+          "name": "S2_green_apple_contextual",
+          "text": "A green apple and a cup",
           "role": "primitive",
-          "text": "An apple",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_blue_cup",
+          "name": "S3_blue_cup_contextual",
+          "text": "An apple and a blue cup",
           "role": "primitive",
-          "text": "A blue cup",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_cup_identity",
-          "role": "primitive",
-          "text": "A cup",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A green apple and a blue cup",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "an apple and a cup",
@@ -526,39 +449,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_brown_book",
+          "name": "S1_book_and_sheep_base",
+          "text": "A book and a sheep",
           "role": "primitive",
-          "text": "A brown book",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_book_identity",
+          "name": "S2_brown_book_contextual",
+          "text": "A brown book and a sheep",
           "role": "primitive",
-          "text": "A book",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_red_sheep",
+          "name": "S3_red_sheep_contextual",
+          "text": "A book and a red sheep",
           "role": "primitive",
-          "text": "A red sheep",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_sheep_identity",
-          "role": "primitive",
-          "text": "A sheep",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A brown book and a red sheep",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a book and a sheep",
@@ -573,39 +489,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_green_banana",
+          "name": "S1_banana_and_giraffe_base",
+          "text": "A banana and a giraffe",
           "role": "primitive",
-          "text": "A green banana",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_banana_identity",
+          "name": "S2_green_banana_contextual",
+          "text": "A green banana and a giraffe",
           "role": "primitive",
-          "text": "A banana",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_brown_giraffe",
+          "name": "S3_brown_giraffe_contextual",
+          "text": "A banana and a brown giraffe",
           "role": "primitive",
-          "text": "A brown giraffe",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_giraffe_identity",
-          "role": "primitive",
-          "text": "A giraffe",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A green banana and a brown giraffe",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a banana and a giraffe",
@@ -620,39 +529,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_green_apple",
+          "name": "S1_apple_and_backpack_base",
+          "text": "An apple and a backpack",
           "role": "primitive",
-          "text": "A green apple",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_apple_identity",
+          "name": "S2_green_apple_contextual",
+          "text": "A green apple and a backpack",
           "role": "primitive",
-          "text": "An apple",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_black_backpack",
+          "name": "S3_black_backpack_contextual",
+          "text": "An apple and a black backpack",
           "role": "primitive",
-          "text": "A black backpack",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_backpack_identity",
-          "role": "primitive",
-          "text": "A backpack",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A green apple and a black backpack",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "an apple and a backpack",
@@ -667,39 +569,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_green_cup",
+          "name": "S1_cup_and_cell_phone_base",
+          "text": "A cup and a cell phone",
           "role": "primitive",
-          "text": "A green cup",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_cup_identity",
+          "name": "S2_green_cup_contextual",
+          "text": "A green cup and a cell phone",
           "role": "primitive",
-          "text": "A cup",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_blue_cell_phone",
+          "name": "S3_blue_cell_phone_contextual",
+          "text": "A cup and a blue cell phone",
           "role": "primitive",
-          "text": "A blue cell phone",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_cell_phone_identity",
-          "role": "primitive",
-          "text": "A cell phone",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A green cup and a blue cell phone",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a cup and a cell phone",
@@ -714,39 +609,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_white_car",
+          "name": "S1_car_and_sheep_base",
+          "text": "A car and a sheep",
           "role": "primitive",
-          "text": "A white car",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_car_identity",
+          "name": "S2_white_car_contextual",
+          "text": "A white car and a sheep",
           "role": "primitive",
-          "text": "A car",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_red_sheep",
+          "name": "S3_red_sheep_contextual",
+          "text": "A car and a red sheep",
           "role": "primitive",
-          "text": "A red sheep",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_sheep_identity",
-          "role": "primitive",
-          "text": "A sheep",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A white car and a red sheep",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a car and a sheep",
@@ -761,39 +649,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_black_hat",
+          "name": "S1_hat_and_scarf_base",
+          "text": "A hat and a scarf",
           "role": "primitive",
-          "text": "A black hat",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_hat_identity",
+          "name": "S2_black_hat_contextual",
+          "text": "A black hat and a scarf",
           "role": "primitive",
-          "text": "A hat",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_red_scarf",
+          "name": "S3_red_scarf_contextual",
+          "text": "A hat and a red scarf",
           "role": "primitive",
-          "text": "A red scarf",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_scarf_identity",
-          "role": "primitive",
-          "text": "A scarf",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A black hat and a red scarf",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a hat and a scarf",
@@ -808,39 +689,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_white_dove",
+          "name": "S1_dove_and_feather_base",
+          "text": "A dove and a feather",
           "role": "primitive",
-          "text": "A white dove",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_dove_identity",
+          "name": "S2_white_dove_contextual",
+          "text": "A white dove and a feather",
           "role": "primitive",
-          "text": "A dove",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_black_feather",
+          "name": "S3_black_feather_contextual",
+          "text": "A dove and a black feather",
           "role": "primitive",
-          "text": "A black feather",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_feather_identity",
-          "role": "primitive",
-          "text": "A feather",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A white dove and a black feather",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a dove and a feather",
@@ -855,39 +729,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_brown_acorn",
+          "name": "S1_acorn_and_leaf_base",
+          "text": "An acorn and a leaf",
           "role": "primitive",
-          "text": "A brown acorn",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_acorn_identity",
+          "name": "S2_brown_acorn_contextual",
+          "text": "A brown acorn and a leaf",
           "role": "primitive",
-          "text": "An acorn",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_green_leaf",
+          "name": "S3_green_leaf_contextual",
+          "text": "An acorn and a green leaf",
           "role": "primitive",
-          "text": "A green leaf",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_leaf_identity",
-          "role": "primitive",
-          "text": "A leaf",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A brown acorn and a green leaf",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "an acorn and a leaf",
@@ -902,39 +769,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_red_pencil",
+          "name": "S1_pencil_and_eraser_base",
+          "text": "A pencil and an eraser",
           "role": "primitive",
-          "text": "A red pencil",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_pencil_identity",
+          "name": "S2_red_pencil_contextual",
+          "text": "A red pencil and an eraser",
           "role": "primitive",
-          "text": "A pencil",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_yellow_eraser",
+          "name": "S3_yellow_eraser_contextual",
+          "text": "A pencil and a yellow eraser",
           "role": "primitive",
-          "text": "A yellow eraser",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_eraser_identity",
-          "role": "primitive",
-          "text": "An eraser",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A red pencil and a yellow eraser",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a pencil and an eraser",
@@ -949,39 +809,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_green_log",
+          "name": "S1_log_and_moss_base",
+          "text": "A log and moss",
           "role": "primitive",
-          "text": "A green log",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_log_identity",
+          "name": "S2_green_log_contextual",
+          "text": "A green log and moss",
           "role": "primitive",
-          "text": "A log",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_brown_moss",
+          "name": "S3_brown_moss_contextual",
+          "text": "A log and brown moss",
           "role": "primitive",
-          "text": "Brown moss",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_moss_identity",
-          "role": "primitive",
-          "text": "Moss",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A green log and brown moss",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a log and moss",
@@ -996,39 +849,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_white_envelope",
+          "name": "S1_envelope_and_stamp_base",
+          "text": "An envelope and a stamp",
           "role": "primitive",
-          "text": "A white envelope",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_envelope_identity",
+          "name": "S2_white_envelope_contextual",
+          "text": "A white envelope and a stamp",
           "role": "primitive",
-          "text": "An envelope",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_blue_stamp",
+          "name": "S3_blue_stamp_contextual",
+          "text": "An envelope and a blue stamp",
           "role": "primitive",
-          "text": "A blue stamp",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_stamp_identity",
-          "role": "primitive",
-          "text": "A stamp",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A white envelope and a blue stamp",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "an envelope and a stamp",
@@ -1043,39 +889,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_blue_rose",
+          "name": "S1_rose_and_tulip_base",
+          "text": "A rose and a tulip",
           "role": "primitive",
-          "text": "A blue rose",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_rose_identity",
+          "name": "S2_blue_rose_contextual",
+          "text": "A blue rose and a tulip",
           "role": "primitive",
-          "text": "A rose",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_green_tulip",
+          "name": "S3_green_tulip_contextual",
+          "text": "A rose and a green tulip",
           "role": "primitive",
-          "text": "A green tulip",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_tulip_identity",
-          "role": "primitive",
-          "text": "A tulip",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_color_binding",
           "text": "A blue rose and a green tulip",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a rose and a tulip",
@@ -1090,39 +929,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_kitchen_scene",
+          "name": "S1_kitchen_counter_sink_base",
+          "text": "A kitchen scene with a counter, a sink, and a faucet",
           "role": "primitive",
-          "text": "A kitchen scene with counter tops and a sink",
-          "weight": 0.8
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_black_counter_top",
+          "name": "S2_black_countertop_one_side",
+          "text": "A kitchen scene with a black countertop on one side, a sink, and a faucet",
           "role": "primitive",
-          "text": "A kitchen scene with a black counter top on one side",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_whitish_counter_side",
+          "name": "S3_whitish_countertop_other_side",
+          "text": "A kitchen scene with a whitish countertop on the other side, a sink, and a faucet",
           "role": "primitive",
-          "text": "A kitchen scene with a whitish counter top on the other side",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_grey_sink_long_faucet",
+          "name": "S4_grey_sink_long_neck_faucet",
+          "text": "A kitchen scene with a counter and a grey sink with a long neck faucet",
           "role": "primitive",
-          "text": "A kitchen scene with a grey sink and a long neck faucet",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
+          "name": "S5_full_kitchen_scene",
+          "text": "Kitchen scene, black countertop on one side, whitish on the other, and grey sink with long neck faucet.",
           "role": "primitive",
-          "text": "Kitchen scene, black counter top on one side, whitish on the other and grey sink with long neck faucet.",
-          "weight": 1.1
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A kitchen scene with counter tops and a sink",
@@ -1137,39 +976,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, bad hands, distorted face, wrong color",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_woman_in_rain",
-          "role": "primitive",
-          "text": "A woman standing in the rain",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S2_holding_umbrella",
-          "role": "primitive",
+          "name": "S1_woman_umbrella_rain_base",
           "text": "A woman holding an umbrella in the rain",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_white_shirt_jeans",
+          "name": "S2_white_shirt_and_jeans",
+          "text": "A woman in a white shirt and jeans holding an umbrella in the rain",
           "role": "primitive",
-          "text": "A woman wearing a white shirt and jeans",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_pink_umbrella",
+          "name": "S3_pink_umbrella_contextual",
+          "text": "A woman holding a pink umbrella in the rain",
           "role": "primitive",
-          "text": "A woman holding a pink umbrella",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
+          "name": "S4_holding_umbrella_action",
+          "text": "A woman holding an umbrella in the rain",
           "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S5_full_rain_scene",
           "text": "A woman in a white shirt and jeans holds a pink umbrella in the rain.",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A woman holding an umbrella in the rain",
@@ -1184,39 +1023,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_box_identity",
+          "name": "S1_box_and_paperweight_base",
+          "text": "A box and a paperweight",
           "role": "primitive",
-          "text": "A box",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_cubic_box",
+          "name": "S2_cubic_box_contextual",
+          "text": "A cubic box and a paperweight",
           "role": "primitive",
-          "text": "A cubic box",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_paperweight_identity",
+          "name": "S3_pyramidal_paperweight_contextual",
+          "text": "A box and a pyramidal paperweight",
           "role": "primitive",
-          "text": "A paperweight",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_pyramidal_paperweight",
-          "role": "primitive",
-          "text": "A pyramidal paperweight",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "A cubic box and a pyramidal paperweight",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a box and a paperweight",
@@ -1231,39 +1063,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_bracelet_identity",
+          "name": "S1_bracelet_and_watch_base",
+          "text": "A bracelet and a watch",
           "role": "primitive",
-          "text": "A bracelet",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_diamond_bracelet",
+          "name": "S2_diamond_bracelet_contextual",
+          "text": "A diamond bracelet and a watch",
           "role": "primitive",
-          "text": "A diamond bracelet",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_watch_identity",
+          "name": "S3_rectangular_watch_contextual",
+          "text": "A bracelet and a rectangular watch",
           "role": "primitive",
-          "text": "A watch",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_rectangular_watch",
-          "role": "primitive",
-          "text": "A rectangular watch",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_shape_binding",
           "text": "A diamond bracelet and a rectangular watch",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a bracelet and a watch",
@@ -1278,39 +1103,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_tiger_identity",
+          "name": "S1_tiger_and_kitten_base",
+          "text": "A tiger and a kitten",
           "role": "primitive",
-          "text": "A tiger",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_big_tiger",
+          "name": "S2_big_tiger_contextual",
+          "text": "A big tiger and a kitten",
           "role": "primitive",
-          "text": "A big tiger",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_kitten_identity",
+          "name": "S3_small_kitten_contextual",
+          "text": "A tiger and a small kitten",
           "role": "primitive",
-          "text": "A kitten",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_small_kitten",
-          "role": "primitive",
-          "text": "A small kitten",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_size_binding",
           "text": "A big tiger and a small kitten",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a tiger and a kitten",
@@ -1325,39 +1143,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_road_sign_identity",
+          "name": "S1_road_sign_and_bookshelf_base",
+          "text": "A road sign and a bookshelf",
           "role": "primitive",
-          "text": "A road sign",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_pentagonal_road_sign",
+          "name": "S2_pentagonal_road_sign_contextual",
+          "text": "A pentagonal road sign and a bookshelf",
           "role": "primitive",
-          "text": "A pentagonal road sign",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_bookshelf_identity",
+          "name": "S3_pyramidal_bookshelf_contextual",
+          "text": "A road sign and a pyramidal bookshelf",
           "role": "primitive",
-          "text": "A bookshelf",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_pyramidal_bookshelf",
-          "role": "primitive",
-          "text": "A pyramidal bookshelf",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "A pentagonal road sign and a pyramidal bookshelf",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a road sign and a bookshelf",
@@ -1372,39 +1183,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_bagel_identity",
+          "name": "S1_bagel_and_bacon_strip_base",
+          "text": "A bagel and a bacon strip",
           "role": "primitive",
-          "text": "A bagel",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_round_bagel",
+          "name": "S2_round_bagel_contextual",
+          "text": "A round bagel and a bacon strip",
           "role": "primitive",
-          "text": "A round bagel",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_bacon_strip_identity",
+          "name": "S3_rectangular_bacon_strip_contextual",
+          "text": "A bagel and a rectangular bacon strip",
           "role": "primitive",
-          "text": "A bacon strip",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_rectangular_bacon_strip",
-          "role": "primitive",
-          "text": "A rectangular bacon strip",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "A round bagel and a rectangular bacon strip",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a bagel and a bacon strip",
@@ -1419,39 +1223,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_block_identity",
+          "name": "S1_block_and_toothpaste_tube_base",
+          "text": "A block and a tube of toothpaste",
           "role": "primitive",
-          "text": "A block",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_cubic_block",
+          "name": "S2_cubic_block_contextual",
+          "text": "A cubic block and a tube of toothpaste",
           "role": "primitive",
-          "text": "A cubic block",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_toothpaste_tube_identity",
+          "name": "S3_cylindrical_toothpaste_tube_contextual",
+          "text": "A block and a cylindrical tube of toothpaste",
           "role": "primitive",
-          "text": "A tube of toothpaste",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_cylindrical_toothpaste_tube",
-          "role": "primitive",
-          "text": "A cylindrical tube of toothpaste",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "A cubic block and a cylindrical tube of toothpaste",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a block and a tube of toothpaste",
@@ -1466,39 +1263,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_pizza_identity",
+          "name": "S1_pizza_and_pizza_box_base",
+          "text": "A pizza and a pizza box",
           "role": "primitive",
-          "text": "A pizza",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_round_pizza",
+          "name": "S2_round_pizza_contextual",
+          "text": "A round pizza and a pizza box",
           "role": "primitive",
-          "text": "A round pizza",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_pizza_box_identity",
+          "name": "S3_square_pizza_box_contextual",
+          "text": "A pizza and a square pizza box",
           "role": "primitive",
-          "text": "A pizza box",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_square_pizza_box",
-          "role": "primitive",
-          "text": "A square pizza box",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "A round pizza and a square pizza box",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a pizza and a pizza box",
@@ -1513,39 +1303,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_pie_slice_identity",
+          "name": "S1_pie_slice_and_pie_dish_base",
+          "text": "A slice of pie and a pie dish",
           "role": "primitive",
-          "text": "A slice of pie",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_triangular_pie_slice",
+          "name": "S2_triangular_pie_slice_contextual",
+          "text": "A triangular slice of pie and a pie dish",
           "role": "primitive",
-          "text": "A triangular slice of pie",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_pie_dish_identity",
+          "name": "S3_rectangular_pie_dish_contextual",
+          "text": "A slice of pie and a rectangular pie dish",
           "role": "primitive",
-          "text": "A pie dish",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_rectangular_pie_dish",
-          "role": "primitive",
-          "text": "A rectangular pie dish",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "A triangular slice of pie and a rectangular pie dish",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a slice of pie and a pie dish",
@@ -1560,39 +1343,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_bagel_identity",
+          "name": "S1_bagel_and_toaster_base",
+          "text": "A bagel and a toaster",
           "role": "primitive",
-          "text": "A bagel",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_round_bagel",
+          "name": "S2_round_bagel_contextual",
+          "text": "A round bagel and a toaster",
           "role": "primitive",
-          "text": "A round bagel",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_toaster_identity",
+          "name": "S3_square_toaster_contextual",
+          "text": "A bagel and a square toaster",
           "role": "primitive",
-          "text": "A toaster",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_square_toaster",
-          "role": "primitive",
-          "text": "A square toaster",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "A round bagel and a square toaster.",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a bagel and a toaster",
@@ -1607,39 +1383,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_soccer_ball_identity",
+          "name": "S1_soccer_ball_and_traffic_cone_base",
+          "text": "A soccer ball and a traffic cone",
           "role": "primitive",
-          "text": "A soccer ball",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_spherical_soccer_ball",
+          "name": "S2_spherical_soccer_ball_contextual",
+          "text": "A spherical soccer ball and a traffic cone",
           "role": "primitive",
-          "text": "A spherical soccer ball",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_traffic_cone_identity",
+          "name": "S3_conical_traffic_cone_contextual",
+          "text": "A soccer ball and a conical traffic cone",
           "role": "primitive",
-          "text": "A traffic cone",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_conical_traffic_cone",
-          "role": "primitive",
-          "text": "A conical traffic cone",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "A spherical soccer ball and a conical traffic cone",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a soccer ball and a traffic cone",
@@ -1654,39 +1423,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong size",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_tree_identity",
+          "name": "S1_tree_and_bush_base",
+          "text": "A tree and a bush",
           "role": "primitive",
-          "text": "A tree",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_tall_tree",
+          "name": "S2_tall_tree_contextual",
+          "text": "A tall tree and a bush",
           "role": "primitive",
-          "text": "A tall tree",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_bush_identity",
+          "name": "S3_short_bush_contextual",
+          "text": "A tree and a short bush",
           "role": "primitive",
-          "text": "A bush",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_short_bush",
-          "role": "primitive",
-          "text": "A short bush",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_size_binding",
           "text": "A tall tree and a short bush",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a tree and a bush",
@@ -1701,39 +1463,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_badge_identity",
+          "name": "S1_badge_and_award_statue_base",
+          "text": "A badge and an award statue",
           "role": "primitive",
-          "text": "A badge",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_pentagonal_badge",
+          "name": "S2_pentagonal_badge_contextual",
+          "text": "A pentagonal badge and an award statue",
           "role": "primitive",
-          "text": "A pentagonal badge",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_award_statue_identity",
+          "name": "S3_pyramidal_award_statue_contextual",
+          "text": "A badge and a pyramidal award statue",
           "role": "primitive",
-          "text": "An award statue",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_pyramidal_award_statue",
-          "role": "primitive",
-          "text": "A pyramidal award statue",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "A pentagonal badge and a pyramidal award statue",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a badge and an award statue",
@@ -1748,39 +1503,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_platter_identity",
+          "name": "S1_platter_and_tablecloth_base",
+          "text": "A platter and a tablecloth",
           "role": "primitive",
-          "text": "A platter",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_oval_platter",
+          "name": "S2_oval_platter_contextual",
+          "text": "An oval platter and a tablecloth",
           "role": "primitive",
-          "text": "An oval platter",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_tablecloth_identity",
+          "name": "S3_rectangular_tablecloth_contextual",
+          "text": "A platter and a rectangular tablecloth",
           "role": "primitive",
-          "text": "A tablecloth",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_rectangular_tablecloth",
-          "role": "primitive",
-          "text": "A rectangular tablecloth",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "An oval platter and a rectangular tablecloth.",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a platter and a tablecloth",
@@ -1795,39 +1543,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_dice_identity",
+          "name": "S1_die_and_salt_shaker_base",
+          "text": "A die and a salt shaker",
           "role": "primitive",
-          "text": "A dice",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_cubic_dice",
+          "name": "S2_cubic_die_contextual",
+          "text": "A cubic die and a salt shaker",
           "role": "primitive",
-          "text": "A cubic dice",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_salt_shaker_identity",
+          "name": "S3_cylindrical_salt_shaker_contextual",
+          "text": "A die and a cylindrical salt shaker",
           "role": "primitive",
-          "text": "A salt shaker",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_cylindrical_salt_shaker",
+          "name": "S4_full_shape_binding",
+          "text": "A cubic die and a cylindrical salt shaker",
           "role": "primitive",
-          "text": "A cylindrical salt shaker",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
-          "text": "A cubic dice and a cylindrical salt shaker",
-          "weight": 1.1
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a dice and a salt shaker",
@@ -1842,39 +1583,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_rubiks_cube_identity",
+          "name": "S1_rubiks_cube_and_pencil_holder_base",
+          "text": "A Rubik's cube and a pencil holder",
           "role": "primitive",
-          "text": "A Rubik's cube",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_cubic_rubiks_cube",
+          "name": "S2_cubic_rubiks_cube_contextual",
+          "text": "A cubic Rubik's cube and a pencil holder",
           "role": "primitive",
-          "text": "A cubic Rubik's cube",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_pencil_holder_identity",
+          "name": "S3_cylindrical_pencil_holder_contextual",
+          "text": "A Rubik's cube and a cylindrical pencil holder",
           "role": "primitive",
-          "text": "A pencil holder",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_cylindrical_pencil_holder",
-          "role": "primitive",
-          "text": "A cylindrical pencil holder",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "A cubic Rubik's cube and a cylindrical pencil holder",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a Rubik's cube and a pencil holder",
@@ -1889,39 +1623,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_handbag_identity",
+          "name": "S1_handbag_and_keychain_charm_base",
+          "text": "A handbag and a keychain charm",
           "role": "primitive",
-          "text": "A handbag",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_pentagonal_handbag",
+          "name": "S2_pentagonal_handbag_contextual",
+          "text": "A pentagonal handbag and a keychain charm",
           "role": "primitive",
-          "text": "A pentagonal handbag",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_keychain_charm_identity",
+          "name": "S3_spherical_keychain_charm_contextual",
+          "text": "A handbag and a spherical keychain charm",
           "role": "primitive",
-          "text": "A keychain charm",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_spherical_keychain_charm",
-          "role": "primitive",
-          "text": "A spherical keychain charm",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "A pentagonal handbag and a spherical keychain charm",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a handbag and a keychain charm",
@@ -1936,39 +1663,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong size",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_cup_identity",
+          "name": "S1_cup_and_saucer_base",
+          "text": "A cup and a saucer",
           "role": "primitive",
-          "text": "A cup",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_small_cup",
+          "name": "S2_small_cup_contextual",
+          "text": "A small cup and a saucer",
           "role": "primitive",
-          "text": "A small cup",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_saucer_identity",
+          "name": "S3_big_saucer_contextual",
+          "text": "A cup and a big saucer",
           "role": "primitive",
-          "text": "A saucer",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_big_saucer",
-          "role": "primitive",
-          "text": "A big saucer",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_size_binding",
           "text": "A small cup and a big saucer",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a cup and a saucer",
@@ -1983,39 +1703,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_sugar_cube_identity",
+          "name": "S1_sugar_cube_and_salt_shaker_base",
+          "text": "A sugar cube and a salt shaker",
           "role": "primitive",
-          "text": "A sugar cube",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_cubic_sugar_cube",
+          "name": "S2_cubic_sugar_cube_contextual",
+          "text": "A cubic sugar cube and a salt shaker",
           "role": "primitive",
-          "text": "A cubic sugar cube",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_salt_shaker_identity",
+          "name": "S3_cylindrical_salt_shaker_contextual",
+          "text": "A sugar cube and a cylindrical salt shaker",
           "role": "primitive",
-          "text": "A salt shaker",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_cylindrical_salt_shaker",
-          "role": "primitive",
-          "text": "A cylindrical salt shaker",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "A cubic sugar cube and a cylindrical salt shaker",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a sugar cube and a salt shaker",
@@ -2030,39 +1743,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_balloon_identity",
+          "name": "S1_balloon_and_banner_base",
+          "text": "A balloon and a banner",
           "role": "primitive",
-          "text": "A balloon",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_spherical_balloon",
+          "name": "S2_spherical_balloon_contextual",
+          "text": "A spherical balloon and a banner",
           "role": "primitive",
-          "text": "A spherical balloon",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_banner_identity",
+          "name": "S3_rectangular_banner_contextual",
+          "text": "A balloon and a rectangular banner",
           "role": "primitive",
-          "text": "A banner",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_rectangular_banner",
-          "role": "primitive",
-          "text": "A rectangular banner",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "A spherical balloon and a rectangular banner",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a balloon and a banner",
@@ -2077,39 +1783,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_pizza_identity",
+          "name": "S1_pizza_and_pizza_cutter_base",
+          "text": "A pizza and a pizza cutter",
           "role": "primitive",
-          "text": "A pizza",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_oval_pizza",
+          "name": "S2_oval_pizza_contextual",
+          "text": "An oval pizza and a pizza cutter",
           "role": "primitive",
-          "text": "An oval pizza",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_pizza_cutter_identity",
+          "name": "S3_round_pizza_cutter_contextual",
+          "text": "A pizza and a round pizza cutter",
           "role": "primitive",
-          "text": "A pizza cutter",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_round_pizza_cutter",
-          "role": "primitive",
-          "text": "A round pizza cutter",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_shape_binding",
           "text": "An oval pizza and a round pizza cutter.",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a pizza and a pizza cutter",
@@ -2124,39 +1823,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_house_interior",
-          "role": "primitive",
+          "name": "S1_house_room_hallway_base",
           "text": "A house interior with a room and a hallway",
-          "weight": 0.8
+          "role": "primitive",
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_square_room",
+          "name": "S2_square_room_contextual",
+          "text": "A house interior with a square room and a hallway",
           "role": "primitive",
-          "text": "A house interior with a square room",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_oblong_hallway",
+          "name": "S3_oblong_hallway_contextual",
+          "text": "A house interior with a room and an oblong hallway",
           "role": "primitive",
-          "text": "A house interior with an oblong hallway",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_room_and_hallway",
+          "name": "S4_only_spaces_house",
+          "text": "A house interior showing only a room and a hallway as the spaces in the house",
           "role": "primitive",
-          "text": "A house interior with a room connected to a hallway",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_house_spaces",
           "text": "The square room and the oblong hallway were the only spaces in the house.",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A house interior with a room and a hallway",
@@ -2171,39 +1870,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_dining_setup",
+          "name": "S1_table_chairs_dinner_base",
+          "text": "A dining area with a table and chairs arranged for a dinner party",
           "role": "primitive",
-          "text": "A dining setup with a table and chairs",
-          "weight": 0.8
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_oblong_table",
+          "name": "S2_oblong_table_contextual",
+          "text": "A dining area with an oblong table and chairs arranged for a dinner party",
           "role": "primitive",
-          "text": "A dining setup with an oblong table",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_round_chairs",
+          "name": "S3_round_chairs_contextual",
+          "text": "A dining area with a table and round chairs arranged for a dinner party",
           "role": "primitive",
-          "text": "A dining setup with round chairs",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_arranged_dinner_party",
-          "role": "primitive",
+          "name": "S4_dinner_party_arrangement",
           "text": "A table and chairs arranged for a dinner party",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_dinner_party_scene",
           "text": "The oblong table and the round chairs were arranged for the dinner party.",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A dining setup with a table and chairs",
@@ -2218,39 +1917,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_abstract_art_composition",
+          "name": "S1_geometric_art_project_base",
+          "text": "An art project inspired by geometric shapes and lines",
           "role": "primitive",
-          "text": "An abstract art composition with geometric shapes and lines",
-          "weight": 0.8
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_pyramidal_shape",
+          "name": "S2_pyramidal_shape_contextual",
+          "text": "An art project inspired by a pyramidal shape and geometric lines",
           "role": "primitive",
-          "text": "An abstract composition featuring a pyramidal shape",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_triangular_lines",
+          "name": "S3_triangular_lines_contextual",
+          "text": "An art project inspired by a geometric shape and triangular lines",
           "role": "primitive",
-          "text": "An abstract composition featuring triangular lines",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_geometric_inspiration",
-          "role": "primitive",
-          "text": "An art project inspired by geometric forms and lines",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_art_project_inspiration",
           "text": "The pyramidal shape and the triangular lines were the inspiration for the art project.",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "An abstract art composition with geometric shapes and lines",
@@ -2265,39 +1957,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_jewelry_gifts",
+          "name": "S1_ring_and_necklace_gifts_base",
+          "text": "A ring and a necklace presented as precious gifts",
           "role": "primitive",
-          "text": "Jewelry gifts including a ring and a necklace",
-          "weight": 0.8
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_diamond_ring",
+          "name": "S2_diamond_ring_contextual",
+          "text": "A diamond ring and a necklace presented as precious gifts",
           "role": "primitive",
-          "text": "A diamond ring",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_teardrop_necklace",
+          "name": "S3_teardrop_necklace_contextual",
+          "text": "A ring and a teardrop necklace presented as precious gifts",
           "role": "primitive",
-          "text": "A teardrop necklace",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_precious_gifts",
+          "name": "S4_precious_gifts_context",
+          "text": "A ring and a necklace as precious gifts from her beloved",
           "role": "primitive",
-          "text": "Precious jewelry gifts featuring a ring and a necklace",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_precious_gifts",
           "text": "The diamond ring and the teardrop necklace were the precious gifts from her beloved.",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "Jewelry gifts including a ring and a necklace",
@@ -2312,39 +2004,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong shape",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_museum_crystal_exhibit",
+          "name": "S1_crystals_museum_exhibit_base",
+          "text": "Crystal shapes displayed in a museum exhibit",
           "role": "primitive",
-          "text": "A museum exhibit displaying crystals",
-          "weight": 0.8
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_pentagonal_prism",
+          "name": "S2_pentagonal_prism_crystal_contextual",
+          "text": "A pentagonal prism crystal displayed with another crystal in a museum exhibit",
           "role": "primitive",
-          "text": "A crystal shaped like a pentagonal prism",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_pyramidal_tetrahedron",
+          "name": "S3_pyramidal_tetrahedron_crystal_contextual",
+          "text": "A crystal displayed with a pyramidal tetrahedron crystal in a museum exhibit",
           "role": "primitive",
-          "text": "A crystal shaped like a pyramidal tetrahedron",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_crystal_shapes",
+          "name": "S4_museum_exhibit_context",
+          "text": "Crystal shapes displayed together in a museum exhibit",
           "role": "primitive",
-          "text": "A museum exhibit displaying geometric crystal shapes",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_crystal_shapes",
           "text": "The pentagonal prism and the pyramidal tetrahedron were the shapes of the crystals in the museum exhibit.",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A museum exhibit displaying crystals",
@@ -2359,39 +2051,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material, wrong texture",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_shoes_identity",
+          "name": "S1_shoes_and_clouds_base",
+          "text": "A pair of shoes and clouds",
           "role": "primitive",
-          "text": "Shoes",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_rubber_sole_shoes",
+          "name": "S2_rubber_sole_shoes_contextual",
+          "text": "Rubber sole shoes and clouds",
           "role": "primitive",
-          "text": "Shoes with rubber soles",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_clouds_identity",
+          "name": "S3_fluffy_clouds_contextual",
+          "text": "A pair of shoes and fluffy clouds",
           "role": "primitive",
-          "text": "Clouds",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_fluffy_clouds",
-          "role": "primitive",
-          "text": "Fluffy clouds",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_texture_binding",
           "text": "Rubber sole shoes and fluffy clouds",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "shoes and clouds",
@@ -2406,39 +2091,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_rubber_band_identity",
+          "name": "S1_band_and_spoon_base",
+          "text": "A band and a spoon",
           "role": "primitive",
-          "text": "A rubber band",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_rubber_material_band",
+          "name": "S2_rubber_band_contextual",
+          "text": "A rubber band and a spoon",
           "role": "primitive",
-          "text": "A rubber band made of rubber",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_spoon_identity",
+          "name": "S3_wooden_spoon_contextual",
+          "text": "A band and a wooden spoon",
           "role": "primitive",
-          "text": "A spoon",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_wooden_spoon",
-          "role": "primitive",
-          "text": "A wooden spoon",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "A rubber band and a wooden spoon",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a band and a spoon",
@@ -2453,39 +2131,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material, wrong texture",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_car_identity",
+          "name": "S1_car_and_sweater_base",
+          "text": "A car and a sweater",
           "role": "primitive",
-          "text": "A car",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_metallic_car",
+          "name": "S2_metallic_car_contextual",
+          "text": "A metallic car and a sweater",
           "role": "primitive",
-          "text": "A metallic car",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_sweater_identity",
+          "name": "S3_fluffy_sweater_contextual",
+          "text": "A car and a fluffy sweater",
           "role": "primitive",
-          "text": "A sweater",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_fluffy_sweater",
-          "role": "primitive",
-          "text": "A fluffy sweater",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_texture_binding",
           "text": "A metallic car and a fluffy sweater",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a car and a sweater",
@@ -2500,39 +2171,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_fork_identity",
+          "name": "S1_fork_and_dress_base",
+          "text": "A fork and a dress",
           "role": "primitive",
-          "text": "A fork",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_metallic_fork",
+          "name": "S2_metallic_fork_contextual",
+          "text": "A metallic fork and a dress",
           "role": "primitive",
-          "text": "A metallic fork",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_dress_identity",
+          "name": "S3_fabric_dress_contextual",
+          "text": "A fork and a fabric dress",
           "role": "primitive",
-          "text": "A dress",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_fabric_dress",
-          "role": "primitive",
-          "text": "A fabric dress",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "A metallic fork and a fabric dress",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a fork and a dress",
@@ -2547,39 +2211,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong reflection, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_cutlery_identity",
+          "name": "S1_cutlery_and_mirror_base",
+          "text": "Cutlery and a mirror",
           "role": "primitive",
-          "text": "Cutlery",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_plastic_cutlery",
+          "name": "S2_plastic_cutlery_contextual",
+          "text": "Plastic cutlery and a mirror",
           "role": "primitive",
-          "text": "Plastic cutlery",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_mirror_identity",
+          "name": "S3_glass_mirror_contextual",
+          "text": "Cutlery and a glass mirror",
           "role": "primitive",
-          "text": "A mirror",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_glass_mirror",
-          "role": "primitive",
-          "text": "A glass mirror",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "Plastic cutlery and a glass mirror",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "cutlery and a mirror",
@@ -2594,39 +2251,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_chair_identity",
+          "name": "S1_chair_and_cup_base",
+          "text": "A chair and a cup",
           "role": "primitive",
-          "text": "A chair",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_leather_chair",
+          "name": "S2_leather_chair_contextual",
+          "text": "A leather chair and a cup",
           "role": "primitive",
-          "text": "A leather chair",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_cup_identity",
+          "name": "S3_glass_cup_contextual",
+          "text": "A chair and a glass cup",
           "role": "primitive",
-          "text": "A cup",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_glass_cup",
-          "role": "primitive",
-          "text": "A glass cup",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "A leather chair and a glass cup",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a chair and a cup",
@@ -2641,39 +2291,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_container_identity",
+          "name": "S1_container_and_window_base",
+          "text": "A container and a window",
           "role": "primitive",
-          "text": "A container",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_plastic_container",
+          "name": "S2_plastic_container_contextual",
+          "text": "A plastic container and a window",
           "role": "primitive",
-          "text": "A plastic container",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_window_identity",
+          "name": "S3_glass_window_contextual",
+          "text": "A container and a glass window",
           "role": "primitive",
-          "text": "A window",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_glass_window",
-          "role": "primitive",
-          "text": "A glass window",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "A plastic container and a glass window",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a container and a window",
@@ -2688,39 +2331,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_band_identity",
+          "name": "S1_band_and_jar_base",
+          "text": "A band and a jar",
           "role": "primitive",
-          "text": "A band",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_rubber_band",
+          "name": "S2_rubber_band_contextual",
+          "text": "A rubber band and a jar",
           "role": "primitive",
-          "text": "A rubber band",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_jar_identity",
+          "name": "S3_glass_jar_contextual",
+          "text": "A band and a glass jar",
           "role": "primitive",
-          "text": "A jar",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_glass_jar",
-          "role": "primitive",
-          "text": "A glass jar",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "A rubber band and a glass jar",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a band and a jar",
@@ -2735,39 +2371,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong reflection, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_door_knob_identity",
+          "name": "S1_door_knob_and_mirror_base",
+          "text": "A door knob and a mirror",
           "role": "primitive",
-          "text": "A door knob",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_metallic_door_knob",
+          "name": "S2_metallic_door_knob_contextual",
+          "text": "A metallic door knob and a mirror",
           "role": "primitive",
-          "text": "A metallic door knob",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_mirror_identity",
+          "name": "S3_glass_mirror_contextual",
+          "text": "A door knob and a glass mirror",
           "role": "primitive",
-          "text": "A mirror",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_glass_mirror",
-          "role": "primitive",
-          "text": "A glass mirror",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "A metallic door knob and a glass mirror",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a door knob and a mirror",
@@ -2782,39 +2411,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_band_identity",
+          "name": "S1_band_and_window_base",
+          "text": "A band and a window",
           "role": "primitive",
-          "text": "A band",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_rubber_band",
+          "name": "S2_rubber_band_contextual",
+          "text": "A rubber band and a window",
           "role": "primitive",
-          "text": "A rubber band",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_window_identity",
+          "name": "S3_glass_window_contextual",
+          "text": "A band and a glass window",
           "role": "primitive",
-          "text": "A window",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_glass_window",
-          "role": "primitive",
-          "text": "A glass window",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "A rubber band and a glass window",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a band and a window",
@@ -2829,39 +2451,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_spoon_identity",
+          "name": "S1_spoon_and_chopsticks_base",
+          "text": "A spoon and chopsticks",
           "role": "primitive",
-          "text": "A spoon",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_metallic_spoon",
+          "name": "S2_metallic_spoon_contextual",
+          "text": "A metallic spoon and chopsticks",
           "role": "primitive",
-          "text": "A metallic spoon",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_chopsticks_identity",
+          "name": "S3_wooden_chopsticks_contextual",
+          "text": "A spoon and wooden chopsticks",
           "role": "primitive",
-          "text": "Chopsticks",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_wooden_chopsticks",
-          "role": "primitive",
-          "text": "Wooden chopsticks",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "A metallic spoon and wooden chopsticks",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a spoon and chopsticks",
@@ -2876,39 +2491,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_ball_identity",
+          "name": "S1_ball_and_spoon_base",
+          "text": "A ball and a spoon",
           "role": "primitive",
-          "text": "A ball",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_rubber_ball",
+          "name": "S2_rubber_ball_contextual",
+          "text": "A rubber ball and a spoon",
           "role": "primitive",
-          "text": "A rubber ball",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_spoon_identity",
+          "name": "S3_metallic_spoon_contextual",
+          "text": "A ball and a metallic spoon",
           "role": "primitive",
-          "text": "A spoon",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_metallic_spoon",
-          "role": "primitive",
-          "text": "A metallic spoon",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "A rubber ball and a metallic spoon",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a ball and a spoon",
@@ -2923,39 +2531,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material, wrong texture",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_towel_identity",
+          "name": "S1_towel_and_belt_base",
+          "text": "A towel and a belt",
           "role": "primitive",
-          "text": "A towel",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_fluffy_towel",
+          "name": "S2_fluffy_towel_contextual",
+          "text": "A fluffy towel and a belt",
           "role": "primitive",
-          "text": "A fluffy towel",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_belt_identity",
+          "name": "S3_leather_belt_contextual",
+          "text": "A towel and a leather belt",
           "role": "primitive",
-          "text": "A belt",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_leather_belt",
-          "role": "primitive",
-          "text": "A leather belt",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_texture_binding",
           "text": "A fluffy towel and a leather belt",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a towel and a belt",
@@ -2970,39 +2571,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_dress_identity",
+          "name": "S1_dress_and_vase_base",
+          "text": "A dress and a vase",
           "role": "primitive",
-          "text": "A dress",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_fabric_dress",
+          "name": "S2_fabric_dress_contextual",
+          "text": "A fabric dress and a vase",
           "role": "primitive",
-          "text": "A fabric dress",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_vase_identity",
+          "name": "S3_glass_vase_contextual",
+          "text": "A dress and a glass vase",
           "role": "primitive",
-          "text": "A vase",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_glass_vase",
-          "role": "primitive",
-          "text": "A glass vase",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "A fabric dress and a glass vase",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a dress and a vase",
@@ -3017,39 +2611,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_boots_identity",
+          "name": "S1_boots_and_sofa_base",
+          "text": "Boots and a sofa",
           "role": "primitive",
-          "text": "Boots",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_rubber_boots",
+          "name": "S2_rubber_boots_contextual",
+          "text": "Rubber boots and a sofa",
           "role": "primitive",
-          "text": "Rubber boots",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_sofa_identity",
+          "name": "S3_leather_sofa_contextual",
+          "text": "Boots and a leather sofa",
           "role": "primitive",
-          "text": "A sofa",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_leather_sofa",
-          "role": "primitive",
-          "text": "A leather sofa",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "Rubber boots and a leather sofa",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "boots and a sofa",
@@ -3064,39 +2651,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_cup_identity",
+          "name": "S1_cup_and_sweater_base",
+          "text": "A cup and a sweater",
           "role": "primitive",
-          "text": "A cup",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_plastic_cup",
+          "name": "S2_plastic_cup_contextual",
+          "text": "A plastic cup and a sweater",
           "role": "primitive",
-          "text": "A plastic cup",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_sweater_identity",
+          "name": "S3_fabric_sweater_contextual",
+          "text": "A cup and a fabric sweater",
           "role": "primitive",
-          "text": "A sweater",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_fabric_sweater",
-          "role": "primitive",
-          "text": "A fabric sweater",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "A plastic cup and a fabric sweater",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a cup and a sweater",
@@ -3111,39 +2691,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_pencils_identity",
+          "name": "S1_pencils_and_hat_base",
+          "text": "Pencils and a hat",
           "role": "primitive",
-          "text": "Pencils",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_wooden_pencils",
+          "name": "S2_wooden_pencils_contextual",
+          "text": "Wooden pencils and a hat",
           "role": "primitive",
-          "text": "Wooden pencils",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_hat_identity",
+          "name": "S3_leather_hat_contextual",
+          "text": "Pencils and a leather hat",
           "role": "primitive",
-          "text": "A hat",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_leather_hat",
-          "role": "primitive",
-          "text": "A leather hat",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "Wooden pencils and a leather hat",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "pencils and a hat",
@@ -3158,39 +2731,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_ring_identity",
+          "name": "S1_ring_and_plate_base",
+          "text": "A ring and a plate",
           "role": "primitive",
-          "text": "A ring",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_metallic_ring",
+          "name": "S2_metallic_ring_contextual",
+          "text": "A metallic ring and a plate",
           "role": "primitive",
-          "text": "A metallic ring",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_plate_identity",
+          "name": "S3_glass_plate_contextual",
+          "text": "A ring and a glass plate",
           "role": "primitive",
-          "text": "A plate",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_glass_plate",
-          "role": "primitive",
-          "text": "A glass plate",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "A metallic ring and a glass plate",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a ring and a plate",
@@ -3205,39 +2771,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material, wrong texture",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_plate_identity",
+          "name": "S1_plate_and_scarf_base",
+          "text": "A plate and a scarf",
           "role": "primitive",
-          "text": "A plate",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_plastic_plate",
+          "name": "S2_plastic_plate_contextual",
+          "text": "A plastic plate and a scarf",
           "role": "primitive",
-          "text": "A plastic plate",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_scarf_identity",
+          "name": "S3_fluffy_scarf_contextual",
+          "text": "A plate and a fluffy scarf",
           "role": "primitive",
-          "text": "A scarf",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_fluffy_scarf",
-          "role": "primitive",
-          "text": "A fluffy scarf",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_texture_binding",
           "text": "A plastic plate and a fluffy scarf",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a plate and a scarf",
@@ -3252,39 +2811,32 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_ring_identity",
+          "name": "S1_ring_and_sweater_base",
+          "text": "A ring and a sweater",
           "role": "primitive",
-          "text": "A ring",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_metallic_ring",
+          "name": "S2_metallic_ring_contextual",
+          "text": "A metallic ring and a sweater",
           "role": "primitive",
-          "text": "A metallic ring",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_sweater_identity",
+          "name": "S3_fabric_sweater_contextual",
+          "text": "A ring and a fabric sweater",
           "role": "primitive",
-          "text": "A sweater",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_fabric_sweater",
-          "role": "primitive",
-          "text": "A fabric sweater",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_full_material_binding",
           "text": "A metallic ring and a fabric sweater",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "a ring and a sweater",
@@ -3299,39 +2851,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_writer_with_objects",
+          "name": "S1_journal_pen_notebook_writer_base",
+          "text": "A journal and a pen resting on a notebook for a writer",
           "role": "primitive",
-          "text": "A writer with a journal, a pen, and a notebook",
-          "weight": 0.8
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_leather_journal",
+          "name": "S2_leather_journal_contextual",
+          "text": "A leather journal and a pen resting on a notebook for a writer",
           "role": "primitive",
-          "text": "A leather journal",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_wooden_pen",
+          "name": "S3_wooden_pen_contextual",
+          "text": "A journal and a wooden pen resting on a notebook for a writer",
           "role": "primitive",
-          "text": "A wooden pen",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
           "name": "S4_fabric_notebook_metallic_writer",
+          "text": "A journal and a pen resting on a fabric notebook for a metallic writer",
           "role": "primitive",
-          "text": "A fabric notebook with a metallic writer nearby",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_material_scene",
           "text": "The leather journal and wooden pen rest on the fabric notebook for the metallic writer.",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A writer with a journal, a pen, and a notebook",
@@ -3346,39 +2898,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_counter_scene",
+          "name": "S1_wallet_coin_purse_cards_counter_base",
+          "text": "A wallet and a coin purse holding credit cards on a counter",
           "role": "primitive",
-          "text": "A wallet, a coin purse, and credit cards on a counter",
-          "weight": 0.8
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_leather_wallet",
+          "name": "S2_leather_wallet_contextual",
+          "text": "A leather wallet and a coin purse holding credit cards on a counter",
           "role": "primitive",
-          "text": "A leather wallet",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_metallic_coin_purse",
+          "name": "S3_metallic_coin_purse_contextual",
+          "text": "A wallet and a metallic coin purse holding credit cards on a counter",
           "role": "primitive",
-          "text": "A metallic coin purse",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
           "name": "S4_plastic_cards_fabric_counter",
+          "text": "A wallet and a coin purse holding plastic credit cards on a fabric counter",
           "role": "primitive",
-          "text": "Plastic credit cards resting on a fabric counter",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_material_scene",
           "text": "The leather wallet and metallic coin purse hold the plastic credit cards on the fabric counter.",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A wallet, a coin purse, and credit cards on a counter",
@@ -3393,39 +2945,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_mantle_display",
+          "name": "S1_vase_frame_flowers_mantle_base",
+          "text": "A vase and a frame displaying flowers on a mantle",
           "role": "primitive",
-          "text": "A vase, a frame, and flowers on a mantle",
-          "weight": 0.8
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_glass_vase",
+          "name": "S2_glass_vase_contextual",
+          "text": "A glass vase and a frame displaying flowers on a mantle",
           "role": "primitive",
-          "text": "A glass vase",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_metallic_frame",
+          "name": "S3_metallic_frame_contextual",
+          "text": "A vase and a metallic frame displaying flowers on a mantle",
           "role": "primitive",
-          "text": "A metallic frame",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
           "name": "S4_wooden_flowers_fabric_mantle",
+          "text": "A vase and a frame displaying wooden flowers on a fabric mantle",
           "role": "primitive",
-          "text": "Wooden flowers displayed on a fabric mantle",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_material_scene",
           "text": "The glass vase and metallic frame display the wooden flowers on the fabric mantle.",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A vase, a frame, and flowers on a mantle",
@@ -3440,39 +2992,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material, wrong texture",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_party_scene",
+          "name": "S1_bottle_opener_beer_party_base",
+          "text": "A bottle and an opener holding beer for a party",
           "role": "primitive",
-          "text": "A bottle and an opener at a party",
-          "weight": 0.8
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_glass_bottle",
+          "name": "S2_glass_bottle_contextual",
+          "text": "A glass bottle and an opener holding beer for a party",
           "role": "primitive",
-          "text": "A glass bottle",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_metallic_opener",
+          "name": "S3_metallic_opener_contextual",
+          "text": "A bottle and a metallic opener holding beer for a party",
           "role": "primitive",
-          "text": "A metallic opener",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
           "name": "S4_wooden_beer_fluffy_party",
+          "text": "A bottle and an opener holding wooden beer for a fluffy party",
           "role": "primitive",
-          "text": "Wooden beer at a fluffy party",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_material_scene",
           "text": "The glass bottle and metallic opener hold the wooden beer for the fluffy party.",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A bottle and an opener at a party",
@@ -3487,39 +3039,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, wrong material, wrong texture",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_salad_scene",
+          "name": "S1_salad_bowl_tongs_greens_base",
+          "text": "A salad bowl and tongs mixing greens for a salad",
           "role": "primitive",
-          "text": "A salad bowl with tongs and greens",
-          "weight": 0.8
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_wooden_salad_bowl",
+          "name": "S2_wooden_salad_bowl_contextual",
+          "text": "A wooden salad bowl and tongs mixing greens for a salad",
           "role": "primitive",
-          "text": "A wooden salad bowl",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_plastic_tongs",
+          "name": "S3_plastic_tongs_contextual",
+          "text": "A salad bowl and plastic tongs mixing greens for a salad",
           "role": "primitive",
-          "text": "Plastic tongs",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
           "name": "S4_metallic_greens_fluffy_salad",
+          "text": "A salad bowl and tongs mixing metallic greens for a fluffy salad",
           "role": "primitive",
-          "text": "Metallic greens for a fluffy salad",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_material_scene",
           "text": "The wooden salad bowl and plastic tongs mix the metallic greens for the fluffy salad.",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A salad bowl with tongs and greens",
@@ -3534,39 +3086,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_horse_identity",
+          "name": "S1_horse_and_bicycle_base",
+          "text": "A horse and a bicycle",
           "role": "primitive",
-          "text": "A horse",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_bicycle_identity",
+          "name": "S2_horse_identity",
+          "text": "A horse beside an object",
           "role": "primitive",
-          "text": "A bicycle",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_horse_bicycle_scene",
+          "name": "S3_bicycle_identity",
+          "text": "A bicycle beside an animal",
           "role": "primitive",
-          "text": "A horse and a bicycle together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_side_relation",
-          "role": "primitive",
-          "text": "A horse beside a bicycle",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_side_spatial_relation",
           "text": "A horse on the side of a bicycle",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S5_full_spatial_scene",
+          "text": "A horse on the side of a bicycle",
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A horse and a bicycle",
@@ -3581,39 +3133,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, bad hands, distorted face",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_boy_identity",
+          "name": "S1_boy_and_bowl_base",
+          "text": "A boy and a bowl",
           "role": "primitive",
-          "text": "A boy",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_bowl_identity",
+          "name": "S2_boy_identity",
+          "text": "A boy near an object",
           "role": "primitive",
-          "text": "A bowl",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_boy_bowl_scene",
+          "name": "S3_bowl_identity",
+          "text": "A bowl near a boy",
           "role": "primitive",
-          "text": "A boy and a bowl together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_next_to_relation",
-          "role": "primitive",
+          "name": "S4_next_to_spatial_relation",
           "text": "A boy next to a bowl",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_spatial_scene",
           "text": "A boy next to a bowl",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A boy and a bowl",
@@ -3628,39 +3180,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_rabbit_identity",
+          "name": "S1_rabbit_and_table_base",
+          "text": "A rabbit and a table",
           "role": "primitive",
-          "text": "A rabbit",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_table_identity",
+          "name": "S2_rabbit_identity",
+          "text": "A rabbit near an object",
           "role": "primitive",
-          "text": "A table",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_rabbit_table_scene",
+          "name": "S3_table_identity",
+          "text": "A table near an animal",
           "role": "primitive",
-          "text": "A rabbit and a table together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_next_to_relation",
-          "role": "primitive",
+          "name": "S4_next_to_spatial_relation",
           "text": "A rabbit next to a table",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_spatial_scene",
           "text": "A rabbit next to a table",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A rabbit and a table",
@@ -3675,39 +3227,46 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_computer_identity",
+          "name": "S1_computer_and_rabbit_base",
+          "text": "A computer and a rabbit",
           "role": "primitive",
-          "text": "A computer",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_rabbit_identity",
+          "name": "S2_computer_identity",
+          "text": "A computer near an animal",
           "role": "primitive",
-          "text": "A rabbit",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_computer_rabbit_scene",
+          "name": "S3_rabbit_identity",
+          "text": "A rabbit near an object",
           "role": "primitive",
-          "text": "A computer and a rabbit together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_top_relation",
-          "role": "primitive",
+          "name": "S4_on_top_spatial_relation",
           "text": "A computer on top of a rabbit",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
+          "name": "S5_underneath_spatial_relation",
+          "text": "A rabbit underneath a computer",
           "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S6_full_spatial_scene",
           "text": "A computer on the top of a rabbit",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A computer and a rabbit",
@@ -3722,39 +3281,46 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_cow_identity",
+          "name": "S1_cow_and_bag_base",
+          "text": "A cow and a bag",
           "role": "primitive",
-          "text": "A cow",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_bag_identity",
+          "name": "S2_cow_identity",
+          "text": "A cow near an object",
           "role": "primitive",
-          "text": "A bag",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_cow_bag_scene",
+          "name": "S3_bag_identity",
+          "text": "A bag near an animal",
           "role": "primitive",
-          "text": "A cow and a bag together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_bottom_relation",
-          "role": "primitive",
-          "text": "A cow below a bag",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_bottom_spatial_relation",
           "text": "A cow on the bottom of a bag",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S5_top_spatial_relation",
+          "text": "A bag on the top of a cow",
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S6_full_spatial_scene",
+          "text": "A cow on the bottom of a bag",
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A cow and a bag",
@@ -3769,39 +3335,46 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, bad hands, distorted face",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_woman_identity",
+          "name": "S1_woman_and_cup_base",
+          "text": "A woman and a cup",
           "role": "primitive",
-          "text": "A woman",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_cup_identity",
+          "name": "S2_woman_identity_contextual",
+          "text": "A woman near a cup",
           "role": "primitive",
-          "text": "A cup",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_woman_cup_scene",
+          "name": "S3_cup_identity_contextual",
+          "text": "A cup near a woman",
           "role": "primitive",
-          "text": "A woman and a cup together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_left_relation",
-          "role": "primitive",
+          "name": "S4_left_spatial_relation",
           "text": "A woman on the left of a cup",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
+          "name": "S5_right_spatial_relation",
+          "text": "A cup on the right of a woman",
           "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S6_full_spatial_scene",
           "text": "A woman on the left of a cup",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A woman and a cup",
@@ -3816,39 +3389,46 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, bad hands, distorted face",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_airplane_identity",
+          "name": "S1_airplane_and_person_base",
+          "text": "An airplane and a person",
           "role": "primitive",
-          "text": "An airplane",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_person_identity",
+          "name": "S2_airplane_identity_contextual",
+          "text": "An airplane near a person",
           "role": "primitive",
-          "text": "A person",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_airplane_person_scene",
+          "name": "S3_person_identity_contextual",
+          "text": "A person near an airplane",
           "role": "primitive",
-          "text": "An airplane and a person together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_right_relation",
-          "role": "primitive",
+          "name": "S4_right_spatial_relation",
           "text": "An airplane on the right of a person",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
+          "name": "S5_left_spatial_relation",
+          "text": "A person on the left of an airplane",
           "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S6_full_spatial_scene",
           "text": "An airplane on the right of a person",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "An airplane and a person",
@@ -3863,39 +3443,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_cow_identity",
+          "name": "S1_cow_and_train_base",
+          "text": "A cow and a train",
           "role": "primitive",
-          "text": "A cow",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_train_identity",
+          "name": "S2_cow_identity_contextual",
+          "text": "A cow near a train",
           "role": "primitive",
-          "text": "A train",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_cow_train_scene",
+          "name": "S3_train_identity_contextual",
+          "text": "A train near a cow",
           "role": "primitive",
-          "text": "A cow and a train together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_side_relation",
-          "role": "primitive",
-          "text": "A cow beside a train",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_side_spatial_relation",
           "text": "A cow on the side of a train",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S5_full_spatial_scene",
+          "text": "A cow on the side of a train",
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A cow and a train",
@@ -3910,39 +3490,46 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_table_identity",
+          "name": "S1_table_and_pig_base",
+          "text": "A table and a pig",
           "role": "primitive",
-          "text": "A table",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_pig_identity",
+          "name": "S2_table_identity_contextual",
+          "text": "A table near a pig",
           "role": "primitive",
-          "text": "A pig",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_table_pig_scene",
+          "name": "S3_pig_identity_contextual",
+          "text": "A pig near a table",
           "role": "primitive",
-          "text": "A table and a pig together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_top_relation",
-          "role": "primitive",
+          "name": "S4_top_spatial_relation",
           "text": "A table on top of a pig",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
+          "name": "S5_bottom_spatial_relation",
+          "text": "A pig underneath of a table",
           "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S6_full_spatial_scene",
           "text": "A table on the top of a pig",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A table and a pig",
@@ -3957,39 +3544,46 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_painting_identity",
+          "name": "S1_painting_and_horse_base",
+          "text": "A painting and a horse",
           "role": "primitive",
-          "text": "A painting",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_horse_identity",
+          "name": "S2_painting_identity_contextual",
+          "text": "A painting near a horse",
           "role": "primitive",
-          "text": "A horse",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_painting_horse_scene",
+          "name": "S3_horse_identity_contextual",
+          "text": "A horse near a painting",
           "role": "primitive",
-          "text": "A painting and a horse together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_bottom_relation",
-          "role": "primitive",
-          "text": "A painting below a horse",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_bottom_spatial_relation",
           "text": "A painting on the bottom of a horse",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S5_top_spatial_relation",
+          "text": "A horse on the top of a painting",
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S6_full_spatial_scene",
+          "text": "A painting on the bottom of a horse",
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A painting and a horse",
@@ -4004,39 +3598,46 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, bad hands, distorted face",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_television_identity",
+          "name": "S1_television_and_woman_base",
+          "text": "A television and a woman",
           "role": "primitive",
-          "text": "A television",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_woman_identity",
+          "name": "S2_television_identity_contextual",
+          "text": "A television near a woman",
           "role": "primitive",
-          "text": "A woman",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_television_woman_scene",
+          "name": "S3_woman_identity_contextual",
+          "text": "A woman near a television",
           "role": "primitive",
-          "text": "A television and a woman together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_right_relation",
-          "role": "primitive",
+          "name": "S4_right_spatial_relation",
           "text": "A television on the right of a woman",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
+          "name": "S5_left_spatial_relation",
+          "text": "A woman on the left of a television",
           "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S6_full_spatial_scene",
           "text": "A television on the right of a woman",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A television and a woman",
@@ -4051,39 +3652,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_fish_identity",
+          "name": "S1_fish_and_cup_base",
+          "text": "A fish and a cup",
           "role": "primitive",
-          "text": "A fish",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_cup_identity",
+          "name": "S2_fish_identity_contextual",
+          "text": "A fish near an object",
           "role": "primitive",
-          "text": "A cup",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_fish_cup_scene",
+          "name": "S3_cup_identity_contextual",
+          "text": "A cup near a fish",
           "role": "primitive",
-          "text": "A fish and a cup together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_near_relation",
-          "role": "primitive",
+          "name": "S4_near_spatial_relation",
           "text": "A fish near a cup",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_spatial_scene",
           "text": "A fish near a cup",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A fish and a cup",
@@ -4098,39 +3699,46 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, bad hands, distorted face",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_woman_identity",
+          "name": "S1_woman_and_television_base",
+          "text": "A woman and a television",
           "role": "primitive",
-          "text": "A woman",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_television_identity",
+          "name": "S2_woman_identity_contextual",
+          "text": "A woman near a television",
           "role": "primitive",
-          "text": "A television",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_woman_television_scene",
+          "name": "S3_television_identity_contextual",
+          "text": "A television near a woman",
           "role": "primitive",
-          "text": "A woman and a television together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_right_relation",
-          "role": "primitive",
+          "name": "S4_right_spatial_relation",
           "text": "A woman on the right of a television",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
+          "name": "S5_left_spatial_relation",
+          "text": "A television on the left of a woman",
           "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S6_full_spatial_scene",
           "text": "A woman on the right of a television",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A woman and a television",
@@ -4145,39 +3753,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_horse_identity",
+          "name": "S1_horse_and_sofa_base",
+          "text": "A horse and a sofa",
           "role": "primitive",
-          "text": "A horse",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_sofa_identity",
+          "name": "S2_horse_identity_contextual",
+          "text": "A horse near an object",
           "role": "primitive",
-          "text": "A sofa",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_horse_sofa_scene",
+          "name": "S3_sofa_identity_contextual",
+          "text": "A sofa near a horse",
           "role": "primitive",
-          "text": "A horse and a sofa together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_near_relation",
-          "role": "primitive",
+          "name": "S4_near_spatial_relation",
           "text": "A horse near a sofa",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_spatial_scene",
           "text": "A horse near a sofa",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A horse and a sofa",
@@ -4192,39 +3800,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_bird_identity",
+          "name": "S1_bird_and_balloon_base",
+          "text": "A bird and a balloon",
           "role": "primitive",
-          "text": "A bird",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_balloon_identity",
+          "name": "S2_bird_identity_contextual",
+          "text": "A bird near a balloon",
           "role": "primitive",
-          "text": "A balloon",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_bird_balloon_scene",
+          "name": "S3_balloon_identity_contextual",
+          "text": "A balloon near a bird",
           "role": "primitive",
-          "text": "A bird and a balloon together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_side_relation",
-          "role": "primitive",
-          "text": "A bird beside a balloon",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_side_spatial_relation",
           "text": "A bird on the side of a balloon",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S5_full_spatial_scene",
+          "text": "A bird on the side of a balloon",
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A bird and a balloon",
@@ -4239,39 +3847,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_butterfly_identity",
+          "name": "S1_butterfly_and_train_base",
+          "text": "A butterfly and a train",
           "role": "primitive",
-          "text": "A butterfly",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_train_identity",
+          "name": "S2_butterfly_identity_contextual",
+          "text": "A butterfly near a train",
           "role": "primitive",
-          "text": "A train",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_butterfly_train_scene",
+          "name": "S3_train_identity_contextual",
+          "text": "A train near a butterfly",
           "role": "primitive",
-          "text": "A butterfly and a train together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_next_to_relation",
-          "role": "primitive",
+          "name": "S4_next_to_spatial_relation",
           "text": "A butterfly next to a train",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_spatial_scene",
           "text": "A butterfly next to a train",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A butterfly and a train",
@@ -4286,39 +3894,46 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_airplane_identity",
+          "name": "S1_airplane_and_mouse_base",
+          "text": "An airplane and a mouse",
           "role": "primitive",
-          "text": "An airplane",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_mouse_identity",
+          "name": "S2_airplane_identity_contextual",
+          "text": "An airplane near a mouse",
           "role": "primitive",
-          "text": "A mouse",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_airplane_mouse_scene",
+          "name": "S3_mouse_identity_contextual",
+          "text": "A mouse near an airplane",
           "role": "primitive",
-          "text": "An airplane and a mouse together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_top_relation",
-          "role": "primitive",
+          "name": "S4_top_spatial_relation",
           "text": "An airplane on top of a mouse",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
+          "name": "S5_bottom_spatial_relation",
+          "text": "A mouse underneath an airplane",
           "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S6_full_spatial_scene",
           "text": "An airplane on the top of a mouse",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "An airplane and a mouse",
@@ -4333,39 +3948,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_fish_identity",
+          "name": "S1_fish_and_bag_base",
+          "text": "A fish and a bag",
           "role": "primitive",
-          "text": "A fish",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_bag_identity",
+          "name": "S2_fish_identity_contextual",
+          "text": "A fish near a bag",
           "role": "primitive",
-          "text": "A bag",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_fish_bag_scene",
+          "name": "S3_bag_identity_contextual",
+          "text": "A bag near a fish",
           "role": "primitive",
-          "text": "A fish and a bag together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_side_relation",
-          "role": "primitive",
-          "text": "A fish beside a bag",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_side_spatial_relation",
           "text": "A fish on the side of a bag",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S5_full_spatial_scene",
+          "text": "A fish on the side of a bag",
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A fish and a bag",
@@ -4380,39 +3995,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_bee_identity",
+          "name": "S1_bee_and_airplane_base",
+          "text": "A bee and an airplane",
           "role": "primitive",
-          "text": "A bee",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_airplane_identity",
+          "name": "S2_bee_identity_contextual",
+          "text": "A bee near an airplane",
           "role": "primitive",
-          "text": "An airplane",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_bee_airplane_scene",
+          "name": "S3_airplane_identity_contextual",
+          "text": "An airplane near a bee",
           "role": "primitive",
-          "text": "A bee and an airplane together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_side_relation",
-          "role": "primitive",
-          "text": "A bee beside an airplane",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_side_spatial_relation",
           "text": "A bee on the side of an airplane",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S5_full_spatial_scene",
+          "text": "A bee on the side of an airplane",
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A bee and an airplane",
@@ -4427,39 +4042,46 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, bad hands, distorted face, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_girl_identity",
+          "name": "S1_girl_and_cow_base",
+          "text": "A girl and a cow",
           "role": "primitive",
-          "text": "A girl",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_cow_identity",
+          "name": "S2_girl_identity_contextual",
+          "text": "A girl near a cow",
           "role": "primitive",
-          "text": "A cow",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_girl_cow_scene",
+          "name": "S3_cow_identity_contextual",
+          "text": "A cow near a girl",
           "role": "primitive",
-          "text": "A girl and a cow together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_top_relation",
-          "role": "primitive",
+          "name": "S4_top_spatial_relation",
           "text": "A girl on top of a cow",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
+          "name": "S5_bottom_spatial_relation",
+          "text": "A cow underneath a girl",
           "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S6_full_spatial_scene",
           "text": "A girl on the top of a cow",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A girl and a cow",
@@ -4474,39 +4096,39 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_fish_identity",
+          "name": "S1_fish_and_desk_base",
+          "text": "A fish and a desk",
           "role": "primitive",
-          "text": "A fish",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_desk_identity",
+          "name": "S2_fish_identity_contextual",
+          "text": "A fish near a desk",
           "role": "primitive",
-          "text": "A desk",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_fish_desk_scene",
+          "name": "S3_desk_identity_contextual",
+          "text": "A desk near a fish",
           "role": "primitive",
-          "text": "A fish and a desk together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_next_to_relation",
-          "role": "primitive",
+          "name": "S4_next_to_spatial_relation",
           "text": "A fish next to a desk",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S5_full_spatial_scene",
           "text": "A fish next to a desk",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A fish and a desk",
@@ -4521,39 +4143,46 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_pig_identity",
+          "name": "S1_pig_and_desk_base",
+          "text": "A pig and a desk",
           "role": "primitive",
-          "text": "A pig",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_desk_identity",
+          "name": "S2_pig_identity_contextual",
+          "text": "A pig near a desk",
           "role": "primitive",
-          "text": "A desk",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_pig_desk_scene",
+          "name": "S3_desk_identity_contextual",
+          "text": "A desk near a pig",
           "role": "primitive",
-          "text": "A pig and a desk together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_left_relation",
-          "role": "primitive",
+          "name": "S4_left_spatial_relation",
           "text": "A pig on the left of a desk",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
+          "name": "S5_right_spatial_relation",
+          "text": "A desk on the right of a pig",
           "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S6_full_spatial_scene",
           "text": "A pig on the left of a desk",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A pig and a desk",
@@ -4568,39 +4197,46 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_sheep_identity",
+          "name": "S1_sheep_and_table_base",
+          "text": "A sheep and a table",
           "role": "primitive",
-          "text": "A sheep",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_table_identity",
+          "name": "S2_sheep_identity_contextual",
+          "text": "A sheep near a table",
           "role": "primitive",
-          "text": "A table",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_sheep_table_scene",
+          "name": "S3_table_identity_contextual",
+          "text": "A table near a sheep",
           "role": "primitive",
-          "text": "A sheep and a table together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_top_relation",
-          "role": "primitive",
+          "name": "S4_top_spatial_relation",
           "text": "A sheep on top of a table",
-          "weight": 1.0
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S5_fullish",
+          "name": "S5_bottom_spatial_relation",
+          "text": "A table on the bottom of a sheep",
           "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S6_full_spatial_scene",
           "text": "A sheep on the top of a table",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A sheep and a table",
@@ -4615,39 +4251,47 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, bad hands, distorted face",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_man_identity",
+          "name": "S1_man_and_sofa_base",
+          "text": "A man and a sofa",
           "role": "primitive",
-          "text": "A man",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_sofa_identity",
+          "name": "S2_man_identity_contextual",
+          "text": "A man near a sofa",
           "role": "primitive",
-          "text": "A sofa",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_man_sofa_scene",
+          "name": "S3_sofa_identity_contextual",
+          "text": "A sofa near a man",
           "role": "primitive",
-          "text": "A man and a sofa together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_bottom_relation",
-          "role": "primitive",
-          "text": "A man below a sofa",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
-          "role": "primitive",
+          "name": "S4_bottom_spatial_relation",
           "text": "A man on the bottom of a sofa",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        {
+          "name": "S5_top_spatial_relation",
+          "text": "A sofa on the top of a man",
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+        
+        {
+          "name": "S6_full_spatial_scene",
+          "text": "A man on the bottom of a sofa",
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A man and a sofa",
@@ -4662,39 +4306,48 @@
       "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, text, watermark, deformed animal",
       "primitive_prompts": [
         {
-          "enabled": true,
-          "name": "S1_painting_identity",
+          "name": "S1_painting_and_pig_base",
+          "text": "A painting and a pig",
           "role": "primitive",
-          "text": "A painting",
-          "weight": 1.0
+          "weight": 0.8,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S2_pig_identity",
+          "name": "S2_painting_identity_contextual",
+          "text": "A painting near a pig",
           "role": "primitive",
-          "text": "A pig",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S3_painting_pig_scene",
+          "name": "S3_pig_identity_contextual",
+          "text": "A pig near a painting",
           "role": "primitive",
-          "text": "A painting and a pig together",
-          "weight": 1.0
+          "weight": 1.0,
+          "enabled": true
         },
         {
-          "enabled": true,
-          "name": "S4_right_relation",
-          "role": "primitive",
+          "name": "S4_right_spatial_relation",
           "text": "A painting on the right of a pig",
-          "weight": 1.0
-        },
-        {
-          "enabled": true,
-          "name": "S5_fullish",
           "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+
+        {
+          "name": "S5_left_spatial_relation",
+          "text": "A pig on the left of a painting",
+          "role": "primitive",
+          "weight": 1.0,
+          "enabled": true
+        },
+
+        {
+          "name": "S6_full_spatial_scene",
           "text": "A painting on the right of a pig",
-          "weight": 1.1
+          "role": "primitive",
+          "weight": 1.1,
+          "enabled": true
         }
       ],
       "source_prompt": "A painting and a pig",
