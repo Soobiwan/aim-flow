@@ -92,6 +92,7 @@ class PrimitiveFlowConfig:
     vfa_temperature: float = 0.7
     use_consensus_gating: bool = True
     use_target_consistency_gating: bool = True
+    uniform_condition_weights: bool = False
     min_gate: float = 0.0
     max_gate: float = 1.0
     source_weight: float = 0.7

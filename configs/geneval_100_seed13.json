@@ -1,0 +1,1108 @@
+{
+  "benchmark": "geneval",
+  "manifest_version": "1.0",
+  "samples": [
+    {
+      "category": "color",
+      "id": "geneval_color_000000",
+      "metadata": {
+        "decomposition_key": "blue_bench_red_sports_ball",
+        "original_index": 0
+      },
+      "prompt": "A photo of a blue bench and a red sports ball",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000001",
+      "metadata": {
+        "decomposition_key": "yellow_toothbrush_purple_snowboard",
+        "original_index": 1
+      },
+      "prompt": "A photo of a yellow toothbrush and a purple snowboard",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000002",
+      "metadata": {
+        "decomposition_key": "silver_toaster_black_oven",
+        "original_index": 2
+      },
+      "prompt": "A photo of a silver toaster and a black oven",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000003",
+      "metadata": {
+        "decomposition_key": "green_broccoli_white_vase",
+        "original_index": 3
+      },
+      "prompt": "A photo of a green broccoli and a white vase",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000004",
+      "metadata": {
+        "decomposition_key": "red_tennis_racket_blue_wine_glass",
+        "original_index": 4
+      },
+      "prompt": "A photo of a red tennis racket and a blue wine glass",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000005",
+      "metadata": {
+        "decomposition_key": "blue_fork_yellow_knife",
+        "original_index": 5
+      },
+      "prompt": "A photo of a blue fork and a yellow knife",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000006",
+      "metadata": {
+        "decomposition_key": "pink_hair_drier_yellow_cake",
+        "original_index": 6
+      },
+      "prompt": "A photo of a pink hair drier and a yellow cake",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000007",
+      "metadata": {
+        "decomposition_key": "brown_horse_yellow_giraffe",
+        "original_index": 7
+      },
+      "prompt": "A photo of a brown horse and a yellow giraffe",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000008",
+      "metadata": {
+        "decomposition_key": "white_horse_black_computer_keyboard",
+        "original_index": 8
+      },
+      "prompt": "A photo of a white horse and a black computer keyboard",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000009",
+      "metadata": {
+        "decomposition_key": "green_toothbrush_orange_carrot",
+        "original_index": 9
+      },
+      "prompt": "A photo of a green toothbrush and an orange carrot",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000010",
+      "metadata": {
+        "decomposition_key": "pink_cake_white_zebra",
+        "original_index": 10
+      },
+      "prompt": "A photo of a pink cake and a white zebra",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000011",
+      "metadata": {
+        "decomposition_key": "purple_hair_drier_brown_bear",
+        "original_index": 11
+      },
+      "prompt": "A photo of a purple hair drier and a brown bear",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000012",
+      "metadata": {
+        "decomposition_key": "silver_knife_black_zebra",
+        "original_index": 12
+      },
+      "prompt": "A photo of a silver knife and a black zebra",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000013",
+      "metadata": {
+        "decomposition_key": "green_couch_red_wine_glass",
+        "original_index": 13
+      },
+      "prompt": "A photo of a green couch and a red wine glass",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000014",
+      "metadata": {
+        "decomposition_key": "blue_frisbee_yellow_vase",
+        "original_index": 14
+      },
+      "prompt": "A photo of a blue frisbee and a yellow vase",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000015",
+      "metadata": {
+        "decomposition_key": "red_book_silver_laptop",
+        "original_index": 15
+      },
+      "prompt": "A photo of a red book and a silver laptop",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000016",
+      "metadata": {
+        "decomposition_key": "brown_dining_table_black_bear",
+        "original_index": 16
+      },
+      "prompt": "A photo of a brown dining table and a black bear",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000017",
+      "metadata": {
+        "decomposition_key": "orange_frisbee_blue_couch",
+        "original_index": 17
+      },
+      "prompt": "A photo of an orange frisbee and a blue couch",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000018",
+      "metadata": {
+        "decomposition_key": "grey_couch_white_horse",
+        "original_index": 18
+      },
+      "prompt": "A photo of a grey couch and a white horse",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000019",
+      "metadata": {
+        "decomposition_key": "white_toilet_black_computer_mouse",
+        "original_index": 19
+      },
+      "prompt": "A photo of a white toilet and a black computer mouse",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000020",
+      "metadata": {
+        "decomposition_key": "green_bottle_silver_refrigerator",
+        "original_index": 20
+      },
+      "prompt": "A photo of a green bottle and a silver refrigerator",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000021",
+      "metadata": {
+        "decomposition_key": "purple_potted_plant_red_backpack",
+        "original_index": 21
+      },
+      "prompt": "A photo of a purple potted plant and a red backpack",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000022",
+      "metadata": {
+        "decomposition_key": "yellow_skateboard_pink_cake",
+        "original_index": 22
+      },
+      "prompt": "A photo of a yellow skateboard and a pink cake",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000023",
+      "metadata": {
+        "decomposition_key": "green_broccoli_yellow_parking_meter",
+        "original_index": 23
+      },
+      "prompt": "A photo of a green broccoli and a yellow parking meter",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000024",
+      "metadata": {
+        "decomposition_key": "black_zebra_blue_bed",
+        "original_index": 24
+      },
+      "prompt": "A photo of a black zebra and a blue bed",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000025",
+      "metadata": {
+        "decomposition_key": "silver_oven_white_bed",
+        "original_index": 25
+      },
+      "prompt": "A photo of a silver oven and a white bed",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000026",
+      "metadata": {
+        "decomposition_key": "brown_baseball_bat_silver_fork",
+        "original_index": 26
+      },
+      "prompt": "A photo of a brown baseball bat and a silver fork",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000027",
+      "metadata": {
+        "decomposition_key": "blue_vase_silver_spoon",
+        "original_index": 27
+      },
+      "prompt": "A photo of a blue vase and a silver spoon",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000028",
+      "metadata": {
+        "decomposition_key": "red_skateboard_white_sink",
+        "original_index": 28
+      },
+      "prompt": "A photo of a red skateboard and a white sink",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000029",
+      "metadata": {
+        "decomposition_key": "yellow_pizza_green_bench",
+        "original_index": 29
+      },
+      "prompt": "A photo of a yellow pizza and a green bench",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000030",
+      "metadata": {
+        "decomposition_key": "blue_bowl_red_pizza",
+        "original_index": 30
+      },
+      "prompt": "A photo of a blue bowl and a red pizza",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000031",
+      "metadata": {
+        "decomposition_key": "white_tennis_racket_yellow_bird",
+        "original_index": 31
+      },
+      "prompt": "A photo of a white tennis racket and a yellow bird",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000032",
+      "metadata": {
+        "decomposition_key": "green_wine_glass_brown_bear",
+        "original_index": 32
+      },
+      "prompt": "A photo of a green wine glass and a brown bear",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000033",
+      "metadata": {
+        "decomposition_key": "silver_fork_blue_book",
+        "original_index": 33
+      },
+      "prompt": "A photo of a silver fork and a blue book",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000034",
+      "metadata": {
+        "decomposition_key": "red_scissors_white_bowl",
+        "original_index": 34
+      },
+      "prompt": "A photo of a red scissors and a white bowl",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000035",
+      "metadata": {
+        "decomposition_key": "grey_laptop_orange_carrot",
+        "original_index": 35
+      },
+      "prompt": "A photo of a grey laptop and an orange carrot",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000036",
+      "metadata": {
+        "decomposition_key": "red_stop_sign_green_bottle",
+        "original_index": 36
+      },
+      "prompt": "A photo of a red stop sign and a green bottle",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000037",
+      "metadata": {
+        "decomposition_key": "white_microwave_blue_truck",
+        "original_index": 37
+      },
+      "prompt": "A photo of a white microwave and a blue truck",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000038",
+      "metadata": {
+        "decomposition_key": "blue_frisbee_black_cell_phone",
+        "original_index": 38
+      },
+      "prompt": "A photo of a blue frisbee and a black cell phone",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000039",
+      "metadata": {
+        "decomposition_key": "yellow_parking_meter_brown_teddy_bear",
+        "original_index": 39
+      },
+      "prompt": "A photo of a yellow parking meter and a brown teddy bear",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000040",
+      "metadata": {
+        "decomposition_key": "red_tennis_racket_black_bicycle",
+        "original_index": 40
+      },
+      "prompt": "A photo of a red tennis racket and a black bicycle",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000041",
+      "metadata": {
+        "decomposition_key": "red_stop_sign_green_motorcycle",
+        "original_index": 41
+      },
+      "prompt": "A photo of a red stop sign and a green motorcycle",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000042",
+      "metadata": {
+        "decomposition_key": "yellow_fire_hydrant_white_tennis_racket",
+        "original_index": 42
+      },
+      "prompt": "A photo of a yellow fire hydrant and a white tennis racket",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000043",
+      "metadata": {
+        "decomposition_key": "silver_scissors_brown_sandwich",
+        "original_index": 43
+      },
+      "prompt": "A photo of a silver scissors and a brown sandwich",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000044",
+      "metadata": {
+        "decomposition_key": "yellow_pizza_green_book",
+        "original_index": 44
+      },
+      "prompt": "A photo of a yellow pizza and a green book",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000045",
+      "metadata": {
+        "decomposition_key": "yellow_giraffe_black_computer_mouse",
+        "original_index": 45
+      },
+      "prompt": "A photo of a yellow giraffe and a black computer mouse",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000046",
+      "metadata": {
+        "decomposition_key": "red_stop_sign_silver_toaster",
+        "original_index": 46
+      },
+      "prompt": "A photo of a red stop sign and a silver toaster",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000047",
+      "metadata": {
+        "decomposition_key": "black_computer_mouse_white_zebra",
+        "original_index": 47
+      },
+      "prompt": "A photo of a black computer mouse and a white zebra",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000048",
+      "metadata": {
+        "decomposition_key": "brown_chair_green_bench",
+        "original_index": 48
+      },
+      "prompt": "A photo of a brown chair and a green bench",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000049",
+      "metadata": {
+        "decomposition_key": "black_tv_orange_carrot",
+        "original_index": 49
+      },
+      "prompt": "A photo of a black tv and an orange carrot",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000050",
+      "metadata": {
+        "decomposition_key": "blue_surfboard_yellow_suitcase",
+        "original_index": 50
+      },
+      "prompt": "A photo of a blue surfboard and a yellow suitcase",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000051",
+      "metadata": {
+        "decomposition_key": "black_computer_keyboard_silver_laptop",
+        "original_index": 51
+      },
+      "prompt": "A photo of a black computer keyboard and a silver laptop",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000052",
+      "metadata": {
+        "decomposition_key": "black_computer_keyboard_white_microwave",
+        "original_index": 52
+      },
+      "prompt": "A photo of a black computer keyboard and a white microwave",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000053",
+      "metadata": {
+        "decomposition_key": "silver_scissors_blue_bird",
+        "original_index": 53
+      },
+      "prompt": "A photo of a silver scissors and a blue bird",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000054",
+      "metadata": {
+        "decomposition_key": "brown_cow_white_horse",
+        "original_index": 54
+      },
+      "prompt": "A photo of a brown cow and a white horse",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000055",
+      "metadata": {
+        "decomposition_key": "black_handbag_silver_refrigerator",
+        "original_index": 55
+      },
+      "prompt": "A photo of a black handbag and a silver refrigerator",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000056",
+      "metadata": {
+        "decomposition_key": "green_chair_grey_laptop",
+        "original_index": 56
+      },
+      "prompt": "A photo of a green chair and a grey laptop",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000057",
+      "metadata": {
+        "decomposition_key": "blue_toothbrush_green_bench",
+        "original_index": 57
+      },
+      "prompt": "A photo of a blue toothbrush and a green bench",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000058",
+      "metadata": {
+        "decomposition_key": "red_book_brown_baseball_bat",
+        "original_index": 58
+      },
+      "prompt": "A photo of a red book and a brown baseball bat",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000059",
+      "metadata": {
+        "decomposition_key": "white_horse_black_train",
+        "original_index": 59
+      },
+      "prompt": "A photo of a white horse and a black train",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000060",
+      "metadata": {
+        "decomposition_key": "green_bench_blue_vase",
+        "original_index": 60
+      },
+      "prompt": "A photo of a green bench and a blue vase",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000061",
+      "metadata": {
+        "decomposition_key": "red_traffic_light_black_backpack",
+        "original_index": 61
+      },
+      "prompt": "A photo of a red traffic light and a black backpack",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000062",
+      "metadata": {
+        "decomposition_key": "yellow_sports_ball_brown_cow",
+        "original_index": 62
+      },
+      "prompt": "A photo of a yellow sports ball and a brown cow",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000063",
+      "metadata": {
+        "decomposition_key": "black_computer_mouse_silver_spoon",
+        "original_index": 63
+      },
+      "prompt": "A photo of a black computer mouse and a silver spoon",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000064",
+      "metadata": {
+        "decomposition_key": "black_tv_red_bicycle",
+        "original_index": 64
+      },
+      "prompt": "A photo of a black tv and a red bicycle",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000065",
+      "metadata": {
+        "decomposition_key": "green_bench_blue_snowboard",
+        "original_index": 65
+      },
+      "prompt": "A photo of a green bench and a blue snowboard",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000066",
+      "metadata": {
+        "decomposition_key": "pink_toothbrush_white_toilet",
+        "original_index": 66
+      },
+      "prompt": "A photo of a pink toothbrush and a white toilet",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000067",
+      "metadata": {
+        "decomposition_key": "white_sink_yellow_sports_ball",
+        "original_index": 67
+      },
+      "prompt": "A photo of a white sink and a yellow sports ball",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000068",
+      "metadata": {
+        "decomposition_key": "red_stop_sign_brown_dog",
+        "original_index": 68
+      },
+      "prompt": "A photo of a red stop sign and a brown dog",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000069",
+      "metadata": {
+        "decomposition_key": "silver_knife_red_stop_sign",
+        "original_index": 69
+      },
+      "prompt": "A photo of a silver knife and a red stop sign",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000070",
+      "metadata": {
+        "decomposition_key": "purple_wine_glass_black_handbag",
+        "original_index": 70
+      },
+      "prompt": "A photo of a purple wine glass and a black handbag",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000071",
+      "metadata": {
+        "decomposition_key": "blue_bowl_yellow_skis",
+        "original_index": 71
+      },
+      "prompt": "A photo of a blue bowl and a yellow pair of skis",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000072",
+      "metadata": {
+        "decomposition_key": "green_frisbee_red_apple",
+        "original_index": 72
+      },
+      "prompt": "A photo of a green frisbee and a red apple",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000073",
+      "metadata": {
+        "decomposition_key": "black_computer_keyboard_pink_cell_phone",
+        "original_index": 73
+      },
+      "prompt": "A photo of a black computer keyboard and a pink cell phone",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000074",
+      "metadata": {
+        "decomposition_key": "red_stop_sign_silver_fork",
+        "original_index": 74
+      },
+      "prompt": "A photo of a red stop sign and a silver fork",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000075",
+      "metadata": {
+        "decomposition_key": "green_potted_plant_white_boat",
+        "original_index": 75
+      },
+      "prompt": "A photo of a green potted plant and a white boat",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000076",
+      "metadata": {
+        "decomposition_key": "black_tv_blue_cell_phone",
+        "original_index": 76
+      },
+      "prompt": "A photo of a black tv and a blue cell phone",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000077",
+      "metadata": {
+        "decomposition_key": "red_tie_green_broccoli",
+        "original_index": 77
+      },
+      "prompt": "A photo of a red tie and a green broccoli",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000078",
+      "metadata": {
+        "decomposition_key": "green_potted_plant_pink_donut",
+        "original_index": 78
+      },
+      "prompt": "A photo of a green potted plant and a pink donut",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000079",
+      "metadata": {
+        "decomposition_key": "blue_couch_white_snowboard",
+        "original_index": 79
+      },
+      "prompt": "A photo of a blue couch and a white snowboard",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000080",
+      "metadata": {
+        "decomposition_key": "silver_fork_brown_baseball_glove",
+        "original_index": 80
+      },
+      "prompt": "A photo of a silver fork and a brown baseball glove",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000081",
+      "metadata": {
+        "decomposition_key": "red_apple_blue_toothbrush",
+        "original_index": 81
+      },
+      "prompt": "A photo of a red apple and a blue toothbrush",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000082",
+      "metadata": {
+        "decomposition_key": "yellow_bus_brown_baseball_glove",
+        "original_index": 82
+      },
+      "prompt": "A photo of a yellow bus and a brown baseball glove",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000083",
+      "metadata": {
+        "decomposition_key": "orange_carrot_brown_couch",
+        "original_index": 83
+      },
+      "prompt": "A photo of an orange carrot and a brown couch",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000084",
+      "metadata": {
+        "decomposition_key": "brown_baseball_bat_black_bear",
+        "original_index": 84
+      },
+      "prompt": "A photo of a brown baseball bat and a black bear",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000085",
+      "metadata": {
+        "decomposition_key": "red_fire_hydrant_black_train",
+        "original_index": 85
+      },
+      "prompt": "A photo of a red fire hydrant and a black train",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000086",
+      "metadata": {
+        "decomposition_key": "brown_baseball_glove_orange_carrot",
+        "original_index": 86
+      },
+      "prompt": "A photo of a brown baseball glove and an orange carrot",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000087",
+      "metadata": {
+        "decomposition_key": "white_microwave_green_bench",
+        "original_index": 87
+      },
+      "prompt": "A photo of a white microwave and a green bench",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000088",
+      "metadata": {
+        "decomposition_key": "white_cake_red_stop_sign",
+        "original_index": 88
+      },
+      "prompt": "A photo of a white cake and a red stop sign",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000089",
+      "metadata": {
+        "decomposition_key": "red_car_black_computer_mouse",
+        "original_index": 89
+      },
+      "prompt": "A photo of a red car and a black computer mouse",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000090",
+      "metadata": {
+        "decomposition_key": "blue_suitcase_brown_dining_table",
+        "original_index": 90
+      },
+      "prompt": "A photo of a blue suitcase and a brown dining table",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000091",
+      "metadata": {
+        "decomposition_key": "black_cell_phone_brown_horse",
+        "original_index": 91
+      },
+      "prompt": "A photo of a black cell phone and a brown horse",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000092",
+      "metadata": {
+        "decomposition_key": "brown_baseball_bat_yellow_giraffe",
+        "original_index": 92
+      },
+      "prompt": "A photo of a brown baseball bat and a yellow giraffe",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000093",
+      "metadata": {
+        "decomposition_key": "blue_fire_hydrant_pink_car",
+        "original_index": 93
+      },
+      "prompt": "A photo of a blue fire hydrant and a pink car",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000094",
+      "metadata": {
+        "decomposition_key": "purple_cup_blue_cow",
+        "original_index": 94
+      },
+      "prompt": "A photo of a purple cup and a blue cow",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000095",
+      "metadata": {
+        "decomposition_key": "yellow_boat_blue_umbrella",
+        "original_index": 95
+      },
+      "prompt": "A photo of a yellow boat and a blue umbrella",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000096",
+      "metadata": {
+        "decomposition_key": "blue_elephant_yellow_elephant",
+        "original_index": 96
+      },
+      "prompt": "A photo of a blue elephant and a yellow elephant",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000097",
+      "metadata": {
+        "decomposition_key": "red_bicycle_purple_suitcase",
+        "original_index": 97
+      },
+      "prompt": "A photo of a red bicycle and a purple suitcase",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000098",
+      "metadata": {
+        "decomposition_key": "purple_hair_drier_white_sandwich",
+        "original_index": 98
+      },
+      "prompt": "A photo of a purple hair drier and a white sandwich",
+      "source": "GenEval",
+      "split": "color_attr"
+    },
+    {
+      "category": "color",
+      "id": "geneval_color_000099",
+      "metadata": {
+        "decomposition_key": "purple_elephant_green_microwave",
+        "original_index": 99
+      },
+      "prompt": "A photo of a purple elephant and a green microwave",
+      "source": "GenEval",
+      "split": "color_attr"
+    }
+  ],
+  "seed": 13,
+  "subset_size": 100
+}

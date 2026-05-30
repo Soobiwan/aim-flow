@@ -38,12 +38,18 @@ def test_spfc_component_variants_mutate_only_expected_knobs():
     base = load_bench_config(seed=13)
     no_ltp = apply_spfc_variant(base, "no_ltp")
     no_source = apply_spfc_variant(base, "no_source_flow")
+    target_only_uniform = apply_spfc_variant(base, "target_only_uniform")
     steering = apply_spfc_variant(base, "steering_0.25")
     max_primitives = apply_spfc_variant(base, "max_primitives_2")
 
     assert no_ltp.primitive_flow.ltp_enabled is False
     assert no_ltp.primitive_flow.ltp_mode == "off"
     assert no_source.primitive_flow.include_source_flow is False
+    assert target_only_uniform.primitive_flow.use_consensus_gating is False
+    assert target_only_uniform.primitive_flow.use_target_consistency_gating is True
+    assert target_only_uniform.primitive_flow.uniform_condition_weights is True
+    assert target_only_uniform.primitive_flow.source_weight == 1.0
+    assert target_only_uniform.primitive_flow.target_weight == 1.0
     assert steering.primitive_flow.steering_strength == 0.25
     assert max_primitives.primitive_flow.max_primitives == 2
     assert base.primitive_flow.ltp_enabled is True

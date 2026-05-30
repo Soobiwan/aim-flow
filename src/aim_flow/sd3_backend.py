@@ -510,6 +510,7 @@ class SD3Backend:
             include_target=config.include_target_flow,
             source_weight=config.source_weight,
             target_weight=config.target_weight,
+            uniform_weights=config.uniform_condition_weights,
             max_primitives=config.max_primitives,
         )
         target_indices = [index for index, item in enumerate(condition_dicts) if item["role"] == "target"]

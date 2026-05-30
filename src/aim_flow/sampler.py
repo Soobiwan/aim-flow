@@ -568,7 +568,9 @@ class AIMFlowSampler:
             condition_texts = condition_texts + [flow_set.target_prompt]
             condition_names = condition_names + ["target"]
             condition_roles = condition_roles + ["target"]
-            condition_weights = condition_weights + [float(primitive_cfg.target_weight)]
+            condition_weights = condition_weights + [
+                1.0 if primitive_cfg.uniform_condition_weights else float(primitive_cfg.target_weight)
+            ]
             target_index = len(condition_embeddings) - 1
         if not condition_embeddings:
             raise ValueError("Sparse primitive flow requires at least one encoded condition.")
@@ -793,6 +795,9 @@ class AIMFlowSampler:
             "latent_ltp_probe": latent_ltp_probe,
             "latent_ltp_disabled_reason": latent_ltp_disabled_reason,
             "vfa_temperature": primitive_cfg.vfa_temperature,
+            "uniform_condition_weights": primitive_cfg.uniform_condition_weights,
+            "use_consensus_gating": primitive_cfg.use_consensus_gating,
+            "use_target_consistency_gating": primitive_cfg.use_target_consistency_gating,
             "source_weight": primitive_cfg.source_weight,
             "target_weight": primitive_cfg.target_weight,
             "velocity_clip_ratio": primitive_cfg.velocity_clip_ratio,

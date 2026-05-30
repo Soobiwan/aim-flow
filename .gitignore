@@ -5,6 +5,7 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 .venv/
+.conda_pkgs/
 venv/
 build/
 dist/
@@ -20,3 +21,9 @@ benchmarks/probes/
 benchmarks/evaluator_cache/
 AuthorKit26/
 data/
+t2i_compbench_seed13_target_only_uniform.zip
+t2i_compbench_seed13_target_only_uniform
+t2i_compbench_seed13
+geneval_seed13
+geneval_seed13_target_only_uniform
+eval_all_methods (1).ipynb
