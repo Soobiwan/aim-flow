@@ -291,6 +291,8 @@ def aggregate_primitive_vfa(
         "consensus_gates": consensus_gates,
         "target_consistency_gates": target_gates,
         "target_consistency_cosines": target_debug.get("target_consistency_cosines"),
+        "use_consensus_gating": bool(use_consensus_gating),
+        "use_target_consistency_gating": bool(use_target_consistency_gating),
         "raw_scores": raw_scores,
         "softmax_weights": [float(w.detach().cpu().item()) for w in softmax_weights],
         "target_norm": _mean_float(_norm_per_sample(target_pred)),

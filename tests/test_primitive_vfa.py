@@ -40,6 +40,27 @@ def test_target_consistency_gate_prefers_target_aligned_vectors():
     assert gates[2] > gates[1]
 
 
+def test_target_only_uniform_vfa_uses_only_target_consistency_scores():
+    target = torch.tensor([1.0, 0.0])
+    aligned = torch.tensor([0.5, 0.0])
+    orthogonal = torch.tensor([0.0, 1.0])
+    _, debug = aggregate_primitive_vfa(
+        predictions=[aligned, orthogonal, target],
+        condition_names=["aligned", "orthogonal", "target"],
+        condition_roles=["primitive", "primitive", "target"],
+        condition_base_weights=[1.0, 1.0, 1.0],
+        target_index=2,
+        use_consensus_gating=False,
+        use_target_consistency_gating=True,
+    )
+    assert debug["condition_base_weights"] == [1.0, 1.0, 1.0]
+    assert debug["consensus_gates"] == [1.0, 1.0, 1.0]
+    assert debug["target_consistency_gates"] == pytest.approx([1.0, 0.0, 1.0])
+    assert debug["raw_scores"] == pytest.approx([1.0, 0.0, 1.0])
+    assert debug["use_consensus_gating"] is False
+    assert debug["use_target_consistency_gating"] is True
+
+
 def test_velocity_clipping_reduces_large_deviation_around_target():
     target = torch.ones(1, 4)
     large = torch.ones(1, 4) * 100.0

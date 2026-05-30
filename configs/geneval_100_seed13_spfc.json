@@ -1,0 +1,3505 @@
+{
+  "items": [
+    {
+      "id": "geneval_color_000000",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "blue_bench_red_sports_ball",
+        "original_index": 0,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_blue_bench",
+          "role": "primitive",
+          "text": "A photo of a blue bench",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_red_sports_ball",
+          "role": "primitive",
+          "text": "A photo of a red sports ball",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a blue bench and a red sports ball",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a bench and a sports ball",
+      "target_prompt": "A photo of a blue bench and a red sports ball"
+    },
+    {
+      "id": "geneval_color_000001",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "yellow_toothbrush_purple_snowboard",
+        "original_index": 1,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_yellow_toothbrush",
+          "role": "primitive",
+          "text": "A photo of a yellow toothbrush",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_purple_snowboard",
+          "role": "primitive",
+          "text": "A photo of a purple snowboard",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a yellow toothbrush and a purple snowboard",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a toothbrush and a snowboard",
+      "target_prompt": "A photo of a yellow toothbrush and a purple snowboard"
+    },
+    {
+      "id": "geneval_color_000002",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "silver_toaster_black_oven",
+        "original_index": 2,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_silver_toaster",
+          "role": "primitive",
+          "text": "A photo of a silver toaster",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_black_oven",
+          "role": "primitive",
+          "text": "A photo of a black oven",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a silver toaster and a black oven",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a toaster and an oven",
+      "target_prompt": "A photo of a silver toaster and a black oven"
+    },
+    {
+      "id": "geneval_color_000003",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "green_broccoli_white_vase",
+        "original_index": 3,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_green_broccoli",
+          "role": "primitive",
+          "text": "A photo of a green broccoli",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_white_vase",
+          "role": "primitive",
+          "text": "A photo of a white vase",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a green broccoli and a white vase",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a broccoli and a vase",
+      "target_prompt": "A photo of a green broccoli and a white vase"
+    },
+    {
+      "id": "geneval_color_000004",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_tennis_racket_blue_wine_glass",
+        "original_index": 4,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_tennis_racket",
+          "role": "primitive",
+          "text": "A photo of a red tennis racket",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_blue_wine_glass",
+          "role": "primitive",
+          "text": "A photo of a blue wine glass",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red tennis racket and a blue wine glass",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a tennis racket and a wine glass",
+      "target_prompt": "A photo of a red tennis racket and a blue wine glass"
+    },
+    {
+      "id": "geneval_color_000005",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "blue_fork_yellow_knife",
+        "original_index": 5,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_blue_fork",
+          "role": "primitive",
+          "text": "A photo of a blue fork",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_yellow_knife",
+          "role": "primitive",
+          "text": "A photo of a yellow knife",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a blue fork and a yellow knife",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a fork and a knife",
+      "target_prompt": "A photo of a blue fork and a yellow knife"
+    },
+    {
+      "id": "geneval_color_000006",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "pink_hair_drier_yellow_cake",
+        "original_index": 6,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_pink_hair_drier",
+          "role": "primitive",
+          "text": "A photo of a pink hair drier",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_yellow_cake",
+          "role": "primitive",
+          "text": "A photo of a yellow cake",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a pink hair drier and a yellow cake",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a hair drier and a cake",
+      "target_prompt": "A photo of a pink hair drier and a yellow cake"
+    },
+    {
+      "id": "geneval_color_000007",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "brown_horse_yellow_giraffe",
+        "original_index": 7,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_brown_horse",
+          "role": "primitive",
+          "text": "A photo of a brown horse",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_yellow_giraffe",
+          "role": "primitive",
+          "text": "A photo of a yellow giraffe",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a brown horse and a yellow giraffe",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a horse and a giraffe",
+      "target_prompt": "A photo of a brown horse and a yellow giraffe"
+    },
+    {
+      "id": "geneval_color_000008",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "white_horse_black_computer_keyboard",
+        "original_index": 8,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_white_horse",
+          "role": "primitive",
+          "text": "A photo of a white horse",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_black_computer_keyboard",
+          "role": "primitive",
+          "text": "A photo of a black computer keyboard",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a white horse and a black computer keyboard",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a horse and a computer keyboard",
+      "target_prompt": "A photo of a white horse and a black computer keyboard"
+    },
+    {
+      "id": "geneval_color_000009",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "green_toothbrush_orange_carrot",
+        "original_index": 9,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_green_toothbrush",
+          "role": "primitive",
+          "text": "A photo of a green toothbrush",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_orange_carrot",
+          "role": "primitive",
+          "text": "A photo of an orange carrot",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a green toothbrush and an orange carrot",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a toothbrush and a carrot",
+      "target_prompt": "A photo of a green toothbrush and an orange carrot"
+    },
+    {
+      "id": "geneval_color_000010",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "pink_cake_white_zebra",
+        "original_index": 10,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_pink_cake",
+          "role": "primitive",
+          "text": "A photo of a pink cake",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_white_zebra",
+          "role": "primitive",
+          "text": "A photo of a white zebra",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a pink cake and a white zebra",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a cake and a zebra",
+      "target_prompt": "A photo of a pink cake and a white zebra"
+    },
+    {
+      "id": "geneval_color_000011",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "purple_hair_drier_brown_bear",
+        "original_index": 11,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_purple_hair_drier",
+          "role": "primitive",
+          "text": "A photo of a purple hair drier",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_brown_bear",
+          "role": "primitive",
+          "text": "A photo of a brown bear",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a purple hair drier and a brown bear",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a hair drier and a bear",
+      "target_prompt": "A photo of a purple hair drier and a brown bear"
+    },
+    {
+      "id": "geneval_color_000012",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "silver_knife_black_zebra",
+        "original_index": 12,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_silver_knife",
+          "role": "primitive",
+          "text": "A photo of a silver knife",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_black_zebra",
+          "role": "primitive",
+          "text": "A photo of a black zebra",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a silver knife and a black zebra",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a knife and a zebra",
+      "target_prompt": "A photo of a silver knife and a black zebra"
+    },
+    {
+      "id": "geneval_color_000013",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "green_couch_red_wine_glass",
+        "original_index": 13,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_green_couch",
+          "role": "primitive",
+          "text": "A photo of a green couch",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_red_wine_glass",
+          "role": "primitive",
+          "text": "A photo of a red wine glass",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a green couch and a red wine glass",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a couch and a wine glass",
+      "target_prompt": "A photo of a green couch and a red wine glass"
+    },
+    {
+      "id": "geneval_color_000014",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "blue_frisbee_yellow_vase",
+        "original_index": 14,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_blue_frisbee",
+          "role": "primitive",
+          "text": "A photo of a blue frisbee",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_yellow_vase",
+          "role": "primitive",
+          "text": "A photo of a yellow vase",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a blue frisbee and a yellow vase",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a frisbee and a vase",
+      "target_prompt": "A photo of a blue frisbee and a yellow vase"
+    },
+    {
+      "id": "geneval_color_000015",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_book_silver_laptop",
+        "original_index": 15,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_book",
+          "role": "primitive",
+          "text": "A photo of a red book",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_silver_laptop",
+          "role": "primitive",
+          "text": "A photo of a silver laptop",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red book and a silver laptop",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a book and a laptop",
+      "target_prompt": "A photo of a red book and a silver laptop"
+    },
+    {
+      "id": "geneval_color_000016",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "brown_dining_table_black_bear",
+        "original_index": 16,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_brown_dining_table",
+          "role": "primitive",
+          "text": "A photo of a brown dining table",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_black_bear",
+          "role": "primitive",
+          "text": "A photo of a black bear",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a brown dining table and a black bear",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a dining table and a bear",
+      "target_prompt": "A photo of a brown dining table and a black bear"
+    },
+    {
+      "id": "geneval_color_000017",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "orange_frisbee_blue_couch",
+        "original_index": 17,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_orange_frisbee",
+          "role": "primitive",
+          "text": "A photo of an orange frisbee",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_blue_couch",
+          "role": "primitive",
+          "text": "A photo of a blue couch",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of an orange frisbee and a blue couch",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a frisbee and a couch",
+      "target_prompt": "A photo of an orange frisbee and a blue couch"
+    },
+    {
+      "id": "geneval_color_000018",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "grey_couch_white_horse",
+        "original_index": 18,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_grey_couch",
+          "role": "primitive",
+          "text": "A photo of a grey couch",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_white_horse",
+          "role": "primitive",
+          "text": "A photo of a white horse",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a grey couch and a white horse",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a couch and a horse",
+      "target_prompt": "A photo of a grey couch and a white horse"
+    },
+    {
+      "id": "geneval_color_000019",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "white_toilet_black_computer_mouse",
+        "original_index": 19,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_white_toilet",
+          "role": "primitive",
+          "text": "A photo of a white toilet",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_black_computer_mouse",
+          "role": "primitive",
+          "text": "A photo of a black computer mouse",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a white toilet and a black computer mouse",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a toilet and a computer mouse",
+      "target_prompt": "A photo of a white toilet and a black computer mouse"
+    },
+    {
+      "id": "geneval_color_000020",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "green_bottle_silver_refrigerator",
+        "original_index": 20,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_green_bottle",
+          "role": "primitive",
+          "text": "A photo of a green bottle",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_silver_refrigerator",
+          "role": "primitive",
+          "text": "A photo of a silver refrigerator",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a green bottle and a silver refrigerator",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a bottle and a refrigerator",
+      "target_prompt": "A photo of a green bottle and a silver refrigerator"
+    },
+    {
+      "id": "geneval_color_000021",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "purple_potted_plant_red_backpack",
+        "original_index": 21,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_purple_potted_plant",
+          "role": "primitive",
+          "text": "A photo of a purple potted plant",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_red_backpack",
+          "role": "primitive",
+          "text": "A photo of a red backpack",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a purple potted plant and a red backpack",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a potted plant and a backpack",
+      "target_prompt": "A photo of a purple potted plant and a red backpack"
+    },
+    {
+      "id": "geneval_color_000022",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "yellow_skateboard_pink_cake",
+        "original_index": 22,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_yellow_skateboard",
+          "role": "primitive",
+          "text": "A photo of a yellow skateboard",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_pink_cake",
+          "role": "primitive",
+          "text": "A photo of a pink cake",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a yellow skateboard and a pink cake",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a skateboard and a cake",
+      "target_prompt": "A photo of a yellow skateboard and a pink cake"
+    },
+    {
+      "id": "geneval_color_000023",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "green_broccoli_yellow_parking_meter",
+        "original_index": 23,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_green_broccoli",
+          "role": "primitive",
+          "text": "A photo of a green broccoli",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_yellow_parking_meter",
+          "role": "primitive",
+          "text": "A photo of a yellow parking meter",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a green broccoli and a yellow parking meter",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a broccoli and a parking meter",
+      "target_prompt": "A photo of a green broccoli and a yellow parking meter"
+    },
+    {
+      "id": "geneval_color_000024",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "black_zebra_blue_bed",
+        "original_index": 24,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_black_zebra",
+          "role": "primitive",
+          "text": "A photo of a black zebra",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_blue_bed",
+          "role": "primitive",
+          "text": "A photo of a blue bed",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a black zebra and a blue bed",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a zebra and a bed",
+      "target_prompt": "A photo of a black zebra and a blue bed"
+    },
+    {
+      "id": "geneval_color_000025",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "silver_oven_white_bed",
+        "original_index": 25,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_silver_oven",
+          "role": "primitive",
+          "text": "A photo of a silver oven",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_white_bed",
+          "role": "primitive",
+          "text": "A photo of a white bed",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a silver oven and a white bed",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of an oven and a bed",
+      "target_prompt": "A photo of a silver oven and a white bed"
+    },
+    {
+      "id": "geneval_color_000026",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "brown_baseball_bat_silver_fork",
+        "original_index": 26,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_brown_baseball_bat",
+          "role": "primitive",
+          "text": "A photo of a brown baseball bat",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_silver_fork",
+          "role": "primitive",
+          "text": "A photo of a silver fork",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a brown baseball bat and a silver fork",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a baseball bat and a fork",
+      "target_prompt": "A photo of a brown baseball bat and a silver fork"
+    },
+    {
+      "id": "geneval_color_000027",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "blue_vase_silver_spoon",
+        "original_index": 27,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_blue_vase",
+          "role": "primitive",
+          "text": "A photo of a blue vase",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_silver_spoon",
+          "role": "primitive",
+          "text": "A photo of a silver spoon",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a blue vase and a silver spoon",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a vase and a spoon",
+      "target_prompt": "A photo of a blue vase and a silver spoon"
+    },
+    {
+      "id": "geneval_color_000028",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_skateboard_white_sink",
+        "original_index": 28,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_skateboard",
+          "role": "primitive",
+          "text": "A photo of a red skateboard",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_white_sink",
+          "role": "primitive",
+          "text": "A photo of a white sink",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red skateboard and a white sink",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a skateboard and a sink",
+      "target_prompt": "A photo of a red skateboard and a white sink"
+    },
+    {
+      "id": "geneval_color_000029",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "yellow_pizza_green_bench",
+        "original_index": 29,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_yellow_pizza",
+          "role": "primitive",
+          "text": "A photo of a yellow pizza",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_green_bench",
+          "role": "primitive",
+          "text": "A photo of a green bench",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a yellow pizza and a green bench",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a pizza and a bench",
+      "target_prompt": "A photo of a yellow pizza and a green bench"
+    },
+    {
+      "id": "geneval_color_000030",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "blue_bowl_red_pizza",
+        "original_index": 30,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_blue_bowl",
+          "role": "primitive",
+          "text": "A photo of a blue bowl",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_red_pizza",
+          "role": "primitive",
+          "text": "A photo of a red pizza",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a blue bowl and a red pizza",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a bowl and a pizza",
+      "target_prompt": "A photo of a blue bowl and a red pizza"
+    },
+    {
+      "id": "geneval_color_000031",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "white_tennis_racket_yellow_bird",
+        "original_index": 31,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_white_tennis_racket",
+          "role": "primitive",
+          "text": "A photo of a white tennis racket",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_yellow_bird",
+          "role": "primitive",
+          "text": "A photo of a yellow bird",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a white tennis racket and a yellow bird",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a tennis racket and a bird",
+      "target_prompt": "A photo of a white tennis racket and a yellow bird"
+    },
+    {
+      "id": "geneval_color_000032",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "green_wine_glass_brown_bear",
+        "original_index": 32,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_green_wine_glass",
+          "role": "primitive",
+          "text": "A photo of a green wine glass",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_brown_bear",
+          "role": "primitive",
+          "text": "A photo of a brown bear",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a green wine glass and a brown bear",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a wine glass and a bear",
+      "target_prompt": "A photo of a green wine glass and a brown bear"
+    },
+    {
+      "id": "geneval_color_000033",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "silver_fork_blue_book",
+        "original_index": 33,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_silver_fork",
+          "role": "primitive",
+          "text": "A photo of a silver fork",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_blue_book",
+          "role": "primitive",
+          "text": "A photo of a blue book",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a silver fork and a blue book",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a fork and a book",
+      "target_prompt": "A photo of a silver fork and a blue book"
+    },
+    {
+      "id": "geneval_color_000034",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_scissors_white_bowl",
+        "original_index": 34,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_scissors",
+          "role": "primitive",
+          "text": "A photo of a red scissors",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_white_bowl",
+          "role": "primitive",
+          "text": "A photo of a white bowl",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red scissors and a white bowl",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a scissors and a bowl",
+      "target_prompt": "A photo of a red scissors and a white bowl"
+    },
+    {
+      "id": "geneval_color_000035",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "grey_laptop_orange_carrot",
+        "original_index": 35,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_grey_laptop",
+          "role": "primitive",
+          "text": "A photo of a grey laptop",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_orange_carrot",
+          "role": "primitive",
+          "text": "A photo of an orange carrot",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a grey laptop and an orange carrot",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a laptop and a carrot",
+      "target_prompt": "A photo of a grey laptop and an orange carrot"
+    },
+    {
+      "id": "geneval_color_000036",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_stop_sign_green_bottle",
+        "original_index": 36,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_stop_sign",
+          "role": "primitive",
+          "text": "A photo of a red stop sign",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_green_bottle",
+          "role": "primitive",
+          "text": "A photo of a green bottle",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red stop sign and a green bottle",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a stop sign and a bottle",
+      "target_prompt": "A photo of a red stop sign and a green bottle"
+    },
+    {
+      "id": "geneval_color_000037",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "white_microwave_blue_truck",
+        "original_index": 37,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_white_microwave",
+          "role": "primitive",
+          "text": "A photo of a white microwave",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_blue_truck",
+          "role": "primitive",
+          "text": "A photo of a blue truck",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a white microwave and a blue truck",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a microwave and a truck",
+      "target_prompt": "A photo of a white microwave and a blue truck"
+    },
+    {
+      "id": "geneval_color_000038",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "blue_frisbee_black_cell_phone",
+        "original_index": 38,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_blue_frisbee",
+          "role": "primitive",
+          "text": "A photo of a blue frisbee",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_black_cell_phone",
+          "role": "primitive",
+          "text": "A photo of a black cell phone",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a blue frisbee and a black cell phone",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a frisbee and a cell phone",
+      "target_prompt": "A photo of a blue frisbee and a black cell phone"
+    },
+    {
+      "id": "geneval_color_000039",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "yellow_parking_meter_brown_teddy_bear",
+        "original_index": 39,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_yellow_parking_meter",
+          "role": "primitive",
+          "text": "A photo of a yellow parking meter",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_brown_teddy_bear",
+          "role": "primitive",
+          "text": "A photo of a brown teddy bear",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a yellow parking meter and a brown teddy bear",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a parking meter and a teddy bear",
+      "target_prompt": "A photo of a yellow parking meter and a brown teddy bear"
+    },
+    {
+      "id": "geneval_color_000040",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_tennis_racket_black_bicycle",
+        "original_index": 40,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_tennis_racket",
+          "role": "primitive",
+          "text": "A photo of a red tennis racket",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_black_bicycle",
+          "role": "primitive",
+          "text": "A photo of a black bicycle",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red tennis racket and a black bicycle",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a tennis racket and a bicycle",
+      "target_prompt": "A photo of a red tennis racket and a black bicycle"
+    },
+    {
+      "id": "geneval_color_000041",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_stop_sign_green_motorcycle",
+        "original_index": 41,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_stop_sign",
+          "role": "primitive",
+          "text": "A photo of a red stop sign",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_green_motorcycle",
+          "role": "primitive",
+          "text": "A photo of a green motorcycle",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red stop sign and a green motorcycle",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a stop sign and a motorcycle",
+      "target_prompt": "A photo of a red stop sign and a green motorcycle"
+    },
+    {
+      "id": "geneval_color_000042",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "yellow_fire_hydrant_white_tennis_racket",
+        "original_index": 42,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_yellow_fire_hydrant",
+          "role": "primitive",
+          "text": "A photo of a yellow fire hydrant",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_white_tennis_racket",
+          "role": "primitive",
+          "text": "A photo of a white tennis racket",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a yellow fire hydrant and a white tennis racket",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a fire hydrant and a tennis racket",
+      "target_prompt": "A photo of a yellow fire hydrant and a white tennis racket"
+    },
+    {
+      "id": "geneval_color_000043",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "silver_scissors_brown_sandwich",
+        "original_index": 43,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_silver_scissors",
+          "role": "primitive",
+          "text": "A photo of a silver scissors",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_brown_sandwich",
+          "role": "primitive",
+          "text": "A photo of a brown sandwich",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a silver scissors and a brown sandwich",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a scissors and a sandwich",
+      "target_prompt": "A photo of a silver scissors and a brown sandwich"
+    },
+    {
+      "id": "geneval_color_000044",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "yellow_pizza_green_book",
+        "original_index": 44,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_yellow_pizza",
+          "role": "primitive",
+          "text": "A photo of a yellow pizza",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_green_book",
+          "role": "primitive",
+          "text": "A photo of a green book",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a yellow pizza and a green book",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a pizza and a book",
+      "target_prompt": "A photo of a yellow pizza and a green book"
+    },
+    {
+      "id": "geneval_color_000045",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "yellow_giraffe_black_computer_mouse",
+        "original_index": 45,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_yellow_giraffe",
+          "role": "primitive",
+          "text": "A photo of a yellow giraffe",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_black_computer_mouse",
+          "role": "primitive",
+          "text": "A photo of a black computer mouse",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a yellow giraffe and a black computer mouse",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a giraffe and a computer mouse",
+      "target_prompt": "A photo of a yellow giraffe and a black computer mouse"
+    },
+    {
+      "id": "geneval_color_000046",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_stop_sign_silver_toaster",
+        "original_index": 46,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_stop_sign",
+          "role": "primitive",
+          "text": "A photo of a red stop sign",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_silver_toaster",
+          "role": "primitive",
+          "text": "A photo of a silver toaster",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red stop sign and a silver toaster",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a stop sign and a toaster",
+      "target_prompt": "A photo of a red stop sign and a silver toaster"
+    },
+    {
+      "id": "geneval_color_000047",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "black_computer_mouse_white_zebra",
+        "original_index": 47,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_black_computer_mouse",
+          "role": "primitive",
+          "text": "A photo of a black computer mouse",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_white_zebra",
+          "role": "primitive",
+          "text": "A photo of a white zebra",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a black computer mouse and a white zebra",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a computer mouse and a zebra",
+      "target_prompt": "A photo of a black computer mouse and a white zebra"
+    },
+    {
+      "id": "geneval_color_000048",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "brown_chair_green_bench",
+        "original_index": 48,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_brown_chair",
+          "role": "primitive",
+          "text": "A photo of a brown chair",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_green_bench",
+          "role": "primitive",
+          "text": "A photo of a green bench",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a brown chair and a green bench",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a chair and a bench",
+      "target_prompt": "A photo of a brown chair and a green bench"
+    },
+    {
+      "id": "geneval_color_000049",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "black_tv_orange_carrot",
+        "original_index": 49,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_black_tv",
+          "role": "primitive",
+          "text": "A photo of a black tv",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_orange_carrot",
+          "role": "primitive",
+          "text": "A photo of an orange carrot",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a black tv and an orange carrot",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a tv and a carrot",
+      "target_prompt": "A photo of a black tv and an orange carrot"
+    },
+    {
+      "id": "geneval_color_000050",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "blue_surfboard_yellow_suitcase",
+        "original_index": 50,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_blue_surfboard",
+          "role": "primitive",
+          "text": "A photo of a blue surfboard",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_yellow_suitcase",
+          "role": "primitive",
+          "text": "A photo of a yellow suitcase",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a blue surfboard and a yellow suitcase",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a surfboard and a suitcase",
+      "target_prompt": "A photo of a blue surfboard and a yellow suitcase"
+    },
+    {
+      "id": "geneval_color_000051",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "black_computer_keyboard_silver_laptop",
+        "original_index": 51,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_black_computer_keyboard",
+          "role": "primitive",
+          "text": "A photo of a black computer keyboard",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_silver_laptop",
+          "role": "primitive",
+          "text": "A photo of a silver laptop",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a black computer keyboard and a silver laptop",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a computer keyboard and a laptop",
+      "target_prompt": "A photo of a black computer keyboard and a silver laptop"
+    },
+    {
+      "id": "geneval_color_000052",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "black_computer_keyboard_white_microwave",
+        "original_index": 52,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_black_computer_keyboard",
+          "role": "primitive",
+          "text": "A photo of a black computer keyboard",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_white_microwave",
+          "role": "primitive",
+          "text": "A photo of a white microwave",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a black computer keyboard and a white microwave",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a computer keyboard and a microwave",
+      "target_prompt": "A photo of a black computer keyboard and a white microwave"
+    },
+    {
+      "id": "geneval_color_000053",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "silver_scissors_blue_bird",
+        "original_index": 53,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_silver_scissors",
+          "role": "primitive",
+          "text": "A photo of a silver scissors",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_blue_bird",
+          "role": "primitive",
+          "text": "A photo of a blue bird",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a silver scissors and a blue bird",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a scissors and a bird",
+      "target_prompt": "A photo of a silver scissors and a blue bird"
+    },
+    {
+      "id": "geneval_color_000054",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "brown_cow_white_horse",
+        "original_index": 54,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_brown_cow",
+          "role": "primitive",
+          "text": "A photo of a brown cow",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_white_horse",
+          "role": "primitive",
+          "text": "A photo of a white horse",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a brown cow and a white horse",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a cow and a horse",
+      "target_prompt": "A photo of a brown cow and a white horse"
+    },
+    {
+      "id": "geneval_color_000055",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "black_handbag_silver_refrigerator",
+        "original_index": 55,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_black_handbag",
+          "role": "primitive",
+          "text": "A photo of a black handbag",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_silver_refrigerator",
+          "role": "primitive",
+          "text": "A photo of a silver refrigerator",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a black handbag and a silver refrigerator",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a handbag and a refrigerator",
+      "target_prompt": "A photo of a black handbag and a silver refrigerator"
+    },
+    {
+      "id": "geneval_color_000056",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "green_chair_grey_laptop",
+        "original_index": 56,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_green_chair",
+          "role": "primitive",
+          "text": "A photo of a green chair",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_grey_laptop",
+          "role": "primitive",
+          "text": "A photo of a grey laptop",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a green chair and a grey laptop",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a chair and a laptop",
+      "target_prompt": "A photo of a green chair and a grey laptop"
+    },
+    {
+      "id": "geneval_color_000057",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "blue_toothbrush_green_bench",
+        "original_index": 57,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_blue_toothbrush",
+          "role": "primitive",
+          "text": "A photo of a blue toothbrush",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_green_bench",
+          "role": "primitive",
+          "text": "A photo of a green bench",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a blue toothbrush and a green bench",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a toothbrush and a bench",
+      "target_prompt": "A photo of a blue toothbrush and a green bench"
+    },
+    {
+      "id": "geneval_color_000058",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_book_brown_baseball_bat",
+        "original_index": 58,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_book",
+          "role": "primitive",
+          "text": "A photo of a red book",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_brown_baseball_bat",
+          "role": "primitive",
+          "text": "A photo of a brown baseball bat",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red book and a brown baseball bat",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a book and a baseball bat",
+      "target_prompt": "A photo of a red book and a brown baseball bat"
+    },
+    {
+      "id": "geneval_color_000059",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "white_horse_black_train",
+        "original_index": 59,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_white_horse",
+          "role": "primitive",
+          "text": "A photo of a white horse",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_black_train",
+          "role": "primitive",
+          "text": "A photo of a black train",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a white horse and a black train",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a horse and a train",
+      "target_prompt": "A photo of a white horse and a black train"
+    },
+    {
+      "id": "geneval_color_000060",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "green_bench_blue_vase",
+        "original_index": 60,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_green_bench",
+          "role": "primitive",
+          "text": "A photo of a green bench",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_blue_vase",
+          "role": "primitive",
+          "text": "A photo of a blue vase",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a green bench and a blue vase",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a bench and a vase",
+      "target_prompt": "A photo of a green bench and a blue vase"
+    },
+    {
+      "id": "geneval_color_000061",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_traffic_light_black_backpack",
+        "original_index": 61,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_traffic_light",
+          "role": "primitive",
+          "text": "A photo of a red traffic light",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_black_backpack",
+          "role": "primitive",
+          "text": "A photo of a black backpack",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red traffic light and a black backpack",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a traffic light and a backpack",
+      "target_prompt": "A photo of a red traffic light and a black backpack"
+    },
+    {
+      "id": "geneval_color_000062",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "yellow_sports_ball_brown_cow",
+        "original_index": 62,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_yellow_sports_ball",
+          "role": "primitive",
+          "text": "A photo of a yellow sports ball",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_brown_cow",
+          "role": "primitive",
+          "text": "A photo of a brown cow",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a yellow sports ball and a brown cow",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a sports ball and a cow",
+      "target_prompt": "A photo of a yellow sports ball and a brown cow"
+    },
+    {
+      "id": "geneval_color_000063",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "black_computer_mouse_silver_spoon",
+        "original_index": 63,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_black_computer_mouse",
+          "role": "primitive",
+          "text": "A photo of a black computer mouse",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_silver_spoon",
+          "role": "primitive",
+          "text": "A photo of a silver spoon",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a black computer mouse and a silver spoon",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a computer mouse and a spoon",
+      "target_prompt": "A photo of a black computer mouse and a silver spoon"
+    },
+    {
+      "id": "geneval_color_000064",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "black_tv_red_bicycle",
+        "original_index": 64,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_black_tv",
+          "role": "primitive",
+          "text": "A photo of a black tv",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_red_bicycle",
+          "role": "primitive",
+          "text": "A photo of a red bicycle",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a black tv and a red bicycle",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a tv and a bicycle",
+      "target_prompt": "A photo of a black tv and a red bicycle"
+    },
+    {
+      "id": "geneval_color_000065",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "green_bench_blue_snowboard",
+        "original_index": 65,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_green_bench",
+          "role": "primitive",
+          "text": "A photo of a green bench",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_blue_snowboard",
+          "role": "primitive",
+          "text": "A photo of a blue snowboard",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a green bench and a blue snowboard",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a bench and a snowboard",
+      "target_prompt": "A photo of a green bench and a blue snowboard"
+    },
+    {
+      "id": "geneval_color_000066",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "pink_toothbrush_white_toilet",
+        "original_index": 66,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_pink_toothbrush",
+          "role": "primitive",
+          "text": "A photo of a pink toothbrush",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_white_toilet",
+          "role": "primitive",
+          "text": "A photo of a white toilet",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a pink toothbrush and a white toilet",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a toothbrush and a toilet",
+      "target_prompt": "A photo of a pink toothbrush and a white toilet"
+    },
+    {
+      "id": "geneval_color_000067",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "white_sink_yellow_sports_ball",
+        "original_index": 67,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_white_sink",
+          "role": "primitive",
+          "text": "A photo of a white sink",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_yellow_sports_ball",
+          "role": "primitive",
+          "text": "A photo of a yellow sports ball",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a white sink and a yellow sports ball",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a sink and a sports ball",
+      "target_prompt": "A photo of a white sink and a yellow sports ball"
+    },
+    {
+      "id": "geneval_color_000068",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_stop_sign_brown_dog",
+        "original_index": 68,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_stop_sign",
+          "role": "primitive",
+          "text": "A photo of a red stop sign",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_brown_dog",
+          "role": "primitive",
+          "text": "A photo of a brown dog",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red stop sign and a brown dog",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a stop sign and a dog",
+      "target_prompt": "A photo of a red stop sign and a brown dog"
+    },
+    {
+      "id": "geneval_color_000069",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "silver_knife_red_stop_sign",
+        "original_index": 69,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_silver_knife",
+          "role": "primitive",
+          "text": "A photo of a silver knife",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_red_stop_sign",
+          "role": "primitive",
+          "text": "A photo of a red stop sign",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a silver knife and a red stop sign",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a knife and a stop sign",
+      "target_prompt": "A photo of a silver knife and a red stop sign"
+    },
+    {
+      "id": "geneval_color_000070",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "purple_wine_glass_black_handbag",
+        "original_index": 70,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_purple_wine_glass",
+          "role": "primitive",
+          "text": "A photo of a purple wine glass",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_black_handbag",
+          "role": "primitive",
+          "text": "A photo of a black handbag",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a purple wine glass and a black handbag",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a wine glass and a handbag",
+      "target_prompt": "A photo of a purple wine glass and a black handbag"
+    },
+    {
+      "id": "geneval_color_000071",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "blue_bowl_yellow_skis",
+        "original_index": 71,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_blue_bowl",
+          "role": "primitive",
+          "text": "A photo of a blue bowl",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_yellow_skis",
+          "role": "primitive",
+          "text": "A photo of a yellow pair of skis",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a blue bowl and a yellow pair of skis",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a bowl and a pair of skis",
+      "target_prompt": "A photo of a blue bowl and a yellow pair of skis"
+    },
+    {
+      "id": "geneval_color_000072",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "green_frisbee_red_apple",
+        "original_index": 72,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_green_frisbee",
+          "role": "primitive",
+          "text": "A photo of a green frisbee",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_red_apple",
+          "role": "primitive",
+          "text": "A photo of a red apple",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a green frisbee and a red apple",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a frisbee and an apple",
+      "target_prompt": "A photo of a green frisbee and a red apple"
+    },
+    {
+      "id": "geneval_color_000073",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "black_computer_keyboard_pink_cell_phone",
+        "original_index": 73,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_black_computer_keyboard",
+          "role": "primitive",
+          "text": "A photo of a black computer keyboard",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_pink_cell_phone",
+          "role": "primitive",
+          "text": "A photo of a pink cell phone",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a black computer keyboard and a pink cell phone",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a computer keyboard and a cell phone",
+      "target_prompt": "A photo of a black computer keyboard and a pink cell phone"
+    },
+    {
+      "id": "geneval_color_000074",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_stop_sign_silver_fork",
+        "original_index": 74,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_stop_sign",
+          "role": "primitive",
+          "text": "A photo of a red stop sign",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_silver_fork",
+          "role": "primitive",
+          "text": "A photo of a silver fork",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red stop sign and a silver fork",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a stop sign and a fork",
+      "target_prompt": "A photo of a red stop sign and a silver fork"
+    },
+    {
+      "id": "geneval_color_000075",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "green_potted_plant_white_boat",
+        "original_index": 75,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_green_potted_plant",
+          "role": "primitive",
+          "text": "A photo of a green potted plant",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_white_boat",
+          "role": "primitive",
+          "text": "A photo of a white boat",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a green potted plant and a white boat",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a potted plant and a boat",
+      "target_prompt": "A photo of a green potted plant and a white boat"
+    },
+    {
+      "id": "geneval_color_000076",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "black_tv_blue_cell_phone",
+        "original_index": 76,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_black_tv",
+          "role": "primitive",
+          "text": "A photo of a black tv",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_blue_cell_phone",
+          "role": "primitive",
+          "text": "A photo of a blue cell phone",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a black tv and a blue cell phone",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a tv and a cell phone",
+      "target_prompt": "A photo of a black tv and a blue cell phone"
+    },
+    {
+      "id": "geneval_color_000077",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_tie_green_broccoli",
+        "original_index": 77,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_tie",
+          "role": "primitive",
+          "text": "A photo of a red tie",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_green_broccoli",
+          "role": "primitive",
+          "text": "A photo of a green broccoli",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red tie and a green broccoli",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a tie and a broccoli",
+      "target_prompt": "A photo of a red tie and a green broccoli"
+    },
+    {
+      "id": "geneval_color_000078",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "green_potted_plant_pink_donut",
+        "original_index": 78,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_green_potted_plant",
+          "role": "primitive",
+          "text": "A photo of a green potted plant",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_pink_donut",
+          "role": "primitive",
+          "text": "A photo of a pink donut",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a green potted plant and a pink donut",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a potted plant and a donut",
+      "target_prompt": "A photo of a green potted plant and a pink donut"
+    },
+    {
+      "id": "geneval_color_000079",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "blue_couch_white_snowboard",
+        "original_index": 79,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_blue_couch",
+          "role": "primitive",
+          "text": "A photo of a blue couch",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_white_snowboard",
+          "role": "primitive",
+          "text": "A photo of a white snowboard",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a blue couch and a white snowboard",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a couch and a snowboard",
+      "target_prompt": "A photo of a blue couch and a white snowboard"
+    },
+    {
+      "id": "geneval_color_000080",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "silver_fork_brown_baseball_glove",
+        "original_index": 80,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_silver_fork",
+          "role": "primitive",
+          "text": "A photo of a silver fork",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_brown_baseball_glove",
+          "role": "primitive",
+          "text": "A photo of a brown baseball glove",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a silver fork and a brown baseball glove",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a fork and a baseball glove",
+      "target_prompt": "A photo of a silver fork and a brown baseball glove"
+    },
+    {
+      "id": "geneval_color_000081",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_apple_blue_toothbrush",
+        "original_index": 81,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_apple",
+          "role": "primitive",
+          "text": "A photo of a red apple",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_blue_toothbrush",
+          "role": "primitive",
+          "text": "A photo of a blue toothbrush",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red apple and a blue toothbrush",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of an apple and a toothbrush",
+      "target_prompt": "A photo of a red apple and a blue toothbrush"
+    },
+    {
+      "id": "geneval_color_000082",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "yellow_bus_brown_baseball_glove",
+        "original_index": 82,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_yellow_bus",
+          "role": "primitive",
+          "text": "A photo of a yellow bus",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_brown_baseball_glove",
+          "role": "primitive",
+          "text": "A photo of a brown baseball glove",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a yellow bus and a brown baseball glove",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a bus and a baseball glove",
+      "target_prompt": "A photo of a yellow bus and a brown baseball glove"
+    },
+    {
+      "id": "geneval_color_000083",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "orange_carrot_brown_couch",
+        "original_index": 83,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_orange_carrot",
+          "role": "primitive",
+          "text": "A photo of an orange carrot",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_brown_couch",
+          "role": "primitive",
+          "text": "A photo of a brown couch",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of an orange carrot and a brown couch",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a carrot and a couch",
+      "target_prompt": "A photo of an orange carrot and a brown couch"
+    },
+    {
+      "id": "geneval_color_000084",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "brown_baseball_bat_black_bear",
+        "original_index": 84,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_brown_baseball_bat",
+          "role": "primitive",
+          "text": "A photo of a brown baseball bat",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_black_bear",
+          "role": "primitive",
+          "text": "A photo of a black bear",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a brown baseball bat and a black bear",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a baseball bat and a bear",
+      "target_prompt": "A photo of a brown baseball bat and a black bear"
+    },
+    {
+      "id": "geneval_color_000085",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_fire_hydrant_black_train",
+        "original_index": 85,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_fire_hydrant",
+          "role": "primitive",
+          "text": "A photo of a red fire hydrant",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_black_train",
+          "role": "primitive",
+          "text": "A photo of a black train",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red fire hydrant and a black train",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a fire hydrant and a train",
+      "target_prompt": "A photo of a red fire hydrant and a black train"
+    },
+    {
+      "id": "geneval_color_000086",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "brown_baseball_glove_orange_carrot",
+        "original_index": 86,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_brown_baseball_glove",
+          "role": "primitive",
+          "text": "A photo of a brown baseball glove",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_orange_carrot",
+          "role": "primitive",
+          "text": "A photo of an orange carrot",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a brown baseball glove and an orange carrot",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a baseball glove and a carrot",
+      "target_prompt": "A photo of a brown baseball glove and an orange carrot"
+    },
+    {
+      "id": "geneval_color_000087",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "white_microwave_green_bench",
+        "original_index": 87,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_white_microwave",
+          "role": "primitive",
+          "text": "A photo of a white microwave",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_green_bench",
+          "role": "primitive",
+          "text": "A photo of a green bench",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a white microwave and a green bench",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a microwave and a bench",
+      "target_prompt": "A photo of a white microwave and a green bench"
+    },
+    {
+      "id": "geneval_color_000088",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "white_cake_red_stop_sign",
+        "original_index": 88,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_white_cake",
+          "role": "primitive",
+          "text": "A photo of a white cake",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_red_stop_sign",
+          "role": "primitive",
+          "text": "A photo of a red stop sign",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a white cake and a red stop sign",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a cake and a stop sign",
+      "target_prompt": "A photo of a white cake and a red stop sign"
+    },
+    {
+      "id": "geneval_color_000089",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_car_black_computer_mouse",
+        "original_index": 89,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_car",
+          "role": "primitive",
+          "text": "A photo of a red car",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_black_computer_mouse",
+          "role": "primitive",
+          "text": "A photo of a black computer mouse",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red car and a black computer mouse",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a car and a computer mouse",
+      "target_prompt": "A photo of a red car and a black computer mouse"
+    },
+    {
+      "id": "geneval_color_000090",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "blue_suitcase_brown_dining_table",
+        "original_index": 90,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_blue_suitcase",
+          "role": "primitive",
+          "text": "A photo of a blue suitcase",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_brown_dining_table",
+          "role": "primitive",
+          "text": "A photo of a brown dining table",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a blue suitcase and a brown dining table",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a suitcase and a dining table",
+      "target_prompt": "A photo of a blue suitcase and a brown dining table"
+    },
+    {
+      "id": "geneval_color_000091",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "black_cell_phone_brown_horse",
+        "original_index": 91,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_black_cell_phone",
+          "role": "primitive",
+          "text": "A photo of a black cell phone",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_brown_horse",
+          "role": "primitive",
+          "text": "A photo of a brown horse",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a black cell phone and a brown horse",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a cell phone and a horse",
+      "target_prompt": "A photo of a black cell phone and a brown horse"
+    },
+    {
+      "id": "geneval_color_000092",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "brown_baseball_bat_yellow_giraffe",
+        "original_index": 92,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_brown_baseball_bat",
+          "role": "primitive",
+          "text": "A photo of a brown baseball bat",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_yellow_giraffe",
+          "role": "primitive",
+          "text": "A photo of a yellow giraffe",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a brown baseball bat and a yellow giraffe",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a baseball bat and a giraffe",
+      "target_prompt": "A photo of a brown baseball bat and a yellow giraffe"
+    },
+    {
+      "id": "geneval_color_000093",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "blue_fire_hydrant_pink_car",
+        "original_index": 93,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_blue_fire_hydrant",
+          "role": "primitive",
+          "text": "A photo of a blue fire hydrant",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_pink_car",
+          "role": "primitive",
+          "text": "A photo of a pink car",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a blue fire hydrant and a pink car",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a fire hydrant and a car",
+      "target_prompt": "A photo of a blue fire hydrant and a pink car"
+    },
+    {
+      "id": "geneval_color_000094",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "purple_cup_blue_cow",
+        "original_index": 94,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_purple_cup",
+          "role": "primitive",
+          "text": "A photo of a purple cup",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_blue_cow",
+          "role": "primitive",
+          "text": "A photo of a blue cow",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a purple cup and a blue cow",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a cup and a cow",
+      "target_prompt": "A photo of a purple cup and a blue cow"
+    },
+    {
+      "id": "geneval_color_000095",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "yellow_boat_blue_umbrella",
+        "original_index": 95,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_yellow_boat",
+          "role": "primitive",
+          "text": "A photo of a yellow boat",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_blue_umbrella",
+          "role": "primitive",
+          "text": "A photo of a blue umbrella",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a yellow boat and a blue umbrella",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a boat and an umbrella",
+      "target_prompt": "A photo of a yellow boat and a blue umbrella"
+    },
+    {
+      "id": "geneval_color_000096",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "blue_elephant_yellow_elephant",
+        "original_index": 96,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_blue_elephant",
+          "role": "primitive",
+          "text": "A photo of a blue elephant",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_yellow_elephant",
+          "role": "primitive",
+          "text": "A photo of a yellow elephant",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a blue elephant and a yellow elephant",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of two elephants",
+      "target_prompt": "A photo of a blue elephant and a yellow elephant"
+    },
+    {
+      "id": "geneval_color_000097",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "red_bicycle_purple_suitcase",
+        "original_index": 97,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_red_bicycle",
+          "role": "primitive",
+          "text": "A photo of a red bicycle",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_purple_suitcase",
+          "role": "primitive",
+          "text": "A photo of a purple suitcase",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a red bicycle and a purple suitcase",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a bicycle and a suitcase",
+      "target_prompt": "A photo of a red bicycle and a purple suitcase"
+    },
+    {
+      "id": "geneval_color_000098",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "purple_hair_drier_white_sandwich",
+        "original_index": 98,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_purple_hair_drier",
+          "role": "primitive",
+          "text": "A photo of a purple hair drier",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_white_sandwich",
+          "role": "primitive",
+          "text": "A photo of a white sandwich",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a purple hair drier and a white sandwich",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of a hair drier and a sandwich",
+      "target_prompt": "A photo of a purple hair drier and a white sandwich"
+    },
+    {
+      "id": "geneval_color_000099",
+      "metadata": {
+        "category": "color",
+        "decomposition_key": "purple_elephant_green_microwave",
+        "original_index": 99,
+        "template": false
+      },
+      "negative_prompt": "blurry, low quality, distorted, deformed animal, extra limbs, missing object, wrong attribute binding, wrong spatial relation, wrong color, text, watermark",
+      "primitive_prompts": [
+        {
+          "enabled": true,
+          "name": "S1_purple_elephant",
+          "role": "primitive",
+          "text": "A photo of a purple elephant",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S2_green_microwave",
+          "role": "primitive",
+          "text": "A photo of a green microwave",
+          "weight": 1.0
+        },
+        {
+          "enabled": true,
+          "name": "S3_fullish",
+          "role": "primitive",
+          "text": "A photo of a purple elephant and a green microwave",
+          "weight": 1.1
+        }
+      ],
+      "source_prompt": "A photo of an elephant and a microwave",
+      "target_prompt": "A photo of a purple elephant and a green microwave"
+    }
+  ],
+  "schema_version": "spfc_decomposition_v1"
+}

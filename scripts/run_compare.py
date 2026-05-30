@@ -57,7 +57,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--steering-strength", type=float, help="Override PrimitiveFlow correction strength.")
     parser.add_argument("--ltp-radius-ratio", type=float, help="Override PrimitiveFlow LTP radius ratio.")
     parser.add_argument("--conflict-threshold", type=float, help="Override VFA conflict threshold.")
-    parser.add_argument("--disable-consensus-gating", action="store_true", help="Disable LadderFlow consensus gating.")
+    consensus_group = parser.add_mutually_exclusive_group()
+    consensus_group.add_argument("--disable-consensus-gating", action="store_true", help="Disable consensus gating.")
+    consensus_group.add_argument("--enable-consensus-gating", action="store_true", help="Enable consensus gating.")
     parser.add_argument("--disable-final-consistency-gating", action="store_true", help="Disable LadderFlow final consistency gating.")
     parser.add_argument("--disable-target-consistency-gating", action="store_true", help="Disable PrimitiveFlow target consistency gating.")
     parser.add_argument("--max-primitives", type=int, help="Override max primitive prompts for PrimitiveFlow/AIM-Flow.")
@@ -127,6 +129,9 @@ def apply_overrides(config, args: argparse.Namespace) -> None:
     if args.disable_consensus_gating:
         config.ladder_flow.use_consensus_gating = False
         config.primitive_flow.use_consensus_gating = False
+    if args.enable_consensus_gating:
+        config.ladder_flow.use_consensus_gating = True
+        config.primitive_flow.use_consensus_gating = True
     if args.disable_final_consistency_gating:
         config.ladder_flow.use_final_consistency_gating = False
     if args.disable_target_consistency_gating:

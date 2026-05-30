@@ -98,7 +98,13 @@ def apply_spfc_variant(config: RunConfig, variant: str | None) -> RunConfig:
     tuned = copy.deepcopy(config)
     if not variant or variant == "full":
         return tuned
-    if variant == "no_consensus_gating":
+    if variant == "target_only_uniform":
+        tuned.primitive_flow.use_consensus_gating = False
+        tuned.primitive_flow.use_target_consistency_gating = True
+        tuned.primitive_flow.uniform_condition_weights = True
+        tuned.primitive_flow.source_weight = 1.0
+        tuned.primitive_flow.target_weight = 1.0
+    elif variant == "no_consensus_gating":
         tuned.primitive_flow.use_consensus_gating = False
     elif variant == "no_target_consistency_gating":
         tuned.primitive_flow.use_target_consistency_gating = False

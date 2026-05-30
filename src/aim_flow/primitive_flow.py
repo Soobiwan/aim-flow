@@ -76,6 +76,7 @@ def build_condition_list(
     include_target: bool = True,
     source_weight: float = 0.7,
     target_weight: float = 1.2,
+    uniform_weights: bool = False,
     max_primitives: int | None = None,
 ) -> list[dict[str, Any]]:
     """Build the complete prompt-conditioned flow list for VFA."""
@@ -88,7 +89,7 @@ def build_condition_list(
                 "name": "source",
                 "role": "source",
                 "text": flow_set.source_prompt,
-                "weight": float(source_weight),
+                "weight": 1.0 if uniform_weights else float(source_weight),
             }
         )
     primitives = flow_set.get_enabled_primitives()
@@ -100,7 +101,7 @@ def build_condition_list(
                 "name": primitive.name or f"primitive_{index}",
                 "role": primitive.role,
                 "text": primitive.text,
-                "weight": float(primitive.weight),
+                "weight": 1.0 if uniform_weights else float(primitive.weight),
             }
         )
     if include_target:
@@ -109,7 +110,7 @@ def build_condition_list(
                 "name": "target",
                 "role": "target",
                 "text": flow_set.target_prompt,
-                "weight": float(target_weight),
+                "weight": 1.0 if uniform_weights else float(target_weight),
             }
         )
     if not any(condition["role"] == "primitive" for condition in conditions):

@@ -166,7 +166,9 @@ def _generate_step_rollouts(
             condition_names = condition_names + ["target"]
             condition_roles = condition_roles + ["target"]
             condition_texts = condition_texts + [flow_set.target_prompt]
-            condition_weights = condition_weights + [float(primitive_cfg.target_weight)]
+            condition_weights = condition_weights + [
+                1.0 if primitive_cfg.uniform_condition_weights else float(primitive_cfg.target_weight)
+            ]
 
         latents = backend.prepare_latents(sampler_cfg.seed, sampler_cfg.height, sampler_cfg.width)
         timesteps = backend.set_timesteps(sampler_cfg.num_inference_steps)

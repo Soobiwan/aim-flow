@@ -23,7 +23,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
     parser.add_argument("--guidance-scale", type=float, default=DEFAULT_GUIDANCE_SCALE)
     parser.add_argument("--rectified-repo-dir", default="external/Rectified-CFGpp")
-    parser.add_argument("--spfc-variant", help="Optional SPFC variant, e.g. no_ltp or steering_0.75.")
+    parser.add_argument("--spfc-variant", help="Optional SPFC variant, e.g. target_only_uniform, no_ltp, or steering_0.75.")
     parser.add_argument("--spfc-method-label", help="Output method directory name for an SPFC variant.")
     parser.add_argument("--skip-existing", action="store_true", help="Reuse existing PNG/JSON outputs when present.")
     return parser.parse_args()

@@ -28,6 +28,8 @@ def parse_args() -> argparse.Namespace:
         choices=["color", "shape", "texture", "spatial"],
         help="T2I-CompBench categories to evaluate. Defaults to all categories.",
     )
+    parser.add_argument("--t2i-gpus", nargs="+", help="GPU ids assigned exclusively to parallel official T2I evaluator jobs.")
+    parser.add_argument("--t2i-parallel-workers", type=int, default=1, help="Number of official T2I evaluator jobs to run concurrently.")
     parser.add_argument("--append", action="store_true", help="Merge this method's scores into an existing score JSON.")
     return parser.parse_args()
 
@@ -36,10 +38,13 @@ def _merge_scores(existing_path: Path, new_path: Path, previous: dict | None) ->
     with new_path.open("r", encoding="utf-8") as f:
         current = json.load(f)
     merged = previous or {key: value for key, value in current.items() if key not in {"scores", "commands"}}
+    refreshed_methods = set(current.get("scores", {}))
     merged.setdefault("scores", {})
     merged["scores"].update(current.get("scores", {}))
     if "commands" in current:
-        merged.setdefault("commands", [])
+        merged["commands"] = [
+            command for command in merged.get("commands", []) if command.get("method") not in refreshed_methods
+        ]
         merged["commands"].extend(current.get("commands", []))
     for key, value in current.items():
         if key not in {"scores", "commands"}:
@@ -66,6 +71,8 @@ def main() -> None:
             output_dir=output_dir,
             execute=args.execute_official,
             categories=args.t2i_categories,
+            gpu_ids=args.t2i_gpus,
+            parallel_workers=args.t2i_parallel_workers,
         )
     else:
         output = evaluate_coco_clipscore(

@@ -35,6 +35,17 @@ def test_build_condition_list_weights_and_roles():
     assert conditions[-1]["weight"] == 1.2
 
 
+def test_build_condition_list_can_flatten_all_weights():
+    flow_set = load_primitive_flow_set_from_yaml("configs/sample_prompts.yaml", "german_shepherd")
+    conditions = build_condition_list(
+        flow_set,
+        source_weight=0.7,
+        target_weight=1.2,
+        uniform_weights=True,
+    )
+    assert [condition["weight"] for condition in conditions] == [1.0] * len(conditions)
+
+
 def test_invalid_empty_primitive_fails():
     with pytest.raises(ValueError, match="text must be non-empty"):
         PrimitiveFlowSet(
