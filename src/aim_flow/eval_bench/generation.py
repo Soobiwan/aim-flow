@@ -554,6 +554,21 @@ def generate_spfc_ablation_suite(
         ]
         for label, variant in variants:
             outputs[label] = str(generate_spfc(manifest, decompositions, run_root, base_config, variant=variant, method_label=label))
+        unclipped_config = copy.deepcopy(base_config)
+        unclipped_config.primitive_flow.velocity_clip_ratio = 1000000.0
+        outputs["spfc_vfa_unclipped"] = str(
+            generate_spfc(manifest, decompositions, run_root, unclipped_config, method_label="spfc_vfa_unclipped")
+        )
+        outputs["spfc_target_only_uniform_vfa_unclipped"] = str(
+            generate_spfc(
+                manifest,
+                decompositions,
+                run_root,
+                unclipped_config,
+                variant="target_only_uniform",
+                method_label="spfc_target_only_uniform_vfa_unclipped",
+            )
+        )
         outputs["base"] = str(generate_base(manifest, run_root, base_config))
     elif suite == "steering":
         for strength in [0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5]:
