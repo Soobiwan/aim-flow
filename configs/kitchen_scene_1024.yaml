@@ -1,0 +1,56 @@
+model:
+  model_id: "stabilityai/stable-diffusion-3-medium-diffusers"
+  dtype: "float16"
+  enable_sequential_cpu_offload: true
+  defer_model_cpu_offload: true
+  enable_model_cpu_offload: true
+  enable_attention_slicing: false
+  enable_vae_slicing: true
+  load_t5_text_encoder: false
+
+sampler:
+  height: 1024
+  width: 1024
+  num_inference_steps: 24
+  guidance_scale: 4.5
+  seed: 27
+
+marginal_flow:
+  enabled: true
+  intervention_steps: [1,2,3,4,5,6,7, 8,10, 12, 16]
+  intervention_step_fractions: null
+  steering_strength: 1.0
+  trust_ratio: 0.15
+  solver_steps: 20
+  solver_lr: 0.1
+  eps: 1.0e-6
+  max_primitives: 8
+  sequential_condition_forward: true
+  debug: true
+
+primitive_flow:
+  enabled: true
+  mode: "sparse_primitive_flow"
+  final_only: false
+  aggregation_steps: [1,2,3,4,5,6,7, 8,10, 12, 16]
+  aggregation_step_fractions: null
+  aggregate_every_n_steps: null
+  include_source_flow: true
+  include_target_flow: true
+  target_reference: true
+  vfa_temperature: 0.7
+  use_consensus_gating: true
+  use_target_consistency_gating: true
+  uniform_condition_weights: false
+  min_gate: 0.0
+  max_gate: 1.0
+  source_weight: 0.7
+  target_weight: 1.2
+  velocity_clip_ratio: 0.50
+  steering_strength: 1.0
+  ltp_enabled: true
+  ltp_mode: "latent"
+  ltp_radius_ratio: 0.35
+  fallback_to_velocity_ltp: true
+  max_primitives: 5
+  sequential_condition_forward: true

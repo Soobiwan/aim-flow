@@ -14,7 +14,7 @@ from aim_flow.config import load_config
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run AIM-Flow / PrimitiveFlow comparison modes.")
+    parser = argparse.ArgumentParser(description="Run AIM-Flow / PrimitiveFlow / Marginal Flow comparison modes.")
     parser.add_argument("--config", required=True, help="Path to run config YAML.")
     parser.add_argument("--prompts", required=True, help="Path to prompt decompositions YAML.")
     parser.add_argument("--prompt-section", default="primitive_flow_prompts", help="Prompt section, e.g. primitive_flow_prompts.")
@@ -39,6 +39,7 @@ def parse_args() -> argparse.Namespace:
             "primitive_flow_sparse",
             "primitive_flow_dense",
             "primitive_flow_dense_optional",
+            "marginal_flow",
         ],
         help="Generation modes to run.",
     )
@@ -55,6 +56,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--vfa-temperature", type=float, help="Override LadderFlow VFA softmax temperature.")
     parser.add_argument("--velocity-clip-ratio", type=float, help="Override VFA velocity clip ratio.")
     parser.add_argument("--steering-strength", type=float, help="Override PrimitiveFlow correction strength.")
+    parser.add_argument("--intervention-steps", nargs="*", type=int, help="Marginal Flow intervention step indices.")
+    parser.add_argument(
+        "--intervention-step-fractions",
+        nargs="*",
+        type=float,
+        help="Marginal Flow intervention fractions.",
+    )
+    parser.add_argument("--marginal-steering-strength", type=float, help="Override Marginal Flow correction strength.")
+    parser.add_argument("--trust-ratio", type=float, help="Override Marginal Flow target trust ratio.")
+    parser.add_argument("--marginal-solver-steps", type=int, help="Override Marginal Flow solver iterations.")
+    parser.add_argument("--marginal-solver-lr", type=float, help="Override Marginal Flow solver learning rate.")
     parser.add_argument("--ltp-radius-ratio", type=float, help="Override PrimitiveFlow LTP radius ratio.")
     parser.add_argument("--conflict-threshold", type=float, help="Override VFA conflict threshold.")
     consensus_group = parser.add_mutually_exclusive_group()
@@ -62,7 +74,11 @@ def parse_args() -> argparse.Namespace:
     consensus_group.add_argument("--enable-consensus-gating", action="store_true", help="Enable consensus gating.")
     parser.add_argument("--disable-final-consistency-gating", action="store_true", help="Disable LadderFlow final consistency gating.")
     parser.add_argument("--disable-target-consistency-gating", action="store_true", help="Disable PrimitiveFlow target consistency gating.")
-    parser.add_argument("--max-primitives", type=int, help="Override max primitive prompts for PrimitiveFlow/AIM-Flow.")
+    parser.add_argument(
+        "--max-primitives",
+        type=int,
+        help="Override max primitive prompts/ablations for PrimitiveFlow, AIM-Flow, and Marginal Flow.",
+    )
     parser.add_argument("--num-inference-steps", type=int, help="Override number of inference steps.")
     parser.add_argument("--height", type=int, help="Override image height.")
     parser.add_argument("--width", type=int, help="Override image width.")
@@ -122,6 +138,21 @@ def apply_overrides(config, args: argparse.Namespace) -> None:
         config.primitive_flow.velocity_clip_ratio = args.velocity_clip_ratio
     if args.steering_strength is not None:
         config.primitive_flow.steering_strength = args.steering_strength
+    if args.intervention_steps is not None:
+        config.marginal_flow.intervention_steps = args.intervention_steps
+        config.marginal_flow.intervention_step_fractions = None
+    if args.intervention_step_fractions is not None:
+        config.marginal_flow.intervention_step_fractions = args.intervention_step_fractions
+        if args.intervention_steps is None:
+            config.marginal_flow.intervention_steps = None
+    if args.marginal_steering_strength is not None:
+        config.marginal_flow.steering_strength = args.marginal_steering_strength
+    if args.trust_ratio is not None:
+        config.marginal_flow.trust_ratio = args.trust_ratio
+    if args.marginal_solver_steps is not None:
+        config.marginal_flow.solver_steps = args.marginal_solver_steps
+    if args.marginal_solver_lr is not None:
+        config.marginal_flow.solver_lr = args.marginal_solver_lr
     if args.ltp_radius_ratio is not None:
         config.primitive_flow.ltp_radius_ratio = args.ltp_radius_ratio
     if args.conflict_threshold is not None:
@@ -139,6 +170,7 @@ def apply_overrides(config, args: argparse.Namespace) -> None:
     if args.max_primitives is not None:
         config.aim_flow.max_primitives = args.max_primitives
         config.primitive_flow.max_primitives = args.max_primitives
+        config.marginal_flow.max_primitives = args.max_primitives
     if args.num_inference_steps is not None:
         config.sampler.num_inference_steps = args.num_inference_steps
     if args.height is not None:

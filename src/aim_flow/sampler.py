@@ -20,8 +20,15 @@ from aim_flow.ltp import (
     apply_primitive_velocity_ltp,
     apply_velocity_ltp,
 )
+from aim_flow.marginal_flow import compute_marginal_flow_update, parse_intervention_steps
 from aim_flow.primitive_flow import parse_aggregation_steps as parse_primitive_aggregation_steps
-from aim_flow.prompt_schema import ConditionLadder, PrimitiveFlowSet, PrimitivePrompt, PromptDecomposition
+from aim_flow.prompt_schema import (
+    ConditionLadder,
+    MarginalFlowPromptSet,
+    PrimitiveFlowSet,
+    PrimitivePrompt,
+    PromptDecomposition,
+)
 from aim_flow.schedules import (
     get_condition_schedule_weight,
     get_lambda_schedule_weight,
@@ -555,6 +562,7 @@ class AIMFlowSampler:
         self.backend.validate_custom_sampling_compatibility()
         self.backend.validate_image_size(sampler_cfg.height, sampler_cfg.width)
         encoded = self.backend.encode_primitive_flow_conditions(flow_set, primitive_cfg)
+        self.backend.activate_model_cpu_offload()
         condition_embeddings: list[TextCondition] = encoded["conditions"]
         condition_texts: list[str] = encoded["condition_texts"]
         condition_names: list[str] = encoded["condition_names"]
@@ -831,6 +839,184 @@ class AIMFlowSampler:
         }
         return image, metadata
 
+    def generate_marginal_flow(
+        self,
+        prompt_set: MarginalFlowPromptSet,
+        mode: str = "marginal_flow",
+    ) -> tuple[Image.Image, dict[str, Any]]:
+        """Generate one image with sparse contextual Marginal Flow steering."""
+
+        if mode != "marginal_flow":
+            raise ValueError("Marginal Flow supports only mode='marginal_flow'.")
+        prompt_set.validate()
+        pipe = self.backend.require_pipe()
+        sampler_cfg = self.config.sampler
+        marginal_cfg = self.config.marginal_flow
+        use_cfg = sampler_cfg.guidance_scale > 1.0
+
+        self.backend.validate_custom_sampling_compatibility()
+        self.backend.validate_image_size(sampler_cfg.height, sampler_cfg.width)
+        encoded = self.backend.encode_marginal_flow_conditions(prompt_set, marginal_cfg)
+        self.backend.activate_model_cpu_offload()
+        target_condition: TextCondition = encoded["target_condition"]
+        ablated_conditions: list[TextCondition] = encoded["ablated_conditions"]
+        ablated_prompts: list[str] = encoded["ablated_prompts"]
+        primitive_names: list[str] = encoded["primitive_names"]
+        primitive_descriptions: list[str] = encoded["primitive_descriptions"]
+        primitives = encoded["primitives"]
+        if hasattr(pipe, "maybe_free_model_hooks"):
+            pipe.maybe_free_model_hooks()
+
+        latents = self.backend.prepare_latents(sampler_cfg.seed, sampler_cfg.height, sampler_cfg.width)
+        timesteps = self.backend.set_timesteps(sampler_cfg.num_inference_steps)
+        num_steps = len(timesteps)
+        intervention_steps = parse_intervention_steps(
+            num_steps=num_steps,
+            intervention_steps=marginal_cfg.intervention_steps,
+            intervention_step_fractions=marginal_cfg.intervention_step_fractions,
+        )
+        if not intervention_steps:
+            raise ValueError(
+                "Marginal Flow has no valid intervention steps for the configured denoising schedule."
+            )
+        if intervention_steps == {num_steps - 1}:
+            raise ValueError("Marginal Flow must not intervene only at the final denoising step.")
+
+        debug_steps: list[dict[str, Any]] = []
+        autocast_device = self.backend.execution_device.type
+        use_autocast = autocast_device == "cuda" and self.backend.dtype in {torch.float16, torch.bfloat16}
+
+        with torch.inference_mode():
+            for step_index, timestep in enumerate(tqdm(timesteps, desc="Marginal Flow")):
+                do_intervene = step_index in intervention_steps
+                step_debug: dict[str, Any] = {
+                    "step_index": step_index,
+                    "timestep": float(timestep.detach().float().cpu().item()),
+                    "do_intervene": bool(do_intervene),
+                }
+                with torch.autocast(device_type=autocast_device, dtype=self.backend.dtype, enabled=use_autocast):
+                    full_pred = self._compatible_prediction(
+                        self.backend.predict_with_condition(
+                            latents,
+                            timestep,
+                            target_condition,
+                            guidance_scale=sampler_cfg.guidance_scale,
+                        ),
+                        latents,
+                        "marginal_flow_full_target",
+                    )
+                    if do_intervene:
+                        ablated_preds = [
+                            self._compatible_prediction(
+                                self.backend.predict_with_condition(
+                                    latents,
+                                    timestep,
+                                    condition,
+                                    guidance_scale=sampler_cfg.guidance_scale,
+                                ),
+                                latents,
+                                f"marginal_flow_ablation_{index}",
+                            ).detach()
+                            for index, condition in enumerate(ablated_conditions)
+                        ]
+                        if marginal_cfg.sequential_condition_forward and latents.is_cuda:
+                            torch.cuda.empty_cache()
+                        correction, _, marginal_debug = compute_marginal_flow_update(
+                            full_pred=full_pred,
+                            ablated_preds=ablated_preds,
+                            trust_ratio=marginal_cfg.trust_ratio,
+                            solver_steps=marginal_cfg.solver_steps,
+                            solver_lr=marginal_cfg.solver_lr,
+                            eps=marginal_cfg.eps,
+                            return_debug=marginal_cfg.debug,
+                        )
+                        selected_pred = full_pred + float(marginal_cfg.steering_strength) * correction
+                        selected_pred = self._compatible_prediction(
+                            selected_pred,
+                            latents,
+                            "marginal_flow_steered_target",
+                        )
+                        step_debug.update(
+                            {
+                                "primitive_names": primitive_names,
+                                "primitive_descriptions": primitive_descriptions,
+                                "ablated_prompts": ablated_prompts,
+                                "marginal": self._tensor_debug_to_python(marginal_debug),
+                            }
+                        )
+                    else:
+                        selected_pred = full_pred
+                        step_debug.update(
+                            {
+                                "selected_condition": "full_target",
+                                "selected_condition_text": prompt_set.target_prompt,
+                            }
+                        )
+
+                latents_dtype = latents.dtype
+                latents = self.safe_scheduler_step(pipe.scheduler, selected_pred, timestep, latents)
+                if latents.dtype != latents_dtype:
+                    latents = latents.to(latents_dtype)
+                if not torch.isfinite(latents).all():
+                    raise FloatingPointError(f"Marginal Flow produced non-finite latents at step {step_index}.")
+                debug_steps.append(step_debug)
+                del full_pred, selected_pred
+                if do_intervene:
+                    del ablated_preds, correction
+
+        image = self.backend.decode_latents(latents)
+        metadata = {
+            "method": "marginal_flow",
+            "mode": mode,
+            "target_prompt": prompt_set.target_prompt,
+            "negative_prompt": prompt_set.negative_prompt,
+            "marginal_flow_prompt_set": prompt_set.to_dict(),
+            "primitives": [primitive.to_dict() for primitive in primitives],
+            "primitive_names": primitive_names,
+            "primitive_descriptions": primitive_descriptions,
+            "ablated_prompts": ablated_prompts,
+            "intervention_steps": sorted(intervention_steps),
+            "steering_strength": marginal_cfg.steering_strength,
+            "trust_ratio": marginal_cfg.trust_ratio,
+            "solver_steps": marginal_cfg.solver_steps,
+            "solver_lr": marginal_cfg.solver_lr,
+            "eps": marginal_cfg.eps,
+            "model_id": self.config.model.model_id,
+            "seed": sampler_cfg.seed,
+            "num_inference_steps": sampler_cfg.num_inference_steps,
+            "height": sampler_cfg.height,
+            "width": sampler_cfg.width,
+            "guidance_scale": sampler_cfg.guidance_scale,
+            "runtime_config": self.config.to_dict(),
+            "custom_loop_audit": {
+                "classifier_free_guidance": use_cfg,
+                "guidance_scale": sampler_cfg.guidance_scale,
+                "sequential_cfg_forward": True,
+                "sequential_condition_forward": marginal_cfg.sequential_condition_forward,
+                "trajectory_count": 1,
+                "normal_steps_use": "full_target_prompt_only",
+                "intervention_reference": "full_target_prompt",
+                "standalone_primitive_predictions": False,
+                "source_prompt_required": False,
+                "spfc_vfa": False,
+                "spfc_gating": False,
+                "ltp": False,
+                "latents_dtype": str(latents.dtype),
+                "latents_device": str(latents.device),
+                "embedding_shapes": {
+                    "target": self._condition_shapes(target_condition),
+                    "ablations": [self._condition_shapes(condition) for condition in ablated_conditions],
+                },
+            },
+            "debug_steps": debug_steps,
+            "note": (
+                "Marginal Flow follows one full-target trajectory and applies small balanced corrections "
+                "computed only from full-target versus explicit contextual-ablation predictions. It does "
+                "not use standalone primitive flows, SPFC VFA/gating, LTP, or persistent primitive latents."
+            ),
+        }
+        return image, metadata
+
     def _encode_primitive_conditions(
         self,
         prompt_decomposition: PromptDecomposition,
@@ -903,6 +1089,15 @@ class AIMFlowSampler:
             ),
             "device": str(condition.prompt_embeds.device),
             "dtype": str(condition.prompt_embeds.dtype),
+        }
+
+    @staticmethod
+    def _tensor_debug_to_python(debug: dict[str, Any] | None) -> dict[str, Any] | None:
+        if debug is None:
+            return None
+        return {
+            key: value.detach().float().cpu().tolist() if isinstance(value, torch.Tensor) else value
+            for key, value in debug.items()
         }
 
     @staticmethod

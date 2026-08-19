@@ -13,6 +13,8 @@ from aim_flow.utils import read_yaml, write_yaml
 class ModelConfig:
     model_id: str = "stabilityai/stable-diffusion-3-medium-diffusers"
     dtype: str = "float16"
+    enable_sequential_cpu_offload: bool = False
+    defer_model_cpu_offload: bool = False
     enable_model_cpu_offload: bool = True
     enable_attention_slicing: bool = False
     enable_vae_slicing: bool = True
@@ -108,6 +110,21 @@ class PrimitiveFlowConfig:
 
 
 @dataclass
+class MarginalFlowConfig:
+    enabled: bool = False
+    intervention_steps: list[int] | None = field(default_factory=lambda: [4, 8, 12, 16])
+    intervention_step_fractions: list[float] | None = None
+    steering_strength: float = 1.0
+    trust_ratio: float = 0.15
+    solver_steps: int = 20
+    solver_lr: float = 0.1
+    eps: float = 1e-6
+    max_primitives: int = 8
+    sequential_condition_forward: bool = True
+    debug: bool = True
+
+
+@dataclass
 class AimFlowConfig:
     lambda_global: float = 0.75
     lambda_schedule: str = "middle_late"
@@ -145,6 +162,7 @@ class RunConfig:
     aim_flow: AimFlowConfig = field(default_factory=AimFlowConfig)
     ladder_flow: LadderFlowConfig = field(default_factory=LadderFlowConfig)
     primitive_flow: PrimitiveFlowConfig = field(default_factory=PrimitiveFlowConfig)
+    marginal_flow: MarginalFlowConfig = field(default_factory=MarginalFlowConfig)
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "RunConfig":
@@ -166,6 +184,7 @@ class RunConfig:
             aim_flow=aim_config,
             ladder_flow=LadderFlowConfig(**(data.get("ladder_flow") or {})),
             primitive_flow=PrimitiveFlowConfig(**(data.get("primitive_flow") or {})),
+            marginal_flow=MarginalFlowConfig(**(data.get("marginal_flow") or {})),
         )
 
     @classmethod

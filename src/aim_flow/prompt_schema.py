@@ -337,3 +337,87 @@ class PrimitiveFlowSet:
 
     def pretty_print(self) -> str:
         return pformat(self.to_dict(), sort_dicts=False)
+
+
+@dataclass
+class MarginalPrimitive:
+    """Human-readable primitive metadata paired with an explicit target ablation."""
+
+    ablated_prompt: str
+    primitive: str
+    name: str = ""
+    enabled: bool = True
+
+    def __post_init__(self) -> None:
+        self.ablated_prompt = self.ablated_prompt.strip()
+        self.primitive = self.primitive.strip()
+        self.name = self.name.strip()
+        self.validate()
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "MarginalPrimitive":
+        return cls(
+            name=str(data.get("name", "")).strip(),
+            primitive=str(data.get("primitive", data.get("text", ""))).strip(),
+            ablated_prompt=str(data.get("ablated_prompt", "")).strip(),
+            enabled=bool(data.get("enabled", True)),
+        )
+
+    def validate(self) -> None:
+        if not self.primitive:
+            raise ValueError("MarginalPrimitive.primitive must be non-empty metadata.")
+        if not self.ablated_prompt:
+            raise ValueError("MarginalPrimitive.ablated_prompt must be non-empty.")
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class MarginalFlowPromptSet:
+    """Full target prompt and explicit contextual ablations for Marginal Flow."""
+
+    target_prompt: str
+    primitives: list[MarginalPrimitive] = field(default_factory=list)
+    negative_prompt: str | None = None
+    name: str = ""
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "MarginalFlowPromptSet":
+        prompt_set = cls(
+            name=str(data.get("name", "")).strip(),
+            target_prompt=str(data.get("target_prompt", data.get("full_prompt", ""))).strip(),
+            primitives=[MarginalPrimitive.from_dict(item) for item in data.get("primitives", [])],
+            negative_prompt=data.get("negative_prompt", data.get("negative")),
+        )
+        if prompt_set.negative_prompt is not None:
+            prompt_set.negative_prompt = str(prompt_set.negative_prompt)
+        prompt_set.validate()
+        return prompt_set
+
+    def validate(self) -> None:
+        if not self.target_prompt:
+            raise ValueError("MarginalFlowPromptSet.target_prompt must be non-empty.")
+        if not self.primitives:
+            raise ValueError("MarginalFlowPromptSet.primitives must contain at least one primitive.")
+        for primitive in self.primitives:
+            primitive.validate()
+        if not self.get_enabled_primitives():
+            raise ValueError("MarginalFlowPromptSet requires at least one enabled primitive.")
+
+    def get_enabled_primitives(self) -> list[MarginalPrimitive]:
+        return [primitive for primitive in self.primitives if primitive.enabled]
+
+    def get_ablated_prompts(self) -> list[str]:
+        return [primitive.ablated_prompt for primitive in self.get_enabled_primitives()]
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "name": self.name,
+            "target_prompt": self.target_prompt,
+            "negative_prompt": self.negative_prompt,
+            "primitives": [primitive.to_dict() for primitive in self.primitives],
+        }
+
+    def pretty_print(self) -> str:
+        return pformat(self.to_dict(), sort_dicts=False)

@@ -11,7 +11,13 @@ from pathlib import Path
 
 import yaml
 
-from aim_flow.prompt_schema import ConditionLadder, PrimitiveFlowSet, PrimitivePrompt, PromptDecomposition
+from aim_flow.prompt_schema import (
+    ConditionLadder,
+    MarginalFlowPromptSet,
+    PrimitiveFlowSet,
+    PrimitivePrompt,
+    PromptDecomposition,
+)
 from aim_flow.utils import read_yaml
 
 
@@ -55,6 +61,24 @@ def load_primitive_flow_set_from_yaml(
         available = ", ".join(sorted(section_data.keys()))
         raise KeyError(f"Prompt key '{key}' not found in section '{section}'. Available keys: {available}")
     return PrimitiveFlowSet.from_dict(section_data[key])
+
+
+def load_marginal_flow_prompt_set_from_yaml(
+    path: str | Path,
+    key: str,
+    section: str = "marginal_flow_prompts",
+) -> MarginalFlowPromptSet:
+    """Load a named Marginal Flow prompt and its explicit contextual ablations."""
+
+    data = read_yaml(path)
+    section_data = data.get(section, data if section == "" else None)
+    if not isinstance(section_data, dict):
+        available = ", ".join(sorted(data.keys()))
+        raise KeyError(f"Prompt section '{section}' not found in {path}. Available top-level keys: {available}")
+    if key not in section_data:
+        available = ", ".join(sorted(section_data.keys()))
+        raise KeyError(f"Prompt key '{key}' not found in section '{section}'. Available keys: {available}")
+    return MarginalFlowPromptSet.from_dict(section_data[key])
 
 
 def save_prompt_decomposition(decomposition: PromptDecomposition, path: str | Path) -> None:

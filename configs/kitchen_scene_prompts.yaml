@@ -1,0 +1,86 @@
+marginal_flow_prompts:
+  kitchen_counter_sink:
+    name: "Kitchen Counter Sink"
+    target_prompt: "Kitchen scene. Black counter top on one side, whitish on the other, and grey sink with long neck faucet."
+    negative_prompt: "blurry, low quality, distorted, text, watermark, duplicate sink, broken faucet, wrong colors"
+    primitives:
+      - name: "kitchen_setting"
+        primitive: "Kitchen scene."
+        ablated_prompt: "Black counter top on one side, whitish on the other, and grey sink with long neck faucet."
+        
+      # --- Base Objects ---
+      - name: "counter_top_object"
+        primitive: "counter top"
+        ablated_prompt: "Kitchen scene. Black on one side, whitish on the other, and grey sink with long neck faucet."
+      - name: "sink_object"
+        primitive: "sink"
+        ablated_prompt: "Kitchen scene. Black counter top on one side, whitish on the other, and grey with long neck faucet."
+      - name: "faucet_object"
+        primitive: "faucet"
+        ablated_prompt: "Kitchen scene. Black counter top on one side, whitish on the other, and grey sink with long neck."
+
+      # --- Attributes (Colors & Shapes) ---
+      - name: "black_color"
+        primitive: "Black"
+        ablated_prompt: "Kitchen scene. Counter top on one side, whitish on the other, and grey sink with long neck faucet."
+      - name: "whitish_color"
+        primitive: "whitish"
+        ablated_prompt: "Kitchen scene. Black counter top on one side, on the other, and grey sink with long neck faucet."
+      - name: "grey_color"
+        primitive: "grey"
+        ablated_prompt: "Kitchen scene. Black counter top on one side, whitish on the other, and sink with long neck faucet."
+      - name: "long_neck_attribute"
+        primitive: "long neck"
+        ablated_prompt: "Kitchen scene. Black counter top on one side, whitish on the other, and grey sink with faucet."
+
+      # --- Spatial Relations ---
+      - name: "spatial_relation_one_side"
+        primitive: "on one side"
+        ablated_prompt: "Kitchen scene. Black counter top, whitish on the other, and grey sink with long neck faucet."
+      - name: "spatial_relation_other_side"
+        primitive: "on the other"
+        ablated_prompt: "Kitchen scene. Black counter top on one side, whitish, and grey sink with long neck faucet."
+
+      # --- Compositional Blocks (Grouped Primitives) ---
+      - name: "full_left_counter"
+        primitive: "Black counter top on one side"
+        ablated_prompt: "Kitchen scene. Whitish on the other, and grey sink with long neck faucet."
+      - name: "full_right_counter"
+        primitive: "whitish on the other"
+        ablated_prompt: "Kitchen scene. Black counter top on one side, and grey sink with long neck faucet."
+      - name: "full_sink_assembly"
+        primitive: "grey sink"
+        ablated_prompt: "Kitchen scene. Black counter top on one side, whitish on the other, and long neck faucet."
+      - name: "full_faucet_assembly"
+        primitive: "long neck faucet"
+        ablated_prompt: "Kitchen scene. Black counter top on one side, whitish on the other, and grey sink."
+      - name: "sink_and_faucet_assembly"
+        primitive: "and grey sink with long neck faucet"
+        ablated_prompt: "Kitchen scene. Black counter top on one side, whitish on the other."
+      - name: "two_sided_counter_layout"
+        primitive: "on one side, whitish on the other"
+        ablated_prompt: "Kitchen scene. Black counter top, and grey sink with long neck faucet."
+
+primitive_flow_prompts:
+  kitchen_counter_sink:
+    name: "Kitchen Counter Sink"
+    target_prompt: "Kitchen scene. Black counter top on one side, whitish on the other, and grey sink with long neck faucet."
+    source_prompt: "Kitchen scene with counter tops and a sink."
+    negative_prompt: "blurry, low quality, distorted, text, watermark, duplicate sink, broken faucet, wrong colors"
+    primitive_prompts:
+      - name: "black_countertop_side"
+        text: "Kitchen scene with black counter top on one side and a sink."
+        role: "primitive"
+        weight: 1.0
+      - name: "whitish_countertop_side"
+        text: "Kitchen scene with whitish counter top on the other side and a sink."
+        role: "primitive"
+        weight: 1.0
+      - name: "grey_sink_faucet"
+        text: "Kitchen scene with grey sink and long neck faucet."
+        role: "primitive"
+        weight: 1.0
+      - name: "two_sided_counter_layout"
+        text: "Kitchen scene with black counter top on one side and whitish counter top on the other."
+        role: "primitive"
+        weight: 1.0

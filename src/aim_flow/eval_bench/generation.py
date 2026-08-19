@@ -226,7 +226,14 @@ class RectifiedCFGPPBackend:
         except Exception as exc:
             raise RuntimeError(_model_load_error_message(self.config.model.model_id, token)) from exc
 
-        if self.config.model.enable_model_cpu_offload and hasattr(self.pipe, "enable_model_cpu_offload"):
+        if self.config.model.defer_model_cpu_offload and self.config.model.enable_model_cpu_offload:
+            if hasattr(self.pipe, "enable_model_cpu_offload"):
+                self.pipe.enable_model_cpu_offload()
+            else:
+                self.pipe.to(self.device)
+        elif self.config.model.enable_sequential_cpu_offload and hasattr(self.pipe, "enable_sequential_cpu_offload"):
+            self.pipe.enable_sequential_cpu_offload()
+        elif self.config.model.enable_model_cpu_offload and hasattr(self.pipe, "enable_model_cpu_offload"):
             self.pipe.enable_model_cpu_offload()
         else:
             self.pipe.to(self.device)

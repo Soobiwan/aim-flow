@@ -11,9 +11,9 @@ from typing import Any
 import torch
 from PIL import Image
 
-from aim_flow.config import PrimitiveFlowConfig, RunConfig
+from aim_flow.config import MarginalFlowConfig, PrimitiveFlowConfig, RunConfig
 from aim_flow.primitive_flow import build_condition_list
-from aim_flow.prompt_schema import ConditionLadder, PrimitiveFlowSet, PromptDecomposition
+from aim_flow.prompt_schema import ConditionLadder, MarginalFlowPromptSet, PrimitiveFlowSet, PromptDecomposition
 from aim_flow.utils import get_device, get_hf_token, get_torch_dtype
 
 
@@ -266,6 +266,8 @@ class SD3Backend:
         self.pipe: Any | None = None
         self.device = get_device()
         self.dtype = get_torch_dtype(config.model.dtype)
+        self._cpu_offload_deferred = False
+        self._cpu_offload_active = False
 
     def load(self) -> "SD3Backend":
         """Load Stable Diffusion 3 Medium through Diffusers."""
@@ -296,9 +298,17 @@ class SD3Backend:
         except Exception as exc:
             raise RuntimeError(_model_load_error_message(self.config.model.model_id, token)) from exc
 
-        if self.config.model.enable_model_cpu_offload:
+        if self.config.model.defer_model_cpu_offload and (
+            self.config.model.enable_model_cpu_offload or self.config.model.enable_sequential_cpu_offload
+        ):
+            self._cpu_offload_deferred = True
+        elif self.config.model.enable_sequential_cpu_offload and hasattr(self.pipe, "enable_sequential_cpu_offload"):
+            self.pipe.enable_sequential_cpu_offload()
+            self._cpu_offload_active = True
+        elif self.config.model.enable_model_cpu_offload:
             if hasattr(self.pipe, "enable_model_cpu_offload"):
                 self.pipe.enable_model_cpu_offload()
+                self._cpu_offload_active = True
             else:
                 self.pipe.to(self.device)
         else:
@@ -319,11 +329,29 @@ class SD3Backend:
             raise RuntimeError("SD3Backend.load() must be called before inference.")
         return self.pipe
 
+    def activate_model_cpu_offload(self) -> None:
+        """Enable deferred model CPU offload after prompt embeddings are prepared."""
+
+        pipe = self.require_pipe()
+        if not self._cpu_offload_deferred or self._cpu_offload_active:
+            return
+        if self.config.model.enable_sequential_cpu_offload and hasattr(pipe, "enable_sequential_cpu_offload"):
+            pipe.enable_sequential_cpu_offload()
+            self._cpu_offload_active = True
+        elif hasattr(pipe, "enable_model_cpu_offload"):
+            pipe.enable_model_cpu_offload()
+            self._cpu_offload_active = True
+        else:
+            pipe.to(self.device)
+        self._cpu_offload_deferred = False
+
     @property
     def execution_device(self) -> torch.device:
         """Return the pipeline execution device, respecting Diffusers CPU offload hooks."""
 
         pipe = self.require_pipe()
+        if self._cpu_offload_deferred and not self._cpu_offload_active:
+            return torch.device("cpu")
         execution_device = getattr(pipe, "_execution_device", None) or self.device
         return torch.device(execution_device)
 
@@ -538,6 +566,40 @@ class SD3Backend:
             "target_condition": target_condition if target_index is None else conditions[target_index],
         }
 
+    def encode_marginal_flow_conditions(
+        self,
+        prompt_set: MarginalFlowPromptSet,
+        config: MarginalFlowConfig,
+    ) -> dict[str, Any]:
+        """Encode the full target and explicit target-ablation prompts."""
+
+        negative = prompt_set.negative_prompt
+        use_cfg = self.config.sampler.guidance_scale > 1.0
+        primitives = prompt_set.get_enabled_primitives()[: config.max_primitives]
+        if not primitives:
+            raise ValueError("Marginal Flow requires at least one enabled primitive.")
+        target_condition = self.encode_text_condition(
+            prompt_set.target_prompt,
+            negative,
+            do_classifier_free_guidance=use_cfg,
+        )
+        ablated_conditions = [
+            self.encode_text_condition(
+                primitive.ablated_prompt,
+                negative,
+                do_classifier_free_guidance=use_cfg,
+            )
+            for primitive in primitives
+        ]
+        return {
+            "target_condition": target_condition,
+            "ablated_conditions": ablated_conditions,
+            "ablated_prompts": [primitive.ablated_prompt for primitive in primitives],
+            "primitive_names": [primitive.name or f"primitive_{index}" for index, primitive in enumerate(primitives)],
+            "primitive_descriptions": [primitive.primitive for primitive in primitives],
+            "primitives": primitives,
+        }
+
     def predict_with_condition(
         self,
         latents: torch.Tensor,
@@ -575,6 +637,7 @@ class SD3Backend:
 
         pipe = self.require_pipe()
         self.validate_image_size(height, width)
+        self.activate_model_cpu_offload()
         generator = torch.Generator(device="cpu").manual_seed(seed)
         result = pipe(
             prompt=prompt,

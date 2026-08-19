@@ -506,6 +506,32 @@ python scripts/run_compare.py \
   --max-primitives 2
 ```
 
+### 8.5 Marginal Flow (Experimental, Independent of SPFC)
+
+Marginal Flow follows one full-target latent trajectory. At configured sparse
+steps it compares the guided full-target prediction with guided predictions for
+explicit contextual ablations, solves a small simplex min-norm problem over the
+normalized residuals, removes only target-opposing correction, and applies a
+trust-ratio norm limit. It does not call SPFC aggregation, SPFC gating, or LTP.
+
+Prompt entries use `target_prompt` plus primitives containing human-readable
+`primitive` metadata and an explicit `ablated_prompt`; no source prompt or
+standalone primitive generation prompt is required.
+
+```bash
+python scripts/run_compare.py \
+  --config configs/marginal_flow_diagnostic.yaml \
+  --prompts configs/marginal_flow_prompts.yaml \
+  --prompt-section marginal_flow_prompts \
+  --prompt-key red_cube_blue_sphere \
+  --output-dir outputs/marginal_flow_diagnostic/marginal_flow \
+  --modes marginal_flow
+```
+
+The diagnostic config uses 8 steps at 256×256 for a quick end-to-end check.
+For experiments, increase the resolution/step count and select roughly 3–5
+early/mid `marginal_flow.intervention_steps`.
+
 ---
 
 ## 9. Outputs
@@ -532,7 +558,7 @@ Tests are CPU-only and do not load SD3:
 pytest -q
 ```
 
-The test suite validates VFA aggregation math, LTP projection, consensus gating, prompt schema parsing, sparse step selection, and scheduler compatibility probing.
+The test suite validates VFA aggregation math, LTP projection, consensus gating, Marginal Flow simplex/balancing/trust math, prompt schema parsing, sparse step selection, and scheduler compatibility probing.
 
 ---
 

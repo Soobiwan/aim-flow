@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any
 
 from aim_flow.config import RunConfig
-from aim_flow.prompt_schema import ConditionLadder, PrimitiveFlowSet, PromptDecomposition
+from aim_flow.prompt_schema import ConditionLadder, MarginalFlowPromptSet, PrimitiveFlowSet, PromptDecomposition
 from aim_flow.sampler import AIMFlowSampler
 from aim_flow.sd3_backend import SD3Backend
 from aim_flow.utils import ensure_dir
@@ -193,7 +193,13 @@ def run_primitive_flow_comparison(
         ),
     }
 
-    for mode in selected_modes:
+    execution_modes = list(selected_modes)
+    if config.model.defer_model_cpu_offload and "primitive_flow_sparse" in execution_modes:
+        execution_modes = ["primitive_flow_sparse"] + [
+            mode for mode in execution_modes if mode != "primitive_flow_sparse"
+        ]
+
+    for mode in execution_modes:
         if mode not in names:
             raise ValueError(f"Unknown primitive-flow comparison mode: {mode}")
         if mode == "base":
@@ -232,6 +238,73 @@ def run_primitive_flow_comparison(
             }
         else:
             image, metadata = sampler.generate_sparse_primitive_flow(flow_set, mode=mode)
+
+        image_name, metadata_name, label = names[mode]
+        image_path = output / image_name
+        metadata_path = output / metadata_name
+        backend.save_image(image, image_path)
+        save_metadata_json(metadata, metadata_path)
+        paths[f"{mode}_image"] = image_path
+        paths[f"{mode}_metadata"] = metadata_path
+        grid_image_paths.append(image_path)
+        grid_labels.append(label)
+
+    if grid_image_paths:
+        grid_path = output / "comparison_grid.png"
+        make_image_grid(grid_image_paths, grid_labels, grid_path)
+        paths["comparison_grid"] = grid_path
+    return paths
+
+
+def run_marginal_flow_comparison(
+    prompt_set: MarginalFlowPromptSet,
+    config: RunConfig,
+    output_dir: str | Path,
+    modes: list[str] | None = None,
+) -> dict[str, Path]:
+    """Generate the target-only baseline and/or contextual Marginal Flow output."""
+
+    selected_modes = modes or ["base", "marginal_flow"]
+    output = ensure_dir(output_dir)
+    backend = SD3Backend(config).load()
+    sampler = AIMFlowSampler(backend, config)
+    paths: dict[str, Path] = {}
+    grid_image_paths: list[Path] = []
+    grid_labels: list[str] = []
+    names = {
+        "base": ("base_full_target.png", "metadata_base.json", "Base SD3: full target"),
+        "marginal_flow": (
+            "marginal_flow.png",
+            "metadata_marginal_flow.json",
+            "Marginal Flow: contextual ablations",
+        ),
+    }
+
+    execution_modes = list(selected_modes)
+    if config.model.defer_model_cpu_offload and "marginal_flow" in execution_modes:
+        execution_modes = ["marginal_flow"] + [mode for mode in execution_modes if mode != "marginal_flow"]
+
+    for mode in execution_modes:
+        if mode not in names:
+            raise ValueError(f"Unknown Marginal Flow comparison mode: {mode}")
+        if mode == "base":
+            image = backend.generate_base(
+                prompt=prompt_set.target_prompt,
+                negative_prompt=prompt_set.negative_prompt,
+                seed=config.sampler.seed,
+                num_inference_steps=config.sampler.num_inference_steps,
+                guidance_scale=config.sampler.guidance_scale,
+                height=config.sampler.height,
+                width=config.sampler.width,
+            )
+            metadata: dict[str, Any] = {
+                "method": "base",
+                "target_prompt": prompt_set.target_prompt,
+                "marginal_flow_prompt_set": prompt_set.to_dict(),
+                "runtime_config": config.to_dict(),
+            }
+        else:
+            image, metadata = sampler.generate_marginal_flow(prompt_set, mode=mode)
 
         image_name, metadata_name, label = names[mode]
         image_path = output / image_name

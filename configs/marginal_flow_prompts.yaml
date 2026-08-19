@@ -1,0 +1,37 @@
+marginal_flow_prompts:
+  red_cube_blue_sphere:
+    name: "Red Cube Underneath Blue Sphere"
+    target_prompt: "A red cube underneath a blue sphere."
+    negative_prompt: "blurry, low quality, distorted, missing object, wrong color, wrong spatial relation, text, watermark"
+    primitives:
+      - name: "red_attribute"
+        primitive: "red cube"
+        ablated_prompt: "A cube underneath a blue sphere."
+      - name: "blue_attribute"
+        primitive: "blue sphere"
+        ablated_prompt: "A red cube underneath a sphere."
+      - name: "underneath_relation"
+        primitive: "underneath"
+        ablated_prompt: "A red cube and a blue sphere."
+
+# The same target is included in SPFC's existing schema solely for direct
+# baseline/SPFC/Marginal Flow diagnostic runs. Marginal Flow never reads it.
+primitive_flow_prompts:
+  red_cube_blue_sphere:
+    name: "Red Cube Underneath Blue Sphere"
+    target_prompt: "A red cube underneath a blue sphere."
+    source_prompt: "A cube underneath a sphere."
+    negative_prompt: "blurry, low quality, distorted, missing object, wrong color, wrong spatial relation, text, watermark"
+    primitive_prompts:
+      - name: "red_attribute"
+        text: "A red cube underneath a sphere."
+        role: "primitive"
+        weight: 1.0
+      - name: "blue_attribute"
+        text: "A cube underneath a blue sphere."
+        role: "primitive"
+        weight: 1.0
+      - name: "underneath_relation"
+        text: "A cube underneath a sphere."
+        role: "primitive"
+        weight: 1.0
